@@ -1,11 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 const App: React.FC = () => {
   return (
     <div className='App'>
-        <button className='Index-button'>Start</button>
+        <button className='Index-button' onClick={activateLasers}>
+          Start
+        </button>
     </div>
   );
 }
