@@ -8,7 +8,7 @@ interface Props {
 
 const BackNext: React.FC<Props> = props => {
   return (
-    <div className='App'>
+    <div className='Main'>
         <button className='Index-button'>
           Next
         </button>
