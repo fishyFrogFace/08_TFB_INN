@@ -1,31 +1,30 @@
-import React, { Component } from 'react';
+import React, { useState } from "react";
 import './App.css';
 import BackNext from 'backnext/BackNext';
+import Start from 'start/Start'
 
-class App extends Component<any, any> {
-  constructor(props : any) {
-    super(props);
-    this.state = {hasClickedButton: false};
-  }
+export enum Page {
+  BackNext,
+  Start
+}
 
-  goToBackNext() {
-    this.setState({hasClickedButton: true});
-  }
+interface State {
+  currentPage: Page
+}
 
-  firstPage = (
-    <div className='App'>
-        <button className='Index-button' onClick={this.goToBackNext.bind(this)}>
-          Start
-        </button>
-    </div>
-  );
-  
-  render() {
-    if (this.state.hasClickedButton) {
-      return <BackNext />;
-    } else {
-      return this.firstPage;
-    }
+const App: React.FC<{}> = props => {
+  const [currentPage, setCurrentPage] = useState(Page.Start);
+
+  const changePage = (page: Page) => {
+      setCurrentPage(page)
+  };
+
+  switch (currentPage) {
+      case Page.Start:
+          return <Start changePage={changePage} />
+
+      case Page.BackNext:
+          return <BackNext changePage={changePage} />
   }
 }
 

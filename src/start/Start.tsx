@@ -6,14 +6,14 @@ interface Props {
     changePage: (page: Page) => void
 }
 
-const BackNext: React.FC<Props> = props => {
+const Start: React.FC<Props> = props => {
   return (
     <div className='App'>
-        <button className='Index-button'>
-          Next
+        <button className='Index-button' onClick={() => props.changePage(Page.BackNext)}>
+          Start
         </button>
     </div>
   );
 }
 
-export default BackNext;
+export default Start;
