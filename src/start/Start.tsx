@@ -8,7 +8,7 @@ interface Props {
 
 const Start: React.FC<Props> = props => {
   return (
-    <div className='App'>
+    <div className='Main'>
         <button className='Index-button' onClick={() => props.changePage(Page.BackNext)}>
           Start
         </button>
