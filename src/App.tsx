@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import './App.css';
-import BackNext from 'backnext/BackNext';
-import Start from 'start/Start'
+import Start from 'start/Start';
+import Next from 'backnext/Next';
+import Back from 'backnext/Back';
 
 export enum Page {
-  BackNext,
-  Start
+  Start,
+  Next,
+  Back
 }
 
 interface State {
@@ -23,8 +25,11 @@ const App: React.FC<{}> = props => {
       case Page.Start:
           return <Start changePage={changePage} />
 
-      case Page.BackNext:
-          return <BackNext changePage={changePage} />
+      case Page.Next:
+          return <Next changePage={changePage} />
+
+      case Page.Back:
+        return <Back changePage={changePage} />
   }
 }
 
