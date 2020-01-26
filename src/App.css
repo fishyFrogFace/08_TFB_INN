@@ -1,14 +1,26 @@
-.Main {
+body {
   background-color: #282c34;
-  text-align: center;
+}
+
+.main {
   min-height: 100vh;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.Index-button {
+.backnext {
+  min-height: 95vh;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: 0vh 5vh;
+}
+
+.btn {
   width: 50vmin;
   height: 20vmin;
   background-color: #61dafb;
@@ -17,10 +29,10 @@
   color: #282c34;
 }
 
-.Index-button:hover {
+.btn:hover {
   background-color: #059dc7;
 }
 
-.Index-button:active {
+.btn:active {
   background-color: #03627c;
 }

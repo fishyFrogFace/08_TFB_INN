@@ -8,8 +8,8 @@ interface Props {
 
 const Start: React.FC<Props> = props => {
   return (
-    <div className='Main'>
-        <button className='Index-button' onClick={() => props.changePage(Page.BackNext)}>
+    <div className='main'>
+        <button className='index-button btn' onClick={() => props.changePage(Page.Next)}>
           Start
         </button>
     </div>
