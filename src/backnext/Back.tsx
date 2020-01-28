@@ -1,7 +1,7 @@
 import React from 'react';
-import 'App.css';
-import { Page } from 'App'
-import NavBar from 'components/NavBar'
+import '../App.css';
+import { Page } from '../App'
+import NavBar from '../components/NavBar'
 
 interface Props {
     changePage: (page: Page) => void
