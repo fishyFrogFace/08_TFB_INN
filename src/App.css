@@ -10,9 +10,12 @@ body {
   align-items: center;
   justify-content: center;
 }
+.navBar {
+  min-height: 15vh;
+  background-color: black;
+}
 
 .outer {
-  margin-top: 5vh;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -20,6 +23,7 @@ body {
 }
 
 .imageContainer {
+  margin-top: 5vh;
   max-height: 50vh;
 }
 
@@ -28,7 +32,8 @@ img {
 }
 
 .backnext {
-  min-height: 40vh;
+  min-height: 25vh;
+  object-fit: fill;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
