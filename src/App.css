@@ -11,6 +11,20 @@ body {
   justify-content: center;
 }
 
+.outer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.imageContainer {
+  max-height: 20vh;
+}
+
+img {
+  height: 100%;
+}
+
 .backnext {
   min-height: 95vh;
   display: flex;

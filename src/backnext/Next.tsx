@@ -8,13 +8,18 @@ interface Props {
 
 const Next: React.FC<Props> = props => {
   return (
-    <div className='backnext'>
-        <button className='btn' onClick={() => props.changePage(Page.Start)}>
-          Back
-        </button>
-        <button className='btn' onClick={() => props.changePage(Page.Back)}>
-          Next
-        </button>
+    <div className='outer'>
+      <div className='imageContainer'>
+        <img src={"penguin.svg"} alt="Penguin"/>
+      </div>
+      <div className='backnext'>
+          <button className='btn' onClick={() => props.changePage(Page.Start)}>
+            Back
+          </button>
+          <button className='btn' onClick={() => props.changePage(Page.Back)}>
+            Next
+          </button>
+      </div>
     </div>
   );
 }
