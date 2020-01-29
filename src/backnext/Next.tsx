@@ -16,10 +16,10 @@ const Next: React.FC<Props> = props => {
       </div>
       <div className='backnext'>
           <button className='btn' onClick={() => props.changePage(Page.Start)}>
-            Back
+            &lt;Back
           </button>
           <button className='btn' onClick={() => props.changePage(Page.Back)}>
-            Next
+            Next&gt;
           </button>
       </div>
     </div>
