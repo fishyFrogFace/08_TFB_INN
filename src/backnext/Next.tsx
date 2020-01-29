@@ -16,7 +16,7 @@ const Next: React.FC<Props> = props => {
       </div>
       <div className='backnext'>
           <button className='btn' onClick={() => props.changePage(Page.Start)}>
-            &lt;Back
+            &lt;Baaaaaaaaaack
           </button>
           <button className='btn' onClick={() => props.changePage(Page.Back)}>
             Next&gt;
