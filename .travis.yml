@@ -17,4 +17,4 @@ install:
   - npm install
 script:
   - npm test
-  - $(npm bin)/cypress run --record
+  - $(npm bin)/cypress run --record --key 4399c11b-2cc1-4e03-ba06-839e5f680e04
