@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css';
 import { Page } from '../App'
 import NavBar from '../components/NavBar'
+import penguin from './penguin.svg';
 
 interface Props {
     changePage: (page: Page) => void
@@ -12,7 +13,7 @@ const Next: React.FC<Props> = props => {
     <div className='outer'>
       <NavBar />
       <div className='imageContainer'>
-        <img src={"penguin.svg"} alt="Penguin"/>
+        <img src={penguin} alt="Penguin"/>
       </div>
       <div className='backnext'>
           <button className='btn' onClick={() => props.changePage(Page.Start)}>

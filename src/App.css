@@ -24,11 +24,11 @@ body {
 
 .imageContainer {
   margin-top: 5vh;
-  max-height: 50vh;
+  min-height: 50vh;
 }
 
 img {
-  height: 100%;
+  height: 50vh;
 }
 
 .backnext {
