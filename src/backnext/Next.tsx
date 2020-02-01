@@ -17,7 +17,7 @@ const Next: React.FC<Props> = props => {
         <img src={penguin} alt="Penguin" />
       </div>
       <div className="backnext">
-        <Button onClick={() => props.changePage(Page.Next)}>
+        <Button onClick={() => props.changePage(Page.Start)}>
           &lt;Back
         </Button>
         <Button onClick={() => props.changePage(Page.Back)}>
