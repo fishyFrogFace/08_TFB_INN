@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css';
 import { Page } from '../App'
 import NavBar from '../components/NavBar'
+import Button from '../components/Button'
 import kitten from './kitten.svg';
 
 interface Props {
@@ -16,12 +17,12 @@ const Back: React.FC<Props> = props => {
           <img src={kitten} alt="Kitten"/>
         </div>
         <div className='backnext'>
-            <button className='btn' onClick={() => props.changePage(Page.Next)}>
+            <Button onClick={() => props.changePage(Page.Next)}>
               &lt;Back
-            </button>
-            <button className='btn' onClick={() => props.changePage(Page.Back)}>
+            </Button>
+            <Button onClick={() => props.changePage(Page.Back)}>
               Next&gt;
-            </button>
+            </Button>
         </div>
       </div>
     );
