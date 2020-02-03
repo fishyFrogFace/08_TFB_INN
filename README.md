@@ -27,18 +27,22 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## GitHub guidelines
+- When developing a feature, a new branch should be created.
+`git checkout -b my_feature_name`
+- Always check what branch you are on and what files are added or currently contain changes.
+`git status`
+- Write descriptive commit messages.
+- Make new commits often. When pushing to a feature branch, your code does not have to be perfect. Small commits should be the norm.
+`git add src/components/NewComponent.tsx`
+`git status`
+`git commit -m "Made a new component"`
+`git push origin my_feature_name`
+- Pushes directly to master should be avoided when possible. Pushing to master triggers a build of the code and the application will deploy if the tests pass.
+- When a feature is done, create a pull request from the GitHub website.
