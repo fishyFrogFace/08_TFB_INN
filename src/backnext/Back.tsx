@@ -21,7 +21,7 @@ const Back: React.FC<Props> = props => {
           &lt;Back
         </Button>
         <Button onClick={() => props.changePage(Page.Back)}>
-          Nexxt&gt;
+          Next&gt;
         </Button>
       </div>
     </div>
