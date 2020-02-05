@@ -35,14 +35,14 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## GitHub guidelines
 - When developing a feature, a new branch should be created.
-`git checkout -b my_feature_name`
+### `git checkout -b my_feature_name`
 - Always check what branch you are on and what files are added or currently contain changes.
-`git status`
+### `git status`
 - Write descriptive commit messages.
 - Make new commits often. When pushing to a feature branch, your code does not have to be perfect. Small commits should be the norm.
-`git add src/components/NewComponent.tsx`
-`git status`
-`git commit -m "Made a new component"`
-`git push origin my_feature_name`
+### `git add src/components/NewComponent.tsx`
+### `git status`
+### `git commit -m "Made a new component"`
+### `git push origin my_feature_name`
 - Pushes directly to master should be avoided when possible. Pushing to master triggers a build of the code and the application will deploy if the tests pass.
 - When a feature is done, create a pull request from the GitHub website.
