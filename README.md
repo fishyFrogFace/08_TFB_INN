@@ -1,5 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Requirements
+TBD
+
+## Installation
+TBD
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -27,6 +33,9 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+## Run tests
+TBD
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
@@ -34,15 +43,4 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## GitHub guidelines
-- When developing a feature, a new branch should be created.
-`git checkout -b my_feature_name`
-- Always check what branch you are on and what files are added or currently contain changes.
-`git status`
-- Write descriptive commit messages.
-- Make new commits often. When pushing to a feature branch, your code does not have to be perfect. Small commits should be the norm.
-`git add src/components/NewComponent.tsx`
-`git status`
-`git commit -m "Made a new component"`
-`git push origin my_feature_name`
-- Pushes directly to master should be avoided when possible. Pushing to master triggers a build of the code and the application will deploy if the tests pass.
-- When a feature is done, create a pull request from the GitHub website.
+The GitHub contribution guidelines can be found in the Wiki.
