@@ -12,7 +12,9 @@ context('End-to-end', () => {
     })
 
     it('start page contains a navigation menu', () => {
-      cy.get('.navBar').first()
+      cy.get('.navBar')
+      .first()
+      .should('be.visible')
     })
 
     it('start button is clickable and renders 2nd component', () => {
@@ -23,10 +25,13 @@ context('End-to-end', () => {
       .first()
       .should('be.visible')
       .and('have.attr', 'alt')
+      .and('have.length.greaterThan', 0)
     })
 
     it('2nd page contains a navigation menu', () => {
-      cy.get('.navBar').first()
+      cy.get('.navBar')
+      .first()
+      .should('be.visible')
     })
 
     it('a reload brings you to start page', () => {
