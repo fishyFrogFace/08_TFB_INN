@@ -1,11 +1,24 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Requirements
-TBD
+
+#### Node.js
+
+To deploy and to run the project locally you will have to have Node.js installed. Installing npm through a [version manager like n](https://github.com/tj/n), is recommended.
 
 ## Installation
-TBD
-
+```
+npm install
+```
+## Running tests locally
+For React tests:
+```
+npm test
+```
+For Cypress tests:
+```
+node_modules/cypress/bin/cypress open
+```
 ## Available Scripts
 
 In the project directory, you can run:
@@ -32,9 +45,6 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-## Run tests
-TBD
 
 ## Learn More
 
