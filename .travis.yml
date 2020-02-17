@@ -17,6 +17,7 @@ install:
   - npm install
 script:
   - npm test
+  - npm start
   - $(npm bin)/cypress run
 env:
   - CI=true
