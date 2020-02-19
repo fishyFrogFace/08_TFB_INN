@@ -5,10 +5,10 @@ context('End-to-end', () => {
       cy.visit('http://localhost:3000/')
     })
 
-    it('start page contains a start button', () => {
+    it('front page contains an examination button', () => {
         cy.get('.btn')
           .first()
-          .should('contain', 'Start')
+          .should('contain', 'Gerd - Lvl 1')
     })
 
     it('start page contains a navigation menu', () => {
@@ -20,12 +20,9 @@ context('End-to-end', () => {
     it('start button is clickable and renders 2nd component', () => {
     cy.get('.btn').first().click()
 
-    cy.get('.imageContainer')
-      .first().children()
+    cy.get('.h1')
       .first()
-      .should('be.visible')
-      .and('have.attr', 'alt')
-      .and('have.length.greaterThan', 0)
+      .should('be.contain', 'Question component here')
     })
 
     it('2nd page contains a navigation menu', () => {
@@ -38,7 +35,7 @@ context('End-to-end', () => {
         cy.reload()
         cy.get('.btn')
           .first()
-          .should('contain', 'Start')
+          .should('contain', 'Gerd - Lvl 1')
     
         // reload the page without using the cache
         //cy.reload(true)

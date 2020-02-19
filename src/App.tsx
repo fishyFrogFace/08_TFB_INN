@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import './App.css';
-import Start from 'start/Start';
-import Next from 'backnext/Next';
-import Back from 'backnext/Back';
+import FrontPage from 'frontpage/FrontPage';
+import Examination from 'examination/Examination';
 
 export enum Page {
-  Start,
-  Next,
-  Back
+  Examination,
+  FrontPage
 }
 
 interface State {
@@ -15,21 +13,18 @@ interface State {
 }
 
 const App: React.FC<{}> = props => {
-  const [currentPage, setCurrentPage] = useState(Page.Start);
+  const [currentPage, setCurrentPage] = useState(Page.FrontPage);
 
   const changePage = (page: Page) => {
       setCurrentPage(page)
   };
 
   switch (currentPage) {
-      case Page.Start:
-          return <Start changePage={changePage} />
+      case Page.FrontPage:
+          return <FrontPage changePage={changePage} />
 
-      case Page.Next:
-          return <Next changePage={changePage} />
-
-      case Page.Back:
-        return <Back changePage={changePage} />
+      case Page.Examination:
+          return <Examination />
   }
 }
 

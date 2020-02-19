@@ -8,17 +8,17 @@ interface Props {
     changePage: (page: Page) => void
 }
 
-const Start: React.FC<Props> = props => {
+const FrontPage: React.FC<Props> = props => {
   return (
     <div className="outer">
       <NavBar />
       <div className='main'>
-          <Button onClick={() => props.changePage(Page.Next)}>
-            Start
+          <Button onClick={() => props.changePage(Page.Examination)}>
+            Gerd - Lvl 1
           </Button>
       </div>
     </div>
   );
 }
 
-export default Start;
+export default FrontPage;
