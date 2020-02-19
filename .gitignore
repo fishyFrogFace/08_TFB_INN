@@ -31,3 +31,5 @@ build
 /captures
 .externalNativeBuild
 .cxx
+cypress/screenshots
+cypress/videos
