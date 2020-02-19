@@ -21,6 +21,8 @@ const App: React.FC<{}> = props => {
 
   switch (currentPage) {
       case Page.FrontPage:
+          /* fetch available examinations from local storage and pass 
+             them to FrontPage */
           return <FrontPage changePage={changePage} />
 
       case Page.Examination:

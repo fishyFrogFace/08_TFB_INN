@@ -7,7 +7,7 @@ const FrontPage: React.FC<{}> = props => {
     <div className="outer">
       <NavBar />
       <div className='main'>
-         <h1>Question component here</h1>
+         <h1 className='h1'>Question component here</h1>
       </div>
     </div>
   );
