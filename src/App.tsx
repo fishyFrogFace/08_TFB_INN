@@ -21,10 +21,12 @@ const App: React.FC<{}> = props => {
 
   switch (currentPage) {
       case Page.FrontPage:
-          /* fetch available examinations from local storage and pass 
+          /* fetch available examinations from local storage (or backend API) and pass
              them to FrontPage */
           return <FrontPage changePage={changePage} />
 
+          /* fetch questions and question props from local storage (or backend API)
+             and pass them to Examination */
       case Page.Examination:
           return <Examination />
   }
