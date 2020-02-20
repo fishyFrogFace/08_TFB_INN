@@ -4,13 +4,17 @@ import { Int } from '../Helpers'
 import NavBar from '../components/NavBar'
 import Start from '../questions/Start'
 
+/* the list of pages will get passed to the examination by App.tsx
+   as will the props needed to build questions from question components */
 interface State {
   currentQuestion: Int,
   pages: [any]
-
 }
 
 const Examination: React.FC<{}> = props => {
+  /* makes us move to the next question and will contain
+     code that stores the result from the question that called it,
+     passed to the function as parameters */
   const getResult = () => {
     setCurrentQuestion(currentQuestion + 1)
   };

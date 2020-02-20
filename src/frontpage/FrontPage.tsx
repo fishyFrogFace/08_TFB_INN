@@ -8,6 +8,8 @@ interface Props {
     changePage: (page: Page) => void
 }
 
+/* buttons should be generated from props passed to the component
+   based on available examinations */
 const FrontPage: React.FC<Props> = props => {
   return (
     <div className="outer">
