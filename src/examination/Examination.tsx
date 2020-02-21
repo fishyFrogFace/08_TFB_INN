@@ -18,7 +18,10 @@ const Examination: React.FC<{}> = props => {
   const getResult = () => {
     setCurrentQuestion(currentQuestion + 1)
   };
-
+  
+  /* the list of pages can be represented as an enum, for easy storage.
+     by matching on values in the enum, we can render the correct question component
+     and fill it with values (stored in local storage or database) */
   const [pages, setPages] = useState([<Start getResult={getResult} />, <h1 className='h1'>Question component here</h1>]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
