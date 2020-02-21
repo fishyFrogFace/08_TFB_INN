@@ -26,9 +26,9 @@ const Examination: React.FC<{}> = props => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
   return (
-    <div className="outer">
+    <div className="main">
       <NavBar />
-      <div className='main'>
+      <div className='questionContainer'>
         {pages[currentQuestion]}
       </div>
     </div>

@@ -8,7 +8,7 @@ context('End-to-end', () => {
   it('front page contains an examination button', () => {
     cy.get('.btn')
       .first()
-      .should('contain', 'Gerd - Lvl 1')
+      .should('contain', 'Lvl 1')
   })
 
   it('front page contains a navigation menu', () => {
@@ -49,7 +49,7 @@ context('End-to-end', () => {
     cy.reload()
     cy.get('.btn')
       .first()
-      .should('contain', 'Gerd - Lvl 1')
+      .should('contain', 'Lvl 1')
 
     // reload the page without using the cache
     //cy.reload(true)

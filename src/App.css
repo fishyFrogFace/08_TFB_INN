@@ -7,7 +7,7 @@ body {
   background-color: black;
 }
 
-.main {
+.questionContainer {
   min-height: 100vh;
   text-align: center;
   display: flex;
