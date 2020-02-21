@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css';
+import './Button.css';
 
 interface Props {
     onClick: () => void,

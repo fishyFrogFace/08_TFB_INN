@@ -19,11 +19,20 @@ const App: React.FC<{}> = props => {
       setCurrentPage(page)
   };
 
+  const example = [
+                    { name: "Lvl 1", username: "Gerd", avatar: "jadda" }, 
+                    { name: "Lvl 1", username: "Lise", avatar: "avatar" },
+                    { name: "Lvl 1", username: "Gerd", avatar: "jadda" }, 
+                    { name: "Lvl 1", username: "Lise", avatar: "avatar" },
+                    { name: "Lvl 1", username: "Gerd", avatar: "jadda" }, 
+                   { name: "Lvl 1", username: "Lise", avatar: "avatar" }
+                  ]
+
   switch (currentPage) {
       case Page.FrontPage:
           /* fetch available examinations from local storage (or backend API) and pass
              them to FrontPage */
-          return <FrontPage changePage={changePage} />
+          return <FrontPage availableExaminations={example} changePage={changePage} />
 
           /* fetch questions and question props from local storage (or backend API)
              and pass them to Examination */
