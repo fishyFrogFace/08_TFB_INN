@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import '../App.css';
+import './FrontPage.css'
 import { Page } from '../App'
 import Button from '../components/Button'
 import NavBar from '../components/NavBar'
@@ -22,9 +23,9 @@ const FrontPage: React.FC<Props> = props => {
   const [availableExaminations, setAvailableExaminations] = useState(props.availableExaminations);
 
   return (
-    <div className="outer">
+    <div className="main">
       <NavBar />
-      <div className='main'>
+      <div className='frontpage-buttons'>
         {
           availableExaminations.map(element => {
             return <Button onClick={() => props.changePage(Page.Examination)}>

@@ -1,0 +1,17 @@
+.btn {
+  width: 50vmin;
+  height: 20vmin;
+  background-color: #61dafb;
+  font-size: calc(10px + 4vmin);
+  border-radius: 2vmin;
+  color: #282c34;
+  margin-bottom: 1vmin;
+}
+
+.btn:hover {
+  background-color: #059dc7;
+}
+
+.btn:active {
+  background-color: #03627c;
+}
