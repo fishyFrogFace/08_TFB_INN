@@ -8,7 +8,7 @@ body {
 }
 
 .questionContainer {
-  min-height: 100vh;
+  min-height: 85vh;
   text-align: center;
   display: flex;
   flex-direction: column;
