@@ -7,8 +7,7 @@ import { roundToInt } from './Helpers'
 
 export enum Page {
   Examination,
-  FrontPage,
-  Result
+  FrontPage
 }
 
 interface State {
@@ -33,12 +32,6 @@ const App: React.FC<{}> = props => {
 
   const examExample = {currentQuestion: roundToInt(0), questions: ["start", "end"]}
 
-  const resultExample = [
-    { measures: "Kan spise pizza", maxPoints: 3, pointsAchieved: 2},
-    { measures: "Kan klikke på ting", maxPoints: 2, pointsAchieved: 1},
-    { measures: "Kan se på TV", maxPoints: 3, pointsAchieved: 0}
-  ]
-
   switch (currentPage) {
     case Page.FrontPage:
       /* fetch available examinations from local storage (or backend API) and pass
@@ -49,11 +42,6 @@ const App: React.FC<{}> = props => {
        and pass them to Examination */
     case Page.Examination:
       return <Examination {...examExample} />
-
-    /* fetch questions and question props from local storage (or backend API)
-       and pass them to Result */
-    case Page.Result:
-      return <Result results={resultExample}/>
   }
 }
 
