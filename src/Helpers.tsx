@@ -1,3 +1,3 @@
-export type Int = number & { __int__: void };
+export type int = number & { __int__: void };
 
-export const roundToInt = (num: number): Int => Math.round(num) as Int;
+export const roundToint = (num: number): int => Math.round(num) as int;
