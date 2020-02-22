@@ -3,7 +3,7 @@ import './Button.css';
 
 interface Props {
   onClick: () => void,
-  classNames: String,
+  classNames: string,
   children: React.ReactNode
 }
 

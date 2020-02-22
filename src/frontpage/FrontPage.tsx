@@ -6,10 +6,10 @@ import Button from '../components/Button'
 import NavBar from '../components/NavBar'
 
 interface Examination {
-  name: String,
-  username: String,
-  avatar: String, // should be an actual picture or link to picture
-  status: String
+  name: string,
+  username: string,
+  avatar: string, // should be an actual picture or link to picture
+  status: string
 }
 
 interface Props {
