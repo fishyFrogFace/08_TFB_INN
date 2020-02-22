@@ -31,15 +31,15 @@ context('End-to-end', () => {
       .should('be.visible')
   })
 
-  it('first question button is clickable and renders second question', () => {
+  it('first question button is clickable and renders result', () => {
     cy.get('.btn').first().click()
 
     cy.get('.h1')
       .first()
-      .should('be.contain', 'Question component here')
+      .should('contain', 'Result')
   })
 
-  it('second question contains a navigation menu', () => {
+  it('result contains a navigation menu', () => {
     cy.get('.navBar')
       .first()
       .should('be.visible')
