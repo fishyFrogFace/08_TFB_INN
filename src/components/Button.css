@@ -1,17 +1,44 @@
 .btn {
   width: 50vmin;
   height: 20vmin;
-  background-color: #61dafb;
   font-size: calc(10px + 4vmin);
   border-radius: 2vmin;
   color: #282c34;
   margin-bottom: 1vmin;
 }
 
-.btn:hover {
+.new {
+  background-color: #61dafb;
+}
+
+.new:hover {
   background-color: #059dc7;
 }
 
-.btn:active {
+.new:active {
   background-color: #03627c;
+}
+
+.paused {
+  background-color: #ecfb61;
+}
+
+.paused:hover {
+  background-color: #c7c405;
+}
+
+.paused:active {
+  background-color: #7a7c03;
+}
+
+.start {
+  background-color: #73fb61;
+}
+
+.start:hover {
+  background-color: #25c705;
+}
+
+.start:active {
+  background-color: #257c03;
 }

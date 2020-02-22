@@ -8,7 +8,7 @@ interface Props {
 
 const Start: React.FC<Props> = props => {
   return (
-    <Button onClick={() => props.getResult()}>
+    <Button classNames='start' onClick={() => props.getResult()}>
       Start
     </Button>
   );

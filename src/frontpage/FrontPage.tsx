@@ -8,7 +8,8 @@ import NavBar from '../components/NavBar'
 interface Examination {
   name: String,
   username: String,
-  avatar: String // should be an actual picture or link to picture
+  avatar: String, // should be an actual picture or link to picture
+  status: String
 }
 
 interface Props {
@@ -25,14 +26,17 @@ const FrontPage: React.FC<Props> = props => {
   return (
     <div className="main">
       <NavBar />
-      <div className='frontpage-buttons'>
-        {
-          availableExaminations.map(element => {
-            return <Button onClick={() => props.changePage(Page.Examination)}>
-              {element.name}
-            </Button>
-          })
-        }
+      <div className='questionContainer'>
+        <div className='frontpage-buttons'>
+          {
+            availableExaminations.map(element => {
+              return <Button classNames={element.status} onClick={() => props.changePage(Page.Examination)}>
+                <p className='btn-header'>{element.name}</p>
+                <p className='btn-body'>{element.username}</p>
+              </Button>
+            })
+          }
+        </div>
       </div>
     </div>
   );
