@@ -18,9 +18,10 @@ const Result: React.FC<Props> = props => {
 
   return (
     <div className='resultContainer'>
+      <h1>Resultat</h1>
       {
         results.map(element => {
-          return <ProgressBar measures={element.measures} maxPoints={element.maxPoints} pointsAchieved={element.pointsAchieved} />
+          return <ProgressBar {...element} />
         })
       }
     </div>
