@@ -20,12 +20,12 @@ const App: React.FC<{}> = props => {
   };
 
   const example = [
-                    { name: "Lvl 1", username: "Gerd", avatar: "jadda" }, 
-                    { name: "Lvl 1", username: "Lise", avatar: "avatar" },
-                    { name: "Lvl 1", username: "Gerd", avatar: "jadda" }, 
-                    { name: "Lvl 1", username: "Lise", avatar: "avatar" },
-                    { name: "Lvl 1", username: "Gerd", avatar: "jadda" }, 
-                   { name: "Lvl 1", username: "Lise", avatar: "avatar" }
+                    { name: "Lvl 1", username: "", avatar: "jadda", status: 'new' },
+                    { name: "Lvl 2", username: "", avatar: "avatar", status: 'new' },
+                    { name: "Lvl 2", username: "Gerd", avatar: "jadda", status: 'paused' },
+                    { name: "Lvl 2", username: "Peder", avatar: "avatar", status: 'paused' },
+                    { name: "Lvl 2", username: "Ali", avatar: "jadda", status: 'paused' },
+                   { name: "Lvl 2", username: "Ole", avatar: "avatar", status: 'paused' }
                   ]
 
   switch (currentPage) {

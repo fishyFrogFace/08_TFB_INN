@@ -5,3 +5,15 @@
   justify-content: space-between;
   width: 153vmin;
 }
+
+.btn-header {
+  font-size: calc(10px + 4vmin);
+  margin-block-end: 0em;
+  margin-block-start: 0em;
+}
+
+.btn-body {
+  font-size: calc(5px + 2vmin);
+  margin-block-end: 0em;
+  margin-block-start: 0em;
+}
