@@ -7,9 +7,9 @@ import Result from '../result/Result'
 
 /* the list of pages will get passed to the examination by App.tsx
    as will the props needed to build questions from question components */
-interface State {
+interface Props {
   currentQuestion: int,
-  pages: string[]
+  questions: string[]
 }
 
 const resultState = [
@@ -19,7 +19,10 @@ const resultState = [
 ]
 const resultThing = <Result results={resultState} />
 
-const Examination: React.FC<{}> = props => {
+const Examination: React.FC<Props> = props => {
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [questions] = useState(props.questions);
+
   /* makes us move to the next question and will contain
      code that stores the result from the question that called it,
      passed to the function as parameters */
@@ -27,20 +30,25 @@ const Examination: React.FC<{}> = props => {
     setCurrentQuestion(currentQuestion + 1)
   };
 
-  /* the list of pages can be represented as an enum, for easy storage.
+  /* the list of pages might be represented as an enum, for easy storage.
      by matching on values in the enum, we can render the correct question component
-     and fill it with values (stored in local storage or database) */
-  const [pages, setPages] = useState([
-    <Start getResult={getResult} />,
-    <h1 className='h1'>Question component here</h1>
-  ]);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+     and fill it with values (stored in local storage or database),
+     not sure how simple converting from string to enum is */
+  const chooseQuestion = (question: string) => {
+    switch (question) {
+      case "start":
+        return <Start getResult={getResult} />
+
+      case "end":
+        // let app know the examination is over, somehow
+    }
+  }
 
   return (
     <div className="main">
       <NavBar />
       <div className='questionContainer'>
-        {pages[currentQuestion]}
+        {chooseQuestion(questions[currentQuestion])}
       </div>
     </div>
   );
