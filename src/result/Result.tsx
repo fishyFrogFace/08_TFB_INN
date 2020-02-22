@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import '../App.css';
-import NavBar from '../components/NavBar'
+import './Result.css';
 import ProgressBar from "components/ProgressBar";
 
 interface Result {
-  measures: String,
+  measures: string,
   maxPoints: number,
   pointsAchieved: number
 }
@@ -18,17 +17,12 @@ const Result: React.FC<Props> = props => {
   const [results] = useState(props.results);
 
   return (
-    <div className="main">
-      <NavBar />
-      <div className='questionContainer'>
-        <div className='frontpage-buttons'>
-          {
-            results.map(element => {
-              return <ProgressBar maxPoints={element.maxPoints} pointsAchieved={element.pointsAchieved} />
-            })
-          }
-        </div>
-      </div>
+    <div className='resultContainer'>
+      {
+        results.map(element => {
+          return <ProgressBar measures={element.measures} maxPoints={element.maxPoints} pointsAchieved={element.pointsAchieved} />
+        })
+      }
     </div>
   );
 }

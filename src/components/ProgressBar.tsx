@@ -1,7 +1,8 @@
 import React from "react";
-import { Int } from '../Helpers'
+import './ProgressBar.css'
 
 interface Props {
+  measures: string,
   maxPoints: number,
   pointsAchieved: number
 }
@@ -9,13 +10,16 @@ interface Props {
 const ProgressBar: React.FC<Props> = props => {
 
   const calculatePercentage = () => {
-    return props.pointsAchieved/props.maxPoints
+    return props.pointsAchieved / props.maxPoints * 100
   }
 
   return (
-    <div className="progress-bar">
-      <Filler percentage={ calculatePercentage() } />
-    </div>
+    <div className='results'>
+      <p>{props.measures}</p>
+      <div className="progress-bar">
+        <Filler percentage={calculatePercentage()} />
+      </div>
+    </div >
   );
 }
 
