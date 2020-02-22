@@ -3,6 +3,7 @@ import './App.css';
 import FrontPage from 'frontpage/FrontPage';
 import Examination from 'examination/Examination';
 import Result from 'result/Result';
+import { roundToInt } from './Helpers'
 
 export enum Page {
   Examination,
@@ -30,6 +31,8 @@ const App: React.FC<{}> = props => {
     { name: "Lvl 2", username: "Ole", avatar: "avatar", status: 'paused' }
   ]
 
+  const examExample = {currentQuestion: roundToInt(0), questions: ["start", "end"]}
+
   const resultExample = [
     { measures: "Kan spise pizza", maxPoints: 3, pointsAchieved: 2},
     { measures: "Kan klikke på ting", maxPoints: 2, pointsAchieved: 1},
@@ -45,7 +48,7 @@ const App: React.FC<{}> = props => {
     /* fetch questions and question props from local storage (or backend API)
        and pass them to Examination */
     case Page.Examination:
-      return <Examination />
+      return <Examination {...examExample} />
 
     /* fetch questions and question props from local storage (or backend API)
        and pass them to Result */
