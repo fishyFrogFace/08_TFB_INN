@@ -2,8 +2,8 @@ import React from "react";
 import { Int } from '../Helpers'
 
 interface Props {
-  maxPoints: Int,
-  pointsAchieved: Int
+  maxPoints: number,
+  pointsAchieved: number
 }
 
 const ProgressBar: React.FC<Props> = props => {
@@ -20,7 +20,7 @@ const ProgressBar: React.FC<Props> = props => {
 }
 
 interface FillerProps {
-  percentage: Number;
+  percentage: number;
 }
 
 const Filler: React.FC<FillerProps> = props => {
