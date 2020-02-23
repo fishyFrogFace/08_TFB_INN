@@ -13,21 +13,28 @@ interface Props {
   questions: string[];
 }
 
-export interface Result {
+export interface QuestionResult {
   measures: string;
   maxPoints: number;
   pointsAchieved: number;
+}
+
+export interface Result {
+  username: string;
+  results: QuestionResult[];
 }
 
 const Examination: React.FC<Props> = props => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [questions] = useState(props.questions);
 
-  const resultExample = [
-    { measures: 'Kan spise pizza', maxPoints: 3, pointsAchieved: 2 },
-    { measures: 'Kan klikke på ting', maxPoints: 2, pointsAchieved: 1 },
-    { measures: 'Kan se på TV', maxPoints: 3, pointsAchieved: 0 }
-  ];
+  const resultExample = {
+    username: "Erle", results: [
+      { measures: 'Kan spise pizza', maxPoints: 3, pointsAchieved: 2 },
+      { measures: 'Kan klikke på ting', maxPoints: 2, pointsAchieved: 1 },
+      { measures: 'Kan se på TV', maxPoints: 3, pointsAchieved: 0 }
+    ]
+  };
 
   /* makes us move to the next question and will contain
      code that stores the result from the question that called it,
@@ -37,7 +44,7 @@ const Examination: React.FC<Props> = props => {
   };
 
   const getResult = (result: Result) => {
-    // send result from question back to app here
+    // TODO send result from question back to app here
     moveToNextQuestion();
   };
 
@@ -60,7 +67,7 @@ const Examination: React.FC<Props> = props => {
 
       case 'end':
         // TODO let app know the examination is over
-        return <ResultPage results={resultExample} />;
+        return <ResultPage {...resultExample} />;
     }
   };
 

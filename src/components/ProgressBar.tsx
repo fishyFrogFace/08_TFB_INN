@@ -1,8 +1,8 @@
 import React from 'react';
 import './ProgressBar.css';
-import { Result } from '../examination/Examination';
+import { QuestionResult } from '../examination/Examination';
 
-const ProgressBar: React.FC<Result> = props => {
+const ProgressBar: React.FC<QuestionResult> = props => {
   const calculatePercentage = () => {
     return (props.pointsAchieved / props.maxPoints) * 100;
   };
