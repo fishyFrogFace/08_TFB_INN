@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
-  width: 153vmin;
+  justify-content: center;
+  width: 50%;
+  margin-top: 3vh;
 }
 
 .btn-header {

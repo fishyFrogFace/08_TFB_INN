@@ -1,10 +1,10 @@
 .btn {
-  width: 50vmin;
-  height: 20vmin;
+  width: 30vmin;
+  height: 15vmin;
   font-size: calc(10px + 4vmin);
   border-radius: 2vmin;
   color: #282c34;
-  margin-bottom: 1vmin;
+  margin: 2vmin;
 }
 
 .new {
