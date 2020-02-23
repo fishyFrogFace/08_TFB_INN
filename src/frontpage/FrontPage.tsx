@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import '../App.css';
 import './FrontPage.css';
-import { Page } from '../App';
 import Button from '../components/Button';
 import NavBar from '../components/NavBar';
 
@@ -10,11 +9,12 @@ interface Examination {
   username: string;
   avatar: string; // should be an actual picture or link to picture
   status: string;
+  id: number;
 }
 
 interface Props {
   availableExaminations: Examination[];
-  changePage: (page: Page) => void;
+  chooseExamination: (id: number) => void;
 }
 
 /* buttons should be generated from props passed to the component
@@ -34,7 +34,8 @@ const FrontPage: React.FC<Props> = props => {
               <Button
                 key={i}
                 classNames={element.status}
-                onClick={() => props.changePage(Page.Examination)}>
+                // TODO will need to be changed to indicate what examination the user chose
+                onClick={() => props.chooseExamination(element.id)}>
                 <p className='btn-header'>{element.name}</p>
                 <p className='btn-body'>{element.username}</p>
               </Button>
