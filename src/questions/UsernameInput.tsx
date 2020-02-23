@@ -71,9 +71,7 @@ const UsernameInput: React.FC<Props> = props => {
           placeholder='Navn'
         />
       </form>
-      <Button
-        classNames='paused'
-        onClick={() => props.getUserData(input)}>
+      <Button classNames='paused' onClick={() => props.getUserData(input)}>
         Neste
       </Button>
     </div>
