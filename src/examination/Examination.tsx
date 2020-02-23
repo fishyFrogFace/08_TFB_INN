@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import '../App.css';
-import { int } from '../Helpers';
 import NavBar from '../components/NavBar';
 import Start from '../questions/Start';
 import ResultPage from '../result/ResultPage';
 import UsernameInput from 'questions/UsernameInput';
 
 /* the list of pages will get passed to the examination by App.tsx
-   as will the props needed to build questions from question components */
+   as will the props needed to build questions from question components.
+   also gave up using an int here, we will have to check that elsewhere, e.g. database */
 interface Props {
-  currentQuestion: int;
+  currentQuestion: number;
   questions: string[];
 }
 
@@ -25,7 +25,7 @@ export interface Result {
 }
 
 const Examination: React.FC<Props> = props => {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(props.currentQuestion);
   const [questions] = useState(props.questions);
   const [result, setResult] = useState({
     username: '',
@@ -68,7 +68,7 @@ const Examination: React.FC<Props> = props => {
         return <UsernameInput avatar='TODO' getUserData={getUserData} />;
 
       case 'end':
-        // TODO let app know the examination is over
+        // TODO let App know the examination is over
         // TODO will send props as {...result} when result accumulation works
         return (
           <ResultPage results={resultExample} username={result.username} />
