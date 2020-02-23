@@ -7,8 +7,8 @@ const ResultPage: React.FC<Result> = props => {
   return (
     <div className='resultContainer'>
       <h1 className='h1'>Resultat for {props.username}</h1>
-      {props.results.map(element => {
-        return <ProgressBar {...element} />;
+      {props.results.map((element, i) => {
+        return <ProgressBar key={i} {...element} />;
       })}
     </div>
   );
