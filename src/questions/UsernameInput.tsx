@@ -30,12 +30,12 @@ const randomInt = (max: number) => {
 const randomName = (list1: any[], list2: any[]) => {
   const adjective = list1[randomInt(list1.length)]
   const animal = list2[randomInt(list2.length)]
-  return "${adjective}-${animal}"
+  return `${adjective}-${animal}`
 }
 
 const UsernameInput: React.FC<Props> = props => {
   // set a randomly generated name that will be kept if user doesn't type anything
-  const [input] = useState(randomName(adjectives, animals))
+  const [input, setInput] = useState(randomName(adjectives, animals))
 
   return (
     <div>
@@ -44,7 +44,15 @@ const UsernameInput: React.FC<Props> = props => {
       </div>
       <h1 className='h1'>Mitt navn er</h1>
       <form>
-        <input className='inputField' type="text" name="name" placeholder='Navn' />
+        <input
+          id='name'
+          className='inputField'
+          type="text"
+          onKeyUp={(e: React.FormEvent<HTMLInputElement>) =>
+            setInput(e.currentTarget.value)
+          }
+          placeholder='Navn'
+        />
       </form>
       <Button classNames='paused' onClick={() => props.getResult()}>
         Neste
