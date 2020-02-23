@@ -27,13 +27,16 @@ export interface Result {
 const Examination: React.FC<Props> = props => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [questions] = useState(props.questions);
-  const [result, setResult] = useState({username: "", results: new Array<QuestionResult>()})
+  const [result, setResult] = useState({
+    username: '',
+    results: new Array<QuestionResult>()
+  });
 
   const resultExample = [
-      { measures: 'Kan spise pizza', maxPoints: 3, pointsAchieved: 2 },
-      { measures: 'Kan klikke på ting', maxPoints: 2, pointsAchieved: 1 },
-      { measures: 'Kan se på TV', maxPoints: 3, pointsAchieved: 0 }
-    ];
+    { measures: 'Kan spise pizza', maxPoints: 3, pointsAchieved: 2 },
+    { measures: 'Kan klikke på ting', maxPoints: 2, pointsAchieved: 1 },
+    { measures: 'Kan se på TV', maxPoints: 3, pointsAchieved: 0 }
+  ];
 
   /* makes us move to the next question and will contain
      code that stores the result from the question that called it,
@@ -48,7 +51,7 @@ const Examination: React.FC<Props> = props => {
   };
 
   const getUserData = (username: string) => {
-    setResult((res: Result) => ({...res, username: username}))
+    setResult((res: Result) => ({ ...res, username: username }));
     moveToNextQuestion();
   };
 
@@ -67,7 +70,9 @@ const Examination: React.FC<Props> = props => {
       case 'end':
         // TODO let app know the examination is over
         // TODO will send props as {...result} when result accumulation works
-        return <ResultPage results={resultExample} username={result.username} />;
+        return (
+          <ResultPage results={resultExample} username={result.username} />
+        );
     }
   };
 
