@@ -50,7 +50,7 @@ context('End-to-end', () => {
 
     cy.get('.h1')
       .first()
-      .should('contain', 'Result')
+      .should('contain', 'Resultat')
   })
 
   it('result contains a navigation menu', () => {
