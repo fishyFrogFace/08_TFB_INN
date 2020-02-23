@@ -2,11 +2,6 @@ body {
   background-color: #282c34;
 }
 
-.navBar {
-  min-height: 15vh;
-  background-color: black;
-}
-
 .questionContainer {
   min-height: 85vh;
   text-align: center;
