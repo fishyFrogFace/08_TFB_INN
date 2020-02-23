@@ -34,7 +34,6 @@ const FrontPage: React.FC<Props> = props => {
               <Button
                 key={i}
                 classNames={element.status}
-                // TODO will need to be changed to indicate what examination the user chose
                 onClick={() => props.chooseExamination(element.id)}>
                 <p className='btn-header'>{element.name}</p>
                 <p className='btn-body'>{element.username}</p>
