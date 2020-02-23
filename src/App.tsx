@@ -30,7 +30,7 @@ const App: React.FC<{}> = props => {
     { name: "Lvl 2", username: "Ole", avatar: "avatar", status: 'paused' }
   ]
 
-  const examExample = {currentQuestion: roundToInt(0), questions: ["start", "end"]}
+  const examExample = {currentQuestion: roundToInt(0), questions: ["start", "username", "end"]}
 
   switch (currentPage) {
     case Page.FrontPage:
