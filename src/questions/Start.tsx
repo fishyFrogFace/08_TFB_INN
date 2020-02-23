@@ -3,12 +3,12 @@ import '../App.css';
 import Button from '../components/Button'
 
 interface Props {
-  getResult: () => void
+  moveToNextQuestion: () => void
 }
 
 const Start: React.FC<Props> = props => {
   return (
-    <Button classNames='start' onClick={() => props.getResult()}>
+    <Button classNames='start' onClick={() => props.moveToNextQuestion()}>
       Start
     </Button>
   );

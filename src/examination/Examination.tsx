@@ -3,7 +3,7 @@ import '../App.css';
 import { int } from '../Helpers'
 import NavBar from '../components/NavBar'
 import Start from '../questions/Start'
-import Result from '../result/Result'
+import ResultPage from '../result/ResultPage'
 import UsernameInput from "questions/UsernameInput";
 
 /* the list of pages will get passed to the examination by App.tsx
@@ -11,6 +11,12 @@ import UsernameInput from "questions/UsernameInput";
 interface Props {
   currentQuestion: int,
   questions: string[]
+}
+
+export interface Result {
+  measures: string,
+  maxPoints: number,
+  pointsAchieved: number
 }
 
 const Examination: React.FC<Props> = props => {
@@ -26,9 +32,19 @@ const Examination: React.FC<Props> = props => {
   /* makes us move to the next question and will contain
      code that stores the result from the question that called it,
      passed to the function as parameters */
-  const getResult = () => {
+  const moveToNextQuestion = () => {
     setCurrentQuestion(currentQuestion + 1)
   };
+
+  const getResult = (result: Result) => {
+    // send result from question back to app here
+    moveToNextQuestion()
+  }
+
+  const getUserData = (data: Object) => {
+    console.log(data)
+    moveToNextQuestion()
+  }
 
   /* the list of pages might be represented as an enum, for easy storage.
      by matching on values in the enum, we can render the correct question component
@@ -37,14 +53,14 @@ const Examination: React.FC<Props> = props => {
   const chooseQuestion = (question: string) => {
     switch (question) {
       case "start":
-        return <Start getResult={getResult} />
+        return <Start moveToNextQuestion={moveToNextQuestion} />
 
       case "username":
-        return <UsernameInput avatar="TODO" getResult={getResult} />
+        return <UsernameInput avatar="TODO" getUserData={getUserData} />
 
       case "end":
         // TODO let app know the examination is over
-        return <Result results={resultExample}/>
+        return <ResultPage results={resultExample}/>
     }
   }
 

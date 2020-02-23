@@ -1,18 +1,13 @@
 import React, { useState } from "react";
-import './Result.css';
-import ProgressBar from "components/ProgressBar";
-
-interface Result {
-  measures: string,
-  maxPoints: number,
-  pointsAchieved: number
-}
+import './ResultPage.css';
+import ProgressBar from 'components/ProgressBar';
+import { Result } from '../examination/Examination'
 
 interface Props {
   results: Result[]
 }
 
-const Result: React.FC<Props> = props => {
+const ResultPage: React.FC<Props> = props => {
 
   const [results] = useState(props.results);
 
@@ -28,4 +23,4 @@ const Result: React.FC<Props> = props => {
   );
 }
 
-export default Result;
+export default ResultPage;
