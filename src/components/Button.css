@@ -20,15 +20,15 @@
 }
 
 .paused {
-  background-color: #e05263;
+  background-color: #f3de2c;
 }
 
 .paused:hover {
-  background-color: #ffcab1;
+  background-color: #f2c14e;
 }
 
 .paused:active {
-  background-color: #973440;
+  background-color: #fbb02d;
 }
 
 .start {
