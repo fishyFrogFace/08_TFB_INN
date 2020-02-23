@@ -44,7 +44,7 @@ const UsernameInput: React.FC<Props> = props => {
       </div>
       <h1 className='h1'>Mitt navn er</h1>
       <form>
-        <input type="text" name="name" />
+        <input className='inputField' type="text" name="name" placeholder='Navn' />
       </form>
       <Button classNames='paused' onClick={() => props.getResult()}>
         Neste
