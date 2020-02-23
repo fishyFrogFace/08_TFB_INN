@@ -1,8 +1,7 @@
-{
-  "trailingComma": "es5",
-  "tabWidth": 2,
-  "semi": false,
-  "singleQuote": true,
-  "bracketSpacing": false,
-  "jsxBracketSameLine": true,
-}  
+module.exports = {
+  tabWidth: 2,
+  semi: false,
+  singleQuote: true,
+  bracketSpacing: true,
+  jsxBracketSameLine: true
+}
