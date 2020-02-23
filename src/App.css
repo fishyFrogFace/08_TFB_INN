@@ -3,7 +3,7 @@ body {
 }
 
 .questionContainer {
-  min-height: 80vh;
+  min-height: 79vh;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -13,9 +13,9 @@ body {
 
 .imageContainer {
   margin-top: 5vh;
-  min-height: 50vh;
+  max-height: 25vh;
 }
 
 img {
-  height: 50vh;
+  max-height: 25vh;
 }

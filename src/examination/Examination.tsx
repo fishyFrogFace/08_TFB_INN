@@ -4,6 +4,7 @@ import { int } from '../Helpers'
 import NavBar from '../components/NavBar'
 import Start from '../questions/Start'
 import Result from '../result/Result'
+import UsernameInput from "questions/UsernameInput";
 
 /* the list of pages will get passed to the examination by App.tsx
    as will the props needed to build questions from question components */
@@ -37,6 +38,9 @@ const Examination: React.FC<Props> = props => {
     switch (question) {
       case "start":
         return <Start getResult={getResult} />
+
+      case "username":
+        return <UsernameInput avatar="TODO" getResult={getResult} />
 
       case "end":
         // TODO let app know the examination is over
