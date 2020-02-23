@@ -18,7 +18,9 @@ context('End-to-end', () => {
   })
 
   it('front page button is clickable and renders start button', () => {
-    cy.get('.btn').first().click()
+    cy.get('.btn')
+      .first()
+      .click()
 
     cy.get('.btn')
       .first()
@@ -32,7 +34,9 @@ context('End-to-end', () => {
   })
 
   it('start button is clickable and renders username input', () => {
-    cy.get('.btn').first().click()
+    cy.get('.btn')
+      .first()
+      .click()
 
     cy.get('.h1')
       .first()
@@ -46,7 +50,9 @@ context('End-to-end', () => {
   })
 
   it('username input button is clickable and renders result', () => {
-    cy.get('.btn').first().click()
+    cy.get('.btn')
+      .first()
+      .click()
 
     cy.get('.h1')
       .first()
