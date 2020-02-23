@@ -17,7 +17,7 @@ context('End-to-end', () => {
       .should('be.visible')
   })
 
-  it('front page button is clickable and renders first question', () => {
+  it('front page button is clickable and renders start button', () => {
     cy.get('.btn').first().click()
 
     cy.get('.btn')
@@ -25,13 +25,27 @@ context('End-to-end', () => {
       .should('contain', 'Start')
   })
 
-  it('first question contains a navigation menu', () => {
+  it('start contains a navigation menu', () => {
     cy.get('.navBar')
       .first()
       .should('be.visible')
   })
 
-  it('first question button is clickable and renders result', () => {
+  it('start button is clickable and renders username input', () => {
+    cy.get('.btn').first().click()
+
+    cy.get('.h1')
+      .first()
+      .should('contain', 'Mitt navn er')
+  })
+
+  it('username input contains a navigation menu', () => {
+    cy.get('.navBar')
+      .first()
+      .should('be.visible')
+  })
+
+  it('username input button is clickable and renders result', () => {
     cy.get('.btn').first().click()
 
     cy.get('.h1')
