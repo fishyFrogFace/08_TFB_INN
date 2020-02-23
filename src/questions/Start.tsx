@@ -1,9 +1,9 @@
 import React from 'react';
 import '../App.css';
-import Button from '../components/Button'
+import Button from '../components/Button';
 
 interface Props {
-  moveToNextQuestion: () => void
+  moveToNextQuestion: () => void;
 }
 
 const Start: React.FC<Props> = props => {

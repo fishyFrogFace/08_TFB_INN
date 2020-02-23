@@ -1,22 +1,22 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import '../App.css';
-import { int } from '../Helpers'
-import NavBar from '../components/NavBar'
-import Start from '../questions/Start'
-import ResultPage from '../result/ResultPage'
-import UsernameInput from "questions/UsernameInput";
+import { int } from '../Helpers';
+import NavBar from '../components/NavBar';
+import Start from '../questions/Start';
+import ResultPage from '../result/ResultPage';
+import UsernameInput from 'questions/UsernameInput';
 
 /* the list of pages will get passed to the examination by App.tsx
    as will the props needed to build questions from question components */
 interface Props {
-  currentQuestion: int,
-  questions: string[]
+  currentQuestion: int;
+  questions: string[];
 }
 
 export interface Result {
-  measures: string,
-  maxPoints: number,
-  pointsAchieved: number
+  measures: string;
+  maxPoints: number;
+  pointsAchieved: number;
 }
 
 const Examination: React.FC<Props> = props => {
@@ -24,27 +24,27 @@ const Examination: React.FC<Props> = props => {
   const [questions] = useState(props.questions);
 
   const resultExample = [
-    { measures: "Kan spise pizza", maxPoints: 3, pointsAchieved: 2},
-    { measures: "Kan klikke på ting", maxPoints: 2, pointsAchieved: 1},
-    { measures: "Kan se på TV", maxPoints: 3, pointsAchieved: 0}
-  ]
+    { measures: 'Kan spise pizza', maxPoints: 3, pointsAchieved: 2 },
+    { measures: 'Kan klikke på ting', maxPoints: 2, pointsAchieved: 1 },
+    { measures: 'Kan se på TV', maxPoints: 3, pointsAchieved: 0 }
+  ];
 
   /* makes us move to the next question and will contain
      code that stores the result from the question that called it,
      passed to the function as parameters */
   const moveToNextQuestion = () => {
-    setCurrentQuestion(currentQuestion + 1)
+    setCurrentQuestion(currentQuestion + 1);
   };
 
   const getResult = (result: Result) => {
     // send result from question back to app here
-    moveToNextQuestion()
-  }
+    moveToNextQuestion();
+  };
 
   const getUserData = (data: Object) => {
-    console.log(data)
-    moveToNextQuestion()
-  }
+    console.log(data);
+    moveToNextQuestion();
+  };
 
   /* the list of pages might be represented as an enum, for easy storage.
      by matching on values in the enum, we can render the correct question component
@@ -52,26 +52,26 @@ const Examination: React.FC<Props> = props => {
      not sure how simple converting from string to enum is */
   const chooseQuestion = (question: string) => {
     switch (question) {
-      case "start":
-        return <Start moveToNextQuestion={moveToNextQuestion} />
+      case 'start':
+        return <Start moveToNextQuestion={moveToNextQuestion} />;
 
-      case "username":
-        return <UsernameInput avatar="TODO" getUserData={getUserData} />
+      case 'username':
+        return <UsernameInput avatar='TODO' getUserData={getUserData} />;
 
-      case "end":
+      case 'end':
         // TODO let app know the examination is over
-        return <ResultPage results={resultExample}/>
+        return <ResultPage results={resultExample} />;
     }
-  }
+  };
 
   return (
-    <div className="main">
+    <div className='main'>
       <NavBar />
       <div className='questionContainer'>
         {chooseQuestion(questions[currentQuestion])}
       </div>
     </div>
   );
-}
+};
 
 export default Examination;
