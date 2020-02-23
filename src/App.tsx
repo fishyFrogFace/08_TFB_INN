@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import './App.css';
 import FrontPage from 'frontpage/FrontPage';
 import Examination from 'examination/Examination';
-import Result from 'result/Result';
 import { roundToInt } from './Helpers'
 
 export enum Page {

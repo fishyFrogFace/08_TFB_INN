@@ -3,10 +3,11 @@ import '../App.css';
 import './UsernameInput.css'
 import Button from '../components/Button'
 import penguin from "./penguin-books.svg";
+import { Result } from '../examination/Examination'
 
 interface Props {
   avatar: string,
-  getResult: () => void
+  getUserData: (data: Object) => void
 }
 
 interface Return {
@@ -54,7 +55,9 @@ const UsernameInput: React.FC<Props> = props => {
           placeholder='Navn'
         />
       </form>
-      <Button classNames='paused' onClick={() => props.getResult()}>
+      <Button classNames='paused' onClick={
+        () => props.getUserData({ username: input })
+      }>
         Neste
       </Button>
     </div>
