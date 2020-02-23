@@ -8,11 +8,11 @@
 }
 
 .new {
-  background-color: #61dafb;
+  background-color: #059dc7;
 }
 
 .new:hover {
-  background-color: #059dc7;
+  background-color: #61dafb;
 }
 
 .new:active {
@@ -20,23 +20,23 @@
 }
 
 .paused {
-  background-color: #ecfb61;
+  background-color: #e05263;
 }
 
 .paused:hover {
-  background-color: #c7c405;
+  background-color: #ffcab1;
 }
 
 .paused:active {
-  background-color: #7a7c03;
+  background-color: #973440;
 }
 
 .start {
-  background-color: #73fb61;
+  background-color: #659157;
 }
 
 .start:hover {
-  background-color: #25c705;
+  background-color: #a1c084;
 }
 
 .start:active {
