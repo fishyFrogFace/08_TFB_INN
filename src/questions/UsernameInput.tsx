@@ -7,7 +7,7 @@ import { Result } from '../examination/Examination';
 
 interface Props {
   avatar: string;
-  getUserData: (data: Object) => void;
+  getUserData: (username: string) => void;
 }
 
 interface Return {
@@ -73,7 +73,7 @@ const UsernameInput: React.FC<Props> = props => {
       </form>
       <Button
         classNames='paused'
-        onClick={() => props.getUserData({ username: input })}>
+        onClick={() => props.getUserData(input)}>
         Neste
       </Button>
     </div>
