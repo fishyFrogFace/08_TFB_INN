@@ -29,9 +29,10 @@ const FrontPage: React.FC<Props> = props => {
       <NavBar />
       <div className='questionContainer'>
         <div className='frontpage-buttons'>
-          {availableExaminations.map(element => {
+          {availableExaminations.map((element, i) => {
             return (
               <Button
+                key={i}
                 classNames={element.status}
                 onClick={() => props.changePage(Page.Examination)}>
                 <p className='btn-header'>{element.name}</p>
