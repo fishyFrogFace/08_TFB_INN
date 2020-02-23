@@ -2,7 +2,9 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  min-height: 15vh;
+  align-items: center;
+  min-height: 20vh;
   background-color: black;
-  color: white;
+  color: #d2d7df;
+  border-bottom: 0.4vh solid #d2d7df;
 }
