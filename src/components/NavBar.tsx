@@ -7,6 +7,6 @@ const NavBar: React.FC<{}> = props => {
       <h1>Dette er en navigasjonsmeny</h1>
     </div>
   );
-}
+};
 
 export default NavBar;
