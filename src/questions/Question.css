@@ -12,6 +12,12 @@
   text-align: center;
 }
 
+.textAndBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .black {
   color: black;
 }

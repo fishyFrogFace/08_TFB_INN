@@ -40,7 +40,9 @@ const CopyText: React.FC<Props> = props => {
   return (
     <div>
       <h1 className='h1'>{props.text}</h1>
-      <form>
+      <form
+        className='textAndBtn'
+        onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
         <input
           id='name'
           className={`inputField ${color}`}
@@ -48,10 +50,10 @@ const CopyText: React.FC<Props> = props => {
           onKeyUp={e => storeInput(e)}
           placeholder={props.text}
         />
+        <Button classNames='paused' onClick={() => checkInput(input)}>
+          Neste
+        </Button>
       </form>
-      <Button classNames='paused' onClick={() => checkInput(input)}>
-        Neste
-      </Button>
     </div>
   );
 };

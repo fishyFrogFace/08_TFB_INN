@@ -59,7 +59,9 @@ const UsernameInput: React.FC<Props> = props => {
         <img src={penguin} alt='Avatar' />
       </div>
       <h1 className='h1'>Mitt navn er</h1>
-      <form>
+      <form
+        className='textAndBtn'
+        onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
         <input
           id='name'
           className='inputField'
@@ -70,10 +72,10 @@ const UsernameInput: React.FC<Props> = props => {
           }}
           placeholder='Navn'
         />
+        <Button classNames='paused' onClick={() => props.getUsername(input)}>
+          Neste
+        </Button>
       </form>
-      <Button classNames='paused' onClick={() => props.getUsername(input)}>
-        Neste
-      </Button>
     </div>
   );
 };
