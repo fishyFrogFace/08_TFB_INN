@@ -30,7 +30,7 @@ const fpExample = [
 const examExamples = {
   1: {
     currentQuestion: 0,
-    questions: ['start', 'username', 'end']
+    questions: [{ q: 'start', params: {} }, { q: 'username', params: { avatar: "Hello from app" } }, { q: 'end', params: {} }]
   },
   2: {
     currentQuestion: 1,

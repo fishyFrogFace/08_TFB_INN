@@ -10,13 +10,24 @@ import UsernameInput from 'questions/UsernameInput';
    also gave up using an int here, we will have to check that elsewhere, e.g. database */
 interface Props {
   currentQuestion: number;
-  questions: string[];
+  questions: Question[];
 }
 
 export interface QuestionResult {
   measures: string;
   maxPoints: number;
   pointsAchieved: number;
+}
+
+/* options for params to questions are added here
+    they need to also be able to be undefined, since not all questions need all params */
+interface QuestionParams {
+  avatar: string | undefined;
+}
+
+interface Question {
+  q: string;
+  params: QuestionParams;
 }
 
 export interface Result {
@@ -45,8 +56,9 @@ const Examination: React.FC<Props> = props => {
     setCurrentQuestion(currentQuestion + 1);
   };
 
-  const getResult = (result: Result) => {
-    // TODO send result from question back to app here
+  const getResult = (qResult: QuestionResult) => {
+    const newArray = result.results.concat(qResult);
+    setResult((res: Result) => ({ ...res, results: newArray }));
     moveToNextQuestion();
   };
 
@@ -59,13 +71,13 @@ const Examination: React.FC<Props> = props => {
      by matching on values in the enum, we can render the correct question component
      and fill it with values (stored in local storage or database),
      not sure how simple converting from string to enum is */
-  const chooseQuestion = (question: string) => {
-    switch (question) {
+  const chooseQuestion = (question: Question) => {
+    switch (question.q) {
       case 'start':
         return <Start moveToNextQuestion={moveToNextQuestion} />;
 
       case 'username':
-        return <UsernameInput avatar='TODO' getUserData={getUserData} />;
+        return <UsernameInput {...question.params} getUserData={getUserData} />;
 
       case 'end':
         // TODO let App know the examination is over

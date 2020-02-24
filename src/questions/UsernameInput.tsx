@@ -3,10 +3,9 @@ import '../App.css';
 import './UsernameInput.css';
 import Button from '../components/Button';
 import penguin from './penguin-books.svg';
-import { Result } from '../examination/Examination';
 
 interface Props {
-  avatar: string;
+  avatar: string | undefined;
   getUserData: (username: string) => void;
 }
 
@@ -65,8 +64,10 @@ const UsernameInput: React.FC<Props> = props => {
           id='name'
           className='inputField'
           type='text'
-          onKeyUp={(e: React.FormEvent<HTMLInputElement>) =>
+          onKeyUp={(e: React.FormEvent<HTMLInputElement>) => {
             setInput(e.currentTarget.value)
+            console.log(props.avatar)
+          }
           }
           placeholder='Navn'
         />
