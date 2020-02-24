@@ -40,9 +40,8 @@ interface Question {
 }
 
 const resultExample = [
-  { measures: 'Kan spise pizza', maxPoints: 3, pointsAchieved: 2 },
-  { measures: 'Kan klikke på ting', maxPoints: 2, pointsAchieved: 1 },
-  { measures: 'Kan se på TV', maxPoints: 3, pointsAchieved: 0 }
+  { measures: 'Forstår bruk av knapper', maxPoints: 1, pointsAchieved: 1 },
+  { measures: 'Dette er et eksempel på en tom bar', maxPoints: 3, pointsAchieved: 0 }
 ];
 
 const Examination: React.FC<Props> = props => {
