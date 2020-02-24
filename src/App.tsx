@@ -53,9 +53,9 @@ const App: React.FC<{}> = props => {
   };
 
   switch (currentPage) {
+    /* fetch available examinations from local storage (or backend API) and pass
+       them to FrontPage */
     case Page.FrontPage:
-      /* fetch available examinations from local storage (or backend API) and pass
-         them to FrontPage */
       return (
         <FrontPage
           availableExaminations={fpExample}
