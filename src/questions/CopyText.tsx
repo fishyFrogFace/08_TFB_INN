@@ -32,7 +32,8 @@ const CopyText: React.FC<Props> = props => {
     }
   }
 
-  const thing = (e: React.FormEvent<HTMLInputElement>) => {
+  const storeInput = (e: React.FormEvent<HTMLInputElement>) => {
+    setColor('black')
     setInput(e.currentTarget.value)
   }
 
@@ -44,7 +45,7 @@ const CopyText: React.FC<Props> = props => {
           id='name'
           className={`inputField ${color}`}
           type='text'
-          onKeyUp={e => thing(e)}
+          onKeyUp={e => storeInput(e)}
           placeholder={props.text}
         />
       </form>
