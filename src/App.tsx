@@ -13,18 +13,12 @@ interface State {
 }
 
 const fpExample = [
-  { name: 'Lvl 1', username: '', avatar: 'jadda', status: 'new', id: 1 },
-  { name: 'Lvl 2', username: '', avatar: 'avatar', status: 'new', id: 1 },
-  { name: 'Lvl 2', username: 'Gerd', avatar: 'jadda', status: 'paused', id: 2 },
-  {
-    name: 'Lvl 2',
-    username: 'Peder',
-    avatar: 'avatar',
-    status: 'paused',
-    id: 2
-  },
-  { name: 'Lvl 2', username: 'Ali', avatar: 'jadda', status: 'paused', id: 2 },
-  { name: 'Lvl 2', username: 'Ole', avatar: 'avatar', status: 'paused', id: 2 }
+  { name: 'Lvl 1', username: '', avatar: 'TODO', status: 'new', id: 1 },
+  { name: 'Lvl 2', username: '', avatar: 'TODO', status: 'new', id: 1 },
+  { name: 'Lvl 2', username: 'Gerd', avatar: 'TODO', status: 'paused', id: 2 },
+  { name: 'Lvl 2', username: 'Peder', avatar: 'TODO', status: 'paused', id: 2 },
+  { name: 'Lvl 2', username: 'Ali', avatar: 'TODO', status: 'paused', id: 2 },
+  { name: 'Lvl 2', username: 'Ole', avatar: 'TODO', status: 'paused', id: 2 }
 ];
 
 const examExamples = {
