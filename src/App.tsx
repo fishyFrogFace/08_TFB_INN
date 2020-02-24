@@ -27,6 +27,7 @@ const examExamples = {
     questions: [
       { q: 'start', params: {} },
       { q: 'username', params: { avatar: 'Hello from app' } },
+      { q: 'copytext', params: { text: 'A, b: C.', measures: 'Kan skrive av tekst', maxPoints: 6 } },
       { q: 'end', params: {} }
     ]
   },
@@ -35,6 +36,7 @@ const examExamples = {
     questions: [
       { q: 'start', params: {} },
       { q: 'username', params: { avatar: 'Hello from app' } },
+      { q: 'copytext', params: { text: 'A, b: C.', measures: 'Kan skrive av tekst', maxPoints: 6 } },
       { q: 'end', params: {} }
     ]
   }
