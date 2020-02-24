@@ -65,10 +65,9 @@ const UsernameInput: React.FC<Props> = props => {
           className='inputField'
           type='text'
           onKeyUp={(e: React.FormEvent<HTMLInputElement>) => {
-            setInput(e.currentTarget.value)
-            console.log(props.avatar)
-          }
-          }
+            setInput(e.currentTarget.value);
+            console.log(props.avatar);
+          }}
           placeholder='Navn'
         />
       </form>
