@@ -49,7 +49,35 @@ context('End-to-end', () => {
       .should('be.visible');
   });
 
-  it('username input button is clickable and renders result', () => {
+  it('username input button is clickable and renders copytext', () => {
+    cy.get('.btn')
+      .first()
+      .click();
+
+    cy.get('.h1')
+      .first()
+      .should('contain', 'A, b: C.');
+  });
+
+  it('copytext contains a navigation menu', () => {
+    cy.get('.navBar')
+      .first()
+      .should('be.visible');
+  });
+
+  it('copytext button is clickable and renders result', () => {
+    cy.get('.inputField')
+      .first()
+      .type('A, b: C')
+
+    cy.get('.btn')
+      .first()
+      .click();
+
+    cy.get('.inputField')
+      .first()
+      .type('.')
+
     cy.get('.btn')
       .first()
       .click();
