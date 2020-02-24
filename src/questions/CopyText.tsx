@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../App.css';
 import './Question.css';
 import Button from '../components/Button';
-import { QuestionResult } from 'examination/Examination'
+import { QuestionResult } from 'examination/Examination';
 
 interface Props {
   maxPoints: number;
@@ -19,23 +19,23 @@ const CopyText: React.FC<Props> = props => {
 
   const checkInput = (value: string) => {
     if (value === props.text) {
-      setColor('green')
-      props.getResult({ 
+      setColor('green');
+      props.getResult({
         maxPoints: props.maxPoints,
         measures: props.measures,
         pointsAchieved: points
-      })
+      });
     } else {
-      const newPoints = (points > 0 ? points - 1 : 0);
-      setPoints(newPoints)
-      setColor('red')
+      const newPoints = points > 0 ? points - 1 : 0;
+      setPoints(newPoints);
+      setColor('red');
     }
-  }
+  };
 
   const storeInput = (e: React.FormEvent<HTMLInputElement>) => {
-    setColor('black')
-    setInput(e.currentTarget.value)
-  }
+    setColor('black');
+    setInput(e.currentTarget.value);
+  };
 
   return (
     <div>
