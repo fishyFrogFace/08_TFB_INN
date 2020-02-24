@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import '../App.css';
-import './UsernameInput.css';
+import './Question.css';
 import Button from '../components/Button';
 import penguin from './penguin-books.svg';
 
 interface Props {
   avatar: string | undefined;
-  getUserData: (username: string) => void;
+  getUsername: (username: string) => void;
 }
 
 interface Return {
@@ -71,7 +71,7 @@ const UsernameInput: React.FC<Props> = props => {
           placeholder='Navn'
         />
       </form>
-      <Button classNames='paused' onClick={() => props.getUserData(input)}>
+      <Button classNames='paused' onClick={() => props.getUsername(input)}>
         Neste
       </Button>
     </div>
