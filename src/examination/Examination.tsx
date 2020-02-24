@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar';
 import Start from '../questions/Start';
 import ResultPage from '../result/ResultPage';
 import UsernameInput from 'questions/UsernameInput';
-import CopyText from 'questions/CopyText'
+import CopyText from 'questions/CopyText';
 
 export interface Result {
   username: string;
@@ -41,7 +41,11 @@ interface Question {
 
 const resultExample = [
   { measures: 'Forstår bruk av knapper', maxPoints: 1, pointsAchieved: 1 },
-  { measures: 'Dette er et eksempel på en tom bar', maxPoints: 3, pointsAchieved: 0 }
+  {
+    measures: 'Dette er et eksempel på en tom bar',
+    maxPoints: 3,
+    pointsAchieved: 0
+  }
 ];
 
 const Examination: React.FC<Props> = props => {
@@ -85,14 +89,12 @@ const Examination: React.FC<Props> = props => {
         return <UsernameInput {...question.params} getUsername={getUsername} />;
 
       case 'copytext':
-        return <CopyText {...question.params} getResult={getResult}/>;
+        return <CopyText {...question.params} getResult={getResult} />;
 
       case 'end':
         // TODO let App know the examination is over
         // TODO will send props as {...result} when result accumulation works
-        return (
-          <ResultPage {...result} />
-        );
+        return <ResultPage {...result} />;
     }
   };
 
