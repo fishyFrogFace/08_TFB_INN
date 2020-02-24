@@ -8,6 +8,17 @@ export enum Page {
   FrontPage
 }
 
+export interface Result {
+  username: string;
+  results: QuestionResult[];
+}
+
+export interface QuestionResult {
+  measures: string;
+  maxPoints: number;
+  pointsAchieved: number;
+}
+
 interface State {
   currentPage: Page;
 }
@@ -15,14 +26,20 @@ interface State {
 const fpExample = [
   { name: 'Lvl 1', username: '', avatar: 'TODO', status: 'new', id: 1 },
   { name: 'Lvl 2', username: '', avatar: 'TODO', status: 'new', id: 1 },
-  { name: 'Lvl 2', username: 'Gerd', avatar: 'TODO', status: 'paused', id: 2 },
-  { name: 'Lvl 2', username: 'Peder', avatar: 'TODO', status: 'paused', id: 2 },
-  { name: 'Lvl 2', username: 'Ali', avatar: 'TODO', status: 'paused', id: 2 },
-  { name: 'Lvl 2', username: 'Ole', avatar: 'TODO', status: 'paused', id: 2 }
+  { name: 'Lvl 2', username: 'Gerd', avatar: 'TODO', status: 'paused', id: 2 }
 ];
 
 const examExamples = {
   1: {
+    username: '',
+    results: [
+      { measures: 'Forstår bruk av knapper', maxPoints: 1, pointsAchieved: 1 },
+      {
+        measures: 'Dette er et eksempel på en tom bar',
+        maxPoints: 3,
+        pointsAchieved: 0
+      }
+    ],
     currentQuestion: 0,
     questions: [
       { q: 'start', params: {} },
@@ -39,7 +56,21 @@ const examExamples = {
     ]
   },
   2: {
-    currentQuestion: 1,
+    username: 'Gerd',
+    results: [
+      { measures: 'Forstår bruk av knapper', maxPoints: 1, pointsAchieved: 1 },
+      {
+        measures: 'Kan gjenkjenne vanlige ikoner',
+        maxPoints: 10,
+        pointsAchieved: 7
+      },
+      {
+        measures: 'Kan finne innboksen sin og sende en email',
+        maxPoints: 10,
+        pointsAchieved: 1
+      }
+    ],
+    currentQuestion: 2,
     questions: [
       { q: 'start', params: {} },
       { q: 'username', params: { avatar: 'Hello from app' } },

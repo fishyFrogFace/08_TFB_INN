@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ResultPage.css';
 import ProgressBar from 'components/ProgressBar';
-import { Result } from '../examination/Examination';
+import { Result } from '../App';
 
 const ResultPage: React.FC<Result> = props => {
   return (
