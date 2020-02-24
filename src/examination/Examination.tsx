@@ -4,6 +4,18 @@ import NavBar from '../components/NavBar';
 import Start from '../questions/Start';
 import ResultPage from '../result/ResultPage';
 import UsernameInput from 'questions/UsernameInput';
+import CopyText from 'questions/CopyText'
+
+export interface Result {
+  username: string;
+  results: QuestionResult[];
+}
+
+export interface QuestionResult {
+  measures: string;
+  maxPoints: number;
+  pointsAchieved: number;
+}
 
 /* the list of pages will get passed to the examination by App.tsx
    as will the props needed to build questions from question components.
@@ -13,16 +25,13 @@ interface Props {
   questions: Question[];
 }
 
-export interface QuestionResult {
+/* TODO find a better way to do this, without marking everything as optional
+    which is not great */
+interface QuestionParams {
+  avatar: string;
   measures: string;
   maxPoints: number;
-  pointsAchieved: number;
-}
-
-/* options for params to questions are added here
-    they need to also be able to be undefined, since not all questions need all params */
-interface QuestionParams {
-  avatar: string | undefined;
+  text: string;
 }
 
 interface Question {
@@ -30,24 +39,19 @@ interface Question {
   params: QuestionParams;
 }
 
-export interface Result {
-  username: string;
-  results: QuestionResult[];
-}
+const resultExample = [
+  { measures: 'Kan spise pizza', maxPoints: 3, pointsAchieved: 2 },
+  { measures: 'Kan klikke på ting', maxPoints: 2, pointsAchieved: 1 },
+  { measures: 'Kan se på TV', maxPoints: 3, pointsAchieved: 0 }
+];
 
 const Examination: React.FC<Props> = props => {
   const [currentQuestion, setCurrentQuestion] = useState(props.currentQuestion);
   const [questions] = useState(props.questions);
   const [result, setResult] = useState({
     username: '',
-    results: new Array<QuestionResult>()
+    results: resultExample // new Array<QuestionResult>()
   });
-
-  const resultExample = [
-    { measures: 'Kan spise pizza', maxPoints: 3, pointsAchieved: 2 },
-    { measures: 'Kan klikke på ting', maxPoints: 2, pointsAchieved: 1 },
-    { measures: 'Kan se på TV', maxPoints: 3, pointsAchieved: 0 }
-  ];
 
   /* makes us move to the next question and will contain
      code that stores the result from the question that called it,
@@ -59,11 +63,13 @@ const Examination: React.FC<Props> = props => {
   const getResult = (qResult: QuestionResult) => {
     const newArray = result.results.concat(qResult);
     setResult((res: Result) => ({ ...res, results: newArray }));
+    // tell the ouside world e.g. App about this change in state
     moveToNextQuestion();
   };
 
-  const getUserData = (username: string) => {
+  const getUsername = (username: string) => {
     setResult((res: Result) => ({ ...res, username: username }));
+    // tell the ouside world e.g. App about this change in state
     moveToNextQuestion();
   };
 
@@ -77,13 +83,16 @@ const Examination: React.FC<Props> = props => {
         return <Start moveToNextQuestion={moveToNextQuestion} />;
 
       case 'username':
-        return <UsernameInput {...question.params} getUserData={getUserData} />;
+        return <UsernameInput {...question.params} getUsername={getUsername} />;
+
+      case 'copytext':
+        return <CopyText {...question.params} getResult={getResult}/>;
 
       case 'end':
         // TODO let App know the examination is over
         // TODO will send props as {...result} when result accumulation works
         return (
-          <ResultPage results={resultExample} username={result.username} />
+          <ResultPage {...result} />
         );
     }
   };
