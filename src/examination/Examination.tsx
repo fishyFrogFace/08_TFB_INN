@@ -5,17 +5,7 @@ import Start from '../questions/Start';
 import ResultPage from '../result/ResultPage';
 import UsernameInput from 'questions/UsernameInput';
 import CopyText from 'questions/CopyText';
-
-export interface Result {
-  username: string;
-  results: QuestionResult[];
-}
-
-export interface QuestionResult {
-  measures: string;
-  maxPoints: number;
-  pointsAchieved: number;
-}
+import { Result, QuestionResult } from '../App'
 
 /* the list of pages will get passed to the examination by App.tsx
    as will the props needed to build questions from question components.
@@ -23,6 +13,8 @@ export interface QuestionResult {
 interface Props {
   currentQuestion: number;
   questions: Question[];
+  results: QuestionResult[];
+  username: string;
 }
 
 /* TODO find a better way to do this, without marking everything as optional
@@ -39,21 +31,12 @@ interface Question {
   params: QuestionParams;
 }
 
-const resultExample = [
-  { measures: 'Forstår bruk av knapper', maxPoints: 1, pointsAchieved: 1 },
-  {
-    measures: 'Dette er et eksempel på en tom bar',
-    maxPoints: 3,
-    pointsAchieved: 0
-  }
-];
-
 const Examination: React.FC<Props> = props => {
   const [currentQuestion, setCurrentQuestion] = useState(props.currentQuestion);
   const [questions] = useState(props.questions);
   const [result, setResult] = useState({
-    username: '',
-    results: resultExample // new Array<QuestionResult>()
+    username: props.username,
+    results: props.results // new Array<QuestionResult>()
   });
 
   /* makes us move to the next question and will contain
