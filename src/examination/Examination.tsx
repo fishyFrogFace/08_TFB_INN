@@ -37,7 +37,7 @@ const Examination: React.FC<Props> = props => {
     username: props.username,
     results: props.results
   });
-  const [showModal, setShowModal] = useState(false);
+  const [showQuitModal, setShowQuitModal] = useState(false);
 
   /* makes us move to the next question without storing result */
   const moveToNextQuestion = () => {
@@ -75,17 +75,22 @@ const Examination: React.FC<Props> = props => {
   };
 
   const quitExam = () => {
-    setShowModal(true);
+    // when storage is in place, this might need to delete the paused examination
+    window.location.reload();
   };
 
   const closeModal = () => {
-    setShowModal(false);
+    setShowQuitModal(false);
   };
+
+  const quitModal = () => {
+    setShowQuitModal(true);
+  }
 
   return (
     <div className='main'>
-      <NavBar quitExam={quitExam} />
-      <Modal show={showModal} onClick={closeModal} />
+      <NavBar quitModal={quitModal} />
+      <Modal show={showQuitModal} closeModal={closeModal} quitExam={quitExam} />
       <div className='questionContainer'>
         {chooseQuestion(questions[currentQuestion])}
       </div>

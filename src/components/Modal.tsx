@@ -3,7 +3,8 @@ import './Modal.css';
 
 interface Props {
   show: boolean;
-  onClick: () => void;
+  closeModal: () => void;
+  quitExam: () => void;
 }
 
 const Modal: React.FC<Props> = props => {
@@ -16,7 +17,7 @@ const Modal: React.FC<Props> = props => {
             <button
               type='button'
               className='close'
-              onClick={() => props.onClick()}>
+              onClick={() => props.closeModal()}>
               &times;
             </button>
           </div>
@@ -27,13 +28,13 @@ const Modal: React.FC<Props> = props => {
             <button
               type='button'
               className='modal-btn close-btn'
-              onClick={() => props.onClick()}>
+              onClick={() => props.closeModal()}>
               Lukk
             </button>
             <button
               type='button'
               className='modal-btn exit-btn'
-              onClick={() => props.onClick()}>
+              onClick={() => props.quitExam()}>
               Avslutt
             </button>
           </div>
