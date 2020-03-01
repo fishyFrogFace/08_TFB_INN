@@ -102,9 +102,10 @@ context('End-to-end', () => {
   });
 
   it('result reflects what the user achieved', () => {
-    cy.get('.filler')
-      .first()
-      .should('have.css', 'width', '333.328125px');
+    const width = ['400px', '333.328125px']
+    cy.get('.filler').each(($el, i) => {
+      cy.wrap($el).should('have.css', 'width', width[i]);
+    });
   });
 
   it('result contains a navigation menu', () => {
