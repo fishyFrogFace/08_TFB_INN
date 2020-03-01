@@ -18,3 +18,12 @@
   margin-block-end: 0em;
   margin-block-start: 0em;
 }
+
+.buttonContainer {
+  min-height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
