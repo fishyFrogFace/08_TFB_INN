@@ -85,7 +85,7 @@ const Examination: React.FC<Props> = props => {
 
   const quitModal = () => {
     setShowQuitModal(true);
-  }
+  };
 
   return (
     <div className='main'>
