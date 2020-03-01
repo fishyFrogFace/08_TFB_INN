@@ -1,10 +1,24 @@
 import React from 'react';
 import './NavBar.css';
+import Button from './Button';
 
-const NavBar: React.FC<{}> = props => {
+interface Props {
+  quitExam: () => void;
+}
+
+const NavBar: React.FC<Props> = props => {
   return (
     <div className='navBar'>
-      <h1>Dette er en navigasjonsmeny</h1>
+      <div className='navbar-left'>
+        <Button classNames='start' onClick={() => props.quitExam()}>
+          Start
+        </Button>
+      </div>
+      <div className='navbar-right'>
+        <Button classNames='start' onClick={() => props.quitExam()}>
+          Start
+        </Button>
+      </div>
     </div>
   );
 };
