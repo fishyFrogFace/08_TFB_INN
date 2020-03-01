@@ -35,7 +35,13 @@ const examExamples = {
     results: [],
     currentQuestion: 0,
     questions: [
-      { q: 'start', params: {} },
+      {
+        q: 'start',
+        params: {
+          measures: 'Forstår bruk av knapper',
+          maxPoints: 1
+        }
+      },
       { q: 'username', params: { avatar: 'Hello from app' } },
       {
         q: 'copytext',

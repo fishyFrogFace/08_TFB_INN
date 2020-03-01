@@ -5,7 +5,7 @@ import Start from '../questions/Start';
 import ResultPage from '../result/ResultPage';
 import UsernameInput from 'questions/UsernameInput';
 import CopyText from 'questions/CopyText';
-import { Result, QuestionResult } from '../App'
+import { Result, QuestionResult } from '../App';
 
 /* the list of pages will get passed to the examination by App.tsx
    as will the props needed to build questions from question components.
@@ -17,8 +17,6 @@ interface Props {
   username: string;
 }
 
-/* TODO find a better way to do this, without marking everything as optional
-    which is not great */
 interface QuestionParams {
   avatar: string;
   measures: string;
@@ -52,7 +50,6 @@ const Examination: React.FC<Props> = props => {
   };
 
   const getUsername = (username: string) => {
-
     setResult((res: Result) => ({ ...res, username: username }));
     // tell the ouside world e.g. App about this change in state
     moveToNextQuestion();
@@ -65,7 +62,7 @@ const Examination: React.FC<Props> = props => {
   const chooseQuestion = (question: Question) => {
     switch (question.q) {
       case 'start':
-        return <Start moveToNextQuestion={moveToNextQuestion} />;
+        return <Start {...question.params} getResult={getResult} />;
 
       case 'username':
         return <UsernameInput {...question.params} getUsername={getUsername} />;
