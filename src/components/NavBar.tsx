@@ -10,13 +10,8 @@ const NavBar: React.FC<Props> = props => {
   return (
     <div className='navBar'>
       <div className='navbar-left'>
-        <Button classNames='start' onClick={() => props.quitModal()}>
-          Start
-        </Button>
-      </div>
-      <div className='navbar-right'>
-        <Button classNames='start' onClick={() => props.quitModal()}>
-          Start
+        <Button classNames='exit' onClick={() => props.quitModal()}>
+          &times;
         </Button>
       </div>
     </div>
