@@ -39,9 +39,7 @@ const Examination: React.FC<Props> = props => {
     results: props.results // new Array<QuestionResult>()
   });
 
-  /* makes us move to the next question and will contain
-     code that stores the result from the question that called it,
-     passed to the function as parameters */
+  /* makes us move to the next question without storing result */
   const moveToNextQuestion = () => {
     setCurrentQuestion(currentQuestion + 1);
   };
@@ -54,6 +52,7 @@ const Examination: React.FC<Props> = props => {
   };
 
   const getUsername = (username: string) => {
+
     setResult((res: Result) => ({ ...res, username: username }));
     // tell the ouside world e.g. App about this change in state
     moveToNextQuestion();

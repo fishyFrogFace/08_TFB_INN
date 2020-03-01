@@ -52,6 +52,8 @@ const randomName = (list1: any[], list2: any[]) => {
 const UsernameInput: React.FC<Props> = props => {
   // set a randomly generated name that will be kept if user doesn't type anything
   const [input, setInput] = useState(randomName(adjectives, animals));
+  // can be used if we want to make this return a result
+  const [typed, setTyped] = useState(false);
 
   return (
     <div>
@@ -67,8 +69,14 @@ const UsernameInput: React.FC<Props> = props => {
           className='inputField'
           type='text'
           onKeyUp={(e: React.FormEvent<HTMLInputElement>) => {
-            setInput(e.currentTarget.value);
-            console.log(props.avatar);
+            const valueTyped = e.currentTarget.value;
+            if (valueTyped.trim()) {
+              setTyped(true);
+              setInput(e.currentTarget.value);
+            } else {
+              setTyped(false);
+              setInput(randomName(adjectives, animals));
+            };
           }}
           placeholder='Navn'
         />
@@ -76,6 +84,7 @@ const UsernameInput: React.FC<Props> = props => {
           Neste
         </Button>
       </form>
+      <p className='username'>{input}</p>
     </div>
   );
 };

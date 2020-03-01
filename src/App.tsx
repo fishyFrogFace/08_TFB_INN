@@ -32,14 +32,7 @@ const fpExample = [
 const examExamples = {
   1: {
     username: '',
-    results: [
-      { measures: 'Forstår bruk av knapper', maxPoints: 1, pointsAchieved: 1 },
-      {
-        measures: 'Dette er et eksempel på en tom bar',
-        maxPoints: 3,
-        pointsAchieved: 0
-      }
-    ],
+    results: [],
     currentQuestion: 0,
     questions: [
       { q: 'start', params: {} },
