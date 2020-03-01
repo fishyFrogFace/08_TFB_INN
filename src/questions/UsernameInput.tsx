@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../App.css';
 import './Question.css';
 import Button from '../components/Button';
-import penguin from './penguin-books.svg';
+import avatar from './big-pink.png';
 
 interface Props {
   avatar: string | undefined;
@@ -58,7 +58,7 @@ const UsernameInput: React.FC<Props> = props => {
   return (
     <div>
       <div className='imageContainer'>
-        <img src={penguin} alt='Avatar' />
+        <img src={avatar} alt='Avatar' />
       </div>
       <h1 className='h1'>Mitt navn er</h1>
       <form
