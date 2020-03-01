@@ -9,6 +9,7 @@
 
 .modal-content {
   background-color: white;
+  border-radius: 2vh;
 }
 
 .modal-btn {

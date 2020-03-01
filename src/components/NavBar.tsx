@@ -3,19 +3,19 @@ import './NavBar.css';
 import Button from './Button';
 
 interface Props {
-  quitExam: () => void;
+  quitModal: () => void;
 }
 
 const NavBar: React.FC<Props> = props => {
   return (
     <div className='navBar'>
       <div className='navbar-left'>
-        <Button classNames='start' onClick={() => props.quitExam()}>
+        <Button classNames='start' onClick={() => props.quitModal()}>
           Start
         </Button>
       </div>
       <div className='navbar-right'>
-        <Button classNames='start' onClick={() => props.quitExam()}>
+        <Button classNames='start' onClick={() => props.quitModal()}>
           Start
         </Button>
       </div>
