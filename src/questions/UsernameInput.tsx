@@ -76,7 +76,7 @@ const UsernameInput: React.FC<Props> = props => {
             } else {
               setTyped(false);
               setInput(randomName(adjectives, animals));
-            };
+            }
           }}
           placeholder='Navn'
         />
