@@ -12,23 +12,29 @@ const Modal: React.FC<Props> = props => {
       <div className='modal fade' id='modal' role='dialog'>
         <div className='modal-content'>
           <div className='modal-header'>
+            <h4 className='modal-title'>Avslutte kartlegging</h4>
             <button
               type='button'
               className='close'
               onClick={() => props.onClick()}>
               &times;
             </button>
-            <h4 className='modal-title'>Modal Header</h4>
           </div>
           <div className='modal-body'>
-            <p>This is a small modal.</p>
+            <p>Fremgang vil bli slettet. Fortsette?</p>
           </div>
           <div className='modal-footer'>
             <button
               type='button'
-              className='modal-btn'
+              className='modal-btn close-btn'
               onClick={() => props.onClick()}>
-              Close
+              Lukk
+            </button>
+            <button
+              type='button'
+              className='modal-btn exit-btn'
+              onClick={() => props.onClick()}>
+              Avslutt
             </button>
           </div>
         </div>
