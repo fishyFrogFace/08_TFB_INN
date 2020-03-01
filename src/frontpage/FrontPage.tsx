@@ -26,7 +26,7 @@ const FrontPage: React.FC<Props> = props => {
 
   return (
     <div className='main'>
-      <div className='questionContainer'>
+      <div className='buttonContainer'>
         <div className='frontpage-buttons'>
           {availableExaminations.map((element, i) => {
             return (

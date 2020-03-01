@@ -14,12 +14,6 @@ context('End-to-end', () => {
       .should('contain', lvl1);
   });
 
-  it('front page contains a navigation menu', () => {
-    cy.get('.navBar')
-      .first()
-      .should('be.visible');
-  });
-
   it('front page button is clickable and renders start button', () => {
     cy.get('.btn')
       .first()
