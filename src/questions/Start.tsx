@@ -9,6 +9,8 @@ interface Props {
   getResult: (qResult: QuestionResult) => void;
 }
 
+// maybe add a timer to this one to measure how long it takes the user to click
+
 const Start: React.FC<Props> = props => {
   return (
     <Button
