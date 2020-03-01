@@ -7,10 +7,10 @@ interface Props {
 }
 
 const Modal: React.FC<Props> = props => {
-  {
-    if (props.show) {
-      return (
-        <div className='modal fade' id='modal' role='dialog'>
+  if (props.show) {
+    return (
+      <div className='modal fade' id='modal' role='dialog'>
+        <div className='modal-content'>
           <div className='modal-header'>
             <button
               type='button'
@@ -32,10 +32,10 @@ const Modal: React.FC<Props> = props => {
             </button>
           </div>
         </div>
-      );
-    } else {
-      return null;
-    }
+      </div>
+    );
+  } else {
+    return null;
   }
 };
 
