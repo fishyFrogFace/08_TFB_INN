@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import '../App.css';
 import './FrontPage.css';
-import Button from '../components/Button';
+import ExaminationList from './ExaminationList';
 import NavBar from '../components/NavBar';
+
+interface ExamInfo {
+  id: number;
+  title: string;
+  description: string;
+}
 
 interface Examination {
   name: string;
@@ -13,34 +19,21 @@ interface Examination {
 }
 
 interface Props {
-  availableExaminations: Examination[];
+  availableExaminations: ExamInfo[];
   chooseExamination: (id: number) => void;
 }
 
 /* buttons should be generated from props passed to the component
    based on available examinations */
 const FrontPage: React.FC<Props> = props => {
-  const [availableExaminations, setAvailableExaminations] = useState(
-    props.availableExaminations
-  );
-
   return (
     <div className='main'>
       <NavBar />
       <div className='questionContainer'>
-        <div className='frontpage-buttons'>
-          {availableExaminations.map((element, i) => {
-            return (
-              <Button
-                key={i}
-                classNames={element.status}
-                onClick={() => props.chooseExamination(element.id)}>
-                <p className='btn-header'>{element.name}</p>
-                <p className='btn-body'>{element.username}</p>
-              </Button>
-            );
-          })}
-        </div>
+        <ExaminationList
+          examInfos={props.availableExaminations}
+          chooseExamination={props.chooseExamination}
+        />
       </div>
     </div>
   );
