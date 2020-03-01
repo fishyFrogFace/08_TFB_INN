@@ -1,6 +1,9 @@
 /// <reference types="Cypress" />
 
 context('End-to-end', () => {
+  const username = 'little-kangaroo';
+  const lvl1 = 'Lvl 1';
+
   before(() => {
     cy.visit('http://localhost:3000/');
   });
@@ -8,7 +11,7 @@ context('End-to-end', () => {
   it('front page contains an examination button', () => {
     cy.get('.btn')
       .first()
-      .should('contain', 'Lvl 1');
+      .should('contain', lvl1);
   });
 
   it('front page contains a navigation menu', () => {
@@ -49,6 +52,16 @@ context('End-to-end', () => {
       .should('be.visible');
   });
 
+  it('username is visible when typing', () => {
+    cy.get('.inputField')
+      .first()
+      .type(username);
+
+    cy.get('.username')
+    .first()
+    .should('contain', username)
+  });
+
   it('username input button is clickable and renders copytext', () => {
     cy.get('.btn')
       .first()
@@ -84,7 +97,14 @@ context('End-to-end', () => {
 
     cy.get('.h1')
       .first()
-      .should('contain', 'Resultat');
+      .should('contain', 'Resultat')
+      .and('contain', username);
+  });
+
+  it('result reflects what the user achieved', () => {
+    cy.get('.filler')
+      .first()
+      .should('have.css', 'width', '333.328125px');
   });
 
   it('result contains a navigation menu', () => {
@@ -97,7 +117,7 @@ context('End-to-end', () => {
     cy.reload();
     cy.get('.btn')
       .first()
-      .should('contain', 'Lvl 1');
+      .should('contain', lvl1);
 
     // reload the page without using the cache
     //cy.reload(true)
