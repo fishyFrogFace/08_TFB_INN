@@ -3,9 +3,10 @@ import '../App.css';
 import NavBar from '../components/NavBar';
 import Start from '../questions/Start';
 import ResultPage from '../result/ResultPage';
-import UsernameInput from 'questions/UsernameInput';
-import CopyText from 'questions/CopyText';
+import UsernameInput from '../questions/UsernameInput';
+import CopyText from '../questions/CopyText';
 import { Result, QuestionResult } from '../App';
+import Modal from '../components/Modal';
 
 /* the list of pages will get passed to the examination by App.tsx
    as will the props needed to build questions from question components.
@@ -34,8 +35,9 @@ const Examination: React.FC<Props> = props => {
   const [questions] = useState(props.questions);
   const [result, setResult] = useState({
     username: props.username,
-    results: props.results // new Array<QuestionResult>()
+    results: props.results
   });
+  const [showQuitModal, setShowQuitModal] = useState(false);
 
   /* makes us move to the next question without storing result */
   const moveToNextQuestion = () => {
@@ -55,10 +57,6 @@ const Examination: React.FC<Props> = props => {
     moveToNextQuestion();
   };
 
-  /* the list of pages might be represented as an enum, for easy storage.
-     by matching on values in the enum, we can render the correct question component
-     and fill it with values (stored in local storage or database),
-     not sure how simple converting from string to enum is */
   const chooseQuestion = (question: Question) => {
     switch (question.q) {
       case 'start':
@@ -72,14 +70,27 @@ const Examination: React.FC<Props> = props => {
 
       case 'end':
         // TODO let App know the examination is over
-        // TODO will send props as {...result} when result accumulation works
         return <ResultPage {...result} />;
     }
   };
 
+  const quitExam = () => {
+    // when storage is in place, this might need to delete the paused examination
+    window.location.reload();
+  };
+
+  const closeModal = () => {
+    setShowQuitModal(false);
+  };
+
+  const quitModal = () => {
+    setShowQuitModal(true);
+  };
+
   return (
     <div className='main'>
-      <NavBar />
+      <NavBar quitModal={quitModal} />
+      <Modal show={showQuitModal} closeModal={closeModal} quitExam={quitExam} />
       <div className='questionContainer'>
         {chooseQuestion(questions[currentQuestion])}
       </div>

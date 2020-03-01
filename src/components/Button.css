@@ -42,3 +42,21 @@
 .start:active {
   background-color: #257c03;
 }
+
+.exit {
+  background-color: transparent;
+  width: 10vh;
+  height: 10vh;
+  font-size: 7vh;
+  margin-right: 5vh;
+  color: #fc5537;
+}
+
+.exit:hover {
+  background-color: rgb(41, 41, 41);
+  color: #f88b78;
+}
+
+.exit:active {
+  background-color: transparent;
+}
