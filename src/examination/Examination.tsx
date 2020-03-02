@@ -7,6 +7,7 @@ import UsernameInput from '../questions/UsernameInput';
 import CopyText from '../questions/CopyText';
 import { Result, QuestionResult } from '../App';
 import Modal from '../components/Modal';
+import { Page } from '../App'
 
 /* the list of pages will get passed to the examination by App.tsx
    as will the props needed to build questions from question components.
@@ -16,6 +17,7 @@ interface Props {
   questions: Question[];
   results: QuestionResult[];
   username: string;
+  changePage: (page: Page) => void
 }
 
 interface QuestionParams {
@@ -76,7 +78,7 @@ const Examination: React.FC<Props> = props => {
 
   const quitExam = () => {
     // when storage is in place, this might need to delete the paused examination
-    window.location.reload();
+    props.changePage(Page.FrontPage);
   };
 
   const closeModal = () => {
