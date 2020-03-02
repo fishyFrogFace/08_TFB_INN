@@ -1,12 +1,7 @@
 import React from 'react';
 import ExaminationBlurb from './ExaminationBlurb';
 import './ExaminationList.css';
-
-interface ExamInfo {
-  id: number;
-  title: string;
-  description: string;
-}
+import { ExamInfo } from "./ExaminationBlurb";
 
 interface Props {
   examInfos: ExamInfo[]; // Array of objects containing info on available examinations
