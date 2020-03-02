@@ -3,12 +3,7 @@ import '../App.css';
 import './FrontPage.css';
 import ExaminationList from './ExaminationList';
 import NavBar from '../components/NavBar';
-
-interface ExamInfo {
-  id: number;
-  title: string;
-  description: string;
-}
+import { ExamInfo } from "./ExaminationBlurb";
 
 interface Examination {
   name: string;
@@ -23,8 +18,6 @@ interface Props {
   chooseExamination: (id: number) => void;
 }
 
-/* buttons should be generated from props passed to the component
-   based on available examinations */
 const FrontPage: React.FC<Props> = props => {
   return (
     <div className='main'>

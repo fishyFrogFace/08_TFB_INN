@@ -1,1 +1,51 @@
-/* todo :) */
+.examination-blurb {
+  width: 90vmin;
+  max-width: 80vw;
+  font-size: 20px;
+  border-radius: 2vmin;
+  color: #282c34;
+  background-color: #059dc7;
+  margin: 20px;
+  padding: 10px;
+}
+
+.blurb-headline {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  justify-content: center;
+}
+
+.blurb-headline .blurb-title {
+  text-align: center;
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-width: 200px;
+  padding: 0;
+}
+
+.blurb-title h1 {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+.blurb-headline img {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.blurb-description {
+  text-align: left;
+}
+
+.examination-blurb button {
+  border-radius: 5px;
+  font-size: 24px;
+  margin: 10px;
+}
+
+.examination-blurb button:hover {
+  border-radius: 5px;
+  font-size: 24px;
+  margin: 10px;
+}
