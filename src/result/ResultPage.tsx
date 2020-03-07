@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './ResultPage.css';
 import ProgressBar from 'components/ProgressBar';
 import { Result } from '../App';
