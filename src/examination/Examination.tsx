@@ -6,14 +6,7 @@ import ResultPage from '../result/ResultPage';
 import UsernameInput from '../questions/UsernameInput';
 import CopyText from '../questions/CopyText';
 import { Result, QuestionResult } from '../App';
-import Modal from '../components/Modal';
 import { Page } from '../App';
-
-export enum ModalState {
-  Pause,
-  Quit,
-  Hide
-}
 
 /* the list of pages will get passed to the examination by App.tsx
    as will the props needed to build questions from question components.
@@ -45,7 +38,6 @@ const Examination: React.FC<Props> = props => {
     username: props.username,
     results: props.results
   });
-  const [modal, setModal] = useState(ModalState.Hide);
 
   /* makes us move to the next question without storing result */
   const moveToNextQuestion = () => {
@@ -82,14 +74,6 @@ const Examination: React.FC<Props> = props => {
     }
   };
 
-  const closeModal = () => {
-    setModal(ModalState.Hide);
-  };
-
-  const showModal = (modal: ModalState) => {
-    setModal(modal);
-  };
-
   const quitExam = () => {
     // when storage is in place, this might need to delete the paused examination
     props.changePage(Page.FrontPage);
@@ -102,25 +86,7 @@ const Examination: React.FC<Props> = props => {
 
   return (
     <div className='main'>
-      <NavBar showModal={showModal} />
-      <Modal
-        show={modal === ModalState.Quit}
-        closeModal={closeModal}
-        confirmAction={quitExam}
-        title='Avslutte kartlegging'
-        body='Fremgang vil bli slettet. Fortsette?'
-        btnClass='exit-btn'
-        btnText='Avslutt'
-      />
-      <Modal
-        show={modal === ModalState.Pause}
-        closeModal={closeModal}
-        confirmAction={pauseExam}
-        title='Pause kartlegging'
-        body='Fremgang vil bli lagret. Fortsette?'
-        btnClass='pause-btn'
-        btnText='Pause'
-      />
+      <NavBar quitExam={quitExam} pauseExam={pauseExam}/>
       <div className='questionContainer'>
         {chooseQuestion(questions[currentQuestion])}
       </div>
