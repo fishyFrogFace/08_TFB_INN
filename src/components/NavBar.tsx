@@ -2,6 +2,8 @@ import React from 'react';
 import './NavBar.css';
 import Button from './Button';
 import { ModalState } from '../examination/Examination';
+import pause from './pause.svg';
+import exit from './exit.svg';
 
 interface Props {
   showModal: (modal: ModalState) => void;
@@ -12,14 +14,14 @@ const NavBar: React.FC<Props> = props => {
     <div className='navBar'>
       <div className='navbar-left'>
         <Button
-          classNames='pause'
+          classNames='nav-btn pause'
           onClick={() => props.showModal(ModalState.Pause)}>
-          &#9208;
+          <img className='nav-img' src={pause} alt='Pause' />
         </Button>
         <Button
-          classNames='exit'
+          classNames='nav-btn exit'
           onClick={() => props.showModal(ModalState.Quit)}>
-          &times;
+          <img className='nav-img' src={exit} alt='Exit' />
         </Button>
       </div>
     </div>
