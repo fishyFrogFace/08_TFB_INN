@@ -23,10 +23,14 @@ interface State {
   currentPage: Page;
 }
 
+// Example data for examination blurbs
 const fpExample = [
-  { name: 'Lvl 1', username: '', avatar: 'TODO', status: 'new', id: 1 },
-  { name: 'Lvl 2', username: '', avatar: 'TODO', status: 'new', id: 1 },
-  { name: 'Lvl 2', username: 'Gerd', avatar: 'TODO', status: 'paused', id: 2 }
+  { id: 1, title: 'Level 1', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.',
+    imageFilename: ""},
+  { id: 2, title: 'Level 2', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.'
+  + ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.'
+  + ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.',
+    imageFilename: "big-pink.png"}
 ];
 
 const examExamples = {
