@@ -119,14 +119,9 @@ const App: React.FC<{}> = () => {
     case Page.Examination:
       return (
         <Examination
-<<<<<<< HEAD
           state={examExamples[chosenExamination]}
           changePage={changePage}
           storeExam={storeExam}
-=======
-          {...examExamples[chosenExamination]}
-          changePage={changePage}
->>>>>>> 59f234df958c7ef2d85f7ed0cb9c0557220733a4
         />
       );
   }
