@@ -53,7 +53,7 @@ context('End-to-end', () => {
 
     cy.get('.username')
       .first()
-      .should('contain', username)
+      .should('contain', username);
   });
 
   it('username input button is clickable and renders copytext', () => {
@@ -75,7 +75,7 @@ context('End-to-end', () => {
   it('copytext button is clickable and renders result', () => {
     cy.get('.inputField')
       .first()
-      .type('A, b: C')
+      .type('A, b: C');
 
     cy.get('.paused')
       .first()
@@ -83,7 +83,7 @@ context('End-to-end', () => {
 
     cy.get('.inputField')
       .first()
-      .type('.')
+      .type('.');
 
     cy.get('.paused')
       .first()
@@ -96,7 +96,7 @@ context('End-to-end', () => {
   });
 
   it('result reflects what the user achieved', () => {
-    const width = ['400px', '333.328125px']
+    const width = ['400px', '333.328125px'];
     cy.get('.filler').each(($el, i) => {
       cy.wrap($el).should('have.css', 'width', width[i]);
     });

@@ -1,7 +1,6 @@
 /// <reference types="Cypress" />
 
 context('Modal testing', () => {
-
   before(() => {
     cy.visit('http://localhost:3000/');
   });
@@ -16,8 +15,7 @@ context('Modal testing', () => {
       .should('contain', '×')
       .click();
 
-    cy.get('.modal-content')
-      .should('be.visible')
+    cy.get('.modal-content').should('be.visible');
   });
 
   it('close button closes modal', () => {
@@ -25,8 +23,7 @@ context('Modal testing', () => {
       .first()
       .click();
 
-    cy.get('.modal-content')
-      .should('not.be.visible')
+    cy.get('.modal-content').should('not.be.visible');
 
     cy.get('.exit')
       .first()
@@ -38,8 +35,7 @@ context('Modal testing', () => {
       .first()
       .click();
 
-    cy.get('.modal-content')
-      .should('not.be.visible')
+    cy.get('.modal-content').should('not.be.visible');
 
     cy.get('.exit')
       .first()
@@ -51,8 +47,7 @@ context('Modal testing', () => {
       .first()
       .click();
 
-    cy.get('.modal-content')
-      .should('not.be.visible')
+    cy.get('.modal-content').should('not.be.visible');
 
     cy.get('.btn')
       .first()
