@@ -14,18 +14,12 @@ context('End-to-end', () => {
       .should('contain', lvl1);
   });
 
-  it('front page contains a navigation menu', () => {
-    cy.get('.navBar')
-      .first()
-      .should('be.visible');
-  });
-
   it('front page button is clickable and renders start button', () => {
     cy.get('.btn')
       .first()
       .click();
 
-    cy.get('.btn')
+    cy.get('.start')
       .first()
       .should('contain', 'Start');
   });
@@ -37,7 +31,7 @@ context('End-to-end', () => {
   });
 
   it('start button is clickable and renders username input', () => {
-    cy.get('.btn')
+    cy.get('.start')
       .first()
       .click();
 
@@ -58,12 +52,12 @@ context('End-to-end', () => {
       .type(username);
 
     cy.get('.username')
-    .first()
-    .should('contain', username)
+      .first()
+      .should('contain', username)
   });
 
   it('username input button is clickable and renders copytext', () => {
-    cy.get('.btn')
+    cy.get('.paused')
       .first()
       .click();
 
@@ -83,7 +77,7 @@ context('End-to-end', () => {
       .first()
       .type('A, b: C')
 
-    cy.get('.btn')
+    cy.get('.paused')
       .first()
       .click();
 
@@ -91,7 +85,7 @@ context('End-to-end', () => {
       .first()
       .type('.')
 
-    cy.get('.btn')
+    cy.get('.paused')
       .first()
       .click();
 
