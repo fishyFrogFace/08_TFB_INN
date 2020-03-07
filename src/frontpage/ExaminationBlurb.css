@@ -38,13 +38,13 @@
   text-align: left;
 }
 
-.examination-blurb button {
+.examination-blurb .examination-startbutton {
   border-radius: 5px;
   font-size: 24px;
   margin: 10px;
 }
 
-.examination-blurb button:hover {
+.examination-blurb .examination-startbutton:hover {
   border-radius: 5px;
   font-size: 24px;
   margin: 10px;

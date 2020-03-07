@@ -26,7 +26,7 @@ const ExaminationBlurb: React.FC<Props> = props => {
         </div>
       </div>
       <p className="blurb-description">{props.examInfo.description}</p>
-      <button onClick={() => props.chooseExamination(props.examInfo.id)}>Start</button>
+      <button className="examination-startbutton" onClick={() => props.chooseExamination(props.examInfo.id)}>Start</button>
     </div>
   );
 };
