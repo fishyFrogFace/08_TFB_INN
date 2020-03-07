@@ -2,7 +2,6 @@ import React from 'react';
 import './NavBar.css';
 import Button from './Button';
 import { ModalState } from '../examination/Examination';
-import Modal from './Modal';
 
 interface Props {
   showModal: (modal: ModalState) => void;

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../App.css';
 import './FrontPage.css';
 import Button from '../components/Button';
-import NavBar from '../components/NavBar';
 
 interface Examination {
   name: string;
@@ -20,7 +19,7 @@ interface Props {
 /* buttons should be generated from props passed to the component
    based on available examinations */
 const FrontPage: React.FC<Props> = props => {
-  const [availableExaminations, setAvailableExaminations] = useState(
+  const [availableExaminations] = useState(
     props.availableExaminations
   );
 
