@@ -27,12 +27,20 @@
   background: #f88b78;
 }
 
+.pause-btn {
+  background: #f6f878;
+}
+
 .close-btn:hover {
   background: #57b322;
 }
 
 .exit-btn:hover {
   background: #fc5537;
+}
+
+.pause-btn:hover {
+  background: #d8db29;
 }
 
 .close {

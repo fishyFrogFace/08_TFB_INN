@@ -60,3 +60,21 @@
 .exit:active {
   background-color: transparent;
 }
+
+.pause {
+  background-color: transparent;
+  width: 10vh;
+  height: 10vh;
+  font-size: 7vh;
+  margin-right: 5vh;
+  color: #d8db29;
+}
+
+.pause:hover {
+  background-color: rgb(41, 41, 41);
+  color: #f6f878;
+}
+
+.pause:active {
+  background-color: transparent;
+}

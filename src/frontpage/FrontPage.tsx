@@ -19,9 +19,7 @@ interface Props {
 /* buttons should be generated from props passed to the component
    based on available examinations */
 const FrontPage: React.FC<Props> = props => {
-  const [availableExaminations] = useState(
-    props.availableExaminations
-  );
+  const [availableExaminations] = useState(props.availableExaminations);
 
   return (
     <div className='main'>
