@@ -18,12 +18,11 @@ const Modal: React.FC<Props> = props => {
         <div className='modal-content'>
           <div className='modal-header'>
             <h4 className='modal-title'>{props.title}</h4>
-            <button
-              type='button'
+            <div
               className='close'
               onClick={() => props.closeModal()}>
               &times;
-            </button>
+            </div>
           </div>
           <div className='modal-body'>
             <p>{props.body}</p>
