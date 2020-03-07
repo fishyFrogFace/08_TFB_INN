@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../App.css';
 import './FrontPage.css';
 import ExaminationList from './ExaminationList';
-import { ExamInfo } from "./ExaminationBlurb";
+import { ExamInfo } from './ExaminationBlurb';
 
 interface Examination {
   name: string;

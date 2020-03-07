@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import FrontPage from 'frontpage/FrontPage';
 import Examination from 'examination/Examination';
-import { Page, ExamState } from './Types'
+import { Page, ExamState } from './Types';
 
 interface State {
   currentPage: Page;
@@ -87,7 +87,7 @@ const examExamples = {
 
 const storeExam = (data: ExamState) => {
   localStorage.setItem('pausedData', JSON.stringify(data));
-}
+};
 
 const App: React.FC<{}> = () => {
   const [currentPage, setCurrentPage] = useState(Page.FrontPage);

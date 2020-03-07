@@ -9,12 +9,14 @@ import { Result, QuestionResult, Page, ExamState, Question } from '../Types';
 
 interface Props {
   state: ExamState;
-  storeExam: (data: ExamState) => void
+  storeExam: (data: ExamState) => void;
   changePage: (page: Page) => void;
 }
 
 const Examination: React.FC<Props> = props => {
-  const [currentQuestion, setCurrentQuestion] = useState(props.state.currentQuestion);
+  const [currentQuestion, setCurrentQuestion] = useState(
+    props.state.currentQuestion
+  );
   const [questions] = useState(props.state.questions);
   const [result, setResult] = useState({
     username: props.state.username,
@@ -62,15 +64,20 @@ const Examination: React.FC<Props> = props => {
   };
 
   const pauseExam = () => {
-    const data = {currentQuestion: currentQuestion, questions: questions, results: result.results, username: result.username}
-    props.storeExam(data)
+    const data = {
+      currentQuestion: currentQuestion,
+      questions: questions,
+      results: result.results,
+      username: result.username
+    };
+    props.storeExam(data);
     console.log('This is pause modal');
     props.changePage(Page.FrontPage);
   };
 
   return (
     <div className='main'>
-      <NavBar quitExam={quitExam} pauseExam={pauseExam}/>
+      <NavBar quitExam={quitExam} pauseExam={pauseExam} />
       <div className='questionContainer'>
         {chooseQuestion(questions[currentQuestion])}
       </div>
