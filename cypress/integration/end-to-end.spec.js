@@ -2,20 +2,20 @@
 
 context('End-to-end', () => {
   const username = 'little-kangaroo';
-  const lvl1 = 'Lvl 1';
+  const lvl1 = 'Level 1';
 
   before(() => {
     cy.visit('http://localhost:3000/');
   });
 
-  it('front page contains an examination button', () => {
-    cy.get('.btn')
+  it('front page contains an examination blurb', () => {
+    cy.get('.examination-blurb')
       .first()
       .should('contain', lvl1);
   });
 
-  it('front page button is clickable and renders start button', () => {
-    cy.get('.btn')
+  it('examination blurb button is clickable, the start page renders start button', () => {
+    cy.get('.examination-startbutton')
       .first()
       .click();
 
@@ -110,7 +110,7 @@ context('End-to-end', () => {
 
   it('a reload brings you to start page', () => {
     cy.reload();
-    cy.get('.btn')
+    cy.get('.examination-blurb')
       .first()
       .should('contain', lvl1);
 
