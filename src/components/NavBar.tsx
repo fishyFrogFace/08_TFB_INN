@@ -3,7 +3,7 @@ import './NavBar.css';
 import Button from './Button';
 import pause from './pause.svg';
 import exit from './exit.svg';
-import Modal from '../components/Modal'
+import Modal from '../components/Modal';
 
 enum ModalState {
   Pause,
@@ -60,7 +60,6 @@ const NavBar: React.FC<Props> = props => {
             btnText='Avslutt'
           />
         </div>
-
       </div>
     </div>
   );

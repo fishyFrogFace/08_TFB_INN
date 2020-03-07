@@ -18,9 +18,7 @@ const Modal: React.FC<Props> = props => {
         <div className='modal-content'>
           <div className='modal-header'>
             <h4 className='modal-title'>{props.title}</h4>
-            <div
-              className='close'
-              onClick={() => props.closeModal()}>
+            <div className='close' onClick={() => props.closeModal()}>
               &times;
             </div>
           </div>
