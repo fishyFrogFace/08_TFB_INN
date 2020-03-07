@@ -1,10 +1,19 @@
 import React from 'react';
 import './NavBar.css';
+import Button from './Button';
 
-const NavBar: React.FC<{}> = props => {
+interface Props {
+  quitModal: () => void;
+}
+
+const NavBar: React.FC<Props> = props => {
   return (
     <div className='navBar'>
-      <h1>Dette er en navigasjonsmeny</h1>
+      <div className='navbar-left'>
+        <Button classNames='exit' onClick={() => props.quitModal()}>
+          &times;
+        </Button>
+      </div>
     </div>
   );
 };
