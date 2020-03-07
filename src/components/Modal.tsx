@@ -4,7 +4,7 @@ import './Modal.css';
 interface Props {
   show: boolean;
   closeModal: () => void;
-  quitExam: () => void;
+  confirmAction: () => void;
 }
 
 const Modal: React.FC<Props> = props => {
@@ -34,7 +34,7 @@ const Modal: React.FC<Props> = props => {
             <button
               type='button'
               className='modal-btn exit-btn'
-              onClick={() => props.quitExam()}>
+              onClick={() => props.confirmAction()}>
               Avslutt
             </button>
           </div>

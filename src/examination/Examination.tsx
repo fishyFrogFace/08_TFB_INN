@@ -7,7 +7,13 @@ import UsernameInput from '../questions/UsernameInput';
 import CopyText from '../questions/CopyText';
 import { Result, QuestionResult } from '../App';
 import Modal from '../components/Modal';
-import { Page } from '../App'
+import { Page } from '../App';
+
+export enum ModalState {
+  Pause,
+  Quit,
+  Hide
+}
 
 /* the list of pages will get passed to the examination by App.tsx
    as will the props needed to build questions from question components.
@@ -17,7 +23,7 @@ interface Props {
   questions: Question[];
   results: QuestionResult[];
   username: string;
-  changePage: (page: Page) => void
+  changePage: (page: Page) => void;
 }
 
 interface QuestionParams {
@@ -39,7 +45,7 @@ const Examination: React.FC<Props> = props => {
     username: props.username,
     results: props.results
   });
-  const [showQuitModal, setShowQuitModal] = useState(false);
+  const [modal, setModal] = useState(ModalState.Hide);
 
   /* makes us move to the next question without storing result */
   const moveToNextQuestion = () => {
@@ -76,23 +82,37 @@ const Examination: React.FC<Props> = props => {
     }
   };
 
+  const closeModal = () => {
+    setModal(ModalState.Hide);
+  };
+
+  const showModal = (modal: ModalState) => {
+    setModal(modal);
+  };
+
   const quitExam = () => {
     // when storage is in place, this might need to delete the paused examination
     props.changePage(Page.FrontPage);
   };
 
-  const closeModal = () => {
-    setShowQuitModal(false);
-  };
-
-  const quitModal = () => {
-    setShowQuitModal(true);
+  const pauseExam = () => {
+    // when storage is in place, this might need to delete the paused examination
+    console.log("This is pause modal")
   };
 
   return (
     <div className='main'>
-      <NavBar quitModal={quitModal} />
-      <Modal show={showQuitModal} closeModal={closeModal} quitExam={quitExam} />
+      <NavBar showModal={showModal} />
+      <Modal
+        show={modal === ModalState.Quit}
+        closeModal={closeModal}
+        confirmAction={quitExam}
+      />
+      <Modal
+        show={modal === ModalState.Pause}
+        closeModal={closeModal}
+        confirmAction={pauseExam}
+      />
       <div className='questionContainer'>
         {chooseQuestion(questions[currentQuestion])}
       </div>
