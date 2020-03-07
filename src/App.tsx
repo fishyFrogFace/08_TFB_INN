@@ -114,7 +114,12 @@ const App: React.FC<{}> = props => {
     /* fetch questions and question props from local storage (or backend API)
        and pass them to Examination */
     case Page.Examination:
-      return <Examination {...examExamples[chosenExamination]} changePage={changePage} />;
+      return (
+        <Examination
+          {...examExamples[chosenExamination]}
+          changePage={changePage}
+        />
+      );
   }
 };
 
