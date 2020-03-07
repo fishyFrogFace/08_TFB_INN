@@ -1,7 +1,7 @@
 import React from 'react';
 import ExaminationBlurb from './ExaminationBlurb';
 import './ExaminationList.css';
-import { ExamInfo } from "./ExaminationBlurb";
+import { ExamInfo } from './ExaminationBlurb';
 
 interface Props {
   examInfos: ExamInfo[]; // Array of objects containing info on available examinations
@@ -18,10 +18,10 @@ const ExaminationList: React.FC<Props> = props => {
             examInfo={examInfo}
             chooseExamination={props.chooseExamination}
           />
-        )
+        );
       })}
     </div>
-  )
-}
+  );
+};
 
 export default ExaminationList;

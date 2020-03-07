@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import '../App.css';
 import './FrontPage.css';
 import ExaminationList from './ExaminationList';
+<<<<<<< HEAD
 import { ExamInfo } from "./ExaminationBlurb";
+=======
+import NavBar from '../components/NavBar';
+import { ExamInfo } from './ExaminationBlurb';
+>>>>>>> 59f234df958c7ef2d85f7ed0cb9c0557220733a4
 
 interface Examination {
   name: string;
