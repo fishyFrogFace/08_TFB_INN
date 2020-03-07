@@ -3,7 +3,7 @@ import '../App.css';
 import './FrontPage.css';
 import ExaminationList from './ExaminationList';
 import NavBar from '../components/NavBar';
-import { ExamInfo } from "./ExaminationBlurb";
+import { ExamInfo } from './ExaminationBlurb';
 
 interface Examination {
   name: string;

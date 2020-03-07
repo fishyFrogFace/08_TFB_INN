@@ -25,12 +25,22 @@ interface State {
 
 // Example data for examination blurbs
 const fpExample = [
-  { id: 1, title: 'Level 1', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.',
-    imageFilename: ""},
-  { id: 2, title: 'Level 2', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.'
-  + ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.'
-  + ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.',
-    imageFilename: "big-pink.png"}
+  {
+    id: 1,
+    title: 'Level 1',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.',
+    imageFilename: ''
+  },
+  {
+    id: 2,
+    title: 'Level 2',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.' +
+      ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.' +
+      ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.',
+    imageFilename: 'big-pink.png'
+  }
 ];
 
 const examExamples = {
@@ -118,7 +128,12 @@ const App: React.FC<{}> = props => {
     /* fetch questions and question props from local storage (or backend API)
        and pass them to Examination */
     case Page.Examination:
-      return <Examination {...examExamples[chosenExamination]} changePage={changePage} />;
+      return (
+        <Examination
+          {...examExamples[chosenExamination]}
+          changePage={changePage}
+        />
+      );
   }
 };
 
