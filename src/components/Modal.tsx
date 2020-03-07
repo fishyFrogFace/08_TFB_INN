@@ -5,6 +5,10 @@ interface Props {
   show: boolean;
   closeModal: () => void;
   confirmAction: () => void;
+  title: string;
+  body: string;
+  btnClass: string;
+  btnText: string;
 }
 
 const Modal: React.FC<Props> = props => {
@@ -13,7 +17,7 @@ const Modal: React.FC<Props> = props => {
       <div className='modal fade' id='modal' role='dialog'>
         <div className='modal-content'>
           <div className='modal-header'>
-            <h4 className='modal-title'>Avslutte kartlegging</h4>
+            <h4 className='modal-title'>{props.title}</h4>
             <button
               type='button'
               className='close'
@@ -22,7 +26,7 @@ const Modal: React.FC<Props> = props => {
             </button>
           </div>
           <div className='modal-body'>
-            <p>Fremgang vil bli slettet. Fortsette?</p>
+            <p>{props.body}</p>
           </div>
           <div className='modal-footer'>
             <button
@@ -33,9 +37,9 @@ const Modal: React.FC<Props> = props => {
             </button>
             <button
               type='button'
-              className='modal-btn exit-btn'
+              className={`modal-btn ${props.btnClass}`}
               onClick={() => props.confirmAction()}>
-              Avslutt
+              {props.btnText}
             </button>
           </div>
         </div>

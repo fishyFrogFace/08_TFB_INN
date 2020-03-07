@@ -14,7 +14,7 @@ const NavBar: React.FC<Props> = props => {
         <Button
           classNames='pause'
           onClick={() => props.showModal(ModalState.Pause)}>
-          &times;
+          &#9208;
         </Button>
         <Button
           classNames='exit'

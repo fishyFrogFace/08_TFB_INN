@@ -97,7 +97,7 @@ const Examination: React.FC<Props> = props => {
 
   const pauseExam = () => {
     // when storage is in place, this might need to delete the paused examination
-    console.log("This is pause modal")
+    console.log('This is pause modal');
   };
 
   return (
@@ -107,11 +107,19 @@ const Examination: React.FC<Props> = props => {
         show={modal === ModalState.Quit}
         closeModal={closeModal}
         confirmAction={quitExam}
+        title='Avslutte kartlegging'
+        body='Fremgang vil bli slettet. Fortsette?'
+        btnClass='exit-btn'
+        btnText='Avslutt'
       />
       <Modal
         show={modal === ModalState.Pause}
         closeModal={closeModal}
         confirmAction={pauseExam}
+        title='Pause kartlegging'
+        body='Fremgang vil bli lagret. Fortsette?'
+        btnClass='pause-btn'
+        btnText='Pause'
       />
       <div className='questionContainer'>
         {chooseQuestion(questions[currentQuestion])}
