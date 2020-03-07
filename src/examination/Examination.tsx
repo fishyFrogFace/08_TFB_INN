@@ -5,38 +5,20 @@ import Start from '../questions/Start';
 import ResultPage from '../result/ResultPage';
 import UsernameInput from '../questions/UsernameInput';
 import CopyText from '../questions/CopyText';
-import { Result, QuestionResult } from '../App';
-import { Page } from '../App';
+import { Result, QuestionResult, Page, ExamState, Question } from '../Types';
 
-/* the list of pages will get passed to the examination by App.tsx
-   as will the props needed to build questions from question components.
-   also gave up using an int here, we will have to check that elsewhere, e.g. database */
 interface Props {
-  currentQuestion: number;
-  questions: Question[];
-  results: QuestionResult[];
-  username: string;
+  state: ExamState;
+  storeExam: (data: ExamState) => void
   changePage: (page: Page) => void;
 }
 
-interface QuestionParams {
-  avatar: string;
-  measures: string;
-  maxPoints: number;
-  text: string;
-}
-
-interface Question {
-  q: string;
-  params: QuestionParams;
-}
-
 const Examination: React.FC<Props> = props => {
-  const [currentQuestion, setCurrentQuestion] = useState(props.currentQuestion);
-  const [questions] = useState(props.questions);
+  const [currentQuestion, setCurrentQuestion] = useState(props.state.currentQuestion);
+  const [questions] = useState(props.state.questions);
   const [result, setResult] = useState({
-    username: props.username,
-    results: props.results
+    username: props.state.username,
+    results: props.state.results
   });
 
   /* makes us move to the next question without storing result */
@@ -80,8 +62,10 @@ const Examination: React.FC<Props> = props => {
   };
 
   const pauseExam = () => {
-    // when storage is in place, this might need to delete the paused examination
+    const data = {currentQuestion: currentQuestion, questions: questions, results: result.results, username: result.username}
+    props.storeExam(data)
     console.log('This is pause modal');
+    props.changePage(Page.FrontPage);
   };
 
   return (

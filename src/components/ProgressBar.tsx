@@ -1,6 +1,6 @@
 import React from 'react';
 import './ProgressBar.css';
-import { QuestionResult } from '../App';
+import { QuestionResult } from '../Types';
 
 const ProgressBar: React.FC<QuestionResult> = props => {
   const calculatePercentage = () => {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../App.css';
 import './Question.css';
 import Button from '../components/Button';
-import { QuestionResult } from '../App';
+import { QuestionResult } from '../Types';
 
 interface Props {
   maxPoints: number;

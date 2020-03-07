@@ -2,22 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import FrontPage from 'frontpage/FrontPage';
 import Examination from 'examination/Examination';
-
-export enum Page {
-  Examination,
-  FrontPage
-}
-
-export interface Result {
-  username: string;
-  results: QuestionResult[];
-}
-
-export interface QuestionResult {
-  measures: string;
-  maxPoints: number;
-  pointsAchieved: number;
-}
+import { Page, ExamState } from './Types'
 
 interface State {
   currentPage: Page;
@@ -90,7 +75,11 @@ const examExamples = {
   }
 };
 
-const App: React.FC<{}> = props => {
+const storeExam = (data: ExamState) => {
+  localStorage.setItem('pausedData', JSON.stringify(data));
+}
+
+const App: React.FC<{}> = () => {
   const [currentPage, setCurrentPage] = useState(Page.FrontPage);
   const [chosenExamination, setChosenExamination] = useState(0);
 
@@ -120,8 +109,9 @@ const App: React.FC<{}> = props => {
     case Page.Examination:
       return (
         <Examination
-          {...examExamples[chosenExamination]}
+          state={examExamples[chosenExamination]}
           changePage={changePage}
+          storeExam={storeExam}
         />
       );
   }
