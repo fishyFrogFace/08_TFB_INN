@@ -6,7 +6,7 @@ context('Modal testing', () => {
   });
 
   it('exit button renders modal', () => {
-    cy.get('.btn')
+    cy.get('.examination-startbutton')
       .first()
       .click();
 
@@ -49,8 +49,8 @@ context('Modal testing', () => {
 
     cy.get('.modal-content').should('not.be.visible');
 
-    cy.get('.btn')
+    cy.get('.examination-blurb')
       .first()
-      .should('contain', 'Lvl 1');
+      .should('contain', 'Level 1');
   });
 });
