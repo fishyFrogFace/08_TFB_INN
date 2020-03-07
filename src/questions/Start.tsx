@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import Button from '../components/Button';
-import { QuestionResult } from '../App';
+import { QuestionResult } from '../Types';
 
 interface Props {
   measures: string;
