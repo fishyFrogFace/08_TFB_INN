@@ -17,6 +17,7 @@
   border-radius: 5px;
   padding: 0.5rem 1rem;
   line-height: 1;
+  cursor: pointer;
 }
 
 .close-btn {
@@ -44,9 +45,11 @@
 }
 
 .close {
-  height: 5vh;
-  width: 5vh;
-  font-size: 3vh;
+  height: 7vh;
+  width: 7vh;
+  font-size: 5vh;
+  text-align: center;
+  cursor: pointer;
 }
 
 .modal-header {
