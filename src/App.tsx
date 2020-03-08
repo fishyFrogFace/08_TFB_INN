@@ -3,6 +3,7 @@ import './App.css';
 import FrontPage from 'frontpage/FrontPage';
 import Examination from 'examination/Examination';
 import { Page, ExamState } from './Types';
+import { ExamInfo } from 'frontpage/ExaminationBlurb';
 
 interface State {
   currentPage: Page;
@@ -97,6 +98,22 @@ const nextID = () => {
   return next == null ? 1 : JSON.parse(next);
 };
 
+const pausedToExamInfo = () => {
+  const paused = pausedExams();
+  return paused.map((info: ExamState) => {
+    return {
+      id: info.examID,
+      title: 'TODO',
+      description: info.username,
+      imageFilename: ''
+    };
+  });
+};
+
+const pausedAndCoded = () => {
+  return fpExample.concat(pausedToExamInfo());
+};
+
 const App: React.FC<{}> = () => {
   const [currentPage, setCurrentPage] = useState(Page.FrontPage);
   const [chosenExamination, setChosenExamination] = useState(0);
@@ -141,7 +158,7 @@ const App: React.FC<{}> = () => {
     case Page.FrontPage:
       return (
         <FrontPage
-          availableExaminations={fpExample}
+          availableExaminations={pausedAndCoded()}
           chooseExamination={chooseExamination}
         />
       );
