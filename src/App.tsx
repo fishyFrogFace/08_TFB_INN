@@ -115,17 +115,13 @@ const App: React.FC<{}> = () => {
         JSON.stringify(pausedData.concat(data))
       );
     } else {
-      const [current] = pausedData.filter(
-        (x: ExamState) => x.examID === data.examID
-      );
       const withoutCurrent = pausedData.filter(
         (x: ExamState) => x.examID !== data.examID
       );
-      console.log(current);
-      console.log(withoutCurrent);
-      // change the entry to include new data, store in pausedExams and localStorage
-
-      // localStorage.setItem('pausedData', JSON.stringify(data));
+      localStorage.setItem(
+        'pausedData',
+        JSON.stringify(withoutCurrent.concat(data))
+      );
     }
     changePage(Page.FrontPage);
   };
