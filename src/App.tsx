@@ -30,6 +30,7 @@ const fpExample = [
 
 const examExamples = {
   1: {
+    examID: null,
     username: '',
     results: [],
     currentQuestion: 0,
@@ -54,6 +55,7 @@ const examExamples = {
     ]
   },
   2: {
+    examID: 2,
     username: 'Gerd',
     results: [
       { measures: 'Forstår bruk av knapper', maxPoints: 1, pointsAchieved: 1 },
@@ -85,15 +87,49 @@ const examExamples = {
   }
 };
 
-const storeExam = (data: ExamState) => {
-  localStorage.setItem('pausedData', JSON.stringify(data));
+const pausedExams = () => {
+  const currentData = localStorage.getItem('pausedData');
+  return currentData == null ? [] : JSON.parse(currentData);
+};
+
+const nextID = () => {
+  const next = localStorage.getItem('nextID');
+  return next == null ? 1 : JSON.parse(next);
 };
 
 const App: React.FC<{}> = () => {
   const [currentPage, setCurrentPage] = useState(Page.FrontPage);
   const [chosenExamination, setChosenExamination] = useState(0);
 
-  // might need this when navbar comes into play
+  const storeExam = (data: ExamState) => {
+    /* if the current examination does not have an id, give it one
+      and add it to the local state and store it in localStorage,
+      nextID is incremented by one */
+    const pausedData = pausedExams();
+    if (data.examID == null) {
+      data.examID = nextID();
+      const incrementedID = data.examID + 1;
+      localStorage.setItem('nextID', JSON.stringify(incrementedID));
+      localStorage.setItem(
+        'pausedData',
+        JSON.stringify(pausedData.concat(data))
+      );
+    } else {
+      const [current] = pausedData.filter(
+        (x: ExamState) => x.examID === data.examID
+      );
+      const withoutCurrent = pausedData.filter(
+        (x: ExamState) => x.examID !== data.examID
+      );
+      console.log(current);
+      console.log(withoutCurrent);
+      // change the entry to include new data, store in pausedExams and localStorage
+
+      // localStorage.setItem('pausedData', JSON.stringify(data));
+    }
+    changePage(Page.FrontPage);
+  };
+
   const changePage = (page: Page) => {
     setCurrentPage(page);
   };
