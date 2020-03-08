@@ -68,11 +68,10 @@ const Examination: React.FC<Props> = props => {
       currentQuestion: currentQuestion,
       questions: questions,
       results: result.results,
-      username: result.username
+      username: result.username,
+      examID: props.state.examID
     };
     props.storeExam(data);
-    console.log('This is pause modal');
-    props.changePage(Page.FrontPage);
   };
 
   return (
