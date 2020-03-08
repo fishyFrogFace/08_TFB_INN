@@ -12,7 +12,6 @@ context('Modal testing', () => {
 
     cy.get('.exit')
       .first()
-      .should('contain', '×')
       .click();
 
     cy.get('.modal-content').should('be.visible');
@@ -45,6 +44,7 @@ context('Modal testing', () => {
   it('exit button renders front page', () => {
     cy.get('.exit-btn')
       .first()
+      .should('contain', 'Avslutt')
       .click();
 
     cy.get('.modal-content').should('not.be.visible');
