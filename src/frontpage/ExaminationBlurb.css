@@ -9,17 +9,16 @@
   padding: 10px;
 }
 
-.blurb-headline {
-  display: flex;
-  flex-direction: row;
-  flex-flow: wrap;
-  justify-content: center;
+.has-image {
+  text-align: center;
+  padding: 2px;
+  position: relative;
+  display: block;
+  height: 25vh;
 }
 
 .blurb-headline .blurb-title {
   text-align: center;
-  flex-grow: 1;
-  flex-shrink: 1;
   min-width: 200px;
   padding: 0;
 }
@@ -29,13 +28,23 @@
   margin-bottom: 0.1em;
 }
 
-.blurb-headline img {
-  flex-grow: 0;
-  flex-shrink: 0;
+.img-container {
+  position: absolute;
+  padding: 2px;
 }
 
-.blurb-description {
-  text-align: left;
+@media only screen and (max-width: 600px) {
+  .has-image {
+    position: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  .img-container {
+    position: unset;
+  }
 }
 
 .examination-blurb .examination-startbutton {

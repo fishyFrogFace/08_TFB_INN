@@ -16,19 +16,22 @@ interface Props {
 const ExaminationBlurb: React.FC<Props> = props => {
   return (
     <div className='examination-blurb'>
-      <div className='blurb-headline'>
-        <img /* Display picture for the examination. */
-          src={
-            props.examInfo.imageFilename !== '' // If there is a filename:
-              ? './media/' + props.examInfo.imageFilename // Load that image
-              : ''
-          }
-        />{' '}
-        {/* Otherwise load nothing */}
-        <div className='blurb-title'>
-          <h1>{props.examInfo.title}</h1>
+      {props.examInfo.imageFilename !== '' ? (
+        <div className='blurb-headline has-image'>
+          <div className='img-container'>
+            <img src={'./media/' + props.examInfo.imageFilename} />
+          </div>
+          <div className='blurb-title'>
+            <h1>{props.examInfo.title}</h1>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className='blurb-headline'>
+          <div className='blurb-title'>
+            <h1>{props.examInfo.title}</h1>
+          </div>
+        </div>
+      )}
       <p className='blurb-description'>{props.examInfo.description}</p>
       <button
         className='examination-startbutton'
