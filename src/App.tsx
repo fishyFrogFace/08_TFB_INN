@@ -77,8 +77,8 @@ const pausedToExamInfo = () => {
     return {
       examID: info.examID,
       templateID: info.templateID,
-      title: getTitle(info.templateID),
-      description: info.username,
+      title: info.username,
+      description: getTitle(info.templateID),
       imageFilename: ''
     };
   });
