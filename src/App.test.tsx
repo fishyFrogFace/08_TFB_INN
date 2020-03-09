@@ -4,6 +4,6 @@ import App from './App';
 
 test('renders start page', () => {
   const { getByText } = render(<App />);
-  const buttonElements = getByText(/Title/i);
+  const buttonElements = getByText(/Tittel/i);
   expect(buttonElements).toBeInTheDocument();
 });
