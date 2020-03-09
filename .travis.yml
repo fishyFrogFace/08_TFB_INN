@@ -16,7 +16,6 @@ cache:
 install:
   - npm install
 script:
-  - npm test
   - npm start -- --silent &
   - $(npm bin)/cypress run
 env:
