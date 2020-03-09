@@ -54,6 +54,6 @@ context('Exit modal testing', () => {
 
     cy.get('.examination-blurb')
       .first()
-      .should('contain', 'Level 1');
+      .should('contain', 'Tittel');
   });
 });

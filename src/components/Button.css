@@ -21,15 +21,15 @@
   background-color: #03627c;
 }
 
-.paused {
+.next {
   background-color: #f3de2c;
 }
 
-.paused:hover {
+.next:hover {
   background-color: #f2c14e;
 }
 
-.paused:active {
+.next:active {
   background-color: #fbb02d;
 }
 

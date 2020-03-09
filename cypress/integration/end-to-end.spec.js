@@ -2,7 +2,7 @@
 
 context('End-to-end', () => {
   const username = 'little-kangaroo';
-  const lvl1 = 'Level 1';
+  const title = 'Tittel';
 
   before(() => {
     cy.visit('http://localhost:3000/');
@@ -11,7 +11,7 @@ context('End-to-end', () => {
   it('front page contains an examination blurb', () => {
     cy.get('.examination-blurb')
       .first()
-      .should('contain', lvl1);
+      .should('contain', title);
   });
 
   it('examination blurb button is clickable, the start page renders start button', () => {
@@ -57,7 +57,7 @@ context('End-to-end', () => {
   });
 
   it('username input button is clickable and renders copytext', () => {
-    cy.get('.paused')
+    cy.get('.next')
       .first()
       .click();
 
@@ -77,7 +77,7 @@ context('End-to-end', () => {
       .first()
       .type('A, b: C');
 
-    cy.get('.paused')
+    cy.get('.next')
       .first()
       .click();
 
@@ -85,7 +85,7 @@ context('End-to-end', () => {
       .first()
       .type('.');
 
-    cy.get('.paused')
+    cy.get('.next')
       .first()
       .click();
 
@@ -112,7 +112,7 @@ context('End-to-end', () => {
     cy.reload();
     cy.get('.examination-blurb')
       .first()
-      .should('contain', lvl1);
+      .should('contain', title);
 
     // reload the page without using the cache
     //cy.reload(true)

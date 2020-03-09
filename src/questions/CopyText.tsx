@@ -50,7 +50,7 @@ const CopyText: React.FC<Props> = props => {
           onKeyUp={e => storeInput(e)}
           placeholder={props.text}
         />
-        <Button classNames='paused' onClick={() => checkInput(input)}>
+        <Button classNames='next' onClick={() => checkInput(input)}>
           Neste
         </Button>
       </form>
