@@ -9,6 +9,10 @@
   padding: 10px;
 }
 
+.paused-blurb {
+  background-color: #d8db29;
+}
+
 .has-image {
   text-align: center;
   padding: 2px;

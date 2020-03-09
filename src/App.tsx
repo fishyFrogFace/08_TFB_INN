@@ -66,14 +66,14 @@ const nextID = () => {
 };
 
 const getTitle = (templateID: number) => {
-  return standardExams.find(exam => exam.templateID === templateID)?.title
-}
+  return standardExams.find(exam => exam.templateID === templateID)?.title;
+};
 
 // Create ExamInfo's from paused exams
 const pausedToExamInfo = () => {
   const paused = pausedExams();
   return paused.map((info: ExamState) => {
-    console.log(getTitle(info.templateID))
+    console.log(getTitle(info.templateID));
     return {
       examID: info.examID,
       templateID: info.templateID,
