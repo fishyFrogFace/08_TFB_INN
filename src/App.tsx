@@ -13,7 +13,7 @@ const standardExams = [
   {
     examID: 0,
     templateID: 1,
-    title: 'Level 1',
+    title: 'Tittel',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.' +
       ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.' +
@@ -65,14 +65,19 @@ const nextID = () => {
   return next == null ? 1 : JSON.parse(next);
 };
 
+const getTitle = (templateID: number) => {
+  return standardExams.find(exam => exam.templateID === templateID)?.title
+}
+
 // Create ExamInfo's from paused exams
 const pausedToExamInfo = () => {
   const paused = pausedExams();
   return paused.map((info: ExamState) => {
+    console.log(getTitle(info.templateID))
     return {
       examID: info.examID,
       templateID: info.templateID,
-      title: 'TODO',
+      title: getTitle(info.templateID),
       description: info.username,
       imageFilename: ''
     };
