@@ -3,24 +3,17 @@ import './App.css';
 import FrontPage from 'frontpage/FrontPage';
 import Examination from 'examination/Examination';
 import { Page, ExamState } from './Types';
-import { ExamInfo } from 'frontpage/ExaminationBlurb';
 
 interface State {
   currentPage: Page;
 }
 
 // Example data for examination blurbs
-const fpExample = [
+const standardExams = [
   {
-    id: 1,
+    examID: 0,
+    templateID: 1,
     title: 'Level 1',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.',
-    imageFilename: ''
-  },
-  {
-    id: 2,
-    title: 'Level 2',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.' +
       ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.' +
@@ -31,7 +24,8 @@ const fpExample = [
 
 const examExamples = {
   1: {
-    examID: null,
+    examID: 0,
+    templateID: 1,
     username: '',
     results: [],
     currentQuestion: 0,
@@ -54,37 +48,6 @@ const examExamples = {
       },
       { q: 'end', params: {} }
     ]
-  },
-  2: {
-    examID: 2,
-    username: 'Gerd',
-    results: [
-      { measures: 'Forstår bruk av knapper', maxPoints: 1, pointsAchieved: 1 },
-      {
-        measures: 'Kan gjenkjenne vanlige ikoner',
-        maxPoints: 10,
-        pointsAchieved: 7
-      },
-      {
-        measures: 'Kan finne innboksen sin og sende en email',
-        maxPoints: 10,
-        pointsAchieved: 1
-      }
-    ],
-    currentQuestion: 2,
-    questions: [
-      { q: 'start', params: {} },
-      { q: 'username', params: { avatar: 'Hello from app' } },
-      {
-        q: 'copytext',
-        params: {
-          text: 'A, b: C.',
-          measures: 'Kan skrive av tekst',
-          maxPoints: 6
-        }
-      },
-      { q: 'end', params: {} }
-    ]
   }
 };
 
@@ -93,16 +56,22 @@ const pausedExams = () => {
   return currentData == null ? [] : JSON.parse(currentData);
 };
 
+const getPausedByID = (id: number) => {
+  return pausedExams().filter((x: ExamState) => x.examID === id)[0];
+};
+
 const nextID = () => {
   const next = localStorage.getItem('nextID');
   return next == null ? 1 : JSON.parse(next);
 };
 
+// Create ExamInfo's from paused exams
 const pausedToExamInfo = () => {
   const paused = pausedExams();
   return paused.map((info: ExamState) => {
     return {
-      id: info.examID,
+      examID: info.examID,
+      templateID: info.templateID,
       title: 'TODO',
       description: info.username,
       imageFilename: ''
@@ -110,20 +79,22 @@ const pausedToExamInfo = () => {
   });
 };
 
+/* Concat the list of standard exams and paused exams
+  so it can be passed to examblurb */
 const pausedAndCoded = () => {
-  return fpExample.concat(pausedToExamInfo());
+  return standardExams.concat(pausedToExamInfo());
 };
 
 const App: React.FC<{}> = () => {
   const [currentPage, setCurrentPage] = useState(Page.FrontPage);
-  const [chosenExamination, setChosenExamination] = useState(0);
+  const [currentExam, setCurrentExam] = useState(examExamples[1]);
 
   const storeExam = (data: ExamState) => {
     /* if the current examination does not have an id, give it one
       and add it to the local state and store it in localStorage,
       nextID is incremented by one */
     const pausedData = pausedExams();
-    if (data.examID == null) {
+    if (data.examID === 0) {
       data.examID = nextID();
       const incrementedID = data.examID + 1;
       localStorage.setItem('nextID', JSON.stringify(incrementedID));
@@ -147,8 +118,12 @@ const App: React.FC<{}> = () => {
     setCurrentPage(page);
   };
 
-  const chooseExamination = (id: number) => {
-    setChosenExamination(id);
+  const chooseExamination = (examID: number, templateID: number) => {
+    if (examID === 0) {
+      setCurrentExam(examExamples[templateID]);
+    } else {
+      setCurrentExam(getPausedByID(examID));
+    }
     setCurrentPage(Page.Examination);
   };
 
@@ -168,7 +143,7 @@ const App: React.FC<{}> = () => {
     case Page.Examination:
       return (
         <Examination
-          state={examExamples[chosenExamination]}
+          state={currentExam}
           changePage={changePage}
           storeExam={storeExam}
         />
