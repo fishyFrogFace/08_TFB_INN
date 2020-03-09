@@ -15,9 +15,11 @@ interface Props {
 }
 
 const ExaminationBlurb: React.FC<Props> = props => {
-  return (
-    <div className='examination-blurb'>
-      {props.examInfo.imageFilename !== '' ? (
+  const blurbHeadline = () => {
+    /* if image name is not an empty string, then render the image,
+      if no image exists, render a headline without an image */
+    if (props.examInfo.imageFilename !== '') {
+      return (
         <div className='blurb-headline has-image'>
           <div className='img-container'>
             <img src={'./media/' + props.examInfo.imageFilename} />
@@ -26,13 +28,29 @@ const ExaminationBlurb: React.FC<Props> = props => {
             <h1>{props.examInfo.title}</h1>
           </div>
         </div>
-      ) : (
+      );
+    } else {
+      return (
         <div className='blurb-headline'>
           <div className='blurb-title'>
             <h1>{props.examInfo.title}</h1>
           </div>
         </div>
-      )}
+      );
+    }
+  };
+
+  const pausedClass = () => {
+    return props.examInfo.examID === 0 ? '' : 'paused-blurb';
+  };
+
+  const buttonText = () => {
+    return props.examInfo.examID === 0 ? 'Start' : 'Fortsett';
+  };
+
+  return (
+    <div className={`examination-blurb ${pausedClass()}`}>
+      {blurbHeadline()}
       <p className='blurb-description'>{props.examInfo.description}</p>
       <button
         className='examination-startbutton'
@@ -42,7 +60,7 @@ const ExaminationBlurb: React.FC<Props> = props => {
             props.examInfo.templateID
           )
         }>
-        Start
+        {buttonText()}
       </button>
     </div>
   );

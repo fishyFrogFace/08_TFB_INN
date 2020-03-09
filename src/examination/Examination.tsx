@@ -78,6 +78,7 @@ const Examination: React.FC<Props> = props => {
 
   const quitExam = () => {
     // when storage is in place, this might need to delete the paused examination
+    // page does then not need to be imported and this line can be moved to app
     props.changePage(Page.FrontPage);
   };
 
