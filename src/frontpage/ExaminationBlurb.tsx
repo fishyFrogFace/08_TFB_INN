@@ -2,7 +2,8 @@ import React from 'react';
 import './ExaminationBlurb.css';
 
 export interface ExamInfo {
-  id: number;
+  examID: number;
+  templateID: number;
   title: string;
   description: string;
   imageFilename: string;
@@ -10,7 +11,7 @@ export interface ExamInfo {
 
 interface Props {
   examInfo: ExamInfo;
-  chooseExamination: (ExamID: number) => void;
+  chooseExamination: (examID: number, templateID: number) => void;
 }
 
 const ExaminationBlurb: React.FC<Props> = props => {
@@ -35,7 +36,12 @@ const ExaminationBlurb: React.FC<Props> = props => {
       <p className='blurb-description'>{props.examInfo.description}</p>
       <button
         className='examination-startbutton'
-        onClick={() => props.chooseExamination(props.examInfo.id)}>
+        onClick={() =>
+          props.chooseExamination(
+            props.examInfo.examID,
+            props.examInfo.templateID
+          )
+        }>
         Start
       </button>
     </div>

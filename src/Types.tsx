@@ -19,6 +19,7 @@ export interface QuestionResult {
    also gave up using an int here, we will have to check that elsewhere, e.g. database */
 export interface ExamState {
   examID: number;
+  templateID: number;
   currentQuestion: number;
   questions: Question[];
   results: QuestionResult[];
@@ -26,10 +27,10 @@ export interface ExamState {
 }
 
 export interface QuestionParams {
-  avatar: string;
-  measures: string;
-  maxPoints: number;
-  text: string;
+  avatar?: string;
+  measures?: string;
+  maxPoints?: number;
+  text?: string;
 }
 
 export interface Question {

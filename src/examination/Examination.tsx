@@ -44,13 +44,31 @@ const Examination: React.FC<Props> = props => {
   const chooseQuestion = (question: Question) => {
     switch (question.q) {
       case 'start':
-        return <Start {...question.params} getResult={getResult} />;
+        return (
+          <Start
+            measures={question.params.measures!}
+            maxPoints={question.params.maxPoints!}
+            getResult={getResult}
+          />
+        );
 
       case 'username':
-        return <UsernameInput {...question.params} getUsername={getUsername} />;
+        return (
+          <UsernameInput
+            avatar={question.params.avatar!}
+            getUsername={getUsername}
+          />
+        );
 
       case 'copytext':
-        return <CopyText {...question.params} getResult={getResult} />;
+        return (
+          <CopyText
+            measures={question.params.measures!}
+            maxPoints={question.params.maxPoints!}
+            text={question.params.text!}
+            getResult={getResult}
+          />
+        );
 
       case 'end':
         // TODO let App know the examination is over
@@ -69,7 +87,8 @@ const Examination: React.FC<Props> = props => {
       questions: questions,
       results: result.results,
       username: result.username,
-      examID: props.state.examID
+      examID: props.state.examID,
+      templateID: props.state.templateID
     };
     props.storeExam(data);
   };
