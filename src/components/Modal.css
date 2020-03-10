@@ -17,6 +17,7 @@
   border-radius: 5px;
   padding: 0.5rem 1rem;
   line-height: 1;
+  cursor: pointer;
 }
 
 .close-btn {
@@ -27,6 +28,10 @@
   background: #f88b78;
 }
 
+.pause-btn {
+  background: #f6f878;
+}
+
 .close-btn:hover {
   background: #57b322;
 }
@@ -35,10 +40,16 @@
   background: #fc5537;
 }
 
+.pause-btn:hover {
+  background: #d8db29;
+}
+
 .close {
-  height: 5vh;
-  width: 5vh;
-  font-size: 3vh;
+  height: 7vh;
+  width: 7vh;
+  font-size: 5vh;
+  text-align: center;
+  cursor: pointer;
 }
 
 .modal-header {

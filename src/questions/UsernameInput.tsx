@@ -80,7 +80,7 @@ const UsernameInput: React.FC<Props> = props => {
           }}
           placeholder='Navn'
         />
-        <Button classNames='paused' onClick={() => props.getUsername(input)}>
+        <Button classNames='next' onClick={() => props.getUsername(input)}>
           Neste
         </Button>
       </form>

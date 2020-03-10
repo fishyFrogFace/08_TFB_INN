@@ -1,24 +1,27 @@
 /// <reference types="Cypress" />
 
-context('Modal testing', () => {
+context('Exit modal testing', () => {
   before(() => {
     cy.visit('http://localhost:3000/');
   });
 
-  it('exit button renders modal', () => {
+  it('exit button renders exit modal', () => {
     cy.get('.examination-startbutton')
       .first()
       .click();
 
     cy.get('.exit')
       .first()
-      .should('contain', '×')
       .click();
 
     cy.get('.modal-content').should('be.visible');
+
+    cy.get('.exit-btn')
+      .first()
+      .should('contain', 'Avslutt');
   });
 
-  it('close button closes modal', () => {
+  it('close button closes exit modal', () => {
     cy.get('.close-btn')
       .first()
       .click();
@@ -30,7 +33,7 @@ context('Modal testing', () => {
       .click();
   });
 
-  it('x in corner closes modal', () => {
+  it('x in corner closes exit modal', () => {
     cy.get('.close-btn')
       .first()
       .click();
@@ -51,6 +54,6 @@ context('Modal testing', () => {
 
     cy.get('.examination-blurb')
       .first()
-      .should('contain', 'Level 1');
+      .should('contain', 'Tittel');
   });
 });

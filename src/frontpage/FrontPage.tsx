@@ -2,20 +2,11 @@ import React, { useState } from 'react';
 import '../App.css';
 import './FrontPage.css';
 import ExaminationList from './ExaminationList';
-import NavBar from '../components/NavBar';
 import { ExamInfo } from './ExaminationBlurb';
-
-interface Examination {
-  name: string;
-  username: string;
-  avatar: string; // should be an actual picture or link to picture
-  status: string;
-  id: number;
-}
 
 interface Props {
   availableExaminations: ExamInfo[];
-  chooseExamination: (id: number) => void;
+  chooseExamination: (examID: number, templateID: number) => void;
 }
 
 const FrontPage: React.FC<Props> = props => {

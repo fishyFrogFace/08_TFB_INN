@@ -2,39 +2,18 @@ import React, { useState } from 'react';
 import './App.css';
 import FrontPage from 'frontpage/FrontPage';
 import Examination from 'examination/Examination';
-
-export enum Page {
-  Examination,
-  FrontPage
-}
-
-export interface Result {
-  username: string;
-  results: QuestionResult[];
-}
-
-export interface QuestionResult {
-  measures: string;
-  maxPoints: number;
-  pointsAchieved: number;
-}
+import { Page, ExamState } from './Types';
 
 interface State {
   currentPage: Page;
 }
 
 // Example data for examination blurbs
-const fpExample = [
+const standardExams = [
   {
-    id: 1,
-    title: 'Level 1',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.',
-    imageFilename: ''
-  },
-  {
-    id: 2,
-    title: 'Level 2',
+    examID: 0,
+    templateID: 1,
+    title: 'Tittel',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.' +
       ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.' +
@@ -45,6 +24,8 @@ const fpExample = [
 
 const examExamples = {
   1: {
+    examID: 0,
+    templateID: 1,
     username: '',
     results: [],
     currentQuestion: 0,
@@ -67,50 +48,87 @@ const examExamples = {
       },
       { q: 'end', params: {} }
     ]
-  },
-  2: {
-    username: 'Gerd',
-    results: [
-      { measures: 'Forstår bruk av knapper', maxPoints: 1, pointsAchieved: 1 },
-      {
-        measures: 'Kan gjenkjenne vanlige ikoner',
-        maxPoints: 10,
-        pointsAchieved: 7
-      },
-      {
-        measures: 'Kan finne innboksen sin og sende en email',
-        maxPoints: 10,
-        pointsAchieved: 1
-      }
-    ],
-    currentQuestion: 2,
-    questions: [
-      { q: 'start', params: {} },
-      { q: 'username', params: { avatar: 'Hello from app' } },
-      {
-        q: 'copytext',
-        params: {
-          text: 'A, b: C.',
-          measures: 'Kan skrive av tekst',
-          maxPoints: 6
-        }
-      },
-      { q: 'end', params: {} }
-    ]
   }
 };
 
-const App: React.FC<{}> = props => {
-  const [currentPage, setCurrentPage] = useState(Page.FrontPage);
-  const [chosenExamination, setChosenExamination] = useState(0);
+const pausedExams = () => {
+  const currentData = localStorage.getItem('pausedData');
+  return currentData == null ? [] : JSON.parse(currentData);
+};
 
-  // might need this when navbar comes into play
+const getPausedByID = (id: number) => {
+  return pausedExams().filter((x: ExamState) => x.examID === id)[0];
+};
+
+const nextID = () => {
+  const next = localStorage.getItem('nextID');
+  return next == null ? 1 : JSON.parse(next);
+};
+
+const getTitle = (templateID: number) => {
+  return standardExams.find(exam => exam.templateID === templateID)?.title;
+};
+
+// Create ExamInfo's from paused exams
+const pausedToExamInfo = () => {
+  const paused = pausedExams();
+  return paused.map((info: ExamState) => {
+    console.log(getTitle(info.templateID));
+    return {
+      examID: info.examID,
+      templateID: info.templateID,
+      title: info.username,
+      description: getTitle(info.templateID),
+      imageFilename: ''
+    };
+  });
+};
+
+/* Concat the list of standard exams and paused exams
+  so it can be passed to examblurb */
+const pausedAndCoded = () => {
+  return standardExams.concat(pausedToExamInfo());
+};
+
+const App: React.FC<{}> = () => {
+  const [currentPage, setCurrentPage] = useState(Page.FrontPage);
+  const [currentExam, setCurrentExam] = useState(examExamples[1]);
+
+  const storeExam = (data: ExamState) => {
+    /* if the current examination does not have an id, give it one
+      and add it to the local state and store it in localStorage,
+      nextID is incremented by one */
+    const pausedData = pausedExams();
+    if (data.examID === 0) {
+      data.examID = nextID();
+      const incrementedID = data.examID + 1;
+      localStorage.setItem('nextID', JSON.stringify(incrementedID));
+      localStorage.setItem(
+        'pausedData',
+        JSON.stringify(pausedData.concat(data))
+      );
+    } else {
+      const withoutCurrent = pausedData.filter(
+        (x: ExamState) => x.examID !== data.examID
+      );
+      localStorage.setItem(
+        'pausedData',
+        JSON.stringify(withoutCurrent.concat(data))
+      );
+    }
+    changePage(Page.FrontPage);
+  };
+
   const changePage = (page: Page) => {
     setCurrentPage(page);
   };
 
-  const chooseExamination = (id: number) => {
-    setChosenExamination(id);
+  const chooseExamination = (examID: number, templateID: number) => {
+    if (examID === 0) {
+      setCurrentExam(examExamples[templateID]);
+    } else {
+      setCurrentExam(getPausedByID(examID));
+    }
     setCurrentPage(Page.Examination);
   };
 
@@ -120,7 +138,7 @@ const App: React.FC<{}> = props => {
     case Page.FrontPage:
       return (
         <FrontPage
-          availableExaminations={fpExample}
+          availableExaminations={pausedAndCoded()}
           chooseExamination={chooseExamination}
         />
       );
@@ -130,8 +148,9 @@ const App: React.FC<{}> = props => {
     case Page.Examination:
       return (
         <Examination
-          {...examExamples[chosenExamination]}
+          state={currentExam}
           changePage={changePage}
+          storeExam={storeExam}
         />
       );
   }

@@ -5,41 +5,23 @@ import Start from '../questions/Start';
 import ResultPage from '../result/ResultPage';
 import UsernameInput from '../questions/UsernameInput';
 import CopyText from '../questions/CopyText';
-import { Result, QuestionResult } from '../App';
-import Modal from '../components/Modal';
-import { Page } from '../App';
+import { Result, QuestionResult, Page, ExamState, Question } from '../Types';
 
-/* the list of pages will get passed to the examination by App.tsx
-   as will the props needed to build questions from question components.
-   also gave up using an int here, we will have to check that elsewhere, e.g. database */
 interface Props {
-  currentQuestion: number;
-  questions: Question[];
-  results: QuestionResult[];
-  username: string;
+  state: ExamState;
+  storeExam: (data: ExamState) => void;
   changePage: (page: Page) => void;
 }
 
-interface QuestionParams {
-  avatar: string;
-  measures: string;
-  maxPoints: number;
-  text: string;
-}
-
-interface Question {
-  q: string;
-  params: QuestionParams;
-}
-
 const Examination: React.FC<Props> = props => {
-  const [currentQuestion, setCurrentQuestion] = useState(props.currentQuestion);
-  const [questions] = useState(props.questions);
+  const [currentQuestion, setCurrentQuestion] = useState(
+    props.state.currentQuestion
+  );
+  const [questions] = useState(props.state.questions);
   const [result, setResult] = useState({
-    username: props.username,
-    results: props.results
+    username: props.state.username,
+    results: props.state.results
   });
-  const [showQuitModal, setShowQuitModal] = useState(false);
 
   /* makes us move to the next question without storing result */
   const moveToNextQuestion = () => {
@@ -62,13 +44,31 @@ const Examination: React.FC<Props> = props => {
   const chooseQuestion = (question: Question) => {
     switch (question.q) {
       case 'start':
-        return <Start {...question.params} getResult={getResult} />;
+        return (
+          <Start
+            measures={question.params.measures!}
+            maxPoints={question.params.maxPoints!}
+            getResult={getResult}
+          />
+        );
 
       case 'username':
-        return <UsernameInput {...question.params} getUsername={getUsername} />;
+        return (
+          <UsernameInput
+            avatar={question.params.avatar!}
+            getUsername={getUsername}
+          />
+        );
 
       case 'copytext':
-        return <CopyText {...question.params} getResult={getResult} />;
+        return (
+          <CopyText
+            measures={question.params.measures!}
+            maxPoints={question.params.maxPoints!}
+            text={question.params.text!}
+            getResult={getResult}
+          />
+        );
 
       case 'end':
         // TODO let App know the examination is over
@@ -78,21 +78,25 @@ const Examination: React.FC<Props> = props => {
 
   const quitExam = () => {
     // when storage is in place, this might need to delete the paused examination
+    // page does then not need to be imported and this line can be moved to app
     props.changePage(Page.FrontPage);
   };
 
-  const closeModal = () => {
-    setShowQuitModal(false);
-  };
-
-  const quitModal = () => {
-    setShowQuitModal(true);
+  const pauseExam = () => {
+    const data = {
+      currentQuestion: currentQuestion,
+      questions: questions,
+      results: result.results,
+      username: result.username,
+      examID: props.state.examID,
+      templateID: props.state.templateID
+    };
+    props.storeExam(data);
   };
 
   return (
     <div className='main'>
-      <NavBar quitModal={quitModal} />
-      <Modal show={showQuitModal} closeModal={closeModal} quitExam={quitExam} />
+      <NavBar quitExam={quitExam} pauseExam={pauseExam} />
       <div className='questionContainer'>
         {chooseQuestion(questions[currentQuestion])}
       </div>
