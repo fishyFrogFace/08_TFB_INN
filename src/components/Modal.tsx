@@ -4,7 +4,11 @@ import './Modal.css';
 interface Props {
   show: boolean;
   closeModal: () => void;
-  quitExam: () => void;
+  confirmAction: () => void;
+  title: string;
+  body: string;
+  btnClass: string;
+  btnText: string;
 }
 
 const Modal: React.FC<Props> = props => {
@@ -13,16 +17,13 @@ const Modal: React.FC<Props> = props => {
       <div className='modal fade' id='modal' role='dialog'>
         <div className='modal-content'>
           <div className='modal-header'>
-            <h4 className='modal-title'>Avslutte kartlegging</h4>
-            <button
-              type='button'
-              className='close'
-              onClick={() => props.closeModal()}>
+            <h4 className='modal-title'>{props.title}</h4>
+            <div className='close' onClick={() => props.closeModal()}>
               &times;
-            </button>
+            </div>
           </div>
           <div className='modal-body'>
-            <p>Fremgang vil bli slettet. Fortsette?</p>
+            <p>{props.body}</p>
           </div>
           <div className='modal-footer'>
             <button
@@ -33,9 +34,9 @@ const Modal: React.FC<Props> = props => {
             </button>
             <button
               type='button'
-              className='modal-btn exit-btn'
-              onClick={() => props.quitExam()}>
-              Avslutt
+              className={`modal-btn ${props.btnClass}`}
+              onClick={() => props.confirmAction()}>
+              {props.btnText}
             </button>
           </div>
         </div>
