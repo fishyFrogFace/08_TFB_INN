@@ -54,3 +54,9 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## GitHub guidelines
 The GitHub contribution guidelines can be found in the Wiki.
+
+## Code formatting
+```
+prettier .prettier.config.js --write './**/*.js'
+prettier .prettier.config.js --write './**/*.tsx'
+```
