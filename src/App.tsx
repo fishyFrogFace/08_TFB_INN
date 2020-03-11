@@ -93,6 +93,7 @@ const pausedAndCoded = () => {
 const App: React.FC<{}> = () => {
   const [currentPage, setCurrentPage] = useState(Page.FrontPage);
   const [currentExam, setCurrentExam] = useState(examExamples[1]);
+  const [availableExaminations, setAvailableExaminations] = useState(pausedAndCoded());
 
   const storeExam = (data: ExamState) => {
     /* if the current examination does not have an id, give it one
@@ -117,6 +118,7 @@ const App: React.FC<{}> = () => {
       );
     }
     changePage(Page.FrontPage);
+    setAvailableExaminations(pausedAndCoded());
   };
 
   const changePage = (page: Page) => {
@@ -132,14 +134,21 @@ const App: React.FC<{}> = () => {
     setCurrentPage(Page.Examination);
   };
 
+  const deletePausedExam = (examID: number) => {
+    const newExams = pausedExams().filter(exam => exam.examID !== examID);
+    localStorage.setItem('pausedData', JSON.stringify(newExams));
+    setAvailableExaminations(pausedAndCoded());
+  }
+
   switch (currentPage) {
     /* fetch available examinations from local storage (or backend API) and pass
        them to FrontPage */
     case Page.FrontPage:
       return (
         <FrontPage
-          availableExaminations={pausedAndCoded()}
+          availableExaminations={availableExaminations}
           chooseExamination={chooseExamination}
+          deletePausedExam={deletePausedExam}
         />
       );
 
