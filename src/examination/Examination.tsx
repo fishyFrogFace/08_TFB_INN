@@ -69,6 +69,10 @@ const Examination: React.FC<Props> = props => {
             getResult={getResult}
           />
         );
+      case 'severalbuttons':
+          return (
+            console.log("hello") //severalbuttons
+        );
 
       case 'end':
         // TODO let App know the examination is over
