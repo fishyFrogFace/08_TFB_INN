@@ -51,6 +51,17 @@ const examExamples = {
           maxPoints: 6
         }
       },
+      /*
+      {
+        q:'severalbuttons'
+        params: {
+          title: 'hvilken farge liker du best?'
+          measures: 'velg et alternativ'
+          
+
+        }
+      }
+      */
       { q: 'end', params: {} }
     ]
   }
@@ -65,7 +76,7 @@ const getPausedByID = (id: number) => {
   return pausedExams().filter((x: ExamState) => x.examID === id)[0];
 };
 
-const nextID = () => {
+const nextID = () => { //current examid
   const next = localStorage.getItem('nextID');
   return next == null ? 1 : JSON.parse(next);
 };
