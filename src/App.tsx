@@ -37,7 +37,12 @@ const examExamples = {
           maxPoints: 1
         }
       },
-      { q: 'username', params: { avatar: 'Hello from app' } },
+      { 
+        q: 'username', 
+        params: { 
+          avatar: 'Hello from app' 
+        } 
+      },
       {
         q: 'copytext',
         params: {
