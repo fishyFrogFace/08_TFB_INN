@@ -5,34 +5,41 @@ import Button from '../components/Button';
 import { QuestionResult } from '../Types';
 
 interface Props {
-  titleQ: string;
-  maxPoints: number;
-  buttonvalues: [string]; 
-  measures: string;
-  getResult: (result: QuestionResult) => void;
+  text: string; //hva det blir spurt om
+  maxPoints: number; //1
+  measures: string; //kartleggingsmål
+  buttonValues: [string]; //eksternt ?
+  correctAlt: string; //riktig alternativ
+  
+  getResult: (result: QuestionResult) => void; //??
 }
 /*
 props: string title
-func create question (content, correctAns, )
-createseveralbuttons([a,b,c,d], b)
+func create question (content, correctAns, ) eksternt
+  createseveralbuttons([a,b,c,d], b)
+  func: set riktig alternativ [b] - riktig svar
 array: content for buttons (eksternt) [a, b, c, d] 
-func: set riktig alternativ [b] - riktig svar
+
 func: velg et alternativ (internt)
 func: sjekk om det er riktig alternativ (internt)
 
+chosenButton = 0
+onClick: chosen button = this.
 
 */
 
 
 const SeveralButton: React.FC<Props> = props => {
-  // set a randomly generated name that will be kept if user doesn't type anything
   const [input, setInput] = useState('');
   const [points, setPoints] = useState(props.maxPoints);
-  const [color, setColor] = useState('black');
+  const [buttonValues, setButtonValues] = useState(props.buttonValues);
 
+  
+  
+  
   const checkInput = (value: string) => {
     if (value === props.text) {
-      setColor('green');
+      //setColor('green');
       props.getResult({
         maxPoints: props.maxPoints,
         measures: props.measures,
@@ -50,11 +57,32 @@ const SeveralButton: React.FC<Props> = props => {
     setInput(e.currentTarget.value);
   };
 
+  /*
+  this.state.data.map(function(item, i){
+  console.log('test');
+  return <li key={i}>Test</li>
+})
+  */
+
   return (
     <div>
       <h1 className='h1'>{props.text}</h1>
+      <div>
+        <ul>
+        {props.buttonValues.map((item, i) =>  
+          <li key={i}>
+          <Button onClick = {() => console.log("nada")} >
+            hello 
+          </Button>
+          </li>
+        )}
+        </ul>
+
+
+
+      </div>
       <form
-        className='textAndBtn'
+        className='textAndBtns'
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
         <input
           id='name'
@@ -67,6 +95,7 @@ const SeveralButton: React.FC<Props> = props => {
           Neste
         </Button>
       </form>
+      
     </div>
   );
 };

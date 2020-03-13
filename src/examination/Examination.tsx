@@ -6,6 +6,7 @@ import ResultPage from '../result/ResultPage';
 import UsernameInput from '../questions/UsernameInput';
 import CopyText from '../questions/CopyText';
 import { Result, QuestionResult, Page, ExamState, Question } from '../Types';
+import SeveralButton from 'questions/SeveralButton';
 
 interface Props {
   state: ExamState;
@@ -71,7 +72,12 @@ const Examination: React.FC<Props> = props => {
         );
       case 'severalbuttons':
           return (
-            console.log("hello") //severalbuttons
+            <SeveralButton
+            measures={question.params.measures!}
+            maxPoints={question.params.maxPoints!}
+            text={question.params.text!}
+            getResult={getResult}
+          />
         );
 
       case 'end':
