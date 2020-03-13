@@ -51,17 +51,18 @@ const examExamples = {
           maxPoints: 6
         }
       },
-      /*
+      
       {
-        q:'severalbuttons'
+        q:'severalbuttons',
         params: {
-          title: 'hvilken farge liker du best?'
-          measures: 'velg et alternativ'
-          
-
+          text: 'hvilken farge liker du best?',
+          measures: 'velg et alternativ',
+          maxPoints: 3,
+          buttonValues: ["grønn", "gul", "blå", "rød"],
+          correctAlt: "rød"
         }
-      }
-      */
+      },
+      
       { q: 'end', params: {} }
     ]
   }
