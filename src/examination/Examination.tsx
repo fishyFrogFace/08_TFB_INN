@@ -3,7 +3,7 @@ import '../App.css';
 import NavBar from '../components/NavBar';
 import Start from '../questions/Start';
 import ResultPage from '../result/ResultPage';
-import UsernameInput from '../questions/UsernameInput';
+import EnterName from '../exampages/EnterName';
 import CopyText from '../questions/CopyText';
 import {
   Result,
@@ -15,19 +15,25 @@ import {
 } from '../Types';
 
 interface Props {
-  state: ExamState;
+  examState: ExamState;
+  examDefinition: ExamDefinition;
   storeExam: (data: ExamState) => void;
   changePage: (page: Page) => void;
 }
 
 const Examination: React.FC<Props> = props => {
   const [currentQuestion, setCurrentQuestion] = useState(
-    props.state.currentQuestion
+    props.examState.currentQuestion
   );
-  const [questions] = useState(props.state.questions);
+  const [currentSubject, setCurrentSubject] = useState(
+    props.examState.currentSubject
+  );
+  const [questions] = useState(
+    props.examDefinition.subjects[currentSubject].questions
+  );
   const [result, setResult] = useState({
-    username: props.state.username,
-    results: props.state.results
+    username: props.examState.username,
+    results: props.examState.results
   });
 
   /* makes us move to the next question without storing result */
@@ -61,7 +67,7 @@ const Examination: React.FC<Props> = props => {
 
       case 'username':
         return (
-          <UsernameInput
+          <EnterName
             avatar={question.questionContent.avatar!}
             getUsername={getUsername}
           />
@@ -92,11 +98,11 @@ const Examination: React.FC<Props> = props => {
   const pauseExam = () => {
     const data = {
       currentQuestion: currentQuestion,
+      currentSubject: currentSubject,
       questions: questions,
       results: result.results,
       username: result.username,
-      instanceID: props.state.instanceID,
-      templateID: props.state.templateID
+      instanceID: props.examState.instanceID
     };
     props.storeExam(data);
   };

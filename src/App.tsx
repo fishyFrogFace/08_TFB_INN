@@ -9,56 +9,91 @@ interface State {
 }
 
 // Example data for examination blurbs
-const standardExams = [
-  {
-    instanceID: 0,
-    templateID: 1,
-    title: 'Tittel',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.' +
-      ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.' +
-      ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.',
-    imageFilename: 'big-pink.png'
-  }
-];
+const frontpageRepresentation = {
+  instanceID: 0,
+  title: 'Tittel',
+  description:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.' +
+    ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.' +
+    ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.',
+  imageFilename: 'big-pink.png'
+};
 
-const examExamples = {
-  1: {
-    instanceID: 0,
-    templateID: 1,
-    username: '',
-    results: [],
-    currentQuestion: 0,
-    questions: [
-      {
-        name: 'Start button',
-        templateID: 'start',
-        questionContent: {
-          resultTitle: 'Forstår bruk av knapper',
-          maxPoints: 1
+const standardExamState = {
+  instanceID: 0,
+  username: '',
+  results: [],
+  currentQuestion: 0,
+  currentSubject: 0
+};
+
+const standardExamDefinition = {
+  subjects: [
+    {
+      name: 'This is subject 1',
+      questions: [
+        {
+          name: 'Start button',
+          templateID: 'start',
+          questionContent: {
+            resultTitle: 'Forstår bruk av knapper',
+            maxPoints: 1
+          }
+        },
+        {
+          name: 'Enter a username',
+          templateID: 'username',
+          questionContent: { avatar: 'Hello from app' }
+        },
+        {
+          name: 'Copy symbols by writing in an input field',
+          templateID: 'copytext',
+          questionContent: {
+            text: 'A, b: C.',
+            resultTitle: 'Kan skrive av tekst',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Show and download result',
+          templateID: 'end',
+          questionContent: {}
         }
-      },
-      {
-        name: 'Enter a username',
-        templateID: 'username',
-        questionContent: { avatar: 'Hello from app' }
-      },
-      {
-        name: 'Copy symbols by writing in an input field',
-        templateID: 'copytext',
-        questionContent: {
-          text: 'A, b: C.',
-          resultTitle: 'Kan skrive av tekst',
-          maxPoints: 6
+      ]
+    },
+    {
+      name: 'Another subject',
+      questions: [
+        {
+          name: 'Start button',
+          templateID: 'start',
+          questionContent: {
+            resultTitle: 'Forstår bruk av knapper',
+            maxPoints: 1
+          }
+        },
+        {
+          name: 'Enter a username',
+          templateID: 'username',
+          questionContent: { avatar: 'Hello from app' }
+        },
+        {
+          name: 'Copy symbols by writing in an input field',
+          templateID: 'copytext',
+          questionContent: {
+            text: 'A, b: C.',
+            resultTitle: 'Kan skrive av tekst',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Show and download result',
+          templateID: 'end',
+          questionContent: {}
         }
-      },
-      {
-        name: 'Show and download result',
-        templateID: 'end',
-        questionContent: {}
-      }
-    ]
-  }
+      ]
+    }
+  ]
 };
 
 const pausedExams = () => {
@@ -75,20 +110,14 @@ const nextID = () => {
   return next == null ? 1 : JSON.parse(next);
 };
 
-const getTitle = (templateID: number) => {
-  return standardExams.find(exam => exam.templateID === templateID)?.title;
-};
-
 // Create ExamInfo's from paused exams
 const pausedToExamInfo = () => {
   const paused = pausedExams();
   return paused.map((info: ExamState) => {
-    console.log(getTitle(info.templateID));
     return {
       instanceID: info.instanceID,
-      templateID: info.templateID,
       title: info.username,
-      description: getTitle(info.templateID),
+      description: frontpageRepresentation.title,
       imageFilename: ''
     };
   });
@@ -97,12 +126,12 @@ const pausedToExamInfo = () => {
 /* Concat the list of standard exams and paused exams
   so it can be passed to examblurb */
 const pausedAndCoded = () => {
-  return standardExams.concat(pausedToExamInfo());
+  return [frontpageRepresentation].concat(pausedToExamInfo());
 };
 
 const App: React.FC<{}> = () => {
   const [currentPage, setCurrentPage] = useState(Page.FrontPage);
-  const [currentExam, setCurrentExam] = useState(examExamples[1]);
+  const [currentExamState, setCurrentExamState] = useState(standardExamState);
   const [availableExaminations, setAvailableExaminations] = useState(
     pausedAndCoded()
   );
@@ -137,11 +166,11 @@ const App: React.FC<{}> = () => {
     setCurrentPage(page);
   };
 
-  const chooseExamination = (instanceID: number, templateID: number) => {
+  const chooseExamination = (instanceID: number) => {
     if (instanceID === 0) {
-      setCurrentExam(examExamples[templateID]);
+      setCurrentExamState(standardExamState);
     } else {
-      setCurrentExam(getPausedByID(instanceID));
+      setCurrentExamState(getPausedByID(instanceID));
     }
     setCurrentPage(Page.Examination);
   };
@@ -171,7 +200,8 @@ const App: React.FC<{}> = () => {
     case Page.Examination:
       return (
         <Examination
-          state={currentExam}
+          examState={currentExamState}
+          examDefinition={standardExamDefinition}
           changePage={changePage}
           storeExam={storeExam}
         />

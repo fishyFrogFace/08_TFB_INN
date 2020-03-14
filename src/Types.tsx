@@ -29,9 +29,8 @@ export interface QuestionResult {
    also gave up using an int here, we will have to check that elsewhere, e.g. database */
 export interface ExamState {
   instanceID: number;
-  templateID: number;
   currentQuestion: number;
-  questions: QuestionDefinition[];
+  currentSubject: number;
   results: QuestionResult[];
   username: string;
 }
@@ -55,5 +54,5 @@ export interface SubjectDefinition {
 }
 
 export interface ExamDefinition {
-  subjects: SubjectDefinition;
+  subjects: SubjectDefinition[];
 }

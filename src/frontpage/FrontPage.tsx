@@ -12,7 +12,7 @@ enum ModalState {
 
 interface Props {
   availableExaminations: ExamInfo[];
-  chooseExamination: (instanceID: number, templateID: number) => void;
+  chooseExamination: (instanceID: number) => void;
   deletePausedExam: (instanceID: number) => void;
 }
 
