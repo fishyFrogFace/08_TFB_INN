@@ -9,7 +9,7 @@ const ProgressBar: React.FC<QuestionResult> = props => {
 
   return (
     <div className='results'>
-      <p>{props.measures}</p>
+      <p>{props.resultTitle}</p>
       <div className='progress-bar'>
         <Filler percentage={calculatePercentage()} />
       </div>

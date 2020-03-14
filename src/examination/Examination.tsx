@@ -5,7 +5,14 @@ import Start from '../questions/Start';
 import ResultPage from '../result/ResultPage';
 import UsernameInput from '../questions/UsernameInput';
 import CopyText from '../questions/CopyText';
-import { Result, QuestionResult, Page, ExamState, Question } from '../Types';
+import {
+  Result,
+  QuestionResult,
+  Page,
+  ExamState,
+  ExamDefinition,
+  QuestionDefinition
+} from '../Types';
 
 interface Props {
   state: ExamState;
@@ -41,13 +48,13 @@ const Examination: React.FC<Props> = props => {
     moveToNextQuestion();
   };
 
-  const chooseQuestion = (question: Question) => {
-    switch (question.q) {
+  const chooseQuestion = (question: QuestionDefinition) => {
+    switch (question.templateID) {
       case 'start':
         return (
           <Start
-            measures={question.params.measures!}
-            maxPoints={question.params.maxPoints!}
+            resultTitle={question.questionContent.resultTitle!}
+            maxPoints={question.questionContent.maxPoints!}
             getResult={getResult}
           />
         );
@@ -55,7 +62,7 @@ const Examination: React.FC<Props> = props => {
       case 'username':
         return (
           <UsernameInput
-            avatar={question.params.avatar!}
+            avatar={question.questionContent.avatar!}
             getUsername={getUsername}
           />
         );
@@ -63,9 +70,9 @@ const Examination: React.FC<Props> = props => {
       case 'copytext':
         return (
           <CopyText
-            measures={question.params.measures!}
-            maxPoints={question.params.maxPoints!}
-            text={question.params.text!}
+            resultTitle={question.questionContent.resultTitle!}
+            maxPoints={question.questionContent.maxPoints!}
+            text={question.questionContent.text!}
             getResult={getResult}
           />
         );

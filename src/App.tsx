@@ -31,22 +31,32 @@ const examExamples = {
     currentQuestion: 0,
     questions: [
       {
-        q: 'start',
-        params: {
-          measures: 'Forstår bruk av knapper',
+        name: 'Start button',
+        templateID: 'start',
+        questionContent: {
+          resultTitle: 'Forstår bruk av knapper',
           maxPoints: 1
         }
       },
-      { q: 'username', params: { avatar: 'Hello from app' } },
       {
-        q: 'copytext',
-        params: {
+        name: 'Enter a username',
+        templateID: 'username',
+        questionContent: { avatar: 'Hello from app' }
+      },
+      {
+        name: 'Copy symbols by writing in an input field',
+        templateID: 'copytext',
+        questionContent: {
           text: 'A, b: C.',
-          measures: 'Kan skrive av tekst',
+          resultTitle: 'Kan skrive av tekst',
           maxPoints: 6
         }
       },
-      { q: 'end', params: {} }
+      {
+        name: 'Show and download result',
+        templateID: 'end',
+        questionContent: {}
+      }
     ]
   }
 };
@@ -93,7 +103,9 @@ const pausedAndCoded = () => {
 const App: React.FC<{}> = () => {
   const [currentPage, setCurrentPage] = useState(Page.FrontPage);
   const [currentExam, setCurrentExam] = useState(examExamples[1]);
-  const [availableExaminations, setAvailableExaminations] = useState(pausedAndCoded());
+  const [availableExaminations, setAvailableExaminations] = useState(
+    pausedAndCoded()
+  );
 
   const storeExam = (data: ExamState) => {
     /* if the current examination does not have an id, give it one
@@ -117,8 +129,8 @@ const App: React.FC<{}> = () => {
         JSON.stringify(withoutCurrent.concat(data))
       );
     }
-    changePage(Page.FrontPage);
     setAvailableExaminations(pausedAndCoded());
+    changePage(Page.FrontPage);
   };
 
   const changePage = (page: Page) => {
@@ -135,10 +147,12 @@ const App: React.FC<{}> = () => {
   };
 
   const deletePausedExam = (instanceID: number) => {
-    const newExams = pausedExams().filter(exam => exam.instanceID !== instanceID);
+    const newExams = pausedExams().filter(
+      exam => exam.instanceID !== instanceID
+    );
     localStorage.setItem('pausedData', JSON.stringify(newExams));
     setAvailableExaminations(pausedAndCoded());
-  }
+  };
 
   switch (currentPage) {
     /* fetch available examinations from local storage (or backend API) and pass

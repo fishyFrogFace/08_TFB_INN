@@ -1,10 +1,10 @@
 import React from 'react';
 import '../App.css';
 import Button from '../components/Button';
-import { QuestionResult, QuestionParams } from '../Types';
+import { QuestionResult, QuestionContent } from '../Types';
 
 interface Props {
-  measures: string;
+  resultTitle: string;
   maxPoints: number;
   getResult: (qResult: QuestionResult) => void;
 }
@@ -17,7 +17,7 @@ const Start: React.FC<Props> = props => {
       classNames='start'
       onClick={() =>
         props.getResult({
-          measures: props.measures,
+          resultTitle: props.resultTitle,
           maxPoints: props.maxPoints,
           pointsAchieved: props.maxPoints
         })

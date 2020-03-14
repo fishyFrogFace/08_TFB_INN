@@ -7,7 +7,7 @@ import { QuestionResult } from '../Types';
 interface Props {
   maxPoints: number;
   text: string;
-  measures: string;
+  resultTitle: string;
   getResult: (result: QuestionResult) => void;
 }
 
@@ -22,7 +22,7 @@ const CopyText: React.FC<Props> = props => {
       setColor('green');
       props.getResult({
         maxPoints: props.maxPoints,
-        measures: props.measures,
+        resultTitle: props.resultTitle,
         pointsAchieved: points
       });
     } else {
