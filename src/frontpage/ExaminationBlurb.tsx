@@ -37,10 +37,16 @@ const ExaminationBlurb: React.FC<Props> = props => {
           <div className='blurb-title'>
             <h1>{props.examInfo.title}</h1>
           </div>
-          {(props.examInfo.instanceID !== 0)
-            ? <img className='delete-button' src={deleteImg} alt='Delete' onClick={() => props.requestDeletion(props.examInfo.instanceID)} />
-            : ""
-          }
+          {props.examInfo.instanceID !== 0 ? (
+            <img
+              className='delete-button'
+              src={deleteImg}
+              alt='Delete'
+              onClick={() => props.requestDeletion(props.examInfo.instanceID)}
+            />
+          ) : (
+            ''
+          )}
         </div>
       );
     }

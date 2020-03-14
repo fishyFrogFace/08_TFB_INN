@@ -27,12 +27,12 @@ const FrontPage: React.FC<Props> = props => {
   const requestDeletion = (instanceID: number) => {
     setExamToDelete(instanceID);
     setModal(ModalState.Delete);
-  }
-  
+  };
+
   const deleteExam = () => {
     props.deletePausedExam(examToDelete);
     closeModal();
-  }
+  };
 
   return (
     <div className='main'>
