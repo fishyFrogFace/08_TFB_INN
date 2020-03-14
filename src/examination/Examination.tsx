@@ -88,7 +88,7 @@ const Examination: React.FC<Props> = props => {
       questions: questions,
       results: result.results,
       username: result.username,
-      examID: props.state.examID,
+      instanceID: props.state.instanceID,
       templateID: props.state.templateID
     };
     props.storeExam(data);

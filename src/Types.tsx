@@ -18,7 +18,7 @@ export interface QuestionResult {
    as will the props needed to build questions from question components.
    also gave up using an int here, we will have to check that elsewhere, e.g. database */
 export interface ExamState {
-  examID: number;
+  instanceID: number;
   templateID: number;
   currentQuestion: number;
   questions: Question[];
