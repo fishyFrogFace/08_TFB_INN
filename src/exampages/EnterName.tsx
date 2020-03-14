@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import '../App.css';
-import './Question.css';
+import './Pages.css';
 import Button from '../components/Button';
 import avatar from './big-pink.png';
 
 interface Props {
-  avatar: string | undefined;
+  avatar: string;
   getUsername: (username: string) => void;
 }
 
@@ -49,7 +49,7 @@ const randomName = (list1: any[], list2: any[]) => {
   return `${adjective}-${animal}`;
 };
 
-const UsernameInput: React.FC<Props> = props => {
+const EnterName: React.FC<Props> = props => {
   // set a randomly generated name that will be kept if user doesn't type anything
   const [input, setInput] = useState(randomName(adjectives, animals));
   // can be used if we want to make this return a result
@@ -89,4 +89,4 @@ const UsernameInput: React.FC<Props> = props => {
   );
 };
 
-export default UsernameInput;
+export default EnterName;

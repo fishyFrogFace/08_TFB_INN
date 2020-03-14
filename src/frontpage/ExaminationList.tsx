@@ -5,7 +5,7 @@ import { ExamInfo } from './ExaminationBlurb';
 
 interface Props {
   examInfos: ExamInfo[]; // Array of objects containing info on available examinations
-  chooseExamination: (instanceID: number, templateID: number) => void;
+  chooseExamination: (instanceID: number) => void;
   requestDeletion: (instanceID: number) => void;
 }
 

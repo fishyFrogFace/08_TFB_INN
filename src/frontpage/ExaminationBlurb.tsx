@@ -4,7 +4,6 @@ import deleteImg from '../components/exit.svg';
 
 export interface ExamInfo {
   instanceID: number;
-  templateID: number;
   title: string;
   description: string;
   imageFilename: string;
@@ -12,7 +11,7 @@ export interface ExamInfo {
 
 interface Props {
   examInfo: ExamInfo;
-  chooseExamination: (instanceID: number, templateID: number) => void;
+  chooseExamination: (instanceID: number) => void;
   requestDeletion: (instanceID: number) => void;
 }
 
@@ -66,12 +65,7 @@ const ExaminationBlurb: React.FC<Props> = props => {
       <p className='blurb-description'>{props.examInfo.description}</p>
       <button
         className='examination-startbutton'
-        onClick={() =>
-          props.chooseExamination(
-            props.examInfo.instanceID,
-            props.examInfo.templateID
-          )
-        }>
+        onClick={() => props.chooseExamination(props.examInfo.instanceID)}>
         {buttonText()}
       </button>
     </div>
