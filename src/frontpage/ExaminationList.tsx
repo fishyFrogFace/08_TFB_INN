@@ -5,8 +5,8 @@ import { ExamInfo } from './ExaminationBlurb';
 
 interface Props {
   examInfos: ExamInfo[]; // Array of objects containing info on available examinations
-  chooseExamination: (examID: number, templateID: number) => void;
-  requestDeletion: (examID: number) => void;
+  chooseExamination: (instanceID: number, templateID: number) => void;
+  requestDeletion: (instanceID: number) => void;
 }
 
 const ExaminationList: React.FC<Props> = props => {

@@ -3,7 +3,7 @@ import './ExaminationBlurb.css';
 import deleteImg from '../components/exit.svg';
 
 export interface ExamInfo {
-  examID: number;
+  instanceID: number;
   templateID: number;
   title: string;
   description: string;
@@ -12,8 +12,8 @@ export interface ExamInfo {
 
 interface Props {
   examInfo: ExamInfo;
-  chooseExamination: (examID: number, templateID: number) => void;
-  requestDeletion: (examID: number) => void;
+  chooseExamination: (instanceID: number, templateID: number) => void;
+  requestDeletion: (instanceID: number) => void;
 }
 
 const ExaminationBlurb: React.FC<Props> = props => {
@@ -37,8 +37,8 @@ const ExaminationBlurb: React.FC<Props> = props => {
           <div className='blurb-title'>
             <h1>{props.examInfo.title}</h1>
           </div>
-          {(props.examInfo.examID !== 0)
-            ? <img className='delete-button' src={deleteImg} alt='Delete' onClick={() => props.requestDeletion(props.examInfo.examID)} />
+          {(props.examInfo.instanceID !== 0)
+            ? <img className='delete-button' src={deleteImg} alt='Delete' onClick={() => props.requestDeletion(props.examInfo.instanceID)} />
             : ""
           }
         </div>
@@ -47,11 +47,11 @@ const ExaminationBlurb: React.FC<Props> = props => {
   };
 
   const pausedClass = () => {
-    return props.examInfo.examID === 0 ? '' : 'paused-blurb';
+    return props.examInfo.instanceID === 0 ? '' : 'paused-blurb';
   };
 
   const buttonText = () => {
-    return props.examInfo.examID === 0 ? 'Start' : 'Fortsett';
+    return props.examInfo.instanceID === 0 ? 'Start' : 'Fortsett';
   };
 
   return (
@@ -62,7 +62,7 @@ const ExaminationBlurb: React.FC<Props> = props => {
         className='examination-startbutton'
         onClick={() =>
           props.chooseExamination(
-            props.examInfo.examID,
+            props.examInfo.instanceID,
             props.examInfo.templateID
           )
         }>

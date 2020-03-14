@@ -12,8 +12,8 @@ enum ModalState {
 
 interface Props {
   availableExaminations: ExamInfo[];
-  chooseExamination: (examID: number, templateID: number) => void;
-  deletePausedExam: (examID: number) => void;
+  chooseExamination: (instanceID: number, templateID: number) => void;
+  deletePausedExam: (instanceID: number) => void;
 }
 
 const FrontPage: React.FC<Props> = props => {
@@ -24,8 +24,8 @@ const FrontPage: React.FC<Props> = props => {
     setModal(ModalState.Hide);
   };
 
-  const requestDeletion = (examID: number) => {
-    setExamToDelete(examID);
+  const requestDeletion = (instanceID: number) => {
+    setExamToDelete(instanceID);
     setModal(ModalState.Delete);
   }
   

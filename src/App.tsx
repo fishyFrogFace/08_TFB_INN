@@ -11,7 +11,7 @@ interface State {
 // Example data for examination blurbs
 const standardExams = [
   {
-    examID: 0,
+    instanceID: 0,
     templateID: 1,
     title: 'Tittel',
     description:
@@ -24,7 +24,7 @@ const standardExams = [
 
 const examExamples = {
   1: {
-    examID: 0,
+    instanceID: 0,
     templateID: 1,
     username: '',
     results: [],
@@ -57,7 +57,7 @@ const pausedExams = () => {
 };
 
 const getPausedByID = (id: number) => {
-  return pausedExams().filter((x: ExamState) => x.examID === id)[0];
+  return pausedExams().filter((x: ExamState) => x.instanceID === id)[0];
 };
 
 const nextID = () => {
@@ -75,7 +75,7 @@ const pausedToExamInfo = () => {
   return paused.map((info: ExamState) => {
     console.log(getTitle(info.templateID));
     return {
-      examID: info.examID,
+      instanceID: info.instanceID,
       templateID: info.templateID,
       title: info.username,
       description: getTitle(info.templateID),
@@ -100,9 +100,9 @@ const App: React.FC<{}> = () => {
       and add it to the local state and store it in localStorage,
       nextID is incremented by one */
     const pausedData = pausedExams();
-    if (data.examID === 0) {
-      data.examID = nextID();
-      const incrementedID = data.examID + 1;
+    if (data.instanceID === 0) {
+      data.instanceID = nextID();
+      const incrementedID = data.instanceID + 1;
       localStorage.setItem('nextID', JSON.stringify(incrementedID));
       localStorage.setItem(
         'pausedData',
@@ -110,7 +110,7 @@ const App: React.FC<{}> = () => {
       );
     } else {
       const withoutCurrent = pausedData.filter(
-        (x: ExamState) => x.examID !== data.examID
+        (x: ExamState) => x.instanceID !== data.instanceID
       );
       localStorage.setItem(
         'pausedData',
@@ -125,17 +125,17 @@ const App: React.FC<{}> = () => {
     setCurrentPage(page);
   };
 
-  const chooseExamination = (examID: number, templateID: number) => {
-    if (examID === 0) {
+  const chooseExamination = (instanceID: number, templateID: number) => {
+    if (instanceID === 0) {
       setCurrentExam(examExamples[templateID]);
     } else {
-      setCurrentExam(getPausedByID(examID));
+      setCurrentExam(getPausedByID(instanceID));
     }
     setCurrentPage(Page.Examination);
   };
 
-  const deletePausedExam = (examID: number) => {
-    const newExams = pausedExams().filter(exam => exam.examID !== examID);
+  const deletePausedExam = (instanceID: number) => {
+    const newExams = pausedExams().filter(exam => exam.instanceID !== instanceID);
     localStorage.setItem('pausedData', JSON.stringify(newExams));
     setAvailableExaminations(pausedAndCoded());
   }
