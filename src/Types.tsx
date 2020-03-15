@@ -4,6 +4,7 @@ export enum Page {
 }
 
 export enum ExamPage {
+  Subject,
   EnterName,
   ChooseSubjects,
   QuestionDefinition,
