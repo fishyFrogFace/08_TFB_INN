@@ -56,7 +56,7 @@ const EnterName: React.FC<Props> = props => {
   const [typed, setTyped] = useState(false);
 
   return (
-    <div>
+    <div className='questionContainer'>
       <div className='imageContainer'>
         <img src={avatar} alt='Avatar' />
       </div>

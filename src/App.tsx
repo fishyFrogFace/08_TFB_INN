@@ -198,6 +198,7 @@ const App: React.FC<{}> = () => {
     /* fetch questions and question props from local storage (or backend API)
        and pass them to Examination */
     case Page.Examination:
+      console.log("here we go")
       return (
         <Examination
           examState={currentExamState}

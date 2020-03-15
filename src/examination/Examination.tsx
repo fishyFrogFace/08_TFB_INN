@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import '../App.css';
 import NavBar from '../components/NavBar';
-import Start from '../questions/Start';
 import ResultPage from '../result/ResultPage';
 import EnterName from '../exampages/EnterName';
-import CopyText from '../questions/CopyText';
 import {
   Result,
-  QuestionResult,
   Page,
   ExamState,
   ExamDefinition,
-  QuestionDefinition
+  ExamPage
 } from '../Types';
+import Subject from './Subject';
 
 interface Props {
   examState: ExamState;
@@ -35,55 +33,37 @@ const Examination: React.FC<Props> = props => {
     username: props.examState.username,
     results: props.examState.results
   });
-
-  /* makes us move to the next question without storing result */
-  const moveToNextQuestion = () => {
-    setCurrentQuestion(currentQuestion + 1);
-  };
-
-  const getResult = (qResult: QuestionResult) => {
-    const newArray = result.results.concat(qResult);
-    setResult((res: Result) => ({ ...res, results: newArray }));
-    // tell the ouside world e.g. App about this change in state
-    moveToNextQuestion();
-  };
+  const [examPage, setExamPage] = useState(props.examState.instanceID === 0 ? ExamPage.EnterName : ExamPage.Subject);
 
   const getUsername = (username: string) => {
     setResult((res: Result) => ({ ...res, username: username }));
     // tell the ouside world e.g. App about this change in state
-    moveToNextQuestion();
+    setExamPage(ExamPage.Subject);
   };
 
-  const chooseQuestion = (question: QuestionDefinition) => {
-    switch (question.templateID) {
-      case 'start':
+  const choosePage = (page: ExamPage) => {
+    switch (page) {
+      case ExamPage.Subject:
+          console.log("Subject: " + props.examState.instanceID)
         return (
-          <Start
-            resultTitle={question.questionContent.resultTitle!}
-            maxPoints={question.questionContent.maxPoints!}
-            getResult={getResult}
+            <Subject
+            examState={props.examState}
+            examDefinition={props.examDefinition}
+            changePage={props.changePage}
+            storeExam={props.storeExam}
           />
         );
 
-      case 'username':
+      case ExamPage.EnterName:
+          console.log("EnterName: " + props.examState.instanceID)
         return (
           <EnterName
-            avatar={question.questionContent.avatar!}
+            avatar={"thing"} //TODO send real avatar here when we have that story ready
             getUsername={getUsername}
           />
         );
 
-      case 'copytext':
-        return (
-          <CopyText
-            resultTitle={question.questionContent.resultTitle!}
-            maxPoints={question.questionContent.maxPoints!}
-            text={question.questionContent.text!}
-            getResult={getResult}
-          />
-        );
-
-      case 'end':
+      case ExamPage.Exit:
         // TODO let App know the examination is over
         return <ResultPage {...result} />;
     }
@@ -97,22 +77,21 @@ const Examination: React.FC<Props> = props => {
 
   const pauseExam = () => {
     const data = {
+      instanceID: props.examState.instanceID,
       currentQuestion: currentQuestion,
       currentSubject: currentSubject,
-      questions: questions,
       results: result.results,
-      username: result.username,
-      instanceID: props.examState.instanceID
+      username: result.username
     };
     props.storeExam(data);
   };
 
   return (
     <div className='main'>
+        <p>Waaaat</p>
       <NavBar quitExam={quitExam} pauseExam={pauseExam} />
-      <div className='questionContainer'>
-        {chooseQuestion(questions[currentQuestion])}
-      </div>
+      {console.log("why not here")}
+      {choosePage(examPage)}
     </div>
   );
 };
