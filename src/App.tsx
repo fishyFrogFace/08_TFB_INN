@@ -41,11 +41,6 @@ const standardExamDefinition = {
           }
         },
         {
-          name: 'Enter a username',
-          templateID: 'username',
-          questionContent: { avatar: 'Hello from app' }
-        },
-        {
           name: 'Copy symbols by writing in an input field',
           templateID: 'copytext',
           questionContent: {
@@ -53,11 +48,6 @@ const standardExamDefinition = {
             resultTitle: 'Kan skrive av tekst',
             maxPoints: 6
           }
-        },
-        {
-          name: 'Show and download result',
-          templateID: 'end',
-          questionContent: {}
         }
       ]
     },
@@ -73,11 +63,6 @@ const standardExamDefinition = {
           }
         },
         {
-          name: 'Enter a username',
-          templateID: 'username',
-          questionContent: { avatar: 'Hello from app' }
-        },
-        {
           name: 'Copy symbols by writing in an input field',
           templateID: 'copytext',
           questionContent: {
@@ -85,11 +70,6 @@ const standardExamDefinition = {
             resultTitle: 'Kan skrive av tekst',
             maxPoints: 6
           }
-        },
-        {
-          name: 'Show and download result',
-          templateID: 'end',
-          questionContent: {}
         }
       ]
     }
@@ -198,7 +178,6 @@ const App: React.FC<{}> = () => {
     /* fetch questions and question props from local storage (or backend API)
        and pass them to Examination */
     case Page.Examination:
-      console.log("here we go")
       return (
         <Examination
           examState={currentExamState}

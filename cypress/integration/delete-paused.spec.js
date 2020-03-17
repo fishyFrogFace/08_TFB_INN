@@ -33,7 +33,7 @@ context('Delete paused exams', () => {
     cy.get('.delete-button')
       .first()
       .click();
-    
+
     cy.get('.modal-content').should('be.visible');
 
     cy.get('.delete-btn')
@@ -45,7 +45,7 @@ context('Delete paused exams', () => {
     cy.get('.delete-button')
       .first()
       .click();
-    
+
     cy.get('.close-btn')
       .first()
       .click();
@@ -69,7 +69,7 @@ context('Delete paused exams', () => {
     cy.get('.delete-button')
       .first()
       .click();
-    
+
     cy.get('.delete-btn')
       .first()
       .click();

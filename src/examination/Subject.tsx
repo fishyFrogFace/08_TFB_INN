@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import '../App.css';
 import Start from '../questions/Start';
-import ResultPage from '../result/ResultPage';
-import EnterName from '../exampages/EnterName';
 import CopyText from '../questions/CopyText';
 import {
-  Result,
   QuestionResult,
   Page,
   ExamState,
@@ -18,6 +15,8 @@ interface Props {
   examDefinition: ExamDefinition;
   storeExam: (data: ExamState) => void;
   changePage: (page: Page) => void;
+  alertExamination: (currentQuestion: number, result: QuestionResult[]) => void;
+  examOver: (result: QuestionResult[]) => void;
 }
 
 const Subject: React.FC<Props> = props => {
@@ -30,30 +29,29 @@ const Subject: React.FC<Props> = props => {
   const [questions] = useState(
     props.examDefinition.subjects[currentSubject].questions
   );
-  const [result, setResult] = useState({
-    username: props.examState.username,
-    results: props.examState.results
-  });
+  const [result, setResult] = useState(props.examState.results);
 
   /* makes us move to the next question without storing result */
   const moveToNextQuestion = () => {
-    setCurrentQuestion(currentQuestion + 1);
+    const incremented = currentQuestion + 1;
+    if (incremented >= questions.length) {
+      props.examOver(result);
+    } else {
+      setCurrentQuestion(incremented);
+      props.alertExamination(incremented, result);
+    }
   };
 
   const getResult = (qResult: QuestionResult) => {
-    const newArray = result.results.concat(qResult);
-    setResult((res: Result) => ({ ...res, results: newArray }));
-    // tell the ouside world e.g. App about this change in state
-    moveToNextQuestion();
-  };
-
-  const getUsername = (username: string) => {
-    setResult((res: Result) => ({ ...res, username: username }));
+    const newArray = result.concat(qResult);
+    setResult(newArray);
     // tell the ouside world e.g. App about this change in state
     moveToNextQuestion();
   };
 
   const chooseQuestion = (question: QuestionDefinition) => {
+    //TODO change to question type
+
     switch (question.templateID) {
       case 'start':
         return (
@@ -61,14 +59,6 @@ const Subject: React.FC<Props> = props => {
             resultTitle={question.questionContent.resultTitle!}
             maxPoints={question.questionContent.maxPoints!}
             getResult={getResult}
-          />
-        );
-
-      case 'username':
-        return (
-          <EnterName
-            avatar={question.questionContent.avatar!}
-            getUsername={getUsername}
           />
         );
 
@@ -81,10 +71,6 @@ const Subject: React.FC<Props> = props => {
             getResult={getResult}
           />
         );
-
-      case 'end':
-        // TODO let App know the examination is over
-        return <ResultPage {...result} />;
     }
   };
 

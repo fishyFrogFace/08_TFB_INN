@@ -1,13 +1,18 @@
 import React from 'react';
 import './ResultPage.css';
 import ProgressBar from 'components/ProgressBar';
-import { Result } from '../Types';
+import { QuestionResult } from '../Types';
 
-const ResultPage: React.FC<Result> = props => {
+interface Props {
+  username: string;
+  result: QuestionResult[];
+}
+
+const ResultPage: React.FC<Props> = props => {
   return (
     <div className='resultContainer'>
       <h1 className='h1'>Resultat for {props.username}</h1>
-      {props.results.map((element, i) => {
+      {props.result.map((element, i) => {
         return <ProgressBar key={i} {...element} />;
       })}
     </div>

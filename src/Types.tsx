@@ -14,11 +14,6 @@ export enum ExamPage {
   Results
 }
 
-export interface Result {
-  username: string;
-  results: QuestionResult[];
-}
-
 export interface QuestionResult {
   resultTitle: string;
   maxPoints: number;
