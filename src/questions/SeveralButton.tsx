@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../App.css';
 import './Question.css';
 import Button from '../components/Button';
-import { QuestionResult } from '../Types';
+import { QuestionResult, Question } from '../Types';
 
 interface Props {
   text: string; //hva det blir spurt om
@@ -10,7 +10,7 @@ interface Props {
   measures: string; //kartleggingsmål
   answerValues: Array<string>; //eksternt ?
   correctAlt: string; //riktig alternativ
-  
+
   getResult: (result: QuestionResult) => void; //??
 }
 /*
@@ -32,73 +32,44 @@ onClick: chosen button = this.
 const SeveralButton: React.FC<Props> = props => {
   const [input, setInput] = useState('');
   const [points, setPoints] = useState(props.maxPoints);
-  const [answerValues, setanswerValues] = useState(props.answerValues);
 
-  
-  const createSBQuestion = ({answerValues}, {correctAlt}) => {
-    try {
-      answerValues.contain(correctAlt);
-    } catch (error) {
-      console.log(error);
-    }
-    props.answerValues = answerValues;
-    props.correctAlt = correctAlt;
+
+
+  const updateAnswer = (value: string) => {
+    setInput(value);
+    console.log(value); 
   }
-
-  //const setanswerValues = ()
   
-  const checkInput = (value: string) => {
-    if (value === props.text) {
-      //setColor('green');
-      props.getResult({
-        maxPoints: props.maxPoints,
-        measures: props.measures,
-        pointsAchieved: points
-      });
-    } else {
-      const newPoints = points > 0 ? points - 1 : 0;
-      setPoints(newPoints);
-      setColor('red');
-    }
-  };
+  const returnResult = () => {
+    props.getResult({
+      maxPoints: props.maxPoints,
+      measures: props.measures,
+      pointsAchieved: (input == props.correctAlt ? 1 : 0)
+    })
+  }
+ 
+  
 
-  const storeInput = (e: React.FormEvent<HTMLInputElement>) => {
-    //setColor('black');
-    setInput(e.currentTarget.value);
-  };
 
   return (
     <div>
       <h1 className='h1'>{props.text}</h1>
-      <div>
-        <ul>
-        {props.answerValues.map((item, i) =>  
-          <li key={i}>
-            <button onClick ={() => console.log("nada") }  >
-              {item}
-            </button>
-          </li>
-        )}
-        </ul>
-
-
-
+      <h2>{input}</h2>
+      <div className="buttoncontainer">
+        
+          {props.answerValues.map((item, i) =>
+              <Button key={i} classNames='next' onClick={() => updateAnswer(item)}>
+                {item}
+              </Button>
+          )}
+        
       </div>
-      <form
-        className='textAndBtns'
-        onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
-        <input
-          id='name'
-          className={`inputField ${color}`}
-          type='text'
-          onKeyUp={e => storeInput(e)}
-          placeholder={props.text}
-        />
-        <Button classNames='next' onClick={() => checkInput(input)}>
+      <div>
+        <Button classNames='next' onClick={returnResult}>
           Neste
         </Button>
-      </form>
-      
+      </div>
+
     </div>
   );
 };

@@ -9,7 +9,6 @@ export interface Result {
 }
 
 export interface QuestionResult {
-  titleQ: string; //title of question - xxx xxx?
   measures: string;
   maxPoints: number;
   pointsAchieved: number;
@@ -32,6 +31,8 @@ export interface QuestionParams {
   measures?: string;
   maxPoints?: number;
   text?: string;
+  answerValues?: string[];
+  correctAlt?: string;
 }
 
 export interface Question {

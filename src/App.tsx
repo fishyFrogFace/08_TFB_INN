@@ -57,9 +57,9 @@ const examExamples = {
         params: {
           text: 'hvilken farge liker du best?',
           measures: 'velg et alternativ',
-          maxPoints: 3,
-          buttonValues: ["grønn", "gul", "blå", "rød"],
-          correctAlt: "rød"
+          maxPoints: 1,
+          answerValues: ["grønn", "gul", "blå", "rød"],
+          correctAlt: "blå"
         }
       },
       
