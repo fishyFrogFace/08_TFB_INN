@@ -73,6 +73,8 @@ const Examination: React.FC<Props> = props => {
       case 'severalbuttons':
           return (
             <SeveralButton
+            answerValues={question.params.answerValues!}
+            correctAlt={question.params.correctAlt!}
             measures={question.params.measures!}
             maxPoints={question.params.maxPoints!}
             text={question.params.text!}
