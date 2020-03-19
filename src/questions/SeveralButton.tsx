@@ -8,7 +8,7 @@ interface Props {
   text: string; //hva det blir spurt om
   maxPoints: number; //1
   measures: string; //kartleggingsmål
-  buttonValues: [string]; //eksternt ?
+  answerValues: Array<string>; //eksternt ?
   correctAlt: string; //riktig alternativ
   
   getResult: (result: QuestionResult) => void; //??
@@ -32,10 +32,20 @@ onClick: chosen button = this.
 const SeveralButton: React.FC<Props> = props => {
   const [input, setInput] = useState('');
   const [points, setPoints] = useState(props.maxPoints);
-  const [buttonValues, setButtonValues] = useState(props.buttonValues);
+  const [answerValues, setanswerValues] = useState(props.answerValues);
 
   
-  
+  const createSBQuestion = ({answerValues}, {correctAlt}) => {
+    try {
+      answerValues.contain(correctAlt);
+    } catch (error) {
+      console.log(error);
+    }
+    props.answerValues = answerValues;
+    props.correctAlt = correctAlt;
+  }
+
+  //const setanswerValues = ()
   
   const checkInput = (value: string) => {
     if (value === props.text) {
@@ -53,27 +63,20 @@ const SeveralButton: React.FC<Props> = props => {
   };
 
   const storeInput = (e: React.FormEvent<HTMLInputElement>) => {
-    setColor('black');
+    //setColor('black');
     setInput(e.currentTarget.value);
   };
-
-  /*
-  this.state.data.map(function(item, i){
-  console.log('test');
-  return <li key={i}>Test</li>
-})
-  */
 
   return (
     <div>
       <h1 className='h1'>{props.text}</h1>
       <div>
         <ul>
-        {props.buttonValues.map((item, i) =>  
+        {props.answerValues.map((item, i) =>  
           <li key={i}>
-          <Button onClick = {() => console.log("nada")} >
-            hello 
-          </Button>
+            <button onClick ={() => console.log("nada") }  >
+              {item}
+            </button>
           </li>
         )}
         </ul>
