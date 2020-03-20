@@ -14,6 +14,11 @@ export enum ExamPage {
   Results
 }
 
+export interface SubjectResult {
+  subjectTitle: string;
+  results: QuestionResult[];
+}
+
 export interface QuestionResult {
   resultTitle: string;
   maxPoints: number;
@@ -27,7 +32,7 @@ export interface ExamState {
   instanceID: number;
   currentQuestion: number;
   currentSubject: number;
-  results: QuestionResult[];
+  results: SubjectResult[];
   username: string;
 }
 
