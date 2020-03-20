@@ -8,7 +8,7 @@ import {
   ExamState,
   ExamDefinition,
   ExamPage,
-  QuestionResult
+  SubjectResult
 } from '../Types';
 import Subject from './Subject';
 
@@ -26,7 +26,7 @@ const Examination: React.FC<Props> = props => {
   const [currentSubject, setCurrentSubject] = useState(
     props.examState.currentSubject
   );
-  const [result, setResult] = useState(props.examState.results);
+  const [results, setResult] = useState(props.examState.results);
   const [examPage, setExamPage] = useState(
     props.examState.instanceID === 0 ? ExamPage.EnterName : ExamPage.Subject
   );
@@ -40,40 +40,22 @@ const Examination: React.FC<Props> = props => {
 
   const getSubjectInfo = (
     currentQuestion: number,
-    result: QuestionResult[]
+    subjectResult: SubjectResult
   ) => {
     setCurrentQuestion(currentQuestion);
-    setResult(result);
+    setResult(replaceSubjectResult(subjectResult));
   };
 
-  const choosePage = (page: ExamPage) => {
-    switch (page) {
-      case ExamPage.Subject:
-        console.log('Subject: ' + props.examState.instanceID);
-        return (
-          <Subject
-            examState={props.examState}
-            examDefinition={props.examDefinition}
-            changePage={props.changePage}
-            storeExam={props.storeExam}
-            alertExamination={getSubjectInfo}
-            examOver={examOver}
-          />
-        );
+  const replaceSubjectResult = (subjectResult: SubjectResult) => {
+    const newResult = results
+      .filter(res => res.subjectTitle !== subjectResult.subjectTitle)
+      .concat(subjectResult);
+    setResult(newResult);
+    return results;
+  };
 
-      case ExamPage.EnterName:
-        console.log('EnterName: ' + props.examState.instanceID);
-        return (
-          <EnterName
-            avatar={'thing'} //TODO send real avatar here when we have that story ready
-            getUsername={getUsername}
-          />
-        );
-
-      case ExamPage.Results:
-        // TODO let App know the examination is over
-        return <ResultPage username={username} result={result} />;
-    }
+  const findSubjectResult = () => {
+    //TODO
   };
 
   const quitExam = () => {
@@ -87,15 +69,48 @@ const Examination: React.FC<Props> = props => {
       instanceID: props.examState.instanceID,
       currentQuestion: currentQuestion,
       currentSubject: currentSubject,
-      results: result,
+      results: results,
       username: username
     };
     props.storeExam(data);
   };
 
-  const examOver = (result: QuestionResult[]) => {
-    setResult(result);
-    setExamPage(ExamPage.Results);
+  const subjectOver = (subjectResult: SubjectResult) => {
+    setResult(replaceSubjectResult(subjectResult));
+    if (currentSubject >= props.examDefinition.subjects.length) {
+      setExamPage(ExamPage.Results);
+    } else {
+      setCurrentSubject(currentSubject + 1);
+    }
+  };
+
+  const choosePage = (page: ExamPage) => {
+    switch (page) {
+      case ExamPage.Subject:
+        return (
+          <Subject
+            currentQuestion={currentQuestion} //TODO currentQuestion should be a list of current questions
+            result={[]}
+            subject={props.examDefinition.subjects[currentSubject]}
+            changePage={props.changePage}
+            storeExam={props.storeExam}
+            alertExamination={getSubjectInfo}
+            subjectOver={subjectOver}
+          />
+        );
+
+      case ExamPage.EnterName:
+        return (
+          <EnterName
+            avatar={'thing'} //TODO send real avatar here when we have that story ready
+            getUsername={getUsername}
+          />
+        );
+
+      case ExamPage.Results:
+        // TODO let App know the examination is over
+        return <ResultPage username={username} result={results} />;
+    }
   };
 
   return (

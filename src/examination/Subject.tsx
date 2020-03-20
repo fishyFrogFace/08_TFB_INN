@@ -6,45 +6,42 @@ import {
   QuestionResult,
   Page,
   ExamState,
-  ExamDefinition,
-  QuestionDefinition
+  QuestionDefinition,
+  SubjectDefinition,
+  SubjectResult
 } from '../Types';
 
 interface Props {
-  examState: ExamState;
-  examDefinition: ExamDefinition;
+  currentQuestion: number;
+  result: QuestionResult[];
+  subject: SubjectDefinition;
   storeExam: (data: ExamState) => void;
   changePage: (page: Page) => void;
-  alertExamination: (currentQuestion: number, result: QuestionResult[]) => void;
-  examOver: (result: QuestionResult[]) => void;
+  alertExamination: (currentQuestion: number, result: SubjectResult) => void;
+  subjectOver: (result: SubjectResult) => void;
 }
 
 const Subject: React.FC<Props> = props => {
-  const [currentQuestion, setCurrentQuestion] = useState(
-    props.examState.currentQuestion
-  );
-  const [currentSubject, setCurrentSubject] = useState(
-    props.examState.currentSubject
-  );
-  const [questions] = useState(
-    props.examDefinition.subjects[currentSubject].questions
-  );
-  const [result, setResult] = useState(props.examState.results);
+  const [currentQuestion, setCurrentQuestion] = useState(props.currentQuestion);
+
+  const [questions] = useState(props.subject.questions);
+  const [result, setResult] = useState(props.result);
 
   /* makes us move to the next question without storing result */
   const moveToNextQuestion = () => {
+    const subjectResult = { subjectTitle: props.subject.name, results: result };
     const incremented = currentQuestion + 1;
     if (incremented >= questions.length) {
-      props.examOver(result);
+      props.subjectOver(subjectResult);
     } else {
       setCurrentQuestion(incremented);
-      props.alertExamination(incremented, result);
+      props.alertExamination(incremented, subjectResult);
     }
   };
 
   const getResult = (qResult: QuestionResult) => {
-    const newArray = result.concat(qResult);
-    setResult(newArray);
+    const newResult = result.concat(qResult);
+    setResult(newResult);
     // tell the ouside world e.g. App about this change in state
     moveToNextQuestion();
   };
