@@ -19,14 +19,6 @@ const frontpageRepresentation = {
   imageFilename: 'big-pink.png'
 };
 
-const standardExamState = {
-  instanceID: 0,
-  username: '',
-  results: [],
-  currentQuestion: 0,
-  currentSubject: 0
-};
-
 const standardExamDefinition = {
   subjects: [
     {
@@ -58,7 +50,7 @@ const standardExamDefinition = {
           name: 'Start button',
           templateID: 'start',
           questionContent: {
-            resultTitle: 'Forstår bruk av knapper',
+            resultTitle: 'Resultat 2.1',
             maxPoints: 1
           }
         },
@@ -67,13 +59,23 @@ const standardExamDefinition = {
           templateID: 'copytext',
           questionContent: {
             text: 'A, b: C.',
-            resultTitle: 'Kan skrive av tekst',
+            resultTitle: 'Resultat 2.2',
             maxPoints: 6
           }
         }
       ]
     }
   ]
+};
+
+const standardExamState = {
+  instanceID: 0,
+  username: '',
+  results: standardExamDefinition.subjects.map((subj) => {
+    return {subjectTitle: subj.name, results: []}
+  }),
+  currentQuestions: standardExamDefinition.subjects.map((subj) => 0),
+  currentSubject: 0
 };
 
 const pausedExams = () => {

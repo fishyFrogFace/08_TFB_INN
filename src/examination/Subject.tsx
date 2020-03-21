@@ -10,6 +10,7 @@ import {
   SubjectDefinition,
   SubjectResult
 } from '../Types';
+import { runInNewContext } from 'vm';
 
 interface Props {
   currentQuestion: number;
@@ -28,8 +29,8 @@ const Subject: React.FC<Props> = props => {
   const [result, setResult] = useState(props.result);
 
   /* makes us move to the next question without storing result */
-  const moveToNextQuestion = () => {
-    const subjectResult = { subjectTitle: props.subject.name, results: result };
+  const moveToNextQuestion = (qResults: QuestionResult[]) => {
+    const subjectResult = { subjectTitle: props.subject.name, results: qResults };
     const incremented = currentQuestion + 1;
     if (incremented >= questions.length) {
       props.subjectOver(subjectResult);
@@ -43,11 +44,13 @@ const Subject: React.FC<Props> = props => {
     const newResult = result.concat(qResult);
     setResult(newResult);
     // tell the ouside world e.g. App about this change in state
-    moveToNextQuestion();
+    moveToNextQuestion(newResult);
   };
 
   const chooseQuestion = (question: QuestionDefinition) => {
     //TODO change to question type
+
+    console.log(props.subject.name);
 
     switch (question.templateID) {
       case 'start':
