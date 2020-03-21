@@ -58,7 +58,7 @@ const standardExamDefinition = {
           name: 'Copy symbols by writing in an input field',
           templateID: 'copytext',
           questionContent: {
-            text: 'A, b: C.',
+            text: 'This is totally another subject',
             resultTitle: 'Resultat 2.2',
             maxPoints: 6
           }
