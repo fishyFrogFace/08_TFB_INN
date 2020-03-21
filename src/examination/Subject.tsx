@@ -10,9 +10,10 @@ import {
   SubjectDefinition,
   SubjectResult
 } from '../Types';
-import { runInNewContext } from 'vm';
+import { connect, ConnectedProps } from 'react-redux';
+import { RootState } from 'redux/reducers';
 
-interface Props {
+interface Props extends SubjectResult {
   currentQuestion: number;
   result: QuestionResult[];
   subject: SubjectDefinition;
@@ -76,9 +77,20 @@ const Subject: React.FC<Props> = props => {
 
   return (
     <div className='questionContainer'>
+      <h1>{props.subjectTitle}</h1>
       {chooseQuestion(questions[currentQuestion])}
     </div>
   );
 };
 
-export default Subject;
+const mapStateToProps = (store: RootState): SubjectResult => ({
+  subjectTitle: store.subjectResult.subjectTitle,
+  results: store.subjectResult.results
+})
+
+const connector = connect(mapStateToProps)
+
+// Kvifor blir typen til connect any? Må vi sende mapToDispatch
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+export default connector(Subject);
