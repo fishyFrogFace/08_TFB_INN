@@ -20,8 +20,8 @@ interface Props {
 }
 
 const Examination: React.FC<Props> = props => {
-  const [currentQuestion, setCurrentQuestion] = useState(
-    props.examState.currentQuestion
+  const [currentQuestions] = useState(
+    props.examState.currentQuestions
   );
   const [currentSubject, setCurrentSubject] = useState(
     props.examState.currentSubject
@@ -42,7 +42,8 @@ const Examination: React.FC<Props> = props => {
     currentQuestion: number,
     subjectResult: SubjectResult
   ) => {
-    setCurrentQuestion(currentQuestion);
+    currentQuestions[currentSubject] = currentQuestion
+    console.log(currentQuestions)
     setResult(replaceSubjectResult(subjectResult));
   };
 
@@ -54,12 +55,9 @@ const Examination: React.FC<Props> = props => {
     return results;
   };
 
-  const findSubjectResult = () => {
-    //TODO
-  };
-
   const quitExam = () => {
-    // when storage is in place, this might need to delete the paused examination
+    // this might need to delete the paused examination, or will be deleted in the future
+    // to limit the possibility of user errors
     // page does then not need to be imported and this line can be moved to app
     props.changePage(Page.FrontPage);
   };
@@ -67,7 +65,7 @@ const Examination: React.FC<Props> = props => {
   const pauseExam = () => {
     const data = {
       instanceID: props.examState.instanceID,
-      currentQuestion: currentQuestion,
+      currentQuestions: currentQuestions,
       currentSubject: currentSubject,
       results: results,
       username: username
@@ -87,10 +85,12 @@ const Examination: React.FC<Props> = props => {
   const choosePage = (page: ExamPage) => {
     switch (page) {
       case ExamPage.Subject:
+        console.log("currentQuestion: " + currentQuestions[currentSubject])
+        console.log("currentSubject: " + currentSubject)
         return (
           <Subject
-            currentQuestion={currentQuestion} //TODO currentQuestion should be a list of current questions
-            result={[]}
+            currentQuestion={currentQuestions[currentSubject]}
+            result={results[currentSubject].results} //undefined, halp
             subject={props.examDefinition.subjects[currentSubject]}
             changePage={props.changePage}
             storeExam={props.storeExam}

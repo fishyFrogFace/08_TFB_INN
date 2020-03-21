@@ -30,7 +30,7 @@ export interface QuestionResult {
    also gave up using an int here, we will have to check that elsewhere, e.g. database */
 export interface ExamState {
   instanceID: number;
-  currentQuestion: number;
+  currentQuestions: number[];
   currentSubject: number;
   results: SubjectResult[];
   username: string;
