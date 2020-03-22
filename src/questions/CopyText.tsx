@@ -8,7 +8,7 @@ interface Props {
   maxPoints: number;
   text: string;
   resultTitle: string;
-  getResult: (result: QuestionResult) => void;
+  updateResult: (result: QuestionResult) => void;
 }
 
 const CopyText: React.FC<Props> = props => {
@@ -20,7 +20,7 @@ const CopyText: React.FC<Props> = props => {
   const checkInput = (value: string) => {
     if (value === props.text) {
       setColor('green');
-      props.getResult({
+      props.updateResult({
         maxPoints: props.maxPoints,
         resultTitle: props.resultTitle,
         pointsAchieved: points
@@ -47,7 +47,7 @@ const CopyText: React.FC<Props> = props => {
           id='name'
           className={`inputField ${color}`}
           type='text'
-          onKeyUp={e => storeInput(e)}
+          onChange={e => storeInput(e)}
           placeholder={props.text}
         />
         <Button classNames='next' onClick={() => checkInput(input)}>

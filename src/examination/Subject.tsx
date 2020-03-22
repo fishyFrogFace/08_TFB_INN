@@ -15,38 +15,32 @@ import { RootState } from 'redux/reducers';
 import { updateResults } from 'redux/actions';
 
 interface Props extends PropsFromRedux {
-  currentQuestion: number;
   subject: SubjectDefinition;
   storeExam: (data: ExamState) => void;
   changePage: (page: Page) => void;
-  alertExamination: (currentQuestion: number, result: SubjectResult) => void;
   subjectOver: (result: SubjectResult) => void;
+  currentQuestion: number;
+  updateCurrentQuestion: (currentQuestion: number) => void;
 }
 
 const Subject: React.FC<Props> = props => {
-  const [currentQuestion, setCurrentQuestion] = useState(props.currentQuestion);
 
-  const [questions] = useState(props.subject.questions);
-
-  /* makes us move to the next question without storing result */
   const moveToNextQuestion = (qResults: QuestionResult[]) => {
     const subjectResult = {
       subjectTitle: props.subject.name,
       results: qResults
     };
-    const incremented = currentQuestion + 1;
-    if (incremented >= questions.length) {
+    const incremented = props.currentQuestion + 1;
+    if (incremented >= props.subject.questions.length) {
       props.subjectOver(subjectResult);
     } else {
-      setCurrentQuestion(incremented);
-      props.alertExamination(incremented, subjectResult);
+      props.updateCurrentQuestion(incremented);
     }
   };
 
-  const getResult = (qResult: QuestionResult) => {
+  const updateResult = (qResult: QuestionResult) => {
     const newResult = props.results.concat(qResult);
     props.updateResults(newResult);
-    // tell the ouside world e.g. App about this change in state
     moveToNextQuestion(newResult);
   };
 
@@ -61,7 +55,7 @@ const Subject: React.FC<Props> = props => {
           <Start
             resultTitle={question.questionContent.resultTitle!}
             maxPoints={question.questionContent.maxPoints!}
-            getResult={getResult}
+            updateResult={updateResult}
           />
         );
 
@@ -71,7 +65,7 @@ const Subject: React.FC<Props> = props => {
             resultTitle={question.questionContent.resultTitle!}
             maxPoints={question.questionContent.maxPoints!}
             text={question.questionContent.text!}
-            getResult={getResult}
+            updateResult={updateResult}
           />
         );
     }
@@ -80,21 +74,21 @@ const Subject: React.FC<Props> = props => {
   return (
     <div className='questionContainer'>
       <h1>{props.subjectTitle}</h1>
-      {chooseQuestion(questions[currentQuestion])}
+      {chooseQuestion(props.subject.questions[props.currentQuestion])}
     </div>
   );
 };
 
-const mapStateToProps = (store: RootState): SubjectResult => ({
+const mapStateToProps = (store: RootState) => ({
   subjectTitle: store.subjectResult.subjectTitle,
-  results: store.subjectResult.results
+  results: store.subjectResult.results,
 });
 
 const mapToDispatch = {
-  updateResults
+  updateResults,
 };
 
-type PropsFromRedux = SubjectResult & typeof mapToDispatch;
+type PropsFromRedux = ReturnType<typeof mapStateToProps> & typeof mapToDispatch;
 
 const connector = connect(mapStateToProps, mapToDispatch);
 

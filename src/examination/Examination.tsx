@@ -13,7 +13,7 @@ import {
 import Subject from './Subject';
 import { connect } from 'react-redux';
 import { RootState } from 'redux/reducers';
-import { startSubject } from 'redux/actions';
+import { startSubject, initCurrentQuestionList, updateCurrentQuestionList } from 'redux/actions';
 
 interface Props extends PropsFromRedux {
   examState: ExamState;
@@ -23,12 +23,12 @@ interface Props extends PropsFromRedux {
 }
 
 const Examination: React.FC<Props> = props => {
-  const [currentQuestions] = useState(props.examState.currentQuestions);
   const [currentSubject, setCurrentSubject] = useState(
     props.examState.currentSubject
   );
   const [results, setResults] = useState(props.examState.results);
   const [examPage, setExamPage] = useState(() => {
+    props.initCurrentQuestionList(props.examState.currentQuestions);
     props.startSubject(props.examState.results[currentSubject]);
     return props.examState.instanceID === 0
       ? ExamPage.EnterName
@@ -36,19 +36,14 @@ const Examination: React.FC<Props> = props => {
   });
   const [username, setUsername] = useState(props.examState.username);
 
-  const getUsername = (username: string) => {
+  const updateCurrentQuestionsFunc = (currentQuestion: number) => {
+    props.updateCurrentQuestionList(currentSubject, currentQuestion);
+  }
+
+  const updateUsername = (username: string) => {
     setUsername(username);
     // tell the ouside world e.g. App about this change in state
     setExamPage(ExamPage.Subject);
-  };
-
-  const getSubjectInfo = (
-    currentQuestion: number,
-    subjectResult: SubjectResult
-  ) => {
-    currentQuestions[currentSubject] = currentQuestion;
-    console.log(currentQuestions);
-    replaceSubjectResult(subjectResult);
   };
 
   const replaceSubjectResult = (subjectResult: SubjectResult) => {
@@ -68,7 +63,7 @@ const Examination: React.FC<Props> = props => {
   const pauseExam = () => {
     const data = {
       instanceID: props.examState.instanceID,
-      currentQuestions: currentQuestions,
+      currentQuestions: props.examState.currentQuestions,
       currentSubject: currentSubject,
       results: results,
       username: username
@@ -78,27 +73,28 @@ const Examination: React.FC<Props> = props => {
 
   const subjectOver = (subjectResult: SubjectResult) => {
     replaceSubjectResult(subjectResult);
-    if (currentSubject >= props.examDefinition.subjects.length) {
+    const newCurrentSubject = currentSubject + 1
+    if (newCurrentSubject >= props.examDefinition.subjects.length) {
       setExamPage(ExamPage.Results);
     } else {
-      setCurrentSubject(currentSubject + 1);
+      setCurrentSubject(newCurrentSubject);
       replaceSubjectResult(subjectResult);
-      props.startSubject(props.examState.results[currentSubject + 1]);
+      props.startSubject(props.examState.results[newCurrentSubject]);
     }
   };
 
   const choosePage = (page: ExamPage) => {
     switch (page) {
       case ExamPage.Subject:
-        console.log(results);
+        console.log("currentQuestionList", props.currentQuestionList);
         return (
           <Subject
-            currentQuestion={currentQuestions[currentSubject]}
             subject={props.examDefinition.subjects[currentSubject]}
             changePage={props.changePage}
             storeExam={props.storeExam}
-            alertExamination={getSubjectInfo}
             subjectOver={subjectOver}
+            currentQuestion={props.currentQuestionList[currentSubject]}
+            updateCurrentQuestion={updateCurrentQuestionsFunc}
           />
         );
 
@@ -106,7 +102,7 @@ const Examination: React.FC<Props> = props => {
         return (
           <EnterName
             avatar={'thing'} //TODO send real avatar here when we have that story ready
-            getUsername={getUsername}
+            getUsername={updateUsername}
           />
         );
 
@@ -124,16 +120,19 @@ const Examination: React.FC<Props> = props => {
   );
 };
 
-const mapStateToProps = (store: RootState): SubjectResult => ({
+const mapStateToProps = (store: RootState) => ({
   subjectTitle: store.subjectResult.subjectTitle,
-  results: store.subjectResult.results
+  results: store.subjectResult.results,
+  currentQuestionList: store.currentQuestionList
 });
 
 const mapToDispatch = {
-  startSubject
+  startSubject,
+  initCurrentQuestionList,
+  updateCurrentQuestionList
 };
 
-type PropsFromRedux = SubjectResult & typeof mapToDispatch;
+type PropsFromRedux = ReturnType<typeof mapStateToProps> & typeof mapToDispatch;
 
 const connector = connect(mapStateToProps, mapToDispatch);
 
