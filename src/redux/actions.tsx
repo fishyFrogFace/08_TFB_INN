@@ -1,4 +1,4 @@
-import { QuestionResult, SubjectResult } from "Types";
+import { QuestionResult, SubjectResult } from 'Types';
 
 export enum ActionType {
   StartSubject,
@@ -6,23 +6,25 @@ export enum ActionType {
 }
 
 export interface StartSubjectAction {
-  type: "startSubject";
+  type: 'startSubject';
   subjectResult: SubjectResult;
 }
 
 export interface UpdateResultsAction {
-  type: "updateSubject";
-  results: QuestionResult[]
+  type: 'updateSubject';
+  results: QuestionResult[];
 }
 
-export type SubjectResultAction = StartSubjectAction | UpdateResultsAction
+export type SubjectResultAction = StartSubjectAction | UpdateResultsAction;
 
-export const startSubject = (subjectResult: SubjectResult) => ({
-  type: "startSubject",
-  subjectResult
-});
+export const startSubject = (subjectResult: SubjectResult) => {
+  return {
+    type: 'startSubject',
+    subjectResult
+  };
+};
 
 export const updateResults = (results: QuestionResult[]) => ({
-  type: "updateSubject",
+  type: 'updateSubject',
   results
-})
+});

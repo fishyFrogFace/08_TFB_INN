@@ -1,9 +1,10 @@
 import { createStore } from 'redux';
-import { reducers } from './reducers'
+import { reducers } from './reducers';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-export function configureStore(initialState = {}) {
-  const store = createStore(reducers, initialState);
+export function configureStore() {
+  const store = createStore(reducers, composeWithDevTools());
   return store;
-};
+}
 
 export const store = configureStore();
