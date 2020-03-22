@@ -8,7 +8,8 @@ import {
   ExamState,
   QuestionDefinition,
   SubjectDefinition,
-  SubjectResult
+  SubjectResult,
+  QuestionTemplate
 } from '../Types';
 import { connect } from 'react-redux';
 import { RootState } from 'redux/reducers';
@@ -45,10 +46,8 @@ const Subject: React.FC<Props> = props => {
   };
 
   const chooseQuestion = (question: QuestionDefinition) => {
-    //TODO change to question type
-
     switch (question.templateID) {
-      case 'start':
+      case QuestionTemplate.Start:
         return (
           <Start
             resultTitle={question.questionContent.resultTitle!}
@@ -57,7 +56,7 @@ const Subject: React.FC<Props> = props => {
           />
         );
 
-      case 'copytext':
+      case QuestionTemplate.CopyText:
         return (
           <CopyText
             resultTitle={question.questionContent.resultTitle!}

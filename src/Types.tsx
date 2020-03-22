@@ -14,6 +14,11 @@ export enum ExamPage {
   Results
 }
 
+export enum QuestionTemplate {
+  Start,
+  CopyText
+}
+
 export interface SubjectResult {
   subjectTitle: string;
   results: QuestionResult[];
@@ -45,7 +50,7 @@ export interface QuestionContent {
 
 export interface QuestionDefinition {
   name: string;
-  templateID: string;
+  templateID: QuestionTemplate;
   questionContent: QuestionContent;
 }
 
