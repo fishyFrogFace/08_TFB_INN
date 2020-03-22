@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import FrontPage from 'frontpage/FrontPage';
 import Examination from 'examination/Examination';
-import { Page, ExamState } from './Types';
+import { Page, ExamState, QuestionTemplate } from './Types';
 
 interface State {
   currentPage: Page;
@@ -26,7 +26,7 @@ const standardExamDefinition = {
       questions: [
         {
           name: 'Start button',
-          templateID: 'start',
+          templateID: QuestionTemplate.Start,
           questionContent: {
             resultTitle: 'Forstår bruk av knapper',
             maxPoints: 1
@@ -34,7 +34,7 @@ const standardExamDefinition = {
         },
         {
           name: 'Copy symbols by writing in an input field',
-          templateID: 'copytext',
+          templateID: QuestionTemplate.CopyText,
           questionContent: {
             text: 'A, b: C.',
             resultTitle: 'Kan skrive av tekst',
@@ -48,7 +48,7 @@ const standardExamDefinition = {
       questions: [
         {
           name: 'Start button',
-          templateID: 'start',
+          templateID: QuestionTemplate.Start,
           questionContent: {
             resultTitle: 'Resultat 2.1',
             maxPoints: 1
@@ -56,7 +56,7 @@ const standardExamDefinition = {
         },
         {
           name: 'Copy symbols by writing in an input field',
-          templateID: 'copytext',
+          templateID: QuestionTemplate.CopyText,
           questionContent: {
             text: 'This is totally another subject',
             resultTitle: 'Resultat 2.2',
