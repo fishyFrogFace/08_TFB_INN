@@ -86,7 +86,6 @@ const Examination: React.FC<Props> = props => {
   const choosePage = (page: ExamPage) => {
     switch (page) {
       case ExamPage.Subject:
-        console.log("currentQuestionList", props.currentQuestionList);
         return (
           <Subject
             subject={props.examDefinition.subjects[currentSubject]}
