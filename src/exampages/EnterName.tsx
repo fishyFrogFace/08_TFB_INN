@@ -68,7 +68,7 @@ const EnterName: React.FC<Props> = props => {
           id='name'
           className='inputField'
           type='text'
-          onKeyUp={(e: React.FormEvent<HTMLInputElement>) => {
+          onChange={(e: React.FormEvent<HTMLInputElement>) => {
             const valueTyped = e.currentTarget.value;
             if (valueTyped.trim()) {
               setTyped(true);

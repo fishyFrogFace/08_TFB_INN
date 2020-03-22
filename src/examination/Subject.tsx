@@ -47,8 +47,6 @@ const Subject: React.FC<Props> = props => {
   const chooseQuestion = (question: QuestionDefinition) => {
     //TODO change to question type
 
-    console.log(props.subject.name);
-
     switch (question.templateID) {
       case 'start':
         return (
