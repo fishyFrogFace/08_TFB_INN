@@ -11,8 +11,11 @@ import {
   SubjectResult
 } from '../Types';
 import Subject from './Subject';
+import { connect } from 'react-redux';
+import { RootState } from 'redux/reducers';
+import { startSubject } from 'redux/actions';
 
-interface Props {
+interface Props extends PropsFromRedux {
   examState: ExamState;
   examDefinition: ExamDefinition;
   storeExam: (data: ExamState) => void;
@@ -20,16 +23,17 @@ interface Props {
 }
 
 const Examination: React.FC<Props> = props => {
-  const [currentQuestions] = useState(
-    props.examState.currentQuestions
-  );
+  const [currentQuestions] = useState(props.examState.currentQuestions);
   const [currentSubject, setCurrentSubject] = useState(
     props.examState.currentSubject
   );
-  const [results, setResult] = useState(props.examState.results);
-  const [examPage, setExamPage] = useState(
-    props.examState.instanceID === 0 ? ExamPage.EnterName : ExamPage.Subject
-  );
+  const [results, setResults] = useState(props.examState.results);
+  const [examPage, setExamPage] = useState(() => {
+    props.startSubject(props.examState.results[currentSubject]);
+    return props.examState.instanceID === 0
+      ? ExamPage.EnterName
+      : ExamPage.Subject;
+  });
   const [username, setUsername] = useState(props.examState.username);
 
   const getUsername = (username: string) => {
@@ -42,17 +46,16 @@ const Examination: React.FC<Props> = props => {
     currentQuestion: number,
     subjectResult: SubjectResult
   ) => {
-    currentQuestions[currentSubject] = currentQuestion
-    console.log(currentQuestions)
-    setResult(replaceSubjectResult(subjectResult));
+    currentQuestions[currentSubject] = currentQuestion;
+    console.log(currentQuestions);
+    replaceSubjectResult(subjectResult);
   };
 
   const replaceSubjectResult = (subjectResult: SubjectResult) => {
     const newResult = results
       .filter(res => res.subjectTitle !== subjectResult.subjectTitle)
       .concat(subjectResult);
-    setResult(newResult);
-    return results;
+    setResults(newResult);
   };
 
   const quitExam = () => {
@@ -74,23 +77,23 @@ const Examination: React.FC<Props> = props => {
   };
 
   const subjectOver = (subjectResult: SubjectResult) => {
-    setResult(replaceSubjectResult(subjectResult));
+    replaceSubjectResult(subjectResult);
     if (currentSubject >= props.examDefinition.subjects.length) {
       setExamPage(ExamPage.Results);
     } else {
       setCurrentSubject(currentSubject + 1);
+      replaceSubjectResult(subjectResult);
+      props.startSubject(props.examState.results[currentSubject + 1]);
     }
   };
 
   const choosePage = (page: ExamPage) => {
     switch (page) {
       case ExamPage.Subject:
-        console.log("currentQuestion: " + currentQuestions[currentSubject])
-        console.log("currentSubject: " + currentSubject)
+        console.log(results);
         return (
           <Subject
             currentQuestion={currentQuestions[currentSubject]}
-            result={results[currentSubject].results} //undefined, halp
             subject={props.examDefinition.subjects[currentSubject]}
             changePage={props.changePage}
             storeExam={props.storeExam}
@@ -121,4 +124,20 @@ const Examination: React.FC<Props> = props => {
   );
 };
 
-export default Examination;
+const mapStateToProps = (store: RootState): SubjectResult => ({
+  subjectTitle: store.subjectResult.subjectTitle,
+  results: store.subjectResult.results
+});
+
+const mapToDispatch = {
+  startSubject
+};
+
+type PropsFromRedux = SubjectResult & typeof mapToDispatch;
+
+const connector = connect(mapStateToProps, mapToDispatch);
+
+// Kvifor blir typen til connect any? Må vi sende mapToDispatch?
+// type PropsFromRedux = ConnectedProps<typeof connector>
+
+export default connector(Examination);

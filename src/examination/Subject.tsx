@@ -10,12 +10,12 @@ import {
   SubjectDefinition,
   SubjectResult
 } from '../Types';
-import { connect, ConnectedProps } from 'react-redux';
+import { connect } from 'react-redux';
 import { RootState } from 'redux/reducers';
+import { updateResults } from 'redux/actions';
 
-interface Props extends SubjectResult {
+interface Props extends PropsFromRedux {
   currentQuestion: number;
-  result: QuestionResult[];
   subject: SubjectDefinition;
   storeExam: (data: ExamState) => void;
   changePage: (page: Page) => void;
@@ -27,11 +27,13 @@ const Subject: React.FC<Props> = props => {
   const [currentQuestion, setCurrentQuestion] = useState(props.currentQuestion);
 
   const [questions] = useState(props.subject.questions);
-  const [result, setResult] = useState(props.result);
 
   /* makes us move to the next question without storing result */
   const moveToNextQuestion = (qResults: QuestionResult[]) => {
-    const subjectResult = { subjectTitle: props.subject.name, results: qResults };
+    const subjectResult = {
+      subjectTitle: props.subject.name,
+      results: qResults
+    };
     const incremented = currentQuestion + 1;
     if (incremented >= questions.length) {
       props.subjectOver(subjectResult);
@@ -42,8 +44,8 @@ const Subject: React.FC<Props> = props => {
   };
 
   const getResult = (qResult: QuestionResult) => {
-    const newResult = result.concat(qResult);
-    setResult(newResult);
+    const newResult = props.results.concat(qResult);
+    props.updateResults(newResult);
     // tell the ouside world e.g. App about this change in state
     moveToNextQuestion(newResult);
   };
@@ -86,11 +88,17 @@ const Subject: React.FC<Props> = props => {
 const mapStateToProps = (store: RootState): SubjectResult => ({
   subjectTitle: store.subjectResult.subjectTitle,
   results: store.subjectResult.results
-})
+});
 
-const connector = connect(mapStateToProps)
+const mapToDispatch = {
+  updateResults
+};
 
-// Kvifor blir typen til connect any? Må vi sende mapToDispatch
-type PropsFromRedux = ConnectedProps<typeof connector>
+type PropsFromRedux = SubjectResult & typeof mapToDispatch;
+
+const connector = connect(mapStateToProps, mapToDispatch);
+
+// Kvifor blir typen til connect any? Må vi sende mapToDispatch?
+// type PropsFromRedux = ConnectedProps<typeof connector>
 
 export default connector(Subject);

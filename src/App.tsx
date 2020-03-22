@@ -71,10 +71,10 @@ const standardExamDefinition = {
 const standardExamState = {
   instanceID: 0,
   username: '',
-  results: standardExamDefinition.subjects.map((subj) => {
-    return {subjectTitle: subj.name, results: []}
+  results: standardExamDefinition.subjects.map(subj => {
+    return { subjectTitle: subj.name, results: [] };
   }),
-  currentQuestions: standardExamDefinition.subjects.map((subj) => 0),
+  currentQuestions: standardExamDefinition.subjects.map(subj => 0),
   currentSubject: 0
 };
 
