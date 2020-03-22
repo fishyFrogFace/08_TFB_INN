@@ -6,7 +6,7 @@ import { QuestionResult, QuestionContent } from '../Types';
 interface Props {
   resultTitle: string;
   maxPoints: number;
-  getResult: (qResult: QuestionResult) => void;
+  updateResult: (qResult: QuestionResult) => void;
 }
 
 // maybe add a timer to this one to measure how long it takes the user to click
@@ -16,7 +16,7 @@ const Start: React.FC<Props> = props => {
     <Button
       classNames='start'
       onClick={() =>
-        props.getResult({
+        props.updateResult({
           resultTitle: props.resultTitle,
           maxPoints: props.maxPoints,
           pointsAchieved: props.maxPoints

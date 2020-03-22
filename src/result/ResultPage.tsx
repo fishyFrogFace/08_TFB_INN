@@ -1,7 +1,7 @@
 import React from 'react';
 import './ResultPage.css';
 import ProgressBar from 'components/ProgressBar';
-import { QuestionResult, SubjectResult } from '../Types';
+import { SubjectResult } from '../Types';
 
 interface Props {
   username: string;
@@ -23,9 +23,7 @@ const ResultPage: React.FC<Props> = props => {
   return (
     <div className='resultContainer'>
       <h1 className='h1'>Resultat for {props.username}</h1>
-      {props.result.map((subject, i) => {
-        subjectResults(subject, i);
-      })}
+      {props.result.map((subject, i) => subjectResults(subject, i))}
     </div>
   );
 };
