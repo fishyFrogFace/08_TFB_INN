@@ -18,6 +18,7 @@ import {
   initCurrentQuestionList,
   updateCurrentQuestionList
 } from 'redux/actions';
+import Overview from 'exampages/Overview';
 
 interface Props extends PropsFromRedux {
   examState: ExamState;
@@ -32,19 +33,21 @@ const Examination: React.FC<Props> = props => {
   );
   const [results, setResults] = useState(props.examState.results);
   const [examPage, setExamPage] = useState(() => {
+    // setting the initial shared state in Redux
     props.initCurrentQuestionList(props.examState.currentQuestions);
     props.startSubject(
       props.examState.results.filter(r => r.subjectTitle === currentSubject)[0]
     );
+    // setting the intial page
     return props.examState.instanceID === 0
       ? ExamPage.EnterName
       : ExamPage.Subject;
   });
   const [username, setUsername] = useState(props.examState.username);
 
-  /* TODO find a better way to find currentQuestion, e.g. string,
+    /* TODO find a better way to find currentQuestion, e.g. string,
     since localStorage will return shifted results if the subject changes */
-  const currentSubjectIndex = () =>
+    const currentSubjectIndex = () =>
     props.examDefinition.subjects.findIndex(s => {
       return s.name === currentSubject;
     });
@@ -53,18 +56,20 @@ const Examination: React.FC<Props> = props => {
     props.updateCurrentQuestionList(currentSubjectIndex(), currentQuestion);
   };
 
-  const updateUsername = (username: string) => {
-    setUsername(username);
-    // tell the ouside world e.g. App about this change in state
-    setExamPage(ExamPage.Subject);
-  };
-
   const replaceSubjectResult = (subjectResult: SubjectResult) => {
     const newResult = results
       .filter(res => res.subjectTitle !== subjectResult.subjectTitle)
       .concat(subjectResult);
     setResults(newResult);
   };
+
+  const updateUsername = (username: string) => {
+    setUsername(username);
+    // tell the ouside world e.g. App about this change in state
+    setExamPage(ExamPage.Overview);
+  };
+
+  const startExam = () => setExamPage(ExamPage.Subject)
 
   const quitExam = () => {
     // this might need to delete the paused examination, or will be deleted in the future
@@ -100,6 +105,9 @@ const Examination: React.FC<Props> = props => {
     }
   };
 
+  // Function that determines if we are rendering a subject,
+  // the overview of subjects, entering username etc.
+
   const choosePage = (page: ExamPage) => {
     switch (page) {
       case ExamPage.Subject:
@@ -122,6 +130,9 @@ const Examination: React.FC<Props> = props => {
           />
         );
 
+      case ExamPage.Overview:
+        return <Overview startExam={startExam} />
+
       case ExamPage.Results:
         // TODO let App know the examination is over
         return <ResultPage username={username} result={results} />;
@@ -135,6 +146,8 @@ const Examination: React.FC<Props> = props => {
     </div>
   );
 };
+
+// Redux related:
 
 const mapStateToProps = (store: RootState) => ({
   subjectTitle: store.subjectResult.subjectTitle,
@@ -151,8 +164,5 @@ const mapToDispatch = {
 type PropsFromRedux = ReturnType<typeof mapStateToProps> & typeof mapToDispatch;
 
 const connector = connect(mapStateToProps, mapToDispatch);
-
-// Kvifor blir typen til connect any? Må vi sende mapToDispatch?
-// type PropsFromRedux = ConnectedProps<typeof connector>
 
 export default connector(Examination);
