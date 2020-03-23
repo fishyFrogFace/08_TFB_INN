@@ -36,7 +36,7 @@ export interface QuestionResult {
 export interface ExamState {
   instanceID: number;
   currentQuestions: number[];
-  currentSubject: number;
+  currentSubject: string;
   results: SubjectResult[];
   username: string;
 }

@@ -35,15 +35,20 @@ export interface UpdateCurrentQuestionListAction {
   currentQuestion: number;
 }
 
-export type CurrentQuestionAction = InitCurrentQuestionListAction | UpdateCurrentQuestionListAction;
+export type CurrentQuestionAction =
+  | InitCurrentQuestionListAction
+  | UpdateCurrentQuestionListAction;
 
 export const initCurrentQuestionList = (currentQuestionList: number[]) => ({
   type: 'initCurrentQuestionList',
   currentQuestionList
 });
 
-export const updateCurrentQuestionList = (index: number, currentQuestion: number) => ({
+export const updateCurrentQuestionList = (
+  index: number,
+  currentQuestion: number
+) => ({
   type: 'updateCurrentQuestionList',
   index,
   currentQuestion
-})
+});

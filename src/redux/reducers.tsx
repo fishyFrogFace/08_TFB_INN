@@ -1,8 +1,5 @@
 import { combineReducers } from 'redux';
-import {
-  SubjectResultAction,
-  CurrentQuestionAction
-} from './actions';
+import { SubjectResultAction, CurrentQuestionAction } from './actions';
 import { SubjectResult } from 'Types';
 
 const initialSubjectResult: SubjectResult = {
@@ -24,7 +21,7 @@ export const subjectResultReducer = (
   }
 };
 
-const initialCurrentQuestionList = []
+const initialCurrentQuestionList = [];
 
 export const currentQuestionListReducer = (
   state: number[] = initialCurrentQuestionList,
@@ -32,11 +29,11 @@ export const currentQuestionListReducer = (
 ): number[] => {
   switch (action.type) {
     case 'initCurrentQuestionList':
-      return action.currentQuestionList
+      return action.currentQuestionList;
     case 'updateCurrentQuestionList':
-      const newList = [...state]
-      newList[action.index] = action.currentQuestion
-      return newList
+      const newList = [...state];
+      newList[action.index] = action.currentQuestion;
+      return newList;
     default:
       return state;
   }
