@@ -73,3 +73,14 @@
 .pause:active {
   background-color: transparent;
 }
+
+.subject-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: white;
+  border-radius: 2vh;
+  width: 40vw;
+  font-size: calc(10px + 2vmin)
+}
