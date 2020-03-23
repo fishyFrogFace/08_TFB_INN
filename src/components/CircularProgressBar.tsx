@@ -18,12 +18,4 @@ const ProgressBar: React.FC<{}> = props => {
   );
 };
 
-interface FillerProps {
-  percentage: number;
-}
-
-const Filler: React.FC<FillerProps> = props => {
-  return <div className='filler' style={{ width: `${props.percentage}%` }} />;
-};
-
 export default ProgressBar;

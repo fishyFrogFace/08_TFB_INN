@@ -45,9 +45,9 @@ const Examination: React.FC<Props> = props => {
   });
   const [username, setUsername] = useState(props.examState.username);
 
-    /* TODO find a better way to find currentQuestion, e.g. string,
+  /* TODO find a better way to find currentQuestion, e.g. string,
     since localStorage will return shifted results if the subject changes */
-    const currentSubjectIndex = () =>
+  const currentSubjectIndex = () =>
     props.examDefinition.subjects.findIndex(s => {
       return s.name === currentSubject;
     });
@@ -69,7 +69,7 @@ const Examination: React.FC<Props> = props => {
     setExamPage(ExamPage.Overview);
   };
 
-  const startExam = () => setExamPage(ExamPage.Subject)
+  const startExam = () => setExamPage(ExamPage.Subject);
 
   const quitExam = () => {
     // this might need to delete the paused examination, or will be deleted in the future
@@ -79,7 +79,10 @@ const Examination: React.FC<Props> = props => {
   };
 
   const pauseExam = () => {
-    replaceSubjectResult({subjectTitle: currentSubject, results: props.results})
+    replaceSubjectResult({
+      subjectTitle: currentSubject,
+      results: props.results
+    });
     const data = {
       instanceID: props.examState.instanceID,
       currentQuestions: props.currentQuestionList,
@@ -131,7 +134,14 @@ const Examination: React.FC<Props> = props => {
         );
 
       case ExamPage.Overview:
-        return <Overview startExam={startExam} />
+        return (
+          <Overview
+            subjectTitles={props.examDefinition.subjects.map(
+              subject => subject.name
+            )}
+            startExam={startExam}
+          />
+        );
 
       case ExamPage.Results:
         // TODO let App know the examination is over
