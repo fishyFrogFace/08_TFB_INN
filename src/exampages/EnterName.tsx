@@ -9,10 +9,6 @@ interface Props {
   getUsername: (username: string) => void;
 }
 
-interface Return {
-  input: string;
-}
-
 const adjectives = [
   'helpful',
   'fresh',
@@ -52,8 +48,6 @@ const randomName = (list1: any[], list2: any[]) => {
 const EnterName: React.FC<Props> = props => {
   // set a randomly generated name that will be kept if user doesn't type anything
   const [input, setInput] = useState(randomName(adjectives, animals));
-  // can be used if we want to make this return a result
-  const [typed, setTyped] = useState(false);
 
   return (
     <div className='questionContainer'>
@@ -71,10 +65,8 @@ const EnterName: React.FC<Props> = props => {
           onChange={(e: React.FormEvent<HTMLInputElement>) => {
             const valueTyped = e.currentTarget.value;
             if (valueTyped.trim()) {
-              setTyped(true);
               setInput(e.currentTarget.value);
             } else {
-              setTyped(false);
               setInput(randomName(adjectives, animals));
             }
           }}

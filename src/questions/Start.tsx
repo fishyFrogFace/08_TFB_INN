@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import Button from '../components/Button';
-import { QuestionResult, QuestionContent } from '../Types';
+import { QuestionResult } from '../Types';
 
 interface Props {
   resultTitle: string;

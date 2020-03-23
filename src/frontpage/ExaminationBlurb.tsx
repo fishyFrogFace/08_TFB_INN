@@ -23,7 +23,10 @@ const ExaminationBlurb: React.FC<Props> = props => {
       return (
         <div className='blurb-headline has-image'>
           <div className='img-container'>
-            <img src={'./media/' + props.examInfo.imageFilename} />
+            <img
+              src={`./media/' ${props.examInfo.imageFilename}`}
+              alt='Avatar'
+            />
           </div>
           <div className='blurb-title'>
             <h1>{props.examInfo.title}</h1>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../App.css';
 import Start from '../questions/Start';
 import CopyText from '../questions/CopyText';
