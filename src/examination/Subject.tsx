@@ -17,15 +17,14 @@ import { updateResults } from 'redux/actions';
 
 interface Props extends PropsFromRedux {
   subject: SubjectDefinition;
+  currentQuestion: number;
   storeExam: (data: ExamState) => void;
   changePage: (page: Page) => void;
   subjectOver: (result: SubjectResult) => void;
-  currentQuestion: number;
   updateCurrentQuestion: (currentQuestion: number) => void;
 }
 
 const Subject: React.FC<Props> = props => {
-
   const moveToNextQuestion = (qResults: QuestionResult[]) => {
     const subjectResult = {
       subjectTitle: props.subject.name,
@@ -78,11 +77,11 @@ const Subject: React.FC<Props> = props => {
 
 const mapStateToProps = (store: RootState) => ({
   subjectTitle: store.subjectResult.subjectTitle,
-  results: store.subjectResult.results,
+  results: store.subjectResult.results
 });
 
 const mapToDispatch = {
-  updateResults,
+  updateResults
 };
 
 type PropsFromRedux = ReturnType<typeof mapStateToProps> & typeof mapToDispatch;

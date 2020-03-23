@@ -13,7 +13,11 @@ import {
 import Subject from './Subject';
 import { connect } from 'react-redux';
 import { RootState } from 'redux/reducers';
-import { startSubject, initCurrentQuestionList, updateCurrentQuestionList } from 'redux/actions';
+import {
+  startSubject,
+  initCurrentQuestionList,
+  updateCurrentQuestionList
+} from 'redux/actions';
 
 interface Props extends PropsFromRedux {
   examState: ExamState;
@@ -29,16 +33,25 @@ const Examination: React.FC<Props> = props => {
   const [results, setResults] = useState(props.examState.results);
   const [examPage, setExamPage] = useState(() => {
     props.initCurrentQuestionList(props.examState.currentQuestions);
-    props.startSubject(props.examState.results[currentSubject]);
+    props.startSubject(
+      props.examState.results.filter(r => r.subjectTitle === currentSubject)[0]
+    );
     return props.examState.instanceID === 0
       ? ExamPage.EnterName
       : ExamPage.Subject;
   });
   const [username, setUsername] = useState(props.examState.username);
 
+  /* TODO find a better way to find currentQuestion, e.g. string,
+    since localStorage will return shifted results if the subject changes */
+  const currentSubjectIndex = () =>
+    props.examDefinition.subjects.findIndex(s => {
+      return s.name === currentSubject;
+    });
+
   const updateCurrentQuestionsFunc = (currentQuestion: number) => {
-    props.updateCurrentQuestionList(currentSubject, currentQuestion);
-  }
+    props.updateCurrentQuestionList(currentSubjectIndex(), currentQuestion);
+  };
 
   const updateUsername = (username: string) => {
     setUsername(username);
@@ -63,7 +76,7 @@ const Examination: React.FC<Props> = props => {
   const pauseExam = () => {
     const data = {
       instanceID: props.examState.instanceID,
-      currentQuestions: props.examState.currentQuestions,
+      currentQuestions: props.currentQuestionList,
       currentSubject: currentSubject,
       results: results,
       username: username
@@ -73,13 +86,16 @@ const Examination: React.FC<Props> = props => {
 
   const subjectOver = (subjectResult: SubjectResult) => {
     replaceSubjectResult(subjectResult);
-    const newCurrentSubject = currentSubject + 1
-    if (newCurrentSubject >= props.examDefinition.subjects.length) {
+    const nextSubjectIdx = currentSubjectIndex() + 1;
+    console.log(nextSubjectIdx);
+    if (nextSubjectIdx >= props.examDefinition.subjects.length) {
       setExamPage(ExamPage.Results);
     } else {
+      const newCurrentSubject =
+        props.examDefinition.subjects[nextSubjectIdx].name;
       setCurrentSubject(newCurrentSubject);
       replaceSubjectResult(subjectResult);
-      props.startSubject(props.examState.results[newCurrentSubject]);
+      props.startSubject(props.examState.results[nextSubjectIdx]);
     }
   };
 
@@ -88,11 +104,11 @@ const Examination: React.FC<Props> = props => {
       case ExamPage.Subject:
         return (
           <Subject
-            subject={props.examDefinition.subjects[currentSubject]}
+            subject={props.examDefinition.subjects[currentSubjectIndex()]}
             changePage={props.changePage}
             storeExam={props.storeExam}
             subjectOver={subjectOver}
-            currentQuestion={props.currentQuestionList[currentSubject]}
+            currentQuestion={props.currentQuestionList[currentSubjectIndex()]}
             updateCurrentQuestion={updateCurrentQuestionsFunc}
           />
         );

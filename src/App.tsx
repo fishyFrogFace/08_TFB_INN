@@ -75,7 +75,7 @@ const standardExamState = {
     return { subjectTitle: subj.name, results: [] };
   }),
   currentQuestions: standardExamDefinition.subjects.map(subj => 0),
-  currentSubject: 0
+  currentSubject: 'This is subject 1'
 };
 
 const pausedExams = () => {
