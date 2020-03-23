@@ -74,6 +74,7 @@ const Examination: React.FC<Props> = props => {
   };
 
   const pauseExam = () => {
+    replaceSubjectResult({subjectTitle: currentSubject, results: props.results})
     const data = {
       instanceID: props.examState.instanceID,
       currentQuestions: props.currentQuestionList,
