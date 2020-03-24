@@ -9,6 +9,11 @@
   cursor: pointer;
 }
 
+.btn:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .new {
   background-color: #059dc7;
 }
@@ -82,5 +87,15 @@
   background-color: white;
   border-radius: 2vh;
   width: 40vw;
-  font-size: calc(10px + 2vmin)
+  height: 20vmin;
+  font-size: calc(10px + 2vmin);
+}
+
+.subject-btn:disabled {
+  color: #8c8c8c;
+  background-color: #d9d9d9;
+}
+
+.subject-btn:hover {
+  background-color: #ccccff
 }
