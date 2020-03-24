@@ -139,6 +139,7 @@ const Examination: React.FC<Props> = props => {
             subjectTitles={props.examDefinition.subjects.map(
               subject => subject.name
             )}
+            currentSubject={currentSubject}
             startExam={startExam}
           />
         );

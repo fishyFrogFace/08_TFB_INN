@@ -7,6 +7,7 @@ import avatar from './big-pink.png';
 
 interface Props {
   subjectTitles: string[];
+  currentSubject: string;
   startExam: () => void;
 }
 
@@ -17,7 +18,10 @@ const Overview: React.FC<Props> = props => {
       <div className='subjectContainer'>
         {props.subjectTitles.map(subjectTitle => {
           return (
-            <Button classNames='subject-btn' onClick={props.startExam}>
+            <Button
+              classNames='subject-btn'
+              onClick={props.startExam}
+              disabled={props.currentSubject !== subjectTitle}>
               <h2 className='subjectTitle'>{subjectTitle}</h2>
               <CircularProgressBar />
             </Button>
