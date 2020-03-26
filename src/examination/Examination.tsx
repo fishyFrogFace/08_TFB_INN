@@ -135,13 +135,11 @@ const Examination: React.FC<Props> = props => {
       case ExamPage.Overview:
         return (
           <Overview
-            subjects={props.examDefinition.subjects.map(
-              subject => ({
-                title: subject.name,
-                completed: results[currentSubjectIndex()].results.length,
-                total: subject.questions.length
-              })
-            )}
+            subjects={props.examDefinition.subjects.map(subject => ({
+              title: subject.name,
+              completed: results[currentSubjectIndex()].results.length,
+              total: subject.questions.length
+            }))}
             currentSubject={currentSubject}
             startExam={startExam}
           />
