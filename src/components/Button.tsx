@@ -10,7 +10,6 @@ interface Props {
 
 const Button: React.FC<Props> = props => {
   if (props.disabled) {
-    console.log(props.disabled);
     return (
       <button className={`btn ${props.classNames}`} disabled>
         {props.children}
