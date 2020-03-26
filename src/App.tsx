@@ -22,7 +22,7 @@ const frontpageRepresentation = {
 const standardExamDefinition = {
   subjects: [
     {
-      name: 'This is subject 1',
+      name: 'Tema 1',
       questions: [
         {
           name: 'Start button',
@@ -44,7 +44,7 @@ const standardExamDefinition = {
       ]
     },
     {
-      name: 'Another subject',
+      name: 'Tema 2',
       questions: [
         {
           name: 'Start button',
@@ -75,7 +75,7 @@ const standardExamState = {
     return { subjectTitle: subj.name, results: [] };
   }),
   currentQuestions: standardExamDefinition.subjects.map(subj => 0),
-  currentSubject: 'This is subject 1'
+  currentSubject: 'Tema 1'
 };
 
 const pausedExams = () => {

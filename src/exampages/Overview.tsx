@@ -3,10 +3,15 @@ import '../App.css';
 import './Pages.css';
 import Button from '../components/Button';
 import CircularProgressBar from '../components/CircularProgressBar';
-import avatar from './big-pink.png';
+
+export interface SubjectCompletion {
+  title: string;
+  completed: number;
+  total: number;
+}
 
 interface Props {
-  subjectTitles: string[];
+  subjects: SubjectCompletion[];
   currentSubject: string;
   startExam: () => void;
 }
@@ -16,14 +21,18 @@ const Overview: React.FC<Props> = props => {
     <div className='questionContainer'>
       <h1 className='h1 overview-header'>Mine temaer</h1>
       <div className='subjectContainer'>
-        {props.subjectTitles.map(subjectTitle => {
+        {props.subjects.map((subject, i) => {
           return (
             <Button
+              key={i}
               classNames='subject-btn'
               onClick={props.startExam}
-              disabled={props.currentSubject !== subjectTitle}>
-              <h2 className='subjectTitle'>{subjectTitle}</h2>
-              <CircularProgressBar />
+              disabled={props.currentSubject !== subject.title}>
+              <h2 className='subjectTitle'>{subject.title}</h2>
+              <CircularProgressBar
+                completed={subject.completed}
+                total={subject.total}
+              />
             </Button>
           );
         })}

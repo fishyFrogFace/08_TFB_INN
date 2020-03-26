@@ -96,7 +96,6 @@ const Examination: React.FC<Props> = props => {
   const subjectOver = (subjectResult: SubjectResult) => {
     replaceSubjectResult(subjectResult);
     const nextSubjectIdx = currentSubjectIndex() + 1;
-    console.log(nextSubjectIdx);
     if (nextSubjectIdx >= props.examDefinition.subjects.length) {
       setExamPage(ExamPage.Results);
     } else {
@@ -136,8 +135,12 @@ const Examination: React.FC<Props> = props => {
       case ExamPage.Overview:
         return (
           <Overview
-            subjectTitles={props.examDefinition.subjects.map(
-              subject => subject.name
+            subjects={props.examDefinition.subjects.map(
+              subject => ({
+                title: subject.name,
+                completed: results[currentSubjectIndex()].results.length,
+                total: subject.questions.length
+              })
             )}
             currentSubject={currentSubject}
             startExam={startExam}
