@@ -64,6 +64,7 @@ const Examination: React.FC<Props> = props => {
       .filter(res => res.subjectTitle !== subjectResult.subjectTitle)
       .concat(subjectResult);
     setResults(newResult);
+    return newResult;
   };
 
   const updateUsername = (username: string) => {
@@ -82,7 +83,7 @@ const Examination: React.FC<Props> = props => {
   };
 
   const pauseExam = () => {
-    replaceSubjectResult({
+    const newResult = replaceSubjectResult({
       subjectTitle: currentSubject,
       results: props.results
     });
@@ -90,7 +91,7 @@ const Examination: React.FC<Props> = props => {
       instanceID: props.examState.instanceID,
       currentQuestions: props.currentQuestionList,
       currentSubject: currentSubject,
-      results: results,
+      results: newResult,
       username: username
     };
     props.storeExam(data);
