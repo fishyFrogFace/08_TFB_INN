@@ -16,7 +16,8 @@ export enum ExamPage {
 
 export enum QuestionTemplate {
   Start,
-  CopyText
+  CopyText,
+  CompletedSubject
 }
 
 export interface SubjectResult {

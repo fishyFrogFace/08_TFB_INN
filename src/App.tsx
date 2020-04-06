@@ -40,6 +40,11 @@ const standardExamDefinition = {
             resultTitle: 'Kan skrive av tekst',
             maxPoints: 6
           }
+        },
+        {
+          name: 'Completed subject',
+          templateID: QuestionTemplate.CompletedSubject,
+          questionContent: {}
         }
       ]
     },
@@ -62,6 +67,11 @@ const standardExamDefinition = {
             resultTitle: 'Resultat 2.2',
             maxPoints: 6
           }
+        },
+        {
+          name: 'Completed subject',
+          templateID: QuestionTemplate.CompletedSubject,
+          questionContent: {}
         }
       ]
     }
@@ -92,7 +102,7 @@ const nextID = () => {
   return next == null ? 1 : JSON.parse(next);
 };
 
-// Create ExamInfo's from paused exams
+// Create ExamInfos from paused exams
 const pausedToExamInfo = () => {
   const paused = pausedExams();
   return paused.map((info: ExamState) => {
