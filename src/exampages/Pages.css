@@ -16,3 +16,8 @@
   font-size: calc(10px + 5vmin);
   margin-bottom: 5vh;
 }
+
+.success-header {
+  margin-bottom: 5vh;
+  font-size: 7vh;
+}

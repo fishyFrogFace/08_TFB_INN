@@ -8,7 +8,8 @@ import {
   ExamState,
   ExamDefinition,
   ExamPage,
-  SubjectResult
+  SubjectResult,
+  QuestionTemplate
 } from '../Types';
 import Subject from './Subject';
 import { connect } from 'react-redux';
@@ -97,8 +98,11 @@ const Examination: React.FC<Props> = props => {
     props.storeExam(data);
   };
 
-  const subjectOver = (subjectResult: SubjectResult) => {
-    replaceSubjectResult(subjectResult);
+  const subjectOver = () => {
+    replaceSubjectResult({
+      subjectTitle: currentSubject,
+      results: props.results
+    });
     const nextSubjectIdx = subjectIndex(currentSubject) + 1;
     if (nextSubjectIdx >= props.examDefinition.subjects.length) {
       setExamPage(ExamPage.Results);
@@ -106,8 +110,8 @@ const Examination: React.FC<Props> = props => {
       const newCurrentSubject =
         props.examDefinition.subjects[nextSubjectIdx].name;
       setCurrentSubject(newCurrentSubject);
-      replaceSubjectResult(subjectResult);
       props.startSubject(props.examState.results[nextSubjectIdx]);
+      setExamPage(ExamPage.Overview);
     }
   };
 
@@ -147,7 +151,9 @@ const Examination: React.FC<Props> = props => {
               title: subject.name,
               completed: results.find(s => s.subjectTitle === subject.name)!
                 .results.length,
-              total: subject.questions.length
+              total: subject.questions.filter(
+                q => q.templateID !== QuestionTemplate.CompletedSubject
+              ).length
             }))}
             currentSubject={currentSubject}
             startExam={startExam}
