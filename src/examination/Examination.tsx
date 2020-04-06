@@ -24,7 +24,6 @@ import Overview from 'exampages/Overview';
 interface Props extends PropsFromRedux {
   examState: ExamState;
   examDefinition: ExamDefinition;
-  storeExam: (data: ExamState) => void;
   changePage: (page: Page) => void;
 }
 
@@ -77,25 +76,7 @@ const Examination: React.FC<Props> = props => {
   const startExam = () => setExamPage(ExamPage.Subject);
 
   const quitExam = () => {
-    // this might need to delete the paused examination, or will be deleted in the future
-    // to limit the possibility of user errors
-    // page does then not need to be imported and this line can be moved to app
     props.changePage(Page.FrontPage);
-  };
-
-  const pauseExam = () => {
-    const newResult = replaceSubjectResult({
-      subjectTitle: currentSubject,
-      results: props.results
-    });
-    const data = {
-      instanceID: props.examState.instanceID,
-      currentQuestions: props.currentQuestionList,
-      currentSubject: currentSubject,
-      results: newResult,
-      username: username
-    };
-    props.storeExam(data);
   };
 
   const subjectOver = () => {
@@ -127,7 +108,6 @@ const Examination: React.FC<Props> = props => {
               props.examDefinition.subjects[subjectIndex(currentSubject)]
             }
             changePage={props.changePage}
-            storeExam={props.storeExam}
             subjectOver={subjectOver}
             currentQuestion={
               props.currentQuestionList[subjectIndex(currentSubject)]
@@ -168,7 +148,7 @@ const Examination: React.FC<Props> = props => {
 
   return (
     <div className='main'>
-      <NavBar quitExam={quitExam} pauseExam={pauseExam} />
+      <NavBar quitExam={quitExam} />
       {choosePage(examPage)}
     </div>
   );

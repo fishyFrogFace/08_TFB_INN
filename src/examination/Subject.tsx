@@ -5,7 +5,6 @@ import CopyText from '../questions/CopyText';
 import {
   QuestionResult,
   Page,
-  ExamState,
   QuestionDefinition,
   SubjectDefinition,
   QuestionTemplate
@@ -18,7 +17,6 @@ import CompletedSubject from 'exampages/CompletedSubject';
 interface Props extends PropsFromRedux {
   subject: SubjectDefinition;
   currentQuestion: number;
-  storeExam: (data: ExamState) => void;
   changePage: (page: Page) => void;
   subjectOver: () => void;
   updateCurrentQuestion: (currentQuestion: number) => void;
