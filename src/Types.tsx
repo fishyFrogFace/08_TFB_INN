@@ -10,7 +10,6 @@ export enum ExamPage {
   QuestionDefinition,
   Overview,
   Exit,
-  Pause,
   Results
 }
 

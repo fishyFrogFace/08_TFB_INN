@@ -88,91 +88,17 @@ const standardExamState = {
   currentSubject: 'Tema 1'
 };
 
-const pausedExams = () => {
-  const currentData = localStorage.getItem('pausedData');
-  return currentData == null ? [] : JSON.parse(currentData);
-};
-
-const getPausedByID = (id: number) => {
-  return pausedExams().filter((x: ExamState) => x.instanceID === id)[0];
-};
-
-const nextID = () => {
-  const next = localStorage.getItem('nextID');
-  return next == null ? 1 : JSON.parse(next);
-};
-
-// Create ExamInfos from paused exams
-const pausedToExamInfo = () => {
-  const paused = pausedExams();
-  return paused.map((info: ExamState) => {
-    return {
-      instanceID: info.instanceID,
-      title: info.username,
-      description: frontpageRepresentation.title,
-      imageFilename: ''
-    };
-  });
-};
-
-/* Concat the list of standard exams and paused exams
-  so it can be passed to examblurb */
-const pausedAndCoded = () => {
-  return [frontpageRepresentation].concat(pausedToExamInfo());
-};
-
 const App: React.FC<{}> = () => {
   const [currentPage, setCurrentPage] = useState(Page.FrontPage);
   const [currentExamState, setCurrentExamState] = useState(standardExamState);
-  const [availableExaminations, setAvailableExaminations] = useState(
-    pausedAndCoded()
-  );
-
-  const storeExam = (data: ExamState) => {
-    /* if the current examination does not have an id, give it one
-      and add it to the local state and store it in localStorage,
-      nextID is incremented by one */
-    const pausedData = pausedExams();
-    if (data.instanceID === 0) {
-      data.instanceID = nextID();
-      const incrementedID = data.instanceID + 1;
-      localStorage.setItem('nextID', JSON.stringify(incrementedID));
-      localStorage.setItem(
-        'pausedData',
-        JSON.stringify(pausedData.concat(data))
-      );
-    } else {
-      const withoutCurrent = pausedData.filter(
-        (x: ExamState) => x.instanceID !== data.instanceID
-      );
-      localStorage.setItem(
-        'pausedData',
-        JSON.stringify(withoutCurrent.concat(data))
-      );
-    }
-    setAvailableExaminations(pausedAndCoded());
-    changePage(Page.FrontPage);
-  };
 
   const changePage = (page: Page) => {
     setCurrentPage(page);
   };
 
   const chooseExamination = (instanceID: number) => {
-    if (instanceID === 0) {
-      setCurrentExamState(standardExamState);
-    } else {
-      setCurrentExamState(getPausedByID(instanceID));
-    }
+    setCurrentExamState(standardExamState);
     setCurrentPage(Page.Examination);
-  };
-
-  const deletePausedExam = (instanceID: number) => {
-    const newExams = pausedExams().filter(
-      exam => exam.instanceID !== instanceID
-    );
-    localStorage.setItem('pausedData', JSON.stringify(newExams));
-    setAvailableExaminations(pausedAndCoded());
   };
 
   switch (currentPage) {
@@ -181,9 +107,8 @@ const App: React.FC<{}> = () => {
     case Page.FrontPage:
       return (
         <FrontPage
-          availableExaminations={availableExaminations}
+          availableExaminations={[frontpageRepresentation]}
           chooseExamination={chooseExamination}
-          deletePausedExam={deletePausedExam}
         />
       );
 
@@ -195,7 +120,6 @@ const App: React.FC<{}> = () => {
           examState={currentExamState}
           examDefinition={standardExamDefinition}
           changePage={changePage}
-          storeExam={storeExam}
         />
       );
   }
