@@ -5,7 +5,7 @@ import Button from '../components/Button';
 
 interface Props {
   subject: String;
-  nextSubject: () => void
+  nextSubject: () => void;
 }
 
 const CompletedSubject: React.FC<Props> = props => {

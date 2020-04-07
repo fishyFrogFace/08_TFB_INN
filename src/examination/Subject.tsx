@@ -56,7 +56,12 @@ const Subject: React.FC<Props> = props => {
         );
 
       case QuestionTemplate.CompletedSubject:
-        return <CompletedSubject subject={props.subject.name} nextSubject={nextSubject} />;
+        return (
+          <CompletedSubject
+            subject={props.subject.name}
+            nextSubject={nextSubject}
+          />
+        );
     }
   };
 
