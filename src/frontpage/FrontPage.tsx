@@ -10,7 +10,6 @@ interface Props {
 }
 
 const FrontPage: React.FC<Props> = props => {
-
   return (
     <div className='main'>
       <div className='questionContainer'>

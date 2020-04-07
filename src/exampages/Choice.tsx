@@ -12,7 +12,7 @@ interface Props {
   btnText: string;
 }
 
-const CompletedSubject: React.FC<Props> = (props) => {
+const CompletedSubject: React.FC<Props> = props => {
   return (
     <div className='questionContainer'>
       <div className='close h1' onClick={() => props.closeChoice()}>

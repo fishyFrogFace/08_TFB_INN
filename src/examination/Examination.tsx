@@ -40,7 +40,7 @@ const Examination: React.FC<Props> = props => {
       props.examState.results.filter(r => r.subjectTitle === currentSubject)[0]
     );
     // setting the intial page
-    return ExamPage.EnterName
+    return ExamPage.EnterName;
   });
   const [lastPage, setLastPage] = useState(ExamPage.EnterName);
   const [username, setUsername] = useState(props.examState.username);
@@ -164,12 +164,14 @@ const Examination: React.FC<Props> = props => {
 
   return (
     <div className='main'>
-      <NavBar showChoice={() => {
-        if (examPage !== ExamPage.Exit) {
-          setLastPage(examPage)
-        }
-        changeExamPage(ExamPage.Exit);
-        }} />
+      <NavBar
+        showChoice={() => {
+          if (examPage !== ExamPage.Exit) {
+            setLastPage(examPage);
+          }
+          changeExamPage(ExamPage.Exit);
+        }}
+      />
       {choosePage(examPage)}
     </div>
   );
