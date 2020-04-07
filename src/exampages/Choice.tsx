@@ -12,34 +12,25 @@ interface Props {
   btnText: string;
 }
 
-const CompletedSubject: React.FC<Props> = props => {
-  
+const CompletedSubject: React.FC<Props> = (props) => {
   return (
     <div className='questionContainer'>
-      <div className='modal-content'>
-        <div className='modal-header'>
-          <h4 className='modal-title'>{props.title}</h4>
-          <div className='close' onClick={() => props.closeChoice()}>
-            &times;
-          </div>
-        </div>
-        <div className='modal-body'>
-          <p>{props.body}</p>
-        </div>
-        <div className='modal-footer'>
-          <button
-            type='button'
-            className='modal-btn close-btn'
-            onClick={() => props.closeChoice()}>
-            Lukk
-          </button>
-          <button
-            type='button'
-            className={`modal-btn ${props.btnClass}`}
-            onClick={() => props.confirmAction()}>
-            {props.btnText}
-          </button>
-        </div>
+      <div className='close h1' onClick={() => props.closeChoice()}>
+        &times;
+      </div>
+      <h4 className='choice-title h1'>{props.title}</h4>
+      <div className='choice-body h1'>
+        <p>{props.body}</p>
+      </div>
+      <div className='choice-footer'>
+        <Button classNames='close-btn' onClick={() => props.closeChoice()}>
+          Lukk
+        </Button>
+        <Button
+          classNames={`${props.btnClass}`}
+          onClick={() => props.confirmAction()}>
+          {props.btnText}
+        </Button>
       </div>
     </div>
   );

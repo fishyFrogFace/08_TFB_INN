@@ -76,7 +76,7 @@ const Examination: React.FC<Props> = props => {
   const changeExamPage = (page: ExamPage) => setExamPage(page);
 
   const quitExam = () => {
-    if (examPage === ExamPage.Overview) {
+    if (lastPage === ExamPage.Overview) {
       props.changePage(Page.FrontPage);
     } else {
       setExamPage(ExamPage.Overview);
@@ -165,7 +165,9 @@ const Examination: React.FC<Props> = props => {
   return (
     <div className='main'>
       <NavBar showChoice={() => {
-        setLastPage(examPage)
+        if (examPage !== ExamPage.Exit) {
+          setLastPage(examPage)
+        }
         changeExamPage(ExamPage.Exit);
         }} />
       {choosePage(examPage)}
