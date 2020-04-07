@@ -1,10 +1,8 @@
 import React from 'react';
 import './ExaminationBlurb.css';
-import deleteImg from '../components/exit.svg';
 
 export interface ExamInfo {
-  examID: number;
-  templateID: number;
+  instanceID: number;
   title: string;
   description: string;
   imageFilename: string;
@@ -12,8 +10,7 @@ export interface ExamInfo {
 
 interface Props {
   examInfo: ExamInfo;
-  chooseExamination: (examID: number, templateID: number) => void;
-  requestDeletion: (examID: number) => void;
+  chooseExamination: (instanceID: number) => void;
 }
 
 const ExaminationBlurb: React.FC<Props> = props => {
@@ -24,7 +21,7 @@ const ExaminationBlurb: React.FC<Props> = props => {
       return (
         <div className='blurb-headline has-image'>
           <div className='img-container'>
-            <img src={'./media/' + props.examInfo.imageFilename} />
+            <img src={`./media/${props.examInfo.imageFilename}`} alt='Avatar' />
           </div>
           <div className='blurb-title'>
             <h1>{props.examInfo.title}</h1>
@@ -37,36 +34,19 @@ const ExaminationBlurb: React.FC<Props> = props => {
           <div className='blurb-title'>
             <h1>{props.examInfo.title}</h1>
           </div>
-          {(props.examInfo.examID !== 0)
-            ? <img className='delete-button' src={deleteImg} alt='Delete' onClick={() => props.requestDeletion(props.examInfo.examID)} />
-            : ""
-          }
         </div>
       );
     }
   };
 
-  const pausedClass = () => {
-    return props.examInfo.examID === 0 ? '' : 'paused-blurb';
-  };
-
-  const buttonText = () => {
-    return props.examInfo.examID === 0 ? 'Start' : 'Fortsett';
-  };
-
   return (
-    <div className={`examination-blurb ${pausedClass()}`}>
+    <div className={'examination-blurb'}>
       {blurbHeadline()}
       <p className='blurb-description'>{props.examInfo.description}</p>
       <button
         className='examination-startbutton'
-        onClick={() =>
-          props.chooseExamination(
-            props.examInfo.examID,
-            props.examInfo.templateID
-          )
-        }>
-        {buttonText()}
+        onClick={() => props.chooseExamination(props.examInfo.instanceID)}>
+        Start
       </button>
     </div>
   );

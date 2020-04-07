@@ -3,13 +3,29 @@ export enum Page {
   FrontPage
 }
 
-export interface Result {
-  username: string;
+export enum ExamPage {
+  Subject,
+  EnterName,
+  ChooseSubjects,
+  QuestionDefinition,
+  Overview,
+  Exit,
+  Results
+}
+
+export enum QuestionTemplate {
+  Start,
+  CopyText,
+  CompletedSubject
+}
+
+export interface SubjectResult {
+  subjectTitle: string;
   results: QuestionResult[];
 }
 
 export interface QuestionResult {
-  measures: string;
+  resultTitle: string;
   maxPoints: number;
   pointsAchieved: number;
 }
@@ -18,22 +34,31 @@ export interface QuestionResult {
    as will the props needed to build questions from question components.
    also gave up using an int here, we will have to check that elsewhere, e.g. database */
 export interface ExamState {
-  examID: number;
-  templateID: number;
-  currentQuestion: number;
-  questions: Question[];
-  results: QuestionResult[];
+  instanceID: number;
+  currentQuestions: number[];
+  currentSubject: string;
+  results: SubjectResult[];
   username: string;
 }
 
-export interface QuestionParams {
+export interface QuestionContent {
   avatar?: string;
-  measures?: string;
+  resultTitle?: string;
   maxPoints?: number;
   text?: string;
 }
 
-export interface Question {
-  q: string;
-  params: QuestionParams;
+export interface QuestionDefinition {
+  name: string;
+  templateID: QuestionTemplate;
+  questionContent: QuestionContent;
+}
+
+export interface SubjectDefinition {
+  name: string;
+  questions: QuestionDefinition[];
+}
+
+export interface ExamDefinition {
+  subjects: SubjectDefinition[];
 }

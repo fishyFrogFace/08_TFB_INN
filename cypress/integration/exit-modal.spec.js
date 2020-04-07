@@ -5,8 +5,16 @@ context('Exit modal testing', () => {
     cy.visit('http://localhost:3000/');
   });
 
-  it('exit button renders exit modal', () => {
+  it('exit button renders exit screen', () => {
     cy.get('.examination-startbutton')
+      .first()
+      .click();
+
+    cy.get('.next')
+      .first()
+      .click();
+
+    cy.get('.subject-btn')
       .first()
       .click();
 
@@ -14,31 +22,31 @@ context('Exit modal testing', () => {
       .first()
       .click();
 
-    cy.get('.modal-content').should('be.visible');
+    cy.get('.choice-title').should('be.visible');
 
     cy.get('.exit-btn')
       .first()
       .should('contain', 'Avslutt');
   });
 
-  it('close button closes exit modal', () => {
+  it('close button closes exit screen', () => {
     cy.get('.close-btn')
       .first()
       .click();
 
-    cy.get('.modal-content').should('not.be.visible');
+    cy.get('.choice-title').should('not.be.visible');
 
     cy.get('.exit')
       .first()
       .click();
   });
 
-  it('x in corner closes exit modal', () => {
+  it('x in corner closes exit screen', () => {
     cy.get('.close-btn')
       .first()
       .click();
 
-    cy.get('.modal-content').should('not.be.visible');
+    cy.get('.choice-title').should('not.be.visible');
 
     cy.get('.exit')
       .first()
@@ -50,7 +58,23 @@ context('Exit modal testing', () => {
       .first()
       .click();
 
-    cy.get('.modal-content').should('not.be.visible');
+    cy.get('.choice-title').should('not.be.visible');
+
+    cy.get('.subject-btn')
+      .first()
+      .should('contain', 'Tema 1');
+  });
+
+  it('exit button renders exam page', () => {
+    cy.get('.exit')
+      .first()
+      .click();
+
+    cy.get('.exit-btn')
+      .first()
+      .click();
+
+    cy.get('.choice-title').should('not.be.visible');
 
     cy.get('.examination-blurb')
       .first()
