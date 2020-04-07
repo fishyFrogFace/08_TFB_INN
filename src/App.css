@@ -18,3 +18,17 @@ body {
 img {
   max-height: 25vh;
 }
+
+.h1 {
+  color: white;
+  margin-bottom: 1vh;
+  font-size: 5vh;
+}
+
+.inputField {
+  margin-bottom: 3vh;
+  font-size: 5vh;
+  width: 50vmin;
+  border-radius: 3vmin;
+  text-align: center;
+}

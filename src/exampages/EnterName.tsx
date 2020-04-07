@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import '../App.css';
-import './Question.css';
+import './Pages.css';
 import Button from '../components/Button';
 import avatar from './big-pink.png';
 
 interface Props {
-  avatar: string | undefined;
+  avatar: string;
   getUsername: (username: string) => void;
-}
-
-interface Return {
-  input: string;
 }
 
 const adjectives = [
@@ -49,14 +45,12 @@ const randomName = (list1: any[], list2: any[]) => {
   return `${adjective}-${animal}`;
 };
 
-const UsernameInput: React.FC<Props> = props => {
+const EnterName: React.FC<Props> = props => {
   // set a randomly generated name that will be kept if user doesn't type anything
   const [input, setInput] = useState(randomName(adjectives, animals));
-  // can be used if we want to make this return a result
-  const [typed, setTyped] = useState(false);
 
   return (
-    <div>
+    <div className='questionContainer'>
       <div className='imageContainer'>
         <img src={avatar} alt='Avatar' />
       </div>
@@ -68,13 +62,11 @@ const UsernameInput: React.FC<Props> = props => {
           id='name'
           className='inputField'
           type='text'
-          onKeyUp={(e: React.FormEvent<HTMLInputElement>) => {
+          onChange={(e: React.FormEvent<HTMLInputElement>) => {
             const valueTyped = e.currentTarget.value;
             if (valueTyped.trim()) {
-              setTyped(true);
               setInput(e.currentTarget.value);
             } else {
-              setTyped(false);
               setInput(randomName(adjectives, animals));
             }
           }}
@@ -89,4 +81,4 @@ const UsernameInput: React.FC<Props> = props => {
   );
 };
 
-export default UsernameInput;
+export default EnterName;

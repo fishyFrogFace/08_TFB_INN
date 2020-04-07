@@ -7,8 +7,8 @@ import { QuestionResult } from '../Types';
 interface Props {
   maxPoints: number;
   text: string;
-  measures: string;
-  getResult: (result: QuestionResult) => void;
+  resultTitle: string;
+  updateResult: (result: QuestionResult) => void;
 }
 
 const CopyText: React.FC<Props> = props => {
@@ -20,9 +20,9 @@ const CopyText: React.FC<Props> = props => {
   const checkInput = (value: string) => {
     if (value === props.text) {
       setColor('green');
-      props.getResult({
+      props.updateResult({
         maxPoints: props.maxPoints,
-        measures: props.measures,
+        resultTitle: props.resultTitle,
         pointsAchieved: points
       });
     } else {
@@ -47,7 +47,7 @@ const CopyText: React.FC<Props> = props => {
           id='name'
           className={`inputField ${color}`}
           type='text'
-          onKeyUp={e => storeInput(e)}
+          onChange={e => storeInput(e)}
           placeholder={props.text}
         />
         <Button classNames='next' onClick={() => checkInput(input)}>

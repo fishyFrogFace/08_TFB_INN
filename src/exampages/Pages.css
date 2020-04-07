@@ -1,0 +1,78 @@
+.username {
+  color: white;
+  font-size: 3vh;
+}
+
+.subjectContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: black;
+  border-radius: 2vh;
+  padding: 2vh;
+}
+
+.overview-header {
+  font-size: calc(10px + 5vmin);
+  margin-bottom: 5vh;
+}
+
+.header {
+  margin-bottom: 5vh;
+  font-size: 7vh;
+}
+
+.close {
+  height: 11vh;
+  width: 11vh;
+  font-size: 10vh;
+  text-align: center;
+  cursor: pointer;
+}
+
+.choice-header {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.choice-title {
+  margin-top: 3vh;
+  font-size: 7vh;
+}
+
+.choice-body {
+  margin-bottom: 4vh;
+}
+
+.choice-footer {
+  margin: 2vh;
+  padding-bottom: 2vh;
+  display: flex;
+  justify-content: space-evenly;
+  width: 50vw;
+}
+
+.close-btn {
+  background: #78f89f;
+}
+
+.exit-btn, .delete-btn {
+  background: #f88b78;
+}
+
+.pause-btn {
+  background: #f6f878;
+}
+
+.close-btn:hover {
+  background: #57b322;
+}
+
+.exit-btn:hover {
+  background: #fc5537;
+}
+
+.pause-btn:hover {
+  background: #d8db29;
+}
