@@ -20,6 +20,7 @@ import {
   updateCurrentQuestionList
 } from 'redux/actions';
 import Overview from 'exampages/Overview';
+import Choice from 'exampages/Choice';
 
 interface Props extends PropsFromRedux {
   examState: ExamState;
@@ -39,10 +40,9 @@ const Examination: React.FC<Props> = props => {
       props.examState.results.filter(r => r.subjectTitle === currentSubject)[0]
     );
     // setting the intial page
-    return props.examState.instanceID === 0
-      ? ExamPage.EnterName
-      : ExamPage.Overview;
+    return ExamPage.EnterName
   });
+  const [lastPage, setLastPage] = useState(ExamPage.EnterName);
   const [username, setUsername] = useState(props.examState.username);
 
   /* TODO find a better way to find currentQuestion, e.g. string,
@@ -73,10 +73,14 @@ const Examination: React.FC<Props> = props => {
     setExamPage(ExamPage.Overview);
   };
 
-  const startExam = () => setExamPage(ExamPage.Subject);
+  const changeExamPage = (page: ExamPage) => setExamPage(page);
 
   const quitExam = () => {
-    props.changePage(Page.FrontPage);
+    if (examPage === ExamPage.Overview) {
+      props.changePage(Page.FrontPage);
+    } else {
+      setExamPage(ExamPage.Overview);
+    }
   };
 
   const subjectOver = () => {
@@ -136,7 +140,19 @@ const Examination: React.FC<Props> = props => {
               ).length
             }))}
             currentSubject={currentSubject}
-            startExam={startExam}
+            startExam={() => changeExamPage(ExamPage.Subject)}
+          />
+        );
+
+      case ExamPage.Exit:
+        return (
+          <Choice
+            confirmAction={quitExam}
+            closeChoice={() => setExamPage(lastPage)}
+            title='Avslutte kartlegging'
+            body='Fremgang vil bli slettet. Fortsette?'
+            btnClass='exit-btn'
+            btnText='Avslutt'
           />
         );
 
@@ -148,7 +164,10 @@ const Examination: React.FC<Props> = props => {
 
   return (
     <div className='main'>
-      <NavBar quitExam={quitExam} />
+      <NavBar showChoice={() => {
+        setLastPage(examPage)
+        changeExamPage(ExamPage.Exit);
+        }} />
       {choosePage(examPage)}
     </div>
   );
