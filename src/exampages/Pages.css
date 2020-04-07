@@ -17,31 +17,40 @@
   margin-bottom: 5vh;
 }
 
-.success-header {
+.header {
   margin-bottom: 5vh;
   font-size: 7vh;
 }
 
-.modal {
-  position: fixed;
-  z-index: 2;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 50vw;
-}
-
-.modal-content {
-  background-color: white;
-  border-radius: 2vh;
-}
-
-.modal-btn {
-  border: 0;
-  border-radius: 5px;
-  padding: 0.5rem 1rem;
-  line-height: 1;
+.close {
+  height: 11vh;
+  width: 11vh;
+  font-size: 10vh;
+  text-align: center;
   cursor: pointer;
+}
+
+.choice-header {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.choice-title {
+  margin-top: 3vh;
+  font-size: 7vh;
+}
+
+.choice-body {
+  margin-bottom: 4vh;
+}
+
+.choice-footer {
+  margin: 2vh;
+  padding-bottom: 2vh;
+  display: flex;
+  justify-content: space-evenly;
+  width: 50vw;
 }
 
 .close-btn {
@@ -66,34 +75,4 @@
 
 .pause-btn:hover {
   background: #d8db29;
-}
-
-.close {
-  height: 7vh;
-  width: 7vh;
-  font-size: 5vh;
-  text-align: center;
-  cursor: pointer;
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 2vh;
-  margin: 2vh;
-}
-
-.modal-title {
-  margin: 1vh;
-}
-
-.modal-body {
-  margin-left: 2vh;
-}
-
-.modal-footer {
-  margin: 2vh;
-  padding-bottom: 2vh;
-  display: flex;
-  justify-content: space-evenly;
 }
