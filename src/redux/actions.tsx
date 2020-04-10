@@ -76,3 +76,13 @@ export const updateExamPage = (examPage: ExamPage) => ({
   type: 'updateExamPage',
   examPage
 });
+
+export interface UpdateCurrentSubjectAction {
+  type: 'updateCurrentSubject';
+  currentSubject: string;
+}
+
+export const updateCurrentSubject = (currentSubject: String) => ({
+  type: 'updateCurrentSubject',
+  currentSubject
+});
