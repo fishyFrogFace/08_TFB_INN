@@ -2,9 +2,10 @@ import { combineReducers } from 'redux';
 import {
   SubjectResultAction,
   CurrentQuestionAction,
-  SetUsernameAction
+  SetUsernameAction,
+  UpdateExamPageAction
 } from './actions';
-import { SubjectResult, QuestionTemplate } from 'Types';
+import { SubjectResult, QuestionTemplate, ExamPage } from 'Types';
 
 const standardExamDefinition = {
   subjects: [
@@ -128,10 +129,25 @@ export const usernameReducer = (
   }
 };
 
+const initialExamPage = ExamPage.EnterName;
+
+export const examPageReducer = (
+  state: ExamPage = initialExamPage,
+  action: UpdateExamPageAction
+) => {
+  switch (action.type) {
+    case 'updateExamPage':
+      return action.examPage;
+    default:
+      return state;
+  }
+};
+
 export const reducers = combineReducers({
   subjectResult: subjectResultReducer,
   currentQuestionList: currentQuestionListReducer,
-  username: usernameReducer
+  username: usernameReducer,
+  examPage: examPageReducer
 });
 
 export type RootState = ReturnType<typeof reducers>;
