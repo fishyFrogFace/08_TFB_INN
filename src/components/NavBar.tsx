@@ -4,14 +4,14 @@ import Button from './Button';
 import exit from './exit.svg';
 
 interface Props {
-  showChoice: () => void;
+  onExit: () => void;
 }
 
 const NavBar: React.FC<Props> = props => {
   return (
     <div className='navBar'>
       <div className='navbar-left'>
-        <Button classNames='nav-btn exit' onClick={props.showChoice}>
+        <Button classNames='nav-btn exit' onClick={props.onExit}>
           <img className='nav-img' src={exit} alt='Exit' />
         </Button>
       </div>
