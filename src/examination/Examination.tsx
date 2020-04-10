@@ -18,7 +18,8 @@ import {
   startSubject,
   initCurrentQuestionList,
   updateCurrentQuestionList,
-  updateExamPage
+  updateExamPage,
+  updateCurrentSubject
 } from 'redux/actions';
 import Overview from 'exampages/Overview';
 import Choice from 'exampages/Choice';
@@ -30,15 +31,11 @@ interface Props extends PropsFromRedux {
 }
 
 const Examination: React.FC<Props> = (props) => {
-  const [currentSubject, setCurrentSubject] = useState(
-    props.examState.currentSubject
-  );
   const [results, setResults] = useState(() => {
     // setting the initial shared state in Redux
-    props.initCurrentQuestionList(props.examState.currentQuestions);
     props.startSubject(
       props.examState.results.filter(
-        (r) => r.subjectTitle === currentSubject
+        (r) => r.subjectTitle === props.currentSubject
       )[0]
     );
     return props.examState.results;
@@ -55,7 +52,7 @@ const Examination: React.FC<Props> = (props) => {
 
   const updateCurrentQuestionsFunc = (currentQuestion: number) => {
     props.updateCurrentQuestionList(
-      subjectIndex(currentSubject),
+      subjectIndex(props.currentSubject),
       currentQuestion
     );
   };
@@ -80,16 +77,16 @@ const Examination: React.FC<Props> = (props) => {
 
   const subjectOver = () => {
     replaceSubjectResult({
-      subjectTitle: currentSubject,
+      subjectTitle: props.currentSubject,
       results: props.results
     });
-    const nextSubjectIdx = subjectIndex(currentSubject) + 1;
+    const nextSubjectIdx = subjectIndex(props.currentSubject) + 1;
     if (nextSubjectIdx >= props.examDefinition.subjects.length) {
       props.updateExamPage(ExamPage.Results);
     } else {
       const newCurrentSubject =
         props.examDefinition.subjects[nextSubjectIdx].name;
-      setCurrentSubject(newCurrentSubject);
+      props.updateCurrentSubject(newCurrentSubject);
       props.startSubject(props.examState.results[nextSubjectIdx]);
       props.updateExamPage(ExamPage.Overview);
     }
@@ -104,12 +101,12 @@ const Examination: React.FC<Props> = (props) => {
         return (
           <Subject
             subject={
-              props.examDefinition.subjects[subjectIndex(currentSubject)]
+              props.examDefinition.subjects[subjectIndex(props.currentSubject)]
             }
             changePage={props.changePage}
             subjectOver={subjectOver}
             currentQuestion={
-              props.currentQuestionList[subjectIndex(currentSubject)]
+              props.currentQuestionList[subjectIndex(props.currentSubject)]
             }
             updateCurrentQuestion={updateCurrentQuestionsFunc}
           />
@@ -133,7 +130,7 @@ const Examination: React.FC<Props> = (props) => {
                 (q) => q.templateID !== QuestionTemplate.CompletedSubject
               ).length
             }))}
-            currentSubject={currentSubject}
+            currentSubject={props.currentSubject}
             startExam={() => changeExamPage(ExamPage.Subject)}
           />
         );
@@ -177,14 +174,16 @@ const mapStateToProps = (store: RootState) => ({
   subjectTitle: store.subjectResult.subjectTitle,
   results: store.subjectResult.results,
   currentQuestionList: store.currentQuestionList,
-  examPage: store.examPage
+  examPage: store.examPage,
+  currentSubject: store.currentSubject
 });
 
 const mapToDispatch = {
   startSubject,
   initCurrentQuestionList,
   updateCurrentQuestionList,
-  updateExamPage
+  updateExamPage,
+  updateCurrentSubject
 };
 
 type PropsFromRedux = ReturnType<typeof mapStateToProps> & typeof mapToDispatch;
