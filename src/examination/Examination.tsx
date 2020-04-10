@@ -17,7 +17,8 @@ import { RootState } from 'redux/reducers';
 import {
   startSubject,
   initCurrentQuestionList,
-  updateCurrentQuestionList
+  updateCurrentQuestionList,
+  updateExamPage
 } from 'redux/actions';
 import Overview from 'exampages/Overview';
 import Choice from 'exampages/Choice';
@@ -28,26 +29,27 @@ interface Props extends PropsFromRedux {
   changePage: (page: Page) => void;
 }
 
-const Examination: React.FC<Props> = props => {
+const Examination: React.FC<Props> = (props) => {
   const [currentSubject, setCurrentSubject] = useState(
     props.examState.currentSubject
   );
-  const [results, setResults] = useState(props.examState.results);
-  const [examPage, setExamPage] = useState(() => {
+  const [results, setResults] = useState(() => {
     // setting the initial shared state in Redux
     props.initCurrentQuestionList(props.examState.currentQuestions);
     props.startSubject(
-      props.examState.results.filter(r => r.subjectTitle === currentSubject)[0]
+      props.examState.results.filter(
+        (r) => r.subjectTitle === currentSubject
+      )[0]
     );
-    // setting the intial page
-    return ExamPage.EnterName;
+    return props.examState.results;
   });
+
   const [lastPage, setLastPage] = useState(ExamPage.EnterName);
 
   /* TODO find a better way to find currentQuestion, e.g. string,
     since localStorage will return shifted results if the subject changes */
   const subjectIndex = (subject: string) =>
-    props.examDefinition.subjects.findIndex(s => {
+    props.examDefinition.subjects.findIndex((s) => {
       return s.name === subject;
     });
 
@@ -60,24 +62,19 @@ const Examination: React.FC<Props> = props => {
 
   const replaceSubjectResult = (subjectResult: SubjectResult) => {
     const newResult = results
-      .filter(res => res.subjectTitle !== subjectResult.subjectTitle)
+      .filter((res) => res.subjectTitle !== subjectResult.subjectTitle)
       .concat(subjectResult);
     setResults(newResult);
     return newResult;
   };
 
-  //TODO move ExamPage to redux
-  const moveOn = () => {
-    setExamPage(ExamPage.Overview);
-  };
-
-  const changeExamPage = (page: ExamPage) => setExamPage(page);
+  const changeExamPage = (page: ExamPage) => props.updateExamPage(page);
 
   const quitExam = () => {
     if (lastPage === ExamPage.Overview) {
       props.changePage(Page.FrontPage);
     } else {
-      setExamPage(ExamPage.Overview);
+      props.updateExamPage(ExamPage.Overview);
     }
   };
 
@@ -88,13 +85,13 @@ const Examination: React.FC<Props> = props => {
     });
     const nextSubjectIdx = subjectIndex(currentSubject) + 1;
     if (nextSubjectIdx >= props.examDefinition.subjects.length) {
-      setExamPage(ExamPage.Results);
+      props.updateExamPage(ExamPage.Results);
     } else {
       const newCurrentSubject =
         props.examDefinition.subjects[nextSubjectIdx].name;
       setCurrentSubject(newCurrentSubject);
       props.startSubject(props.examState.results[nextSubjectIdx]);
-      setExamPage(ExamPage.Overview);
+      props.updateExamPage(ExamPage.Overview);
     }
   };
 
@@ -122,19 +119,18 @@ const Examination: React.FC<Props> = props => {
         return (
           <EnterName
             avatar={'thing'} //TODO send real avatar here when we have that story ready
-            moveOn={moveOn}
           />
         );
 
       case ExamPage.Overview:
         return (
           <Overview
-            subjects={props.examDefinition.subjects.map(subject => ({
+            subjects={props.examDefinition.subjects.map((subject) => ({
               title: subject.name,
-              completed: results.find(s => s.subjectTitle === subject.name)!
+              completed: results.find((s) => s.subjectTitle === subject.name)!
                 .results.length,
               total: subject.questions.filter(
-                q => q.templateID !== QuestionTemplate.CompletedSubject
+                (q) => q.templateID !== QuestionTemplate.CompletedSubject
               ).length
             }))}
             currentSubject={currentSubject}
@@ -146,7 +142,7 @@ const Examination: React.FC<Props> = props => {
         return (
           <Choice
             confirmAction={quitExam}
-            closeChoice={() => setExamPage(lastPage)}
+            closeChoice={() => props.updateExamPage(lastPage)}
             title='Avslutte kartlegging'
             body='Fremgang vil bli slettet. Fortsette?'
             btnClass='exit-btn'
@@ -164,13 +160,13 @@ const Examination: React.FC<Props> = props => {
     <div className='main'>
       <NavBar
         showChoice={() => {
-          if (examPage !== ExamPage.Exit) {
-            setLastPage(examPage);
+          if (props.examPage !== ExamPage.Exit) {
+            setLastPage(props.examPage);
           }
           changeExamPage(ExamPage.Exit);
         }}
       />
-      {choosePage(examPage)}
+      {choosePage(props.examPage)}
     </div>
   );
 };
@@ -180,13 +176,15 @@ const Examination: React.FC<Props> = props => {
 const mapStateToProps = (store: RootState) => ({
   subjectTitle: store.subjectResult.subjectTitle,
   results: store.subjectResult.results,
-  currentQuestionList: store.currentQuestionList
+  currentQuestionList: store.currentQuestionList,
+  examPage: store.examPage
 });
 
 const mapToDispatch = {
   startSubject,
   initCurrentQuestionList,
-  updateCurrentQuestionList
+  updateCurrentQuestionList,
+  updateExamPage
 };
 
 type PropsFromRedux = ReturnType<typeof mapStateToProps> & typeof mapToDispatch;

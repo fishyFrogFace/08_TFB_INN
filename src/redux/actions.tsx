@@ -1,4 +1,5 @@
-import { QuestionResult, SubjectResult } from 'Types';
+import { QuestionResult, SubjectResult, ExamPage } from 'Types';
+import { Dispatch } from 'react';
 
 export interface StartSubjectAction {
   type: 'startSubject';
@@ -58,7 +59,20 @@ export interface SetUsernameAction {
   username: string;
 }
 
-export const setUsername = (username: string) => ({
-  type: 'setUsername',
-  username
+export const setUsername = (dispatch: Dispatch<any>, username: string) => {
+  dispatch(updateExamPage(ExamPage.Overview));
+  dispatch({
+    type: 'setUsername',
+    username
+  });
+};
+
+export interface UpdateExamPageAction {
+  type: 'updateExamPage';
+  examPage: ExamPage;
+}
+
+export const updateExamPage = (examPage: ExamPage) => ({
+  type: 'updateExamPage',
+  examPage
 });

@@ -3,13 +3,11 @@ import '../App.css';
 import './Pages.css';
 import Button from '../components/Button';
 import { connect } from 'react-redux';
-import { RootState } from 'redux/reducers';
 import { setUsername } from 'redux/actions';
 import avatar from './big-pink.png';
 
 interface Props extends PropsFromRedux {
   avatar: string;
-  moveOn: () => void;
 }
 
 const adjectives = [
@@ -79,7 +77,6 @@ const EnterName: React.FC<Props> = props => {
           classNames='next'
           onClick={() => {
             props.setUsername(input);
-            props.moveOn();
           }}>
           Neste
         </Button>
@@ -91,16 +88,12 @@ const EnterName: React.FC<Props> = props => {
 
 // Redux related:
 
-const mapStateToProps = (store: RootState) => ({
-  username: store.username
+const mapToDispatch = dispatch => ({
+  setUsername: username => setUsername(dispatch, username)
 });
 
-const mapToDispatch = {
-  setUsername
-};
+type PropsFromRedux = ReturnType<typeof mapToDispatch>;
 
-type PropsFromRedux = ReturnType<typeof mapStateToProps> & typeof mapToDispatch;
-
-const connector = connect(mapStateToProps, mapToDispatch);
+const connector = connect(null, mapToDispatch);
 
 export default connector(EnterName);
