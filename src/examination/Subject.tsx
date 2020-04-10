@@ -36,7 +36,7 @@ const Subject: React.FC<Props> = props => {
 
   const chooseQuestion = (question: QuestionDefinition) => {
     switch (question.templateID) {
-      case QuestionTemplate.Start:
+      case QuestionTemplate.START:
         return (
           <Start
             resultTitle={question.questionContent.resultTitle!}
@@ -45,7 +45,7 @@ const Subject: React.FC<Props> = props => {
           />
         );
 
-      case QuestionTemplate.CopyText:
+      case QuestionTemplate.COPYTEXT:
         return (
           <CopyText
             resultTitle={question.questionContent.resultTitle!}
@@ -55,7 +55,7 @@ const Subject: React.FC<Props> = props => {
           />
         );
 
-      case QuestionTemplate.CompletedSubject:
+      case QuestionTemplate.COMPLETEDSUBJECT:
         return (
           <CompletedSubject
             subject={props.subject.name}

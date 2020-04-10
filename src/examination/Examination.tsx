@@ -15,34 +15,26 @@ import Subject from './Subject';
 import { connect } from 'react-redux';
 import { RootState } from 'redux/reducers';
 import {
-  startSubject,
-  initCurrentQuestionList,
-  updateCurrentQuestionList
+  startSubject
 } from 'redux/actions';
 import Overview from 'exampages/Overview';
 import Choice from 'exampages/Choice';
 
-interface Props extends PropsFromRedux {
-  examState: ExamState;
-  examDefinition: ExamDefinition;
-  changePage: (page: Page) => void;
+interface Props extends ExamState {
+  startSubject: (subject: string )=> void
 }
 
-const Examination: React.FC<Props> = props => {
-  const [currentSubject, setCurrentSubject] = useState(
-    props.examState.currentSubject
-  );
+const Examination: React.FC<Props> = ({ currentSubject, }) => {
   const [results, setResults] = useState(props.examState.results);
   const [examPage, setExamPage] = useState(() => {
     // setting the initial shared state in Redux
-    props.initCurrentQuestionList(props.examState.currentQuestions);
     props.startSubject(
       props.examState.results.filter(r => r.subjectTitle === currentSubject)[0]
     );
     // setting the intial page
-    return ExamPage.EnterName;
+    return ExamPage.ENTERNAME;
   });
-  const [lastPage, setLastPage] = useState(ExamPage.EnterName);
+  const [lastPage, setLastPage] = useState(ExamPage.ENTERNAME);
   const [username, setUsername] = useState(props.examState.username);
 
   /* TODO find a better way to find currentQuestion, e.g. string,
@@ -70,16 +62,16 @@ const Examination: React.FC<Props> = props => {
   const updateUsername = (username: string) => {
     setUsername(username);
     // tell the ouside world e.g. App about this change in state
-    setExamPage(ExamPage.Overview);
+    setExamPage(ExamPage.OVERVIEW);
   };
 
   const changeExamPage = (page: ExamPage) => setExamPage(page);
 
   const quitExam = () => {
-    if (lastPage === ExamPage.Overview) {
-      props.changePage(Page.FrontPage);
+    if (lastPage === ExamPage.OVERVIEW) {
+      props.changePage(Page.FRONTPAGE);
     } else {
-      setExamPage(ExamPage.Overview);
+      setExamPage(ExamPage.OVERVIEW);
     }
   };
 
@@ -90,13 +82,13 @@ const Examination: React.FC<Props> = props => {
     });
     const nextSubjectIdx = subjectIndex(currentSubject) + 1;
     if (nextSubjectIdx >= props.examDefinition.subjects.length) {
-      setExamPage(ExamPage.Results);
+      setExamPage(ExamPage.RESULTS);
     } else {
       const newCurrentSubject =
         props.examDefinition.subjects[nextSubjectIdx].name;
       setCurrentSubject(newCurrentSubject);
       props.startSubject(props.examState.results[nextSubjectIdx]);
-      setExamPage(ExamPage.Overview);
+      setExamPage(ExamPage.OVERVIEW);
     }
   };
 
@@ -105,7 +97,7 @@ const Examination: React.FC<Props> = props => {
 
   const choosePage = (page: ExamPage) => {
     switch (page) {
-      case ExamPage.Subject:
+      case ExamPage.SUBJECT:
         return (
           <Subject
             subject={
@@ -120,7 +112,7 @@ const Examination: React.FC<Props> = props => {
           />
         );
 
-      case ExamPage.EnterName:
+      case ExamPage.ENTERNAME:
         return (
           <EnterName
             avatar={'thing'} //TODO send real avatar here when we have that story ready
@@ -128,7 +120,7 @@ const Examination: React.FC<Props> = props => {
           />
         );
 
-      case ExamPage.Overview:
+      case ExamPage.OVERVIEW:
         return (
           <Overview
             subjects={props.examDefinition.subjects.map(subject => ({
@@ -136,15 +128,15 @@ const Examination: React.FC<Props> = props => {
               completed: results.find(s => s.subjectTitle === subject.name)!
                 .results.length,
               total: subject.questions.filter(
-                q => q.templateID !== QuestionTemplate.CompletedSubject
+                q => q.templateID !== QuestionTemplate.COMPLETEDSUBJECT
               ).length
             }))}
             currentSubject={currentSubject}
-            startExam={() => changeExamPage(ExamPage.Subject)}
+            startExam={() => changeExamPage(ExamPage.SUBJECT)}
           />
         );
 
-      case ExamPage.Exit:
+      case ExamPage.EXIT:
         return (
           <Choice
             confirmAction={quitExam}
@@ -156,7 +148,7 @@ const Examination: React.FC<Props> = props => {
           />
         );
 
-      case ExamPage.Results:
+      case ExamPage.RESULTS:
         // TODO let App know the examination is over
         return <ResultPage username={username} result={results} />;
     }
@@ -166,10 +158,10 @@ const Examination: React.FC<Props> = props => {
     <div className='main'>
       <NavBar
         showChoice={() => {
-          if (examPage !== ExamPage.Exit) {
+          if (examPage !== ExamPage.EXIT) {
             setLastPage(examPage);
           }
-          changeExamPage(ExamPage.Exit);
+          changeExamPage(ExamPage.EXIT);
         }}
       />
       {choosePage(examPage)}
@@ -178,21 +170,13 @@ const Examination: React.FC<Props> = props => {
 };
 
 // Redux related:
-
 const mapStateToProps = (store: RootState) => ({
-  subjectTitle: store.subjectResult.subjectTitle,
-  results: store.subjectResult.results,
-  currentQuestionList: store.currentQuestionList
+  ...store.examState
 });
+const mapDispatchToProps = (dispatch) => {
+  return {
 
-const mapToDispatch = {
-  startSubject,
-  initCurrentQuestionList,
-  updateCurrentQuestionList
-};
-
-type PropsFromRedux = ReturnType<typeof mapStateToProps> & typeof mapToDispatch;
-
-const connector = connect(mapStateToProps, mapToDispatch);
-
+  };
+}
+const connector = connect(mapStateToProps, mapDispatchToProps);
 export default connector(Examination);
