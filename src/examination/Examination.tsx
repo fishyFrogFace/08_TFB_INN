@@ -43,7 +43,6 @@ const Examination: React.FC<Props> = props => {
     return ExamPage.EnterName;
   });
   const [lastPage, setLastPage] = useState(ExamPage.EnterName);
-  const [username, setUsername] = useState(props.examState.username);
 
   /* TODO find a better way to find currentQuestion, e.g. string,
     since localStorage will return shifted results if the subject changes */
@@ -67,9 +66,8 @@ const Examination: React.FC<Props> = props => {
     return newResult;
   };
 
-  const updateUsername = (username: string) => {
-    setUsername(username);
-    // tell the ouside world e.g. App about this change in state
+  //TODO move ExamPage to redux
+  const moveOn = () => {
     setExamPage(ExamPage.Overview);
   };
 
@@ -124,7 +122,7 @@ const Examination: React.FC<Props> = props => {
         return (
           <EnterName
             avatar={'thing'} //TODO send real avatar here when we have that story ready
-            getUsername={updateUsername}
+            moveOn={moveOn}
           />
         );
 
@@ -158,7 +156,7 @@ const Examination: React.FC<Props> = props => {
 
       case ExamPage.Results:
         // TODO let App know the examination is over
-        return <ResultPage username={username} result={results} />;
+        return <ResultPage result={results} />;
     }
   };
 

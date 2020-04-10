@@ -52,3 +52,13 @@ export const updateCurrentQuestionList = (
   index,
   currentQuestion
 });
+
+export interface SetUsernameAction {
+  type: 'setUsername';
+  username: string;
+}
+
+export const setUsername = (username: string) => ({
+  type: 'setUsername',
+  username
+});
