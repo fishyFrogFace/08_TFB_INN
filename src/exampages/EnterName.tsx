@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import '../App.css';
 import './Pages.css';
 import Button from '../components/Button';
+import { connect } from 'react-redux';
+import { RootState } from 'redux/reducers';
+import { setUsername } from 'redux/actions';
 import avatar from './big-pink.png';
 
-interface Props {
+interface Props extends PropsFromRedux {
   avatar: string;
-  getUsername: (username: string) => void;
+  moveOn: () => void;
 }
 
 const adjectives = [
@@ -72,7 +75,12 @@ const EnterName: React.FC<Props> = props => {
           }}
           placeholder='Navn'
         />
-        <Button classNames='next' onClick={() => props.getUsername(input)}>
+        <Button
+          classNames='next'
+          onClick={() => {
+            props.setUsername(input);
+            props.moveOn();
+          }}>
           Neste
         </Button>
       </form>
@@ -81,4 +89,18 @@ const EnterName: React.FC<Props> = props => {
   );
 };
 
-export default EnterName;
+// Redux related:
+
+const mapStateToProps = (store: RootState) => ({
+  username: store.username
+});
+
+const mapToDispatch = {
+  setUsername
+};
+
+type PropsFromRedux = ReturnType<typeof mapStateToProps> & typeof mapToDispatch;
+
+const connector = connect(mapStateToProps, mapToDispatch);
+
+export default connector(EnterName);

@@ -2,9 +2,10 @@ import React from 'react';
 import './ResultPage.css';
 import ProgressBar from 'components/ProgressBar';
 import { SubjectResult } from '../Types';
+import { RootState } from 'redux/reducers';
+import { connect } from 'react-redux';
 
-interface Props {
-  username: string;
+interface Props extends PropsFromRedux {
   result: SubjectResult[];
 }
 
@@ -28,4 +29,14 @@ const ResultPage: React.FC<Props> = props => {
   );
 };
 
-export default ResultPage;
+// Redux related:
+
+const mapStateToProps = (store: RootState) => ({
+  username: store.username
+});
+
+type PropsFromRedux = ReturnType<typeof mapStateToProps>;
+
+const connector = connect(mapStateToProps);
+
+export default connector(ResultPage);
