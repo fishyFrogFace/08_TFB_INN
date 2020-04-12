@@ -1,8 +1,15 @@
-import { QuestionResult, SubjectResult, ExamPage, Page } from 'Types';
+import { QuestionResult, ExamPage, Page } from 'Types';
 
 // We export both the type interface and the type string, to prevent typos
 
 // Action types
+export const CONTINUE_SUBJECT = "continueSubject";
+export interface ContinueSubjectAction {
+  type: 'continueSubject';
+  subject: string;
+}
+
+
 export const START_SUBJECT = "startSubject";
 export interface StartSubjectAction {
   type: 'startSubject';
@@ -51,14 +58,21 @@ export interface SetAppPageAction {
   page: Page;
 }
 
-export type ExamStateAction = StartSubjectAction | SetUsernameAction | ResetExaminationAction
+export type ExamStateAction = ContinueSubjectAction | StartSubjectAction | SetUsernameAction | ResetExaminationAction
   | SetChosenSubjectsAction | SetExamPageAction | GoToNextQuestionAction | SetQuestionResultAction;
 export type AppStateAction = SetAppPageAction;
 
 // Action generators
+export const continueSubject = (subject: string) => ({
+  // Continues the subject where it was last left off, preserving any existing results for it
+  type: CONTINUE_SUBJECT,
+  subject: subject
+});
+
 export const startSubject = (subject: string) => ({
-    type: START_SUBJECT,
-    subject: subject
+  // Starts the subject completely over, erasing any existing results for it
+  type: START_SUBJECT,
+  subject: subject
 });
 
 export const setUsername = (username: string) => ({
@@ -81,6 +95,7 @@ export const setExamPage = (page: ExamPage) => ({
 })
 
 export const goToNextQuestion = () => ({
+  // Goes to the next question in the current subject. If all questions are complete, goes to the "Completed Subject" page.
   type: GO_TO_NEXT_QUESTION
 })
 

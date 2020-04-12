@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import FrontPage from 'frontpage/FrontPage';
 import Examination from 'examination/Examination';
-import { Page, ExamState, QuestionTemplate } from './Types';
+import { Page, QuestionTemplate } from './Types';
 import { connect } from 'react-redux';
 import { RootState } from 'redux/reducers';
-
-interface State {
-  currentPage: Page;
-}
 
 // Example data for examination blurbs
 export const availableExaminations = [{
@@ -42,11 +38,6 @@ export const standardExamDefinition = {
             resultTitle: 'Kan skrive av tekst',
             maxPoints: 6
           }
-        },
-        {
-          name: 'Completed subject',
-          templateID: QuestionTemplate.COMPLETEDSUBJECT,
-          questionContent: {}
         }
       ]
     },
@@ -69,11 +60,6 @@ export const standardExamDefinition = {
             resultTitle: 'Resultat 2.2',
             maxPoints: 6
           }
-        },
-        {
-          name: 'Completed subject',
-          templateID: QuestionTemplate.COMPLETEDSUBJECT,
-          questionContent: {}
         }
       ]
     }

@@ -4,19 +4,19 @@ export enum Page {
 }
 
 export enum ExamPage {
-  SUBJECT,
-  ENTERNAME,
-  CHOOSESUBJECTS,
   QUESTION,
+  ENTER_NAME,
+  CHOOSE_SUBJECTS,
   OVERVIEW,
-  EXIT,
+  COMPLETED_SUBJECT,
+  QUIT_TO_OVERVIEW,
+  EXIT_EXAM,
   RESULTS
 }
 
 export enum QuestionTemplate {
   START,
-  COPYTEXT,
-  COMPLETEDSUBJECT
+  COPYTEXT
 }
 
 export interface AppState {
@@ -29,11 +29,11 @@ export interface AppState {
    also gave up using an int here, we will have to check that elsewhere, e.g. database */
 export interface ExamState {
   examDefinition: ExamDefinition;
-  username: string | null; // Null: not set
+  username: string;
   chosenSubjects: Set<string>; // Empty: hasn't chosen subjects
   currentPage: ExamPage;
   previousPage: ExamPage;
-  currentSubject: string | null; // Null: no current
+  currentSubject: string;
   currentQuestion: number;
   subjectResults: Map<string, SubjectResult>;
 }
