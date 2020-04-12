@@ -45,7 +45,7 @@ const Overview: React.FC<Props> = ({ examDefinition, subjectResults, startSubjec
           );
         })}
       </div>
-      <Button onClick={() => setExamPage(ExamPage.RESULTS)} classNames="next">
+      <Button onClick={() => setExamPage(ExamPage.RESULTS)} classNames="next see-results">
         Se resultater
       </Button>
     </div>
