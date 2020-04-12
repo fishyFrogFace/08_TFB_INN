@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import {
   ExamStateAction,
+  CONTINUE_SUBJECT,
   GO_TO_NEXT_QUESTION,
   RESET_EXAMINATION,
   START_SUBJECT,
@@ -11,20 +12,21 @@ import {
   AppStateAction,
   SET_APP_PAGE,
 } from './actions';
-import { ExamState, ExamPage, SubjectResult, AppState, Page } from 'Types';
+import { ExamState, ExamPage, AppState, Page, SubjectResult } from 'Types';
 import { standardExamDefinition, availableExaminations } from '../App';
 
-const initialExamState : ExamState = {
+const initialExamState: ExamState = {
   examDefinition: standardExamDefinition,
-  username: null,
+  username: "NO USERNAME SET",
   chosenSubjects: new Set(),
-  currentPage: ExamPage.ENTERNAME,
-  currentSubject: null,
+  currentPage: ExamPage.ENTER_NAME,
+  previousPage: ExamPage.ENTER_NAME,
+  currentSubject: "NO SUBJECT SET",
   currentQuestion: 0,
-  subjectResults: new Map()
+  subjectResults: new Map<string, SubjectResult>()
 };
 
-const initialAppState : AppState = {
+const initialAppState: AppState = {
   currentPage: Page.FRONTPAGE,
   availableExaminations: availableExaminations
 }
@@ -34,35 +36,65 @@ export const examStateReducer = (
   action: ExamStateAction
 ): ExamState => {
   switch (action.type) {
-    case GO_TO_NEXT_QUESTION:
+    case CONTINUE_SUBJECT: {
+      // Continues the subject where it was last left off, preserving any existing results for it
+      const subjectDefinition = examState.examDefinition.subjects.find(s => s.name === action.subject);
+      const subjectResult = examState.subjectResults.get(action.subject);
+      if (subjectDefinition === undefined || subjectResult === undefined)
+        return examState; // Error
+      const questionsAnswered = subjectResult.results.length;
+      const numberOfQuestions = subjectDefinition.questions.length;
+      if (questionsAnswered >= numberOfQuestions)
+        return examState; // Subject is complete and cannot be continued
+      else
+        return {
+          ...examState,
+          currentSubject: action.subject,
+          currentQuestion: questionsAnswered,
+          previousPage: examState.currentPage,
+          currentPage: ExamPage.QUESTION
+        };
+    }
+    case GO_TO_NEXT_QUESTION: {
       const subjectDefinition = examState.examDefinition.subjects.find(s => s.name === examState.currentSubject);
-      if (subjectDefinition === undefined) return examState; // If not taking a valid subject: do nothing
+      if (subjectDefinition === undefined) return examState; // Error
       if (examState.currentQuestion + 1 < subjectDefinition.questions.length) {
         // If there are questions remaining in the subject: go to next question
-        return {...examState,
+        return {
+          ...examState,
           currentQuestion: examState.currentQuestion + 1
         }
       } else {
-        // If there are no more questions remaining: return to subject list
-        return {...examState,
-          currentQuestion: 0,
-          currentPage: ExamPage.OVERVIEW
+        // If there are no more questions remaining: go to completed subject page
+        return {
+          ...examState,
+          currentQuestion: -1,
+          currentPage: ExamPage.COMPLETED_SUBJECT,
+          previousPage: ExamPage.QUESTION
         };
       }
+    }
     case RESET_EXAMINATION:
-      return {...initialExamState};
+      return { ...initialExamState };
     case START_SUBJECT:
-      return {...examState,
+      // Starts the subject completely over, erasing any existing results for it
+      return {
+        ...examState,
         currentSubject: action.subject,
-        currentQuestion: 0
+        currentQuestion: 0,
+        previousPage: examState.currentPage,
+        currentPage: ExamPage.QUESTION
       };
     case SET_CHOSEN_SUBJECTS:
-      return {...examState,
+      return {
+        ...examState,
         chosenSubjects: new Set(action.subjects)
       };
     case SET_EXAM_PAGE:
-      return {...examState,
-        currentPage: action.page
+      return {
+        ...examState,
+        previousPage: examState.currentPage,
+        currentPage: action.page,
       };
     case SET_QUESTION_RESULT:
       // All of these confusing lines are to make sure we copy everything safely
@@ -70,16 +102,18 @@ export const examStateReducer = (
       if (subjectResult === undefined) {
         subjectResult = { results: [] };
       } else {
-        subjectResult = {...subjectResult};
+        subjectResult = { ...subjectResult };
       }
-      subjectResult.results[action.question] = {...action.result};
+      subjectResult.results[action.question] = { ...action.result };
       const subjectResults = new Map(examState.subjectResults);
       subjectResults.set(action.subject, subjectResult);
-      return {...examState,
+      return {
+        ...examState,
         subjectResults: subjectResults
       };
     case SET_USERNAME:
-      return {...examState,
+      return {
+        ...examState,
         username: action.username
       };
     default:
@@ -91,9 +125,10 @@ export const appStateReducer = (
   appState: AppState = initialAppState,
   action: AppStateAction
 ): AppState => {
-  switch(action.type) {
+  switch (action.type) {
     case SET_APP_PAGE:
-      return {...appState,
+      return {
+        ...appState,
         currentPage: action.page
       };
     default:
