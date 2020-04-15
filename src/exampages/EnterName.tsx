@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import '../App.css';
 import './Pages.css';
 import Button from '../components/Button';
-import avatar from './big-pink.png';
+import tempAvatar from './big-pink.png';
+import { connect } from 'react-redux';
+import { setUsername, setExamPage } from 'redux/actions';
+import { ExamPage } from '../Types';
 
 interface Props {
   avatar: string;
-  getUsername: (username: string) => void;
+  setUsername: (username: string) => void;
+  setExamPage: (page: ExamPage) => void;
 }
 
 const adjectives = [
@@ -45,14 +49,19 @@ const randomName = (list1: any[], list2: any[]) => {
   return `${adjective}-${animal}`;
 };
 
-const EnterName: React.FC<Props> = props => {
+const EnterName: React.FC<Props> = ({ avatar, setUsername, setExamPage }) => {
   // set a randomly generated name that will be kept if user doesn't type anything
   const [input, setInput] = useState(randomName(adjectives, animals));
+
+  const submitUsername = (username) => {
+    setUsername(username);
+    setExamPage(ExamPage.OVERVIEW);
+  }
 
   return (
     <div className='questionContainer'>
       <div className='imageContainer'>
-        <img src={avatar} alt='Avatar' />
+        <img src={tempAvatar} alt='Avatar' />
       </div>
       <h1 className='h1'>Mitt navn er</h1>
       <form
@@ -72,7 +81,7 @@ const EnterName: React.FC<Props> = props => {
           }}
           placeholder='Navn'
         />
-        <Button classNames='next' onClick={() => props.getUsername(input)}>
+        <Button classNames='next' onClick={() => submitUsername(input)}>
           Neste
         </Button>
       </form>
@@ -81,4 +90,12 @@ const EnterName: React.FC<Props> = props => {
   );
 };
 
-export default EnterName;
+// Redux related:
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setUsername: (username: string) => dispatch(setUsername(username)),
+    setExamPage: (page: ExamPage) => dispatch(setExamPage(page))
+  };
+}
+const connector = connect(null, mapDispatchToProps);
+export default connector(EnterName);
