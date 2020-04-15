@@ -1,26 +1,44 @@
 export enum Page {
-  Examination,
-  FrontPage
+  EXAMINATION,
+  FRONTPAGE
 }
 
 export enum ExamPage {
-  Subject,
-  EnterName,
-  ChooseSubjects,
-  QuestionDefinition,
-  Overview,
-  Exit,
-  Results
+  QUESTION,
+  ENTER_NAME,
+  CHOOSE_SUBJECTS,
+  OVERVIEW,
+  COMPLETED_SUBJECT,
+  QUIT_TO_OVERVIEW,
+  EXIT_EXAM,
+  RESULTS
 }
 
 export enum QuestionTemplate {
-  Start,
-  CopyText,
-  CompletedSubject
+  START,
+  COPYTEXT
+}
+
+export interface AppState {
+  currentPage: Page;
+  availableExaminations: ExamInfo[];
+}
+
+/* the list of pages will get passed to the examination by App.tsx
+   as will the props needed to build questions from question components.
+   also gave up using an int here, we will have to check that elsewhere, e.g. database */
+export interface ExamState {
+  examDefinition: ExamDefinition;
+  username: string;
+  chosenSubjects: Set<string>; // Empty: hasn't chosen subjects
+  currentPage: ExamPage;
+  previousPage: ExamPage;
+  currentSubject: string;
+  currentQuestion: number;
+  subjectResults: Map<string, SubjectResult>;
 }
 
 export interface SubjectResult {
-  subjectTitle: string;
   results: QuestionResult[];
 }
 
@@ -28,17 +46,6 @@ export interface QuestionResult {
   resultTitle: string;
   maxPoints: number;
   pointsAchieved: number;
-}
-
-/* the list of pages will get passed to the examination by App.tsx
-   as will the props needed to build questions from question components.
-   also gave up using an int here, we will have to check that elsewhere, e.g. database */
-export interface ExamState {
-  instanceID: number;
-  currentQuestions: number[];
-  currentSubject: string;
-  results: SubjectResult[];
-  username: string;
 }
 
 export interface QuestionContent {
@@ -61,4 +68,11 @@ export interface SubjectDefinition {
 
 export interface ExamDefinition {
   subjects: SubjectDefinition[];
+}
+
+export interface ExamInfo {
+  instanceID: number;
+  title: string;
+  description: string;
+  imageFilename: string;
 }

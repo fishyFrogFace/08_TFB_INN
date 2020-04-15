@@ -5,7 +5,7 @@ import Button from '../components/Button';
 
 interface Props {
   closeChoice: () => void;
-  confirmAction: () => void;
+  confirmChoice: () => void;
   title: string;
   body: string;
   btnClass: string;
@@ -28,7 +28,7 @@ const CompletedSubject: React.FC<Props> = props => {
         </Button>
         <Button
           classNames={`${props.btnClass}`}
-          onClick={() => props.confirmAction()}>
+          onClick={() => props.confirmChoice()}>
           {props.btnText}
         </Button>
       </div>
