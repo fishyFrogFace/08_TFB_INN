@@ -8,6 +8,7 @@ interface Props {
   maxPoints: number;
   text: string;
   measures: string;
+  feedback: boolean;
   getResult: (result: QuestionResult) => void;
 }
 
@@ -17,8 +18,8 @@ const CopyText: React.FC<Props> = props => {
   const [points, setPoints] = useState(props.maxPoints);
   const [color, setColor] = useState('black');
 
-  const checkInput = (value: string) => {
-    if (value === props.text) {
+  const checkInput = (value: string, feedback) => {
+    if (value === props.text && feedback) {
       setColor('green');
       props.getResult({
         maxPoints: props.maxPoints,

@@ -65,8 +65,9 @@ const Examination: React.FC<Props> = props => {
         return (
           <CopyText
             measures={question.params.measures!}
-            maxPoints={question.params.maxPoints!}
             text={question.params.text!}
+            feedback={question.params.feedback!}
+            maxPoints={question.params.maxPoints!}
             getResult={getResult}
           />
         );
