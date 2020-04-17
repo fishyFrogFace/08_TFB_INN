@@ -5,49 +5,60 @@ import Button from '../components/Button';
 import { QuestionResult, Question } from '../Types';
 
 interface Props {
-  text: string; //hva det blir spurt om
+  text: string; //spørsmålsteksten
   maxPoints: number; //1
   measures: string; //kartleggingsmål
-  answerValues: Array<string>; //eksternt ?
-  correctAlt: string; //riktig alternativ
+  correctAlt: Array<string>; //riktig(e) alternativ(er)
+  answerValues: Array<string>; //internt, avgitt(e) svar
 
   getResult: (result: QuestionResult) => void; //??
 }
-/*
-props: string title
-func create question (content, correctAns, ) eksternt
-  createseveralbuttons([a,b,c,d], b)
-  func: set riktig alternativ [b] - riktig svar
-array: content for buttons (eksternt) [a, b, c, d] 
 
-func: velg et alternativ (internt)
-func: sjekk om det er riktig alternativ (internt)
-
-chosenButton = 0
-onClick: chosen button = this.
-
-*/
-
+//kommentarer: prøver å legge rette for flere riktige alternativer og flere avgitte svar.
 
 const SeveralButton: React.FC<Props> = props => {
   const [input, setInput] = useState('');
+  //const [input: string[], setInput] = useState(''); //vil signalisere at input kan være en array
   const [points, setPoints] = useState(props.maxPoints);
 
 
-
+//hvis det er flere riktige alternativer kan svar legges til og endres på. ellers oppdateres bare det vanlige svaret
   const updateAnswer = (value: string) => {
-    setInput(value);
+    
+    /*if (correctAlt.length > 1) {
+         answerValues.include(value) ? 
+          answerValues.pop(value)
+          :
+          answerValues.push(value)
+          }
+    */
+    }
+    setInput(value); 
     console.log(value); 
   }
+
+  
+  //finner ut av hvor mange avgitte svar som matcher correctAlt (correct alternatives)
+
+  /*
+  const filterAnswer = (input: string[], correctAlt: string[]) => { 
+      const correctAnswers : string[] = [];
+      answerValues.map((i => correctAnswers.includes(i) ? correctAnswers.push(i) : ''));
+      return correctAnswers.length;
+        
+    } 
+  */
   
   const returnResult = () => {
     props.getResult({
       maxPoints: props.maxPoints,
       measures: props.measures,
       pointsAchieved: (input == props.correctAlt ? 1 : 0)
+      //pointsAchieved: (filterAnswer >= props.maxPoints ? 1 : 0)
     })
   }
- 
+
+  
   
 
 
