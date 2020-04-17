@@ -6,6 +6,7 @@ import ResultPage from '../result/ResultPage';
 import UsernameInput from '../questions/UsernameInput';
 import CopyText from '../questions/CopyText';
 import { Result, QuestionResult, Page, ExamState, Question } from '../Types';
+import NavBarBottom from 'components/NavBar-bottom';
 
 interface Props {
   state: ExamState;
@@ -100,6 +101,7 @@ const Examination: React.FC<Props> = props => {
       <div className='questionContainer'>
         {chooseQuestion(questions[currentQuestion])}
       </div>
+      <NavBarBottom/>
     </div>
   );
 };

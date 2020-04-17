@@ -3,6 +3,7 @@ import '../App.css';
 import './Question.css';
 import Button from '../components/Button';
 import avatar from './big-pink.png';
+import neste from './../icons/neste.png';
 
 interface Props {
   avatar: string | undefined;
@@ -55,12 +56,15 @@ const UsernameInput: React.FC<Props> = props => {
   // can be used if we want to make this return a result
   const [typed, setTyped] = useState(false);
 
+  /*
+  <div className='imageContainer'>
+        <img src={avatar} alt='Avatar' />
+      </div>*/
+  
   return (
     <div>
-      <div className='imageContainer'>
-        <img src={avatar} alt='Avatar' />
-      </div>
-      <h1 className='h1'>Mitt navn er</h1>
+      
+      <h1 className='h1'>Hva heter du?</h1>
       <form
         className='textAndBtn'
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
@@ -80,11 +84,15 @@ const UsernameInput: React.FC<Props> = props => {
           }}
           placeholder='Navn'
         />
-        <Button classNames='next' onClick={() => props.getUsername(input)}>
-          Neste
-        </Button>
-      </form>
+        </form>
       <p className='username'>{input}</p>
+
+
+        <div className='next-container' onClick={() => props.getUsername(input)}>
+          <img src={neste} alt="Neste" ></img>
+        </div>
+        
+      
     </div>
   );
 };
