@@ -29,10 +29,11 @@ export interface ExamState {
 export interface QuestionParams {
   avatar?: string;
   measures?: string;
+  feedback?: boolean;
   maxPoints?: number;
   text?: string;
   answerValues?: string[];
-  correctAlt?: string;
+  correctAlt?: string[];
 }
 
 export interface Question {

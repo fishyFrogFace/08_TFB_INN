@@ -46,6 +46,7 @@ const examExamples = {
       {
         q: 'copytext',
         params: {
+          feedback: true,
           text: 'A, b: C.',
           measures: 'Kan skrive av tekst',
           maxPoints: 6

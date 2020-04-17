@@ -31,8 +31,9 @@ const SeveralButton: React.FC<Props> = props => {
           :
           answerValues.push(value)
           }
+      }
     */
-    }
+    
     setInput(value); 
     console.log(value); 
   }
