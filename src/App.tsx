@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import FrontPage from 'frontpage/FrontPage';
 import Examination from 'examination/Examination';
 import { Page } from './Types';
 import { standardExamDefinition } from './examDefinition';
-
-interface State {
-  currentPage: Page;
-}
+import { connect } from 'react-redux';
+import { RootState } from 'redux/reducers';
+import { updateAppPage } from 'redux/actions';
 
 // Example data for examination blurbs
 const frontpageRepresentation = {
@@ -20,48 +19,32 @@ const frontpageRepresentation = {
   imageFilename: 'big-pink.png'
 };
 
-const standardExamState = {
-  instanceID: 0,
-  results: standardExamDefinition.subjects.map((subj) => {
-    return { subjectTitle: subj.name, results: [] };
-  })
-};
-
-const App: React.FC<{}> = () => {
-  const [currentPage, setCurrentPage] = useState(Page.FrontPage);
-  const [currentExamState, setCurrentExamState] = useState(standardExamState);
-
-  const changePage = (page: Page) => {
-    setCurrentPage(page);
-  };
-
-  const chooseExamination = (instanceID: number) => {
-    setCurrentExamState(standardExamState);
-    setCurrentPage(Page.Examination);
-  };
-
-  switch (currentPage) {
+const App: React.FC<PropsFromRedux> = props => {
+  switch (props.currentPage) {
     /* fetch available examinations from local storage (or backend API) and pass
        them to FrontPage */
     case Page.FrontPage:
-      return (
-        <FrontPage
-          availableExaminations={[frontpageRepresentation]}
-          chooseExamination={chooseExamination}
-        />
-      );
+      return <FrontPage availableExaminations={[frontpageRepresentation]} />;
 
     /* fetch questions and question props from local storage (or backend API)
        and pass them to Examination */
     case Page.Examination:
-      return (
-        <Examination
-          examState={currentExamState}
-          examDefinition={standardExamDefinition}
-          changePage={changePage}
-        />
-      );
+      return <Examination examDefinition={standardExamDefinition} />;
   }
 };
 
-export default App;
+// Redux related:
+
+const mapStateToProps = (store: RootState) => ({
+  currentPage: store.appPage
+});
+
+const mapToDispatch = {
+  updateAppPage
+};
+
+type PropsFromRedux = ReturnType<typeof mapStateToProps> & typeof mapToDispatch;
+
+const connector = connect(mapStateToProps, mapToDispatch);
+
+export default connector(App);
