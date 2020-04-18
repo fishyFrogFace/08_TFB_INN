@@ -24,9 +24,9 @@ context('Exit modal testing', () => {
 
     cy.get('.choice-title').should('be.visible');
 
-    cy.get('.exit-btn')
+    cy.get('.pause-btn')
       .first()
-      .should('contain', 'Avslutt');
+      .should('contain', 'Pause');
   });
 
   it('close button closes exit screen', () => {
@@ -54,7 +54,7 @@ context('Exit modal testing', () => {
   });
 
   it('exit button renders front page', () => {
-    cy.get('.exit-btn')
+    cy.get('.pause-btn')
       .first()
       .click();
 
