@@ -1,51 +1,59 @@
 import { combineReducers } from 'redux';
 import {
-  SubjectResultAction,
-  CurrentQuestionAction,
+  UpdateSubjectResultListAction,
   SetUsernameAction,
   UpdateExamPageAction,
-  UpdateCurrentSubjectAction
+  UpdateCurrentSubjectAction,
+  UpdateCurrentQuestionListAction,
+  UpdateAppPageAction
 } from './actions';
-import { SubjectResult, QuestionTemplate, ExamPage } from 'Types';
+import { SubjectResult, ExamPage, Page } from 'Types';
 import { standardExamDefinition } from 'examDefinition';
 
-const standardExamState = {
-  instanceID: 0,
-  results: standardExamDefinition.subjects.map((subj) => {
-    return { subjectTitle: subj.name, results: [] };
-  })
-};
+const initialAppPage = Page.FrontPage;
 
-const initialSubjectResult: SubjectResult = {
-  subjectTitle: 'tiss',
-  results: []
-};
-
-export const subjectResultReducer = (
-  state = initialSubjectResult,
-  action: SubjectResultAction
-): SubjectResult => {
+export const appPageReducer = (
+  state: Page = initialAppPage,
+  action: UpdateAppPageAction
+) => {
   switch (action.type) {
-    case 'startSubject':
-      return action.subjectResult;
-    case 'updateSubject':
-      return { ...state, results: action.results };
+    case 'updateAppPage':
+      return action.appPage;
+    default:
+      return state;
+  }
+};
+
+const initialSubjectResultList: SubjectResult[] = standardExamDefinition.subjects.map(
+  subj => {
+    return { subjectTitle: subj.name, results: [] };
+  }
+);
+
+export const subjectResultListReducer = (
+  state = initialSubjectResultList,
+  action: UpdateSubjectResultListAction
+): SubjectResult[] => {
+  switch (action.type) {
+    case 'updateSubjectResultList':
+      const newList = state
+        .filter(res => res.subjectTitle !== action.result.subjectTitle)
+        .concat(action.result);
+      return newList;
     default:
       return state;
   }
 };
 
 const initialCurrentQuestionList = standardExamDefinition.subjects.map(
-  (subj) => 0
+  subj => 0
 );
 
 export const currentQuestionListReducer = (
   state: number[] = initialCurrentQuestionList,
-  action: CurrentQuestionAction
+  action: UpdateCurrentQuestionListAction
 ): number[] => {
   switch (action.type) {
-    case 'initCurrentQuestionList':
-      return action.currentQuestionList;
     case 'updateCurrentQuestionList':
       const newList = [...state];
       newList[action.index] = action.currentQuestion;
@@ -97,12 +105,20 @@ export const currentSubjectReducer = (
   }
 };
 
-export const reducers = combineReducers({
-  subjectResult: subjectResultReducer,
+const reducers = combineReducers({
+  subjectResultList: subjectResultListReducer,
   currentQuestionList: currentQuestionListReducer,
   username: usernameReducer,
   examPage: examPageReducer,
-  currentSubject: currentSubjectReducer
+  currentSubject: currentSubjectReducer,
+  appPage: appPageReducer
 });
+
+export const rootReducer = (state, action) => {
+  if (action.type === 'resetApp') {
+    state = undefined;
+  }
+  return reducers(state, action);
+};
 
 export type RootState = ReturnType<typeof reducers>;
