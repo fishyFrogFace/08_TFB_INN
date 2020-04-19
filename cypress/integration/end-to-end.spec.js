@@ -178,19 +178,8 @@ context('End-to-end', () => {
       .should('be.visible');
   });
 
-  it('success screen 2 is clickable and returns to the overview', () => {
+  it('success screen 2 is clickable and renders result', () => {
     cy.get('.next')
-      .first()
-      .click();
-    
-    cy.get('.subject-btn')
-      .eq(1)
-      .should('contain', 'Tema 2');
-      
-  });
-
-  it('can go to results page from overview page', () => {
-    cy.get('.see-results')
       .first()
       .click();
 
