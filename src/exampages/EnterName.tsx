@@ -3,7 +3,7 @@ import '../App.css';
 import './Pages.css';
 import Button from '../components/Button';
 import { setUsername } from 'redux/actions';
-import { connectDispatch } from 'redux/util'
+import { connectDispatch } from 'redux/util';
 import avatar from './big-pink.png';
 
 interface Props extends PropsFromRedux {

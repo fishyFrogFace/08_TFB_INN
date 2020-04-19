@@ -1,7 +1,7 @@
 import React from 'react';
 import './ExaminationBlurb.css';
 import { updateAppPage } from 'redux/actions';
-import { connectDispatch } from 'redux/util'
+import { connectDispatch } from 'redux/util';
 import { Page } from 'Types';
 
 export interface ExamInfo {

@@ -30,18 +30,19 @@ interface Props extends PropsFromRedux {
 const Examination: React.FC<Props> = props => {
   const [lastPage, setLastPage] = useState(ExamPage.EnterName);
 
-  /* TODO find a better way to find currentQuestion, e.g. string,
-    since localStorage will return shifted results if the subject changes */
-  const subjectIndex = (subject: string) =>
+  const currentSubjectIndex = () =>
     props.examDefinition.subjects.findIndex(s => {
-      return s.name === subject;
+      return s.name === props.currentSubject;
     });
 
+  const currentQuestion = () =>
+    props.currentQuestionList[currentSubjectIndex()];
+
+  const currentSubject = () =>
+    props.examDefinition.subjects[currentSubjectIndex()];
+
   const updateCurrentQuestionsFunc = (currentQuestion: number) => {
-    props.updateCurrentQuestionList(
-      subjectIndex(props.currentSubject),
-      currentQuestion
-    );
+    props.updateCurrentQuestionList(currentSubjectIndex(), currentQuestion);
   };
 
   const changeExamPage = (page: ExamPage) => props.updateExamPage(page);
@@ -49,21 +50,24 @@ const Examination: React.FC<Props> = props => {
   const quitExam = () => {
     if ([ExamPage.Overview, ExamPage.EnterName].includes(lastPage)) {
       props.resetState();
+    } else if (
+      currentSubject().questions[currentQuestion()].templateID ===
+      QuestionTemplate.CompletedSubject
+    ) {
+      subjectOver();
     } else {
       props.updateExamPage(ExamPage.Overview);
     }
   };
 
   const subjectOver = () => {
-    const nextSubjectIdx = subjectIndex(props.currentSubject) + 1;
-    if (nextSubjectIdx >= props.examDefinition.subjects.length) {
-      props.updateExamPage(ExamPage.Overview);
-    } else {
+    const nextSubjectIdx = currentSubjectIndex() + 1;
+    if (nextSubjectIdx < props.examDefinition.subjects.length) {
       const newCurrentSubject =
         props.examDefinition.subjects[nextSubjectIdx].name;
       props.updateCurrentSubject(newCurrentSubject);
-      props.updateExamPage(ExamPage.Overview);
     }
+    props.updateExamPage(ExamPage.Overview);
   };
 
   // Function that determines if we are rendering a subject,
@@ -74,13 +78,9 @@ const Examination: React.FC<Props> = props => {
       case ExamPage.Subject:
         return (
           <Subject
-            subject={
-              props.examDefinition.subjects[subjectIndex(props.currentSubject)]
-            }
+            subject={currentSubject()}
             subjectOver={subjectOver}
-            currentQuestion={
-              props.currentQuestionList[subjectIndex(props.currentSubject)]
-            }
+            currentQuestion={currentQuestion()}
             updateCurrentQuestion={updateCurrentQuestionsFunc}
           />
         );
@@ -146,7 +146,9 @@ const Examination: React.FC<Props> = props => {
           if (![ExamPage.Exit, ExamPage.Pause].includes(props.examPage)) {
             setLastPage(props.examPage);
           }
-          if ([ExamPage.Overview, ExamPage.EnterName].includes(props.examPage)) {
+          if (
+            [ExamPage.Overview, ExamPage.EnterName].includes(props.examPage)
+          ) {
             changeExamPage(ExamPage.Exit);
           } else {
             changeExamPage(ExamPage.Pause);
