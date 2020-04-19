@@ -30,8 +30,8 @@ const Overview: React.FC<Props> = props => {
               key={i}
               classNames='subject-btn'
               onClick={() => {
-                props.updateCurrentSubject(subject.title)
-                props.startExam()
+                props.updateCurrentSubject(subject.title);
+                props.startExam();
               }}
               disabled={subject.completed === subject.total}>
               <h2 className='subjectTitle'>{subject.title}</h2>
