@@ -178,7 +178,17 @@ context('End-to-end', () => {
       .should('be.visible');
   });
 
-  it('success screen 2 is clickable and renders result', () => {
+  it('success screen 2 is clickable and renders overview', () => {
+    cy.get('.next')
+      .first()
+      .click();
+
+    cy.get('.subject-btn').each($el => {
+      cy.wrap($el).should('be.disabled');
+    });
+  });
+
+  it('overview button is clickable and renders result', () => {
     cy.get('.next')
       .first()
       .click();

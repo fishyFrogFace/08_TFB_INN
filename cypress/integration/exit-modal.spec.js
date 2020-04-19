@@ -26,7 +26,7 @@ context('Exit modal testing', () => {
 
     cy.get('.pause-btn')
       .first()
-      .should('contain', 'Pause');
+      .should('contain', 'Til oversikt');
   });
 
   it('close button closes exit screen', () => {
@@ -75,6 +75,30 @@ context('Exit modal testing', () => {
       .click();
 
     cy.get('.choice-title').should('not.be.visible');
+
+    cy.get('.examination-blurb')
+      .first()
+      .should('contain', 'Tittel');
+  });
+
+  it('has reloaded state after exit', () => {
+    cy.get('.examination-startbutton')
+      .first()
+      .click();
+
+    cy.get('.h1')
+      .first()
+      .should('contain', 'Mitt navn er');
+  });
+
+  it('prevents user from not setting an username', () => {
+    cy.get('.exit')
+      .first()
+      .click();
+
+    cy.get('.exit-btn')
+      .first()
+      .click();
 
     cy.get('.examination-blurb')
       .first()
