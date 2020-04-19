@@ -3,7 +3,7 @@ import '../App.css';
 import './Pages.css';
 import Button from '../components/Button';
 import CircularProgressBar from '../components/CircularProgressBar';
-import { updateExamPage } from 'redux/actions';
+import { updateExamPage, updateCurrentSubject } from 'redux/actions';
 import { connectDispatch } from 'redux/util';
 import { ExamPage } from 'Types';
 
@@ -29,8 +29,11 @@ const Overview: React.FC<Props> = props => {
             <Button
               key={i}
               classNames='subject-btn'
-              onClick={props.startExam}
-              disabled={props.currentSubject !== subject.title}>
+              onClick={() => {
+                props.updateCurrentSubject(subject.title)
+                props.startExam()
+              }}
+              disabled={subject.completed === subject.total}>
               <h2 className='subjectTitle'>{subject.title}</h2>
               <CircularProgressBar
                 completed={subject.completed}
@@ -52,7 +55,8 @@ const Overview: React.FC<Props> = props => {
 // Redux related:
 
 const mapToDispatch = {
-  updateExamPage
+  updateExamPage,
+  updateCurrentSubject
 };
 
 type PropsFromRedux = typeof mapToDispatch;
