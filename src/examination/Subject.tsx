@@ -4,35 +4,39 @@ import Start from '../questions/Start';
 import CopyText from '../questions/CopyText';
 import {
   QuestionResult,
+  Page,
   QuestionDefinition,
-  QuestionTemplate,
-  ExamState,
-  ExamPage
+  SubjectDefinition,
+  QuestionTemplate
 } from '../Types';
 import { connect } from 'react-redux';
 import { RootState } from 'redux/reducers';
-import { setQuestionResult, goToNextQuestion } from 'redux/actions';
+import { updateResults } from 'redux/actions';
+import CompletedSubject from 'exampages/CompletedSubject';
 
-interface Props extends ExamState {
-  setExamPage: (page: ExamPage) => void;
-  goToNextQuestion: () => void;
-  setQuestionResult: (subject: string, question: number, result: QuestionResult) => void;
+interface Props extends PropsFromRedux {
+  subject: SubjectDefinition;
+  currentQuestion: number;
+  changePage: (page: Page) => void;
+  subjectOver: () => void;
+  updateCurrentQuestion: (currentQuestion: number) => void;
 }
 
-const Subject: React.FC<Props> = ({ examDefinition, currentSubject, currentQuestion, goToNextQuestion, setQuestionResult }) => {
-  const currentSubjectDefinition = examDefinition.subjects.find(s => s.name === currentSubject);
-  if (currentSubjectDefinition === undefined) return (
-    <div>ERROR: SUBJECT DEFINITION UNDEFINED</div>
-  );
-
-  const updateResult = (qResult: QuestionResult) => {
-    setQuestionResult(currentSubject, currentQuestion, qResult);
-    goToNextQuestion();
+const Subject: React.FC<Props> = props => {
+  const nextSubject = () => {
+    props.subjectOver();
   };
 
-  const renderQuestion = (question: QuestionDefinition) => {
+  const updateResult = (qResult: QuestionResult) => {
+    const newResult = props.results.concat(qResult);
+    props.updateResults(newResult);
+    const incremented = props.currentQuestion + 1;
+    props.updateCurrentQuestion(incremented);
+  };
+
+  const chooseQuestion = (question: QuestionDefinition) => {
     switch (question.templateID) {
-      case QuestionTemplate.START:
+      case QuestionTemplate.Start:
         return (
           <Start
             resultTitle={question.questionContent.resultTitle!}
@@ -41,7 +45,7 @@ const Subject: React.FC<Props> = ({ examDefinition, currentSubject, currentQuest
           />
         );
 
-      case QuestionTemplate.COPYTEXT:
+      case QuestionTemplate.CopyText:
         return (
           <CopyText
             resultTitle={question.questionContent.resultTitle!}
@@ -50,30 +54,38 @@ const Subject: React.FC<Props> = ({ examDefinition, currentSubject, currentQuest
             updateResult={updateResult}
           />
         );
-      
-      default:
+
+      case QuestionTemplate.CompletedSubject:
         return (
-          <div>ERROR: UNRECOGNIZED TEMPLATE ID</div>
+          <CompletedSubject
+            subject={props.subject.name}
+            nextSubject={nextSubject}
+          />
         );
     }
   };
 
   return (
     <div className='questionContainer'>
-      {renderQuestion(currentSubjectDefinition.questions[currentQuestion])}
+      {chooseQuestion(props.subject.questions[props.currentQuestion])}
     </div>
   );
 };
 
-// Redux related:
 const mapStateToProps = (store: RootState) => ({
-  ...store.examState
+  subjectTitle: store.subjectResult.subjectTitle,
+  results: store.subjectResult.results
 });
-const mapDispatchToProps = (dispatch) => {
-  return {
-    goToNextQuestion: () => dispatch(goToNextQuestion()),
-    setQuestionResult: (subject: string, question: number, result: QuestionResult) => dispatch(setQuestionResult(subject, question, result))
-  };
-}
-const connector = connect(mapStateToProps, mapDispatchToProps);
+
+const mapToDispatch = {
+  updateResults
+};
+
+type PropsFromRedux = ReturnType<typeof mapStateToProps> & typeof mapToDispatch;
+
+const connector = connect(mapStateToProps, mapToDispatch);
+
+// Kvifor blir typen til connect any? Må vi sende mapToDispatch?
+// type PropsFromRedux = ConnectedProps<typeof connector>
+
 export default connector(Subject);

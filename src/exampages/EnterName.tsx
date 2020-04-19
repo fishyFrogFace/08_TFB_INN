@@ -2,15 +2,11 @@ import React, { useState } from 'react';
 import '../App.css';
 import './Pages.css';
 import Button from '../components/Button';
-import tempAvatar from './big-pink.png';
-import { connect } from 'react-redux';
-import { setUsername, setExamPage } from 'redux/actions';
-import { ExamPage } from '../Types';
+import avatar from './big-pink.png';
 
 interface Props {
   avatar: string;
-  setUsername: (username: string) => void;
-  setExamPage: (page: ExamPage) => void;
+  getUsername: (username: string) => void;
 }
 
 const adjectives = [
@@ -49,19 +45,14 @@ const randomName = (list1: any[], list2: any[]) => {
   return `${adjective}-${animal}`;
 };
 
-const EnterName: React.FC<Props> = ({ avatar, setUsername, setExamPage }) => {
+const EnterName: React.FC<Props> = props => {
   // set a randomly generated name that will be kept if user doesn't type anything
   const [input, setInput] = useState(randomName(adjectives, animals));
-
-  const submitUsername = (username) => {
-    setUsername(username);
-    setExamPage(ExamPage.OVERVIEW);
-  }
 
   return (
     <div className='questionContainer'>
       <div className='imageContainer'>
-        <img src={tempAvatar} alt='Avatar' />
+        <img src={avatar} alt='Avatar' />
       </div>
       <h1 className='h1'>Mitt navn er</h1>
       <form
@@ -81,7 +72,7 @@ const EnterName: React.FC<Props> = ({ avatar, setUsername, setExamPage }) => {
           }}
           placeholder='Navn'
         />
-        <Button classNames='next' onClick={() => submitUsername(input)}>
+        <Button classNames='next' onClick={() => props.getUsername(input)}>
           Neste
         </Button>
       </form>
@@ -90,12 +81,4 @@ const EnterName: React.FC<Props> = ({ avatar, setUsername, setExamPage }) => {
   );
 };
 
-// Redux related:
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setUsername: (username: string) => dispatch(setUsername(username)),
-    setExamPage: (page: ExamPage) => dispatch(setExamPage(page))
-  };
-}
-const connector = connect(null, mapDispatchToProps);
-export default connector(EnterName);
+export default EnterName;

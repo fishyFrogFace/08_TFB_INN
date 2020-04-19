@@ -26,7 +26,7 @@ context('Exit modal testing', () => {
 
     cy.get('.exit-btn')
       .first()
-      .should('contain', 'Til oversikt');
+      .should('contain', 'Avslutt');
   });
 
   it('close button closes exit screen', () => {
@@ -53,7 +53,7 @@ context('Exit modal testing', () => {
       .click();
   });
 
-  it('exit button renders overview page', () => {
+  it('exit button renders front page', () => {
     cy.get('.exit-btn')
       .first()
       .click();
