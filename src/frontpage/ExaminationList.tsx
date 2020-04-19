@@ -1,27 +1,22 @@
 import React from 'react';
 import ExaminationBlurb from './ExaminationBlurb';
 import './ExaminationList.css';
-import { ExamInfo, Page } from '../Types';
-import { connect } from 'react-redux';
-import { RootState } from 'redux/reducers';
-import { resetExamination, setAppPage } from '../redux/actions';
-
-// PROBABLY NEEDS UPDATING, IT IS NOT VERY MUCH IN LINE WITH OUR CURRENT APPLICATION DESIGN
+import { ExamInfo } from './ExaminationBlurb';
 
 interface Props {
-  availableExaminations: ExamInfo[];
+  examInfos: ExamInfo[]; // Array of objects containing info on available examinations
   chooseExamination: (instanceID: number) => void;
 }
 
-const ExaminationList: React.FC<Props> = ({availableExaminations, chooseExamination}) => {
+const ExaminationList: React.FC<Props> = props => {
   return (
     <div className='examination-list'>
-      {availableExaminations.map((examInfo, i) => {
+      {props.examInfos.map((examInfo, i) => {
         return (
           <ExaminationBlurb
             key={i}
             examInfo={examInfo}
-            chooseExamination={chooseExamination}
+            chooseExamination={props.chooseExamination}
           />
         );
       })}
@@ -29,17 +24,4 @@ const ExaminationList: React.FC<Props> = ({availableExaminations, chooseExaminat
   );
 };
 
-const mapStateToProps = (store : RootState) => ({
-  availableExaminations: store.appState.availableExaminations
-});
-const mapDispatchToProps = (dispatch) => {
-  return {
-    resetExamination: () => dispatch(resetExamination()),
-    chooseExamination: (instanceID: number) => {
-      dispatch(resetExamination())
-      dispatch(setAppPage(Page.EXAMINATION));
-    }
-  }
-}
-const connector = connect(mapStateToProps, mapDispatchToProps);
-export default connector(ExaminationList);
+export default ExaminationList;
