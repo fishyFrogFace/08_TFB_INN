@@ -20,7 +20,9 @@ const ResultPage: React.FC<PropsFromRedux> = props => {
   return (
     <div className='resultContainer'>
       <h1 className='h1'>Resultat for {props.username}</h1>
-      {props.results.filter(res => res.results.length !== 0).map((subject, i) => subjectResults(subject, i))}
+      {props.results
+        .filter(res => res.results.length !== 0)
+        .map((subject, i) => subjectResults(subject, i))}
     </div>
   );
 };
