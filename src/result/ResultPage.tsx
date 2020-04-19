@@ -5,10 +5,6 @@ import { SubjectResult } from '../Types';
 import { RootState } from 'redux/reducers';
 import { connect } from 'react-redux';
 
-interface Props extends PropsFromRedux {
-  result: SubjectResult[];
-}
-
 const subjectResults = (element: SubjectResult, i: number) => {
   return (
     <div key={i} className='subjectResult'>
@@ -20,11 +16,11 @@ const subjectResults = (element: SubjectResult, i: number) => {
   );
 };
 
-const ResultPage: React.FC<Props> = props => {
+const ResultPage: React.FC<PropsFromRedux> = props => {
   return (
     <div className='resultContainer'>
       <h1 className='h1'>Resultat for {props.username}</h1>
-      {props.result.map((subject, i) => subjectResults(subject, i))}
+      {props.results.filter(res => res.results.length !== 0).map((subject, i) => subjectResults(subject, i))}
     </div>
   );
 };
@@ -32,7 +28,8 @@ const ResultPage: React.FC<Props> = props => {
 // Redux related:
 
 const mapStateToProps = (store: RootState) => ({
-  username: store.username
+  username: store.username,
+  results: store.subjectResultList
 });
 
 type PropsFromRedux = ReturnType<typeof mapStateToProps>;

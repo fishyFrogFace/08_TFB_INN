@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import '../App.css';
 import './Pages.css';
 import Button from '../components/Button';
-import { connect } from 'react-redux';
 import { setUsername } from 'redux/actions';
+import { connectDispatch } from 'redux/util'
 import avatar from './big-pink.png';
 
 interface Props extends PropsFromRedux {
@@ -94,6 +94,6 @@ const mapToDispatch = dispatch => ({
 
 type PropsFromRedux = ReturnType<typeof mapToDispatch>;
 
-const connector = connect(null, mapToDispatch);
+const connector = connectDispatch(mapToDispatch);
 
 export default connector(EnterName);

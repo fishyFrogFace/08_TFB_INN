@@ -3,6 +3,9 @@ import '../App.css';
 import './Pages.css';
 import Button from '../components/Button';
 import CircularProgressBar from '../components/CircularProgressBar';
+import { updateExamPage } from 'redux/actions';
+import { connectDispatch } from 'redux/util';
+import { ExamPage } from 'Types';
 
 export interface SubjectCompletion {
   title: string;
@@ -10,7 +13,7 @@ export interface SubjectCompletion {
   total: number;
 }
 
-interface Props {
+interface Props extends PropsFromRedux {
   subjects: SubjectCompletion[];
   currentSubject: string;
   startExam: () => void;
@@ -37,8 +40,21 @@ const Overview: React.FC<Props> = props => {
           );
         })}
       </div>
+      <Button classNames='next' onClick={() => props.updateExamPage(ExamPage.Results)}>
+        Se resultater
+      </Button>
     </div>
   );
 };
 
-export default Overview;
+// Redux related:
+
+const mapToDispatch = {
+  updateExamPage
+};
+
+type PropsFromRedux = typeof mapToDispatch;
+
+const connector = connectDispatch(mapToDispatch);
+
+export default connector(Overview);
