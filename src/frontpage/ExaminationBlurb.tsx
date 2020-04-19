@@ -1,7 +1,7 @@
 import React from 'react';
 import './ExaminationBlurb.css';
-import { connect } from 'react-redux';
 import { updateAppPage } from 'redux/actions';
+import { connectDispatch } from 'redux/util'
 import { Page } from 'Types';
 
 export interface ExamInfo {
@@ -62,6 +62,6 @@ const mapToDispatch = {
 
 type PropsFromRedux = typeof mapToDispatch;
 
-const connector = connect(null, mapToDispatch);
+const connector = connectDispatch(mapToDispatch);
 
 export default connector(ExaminationBlurb);

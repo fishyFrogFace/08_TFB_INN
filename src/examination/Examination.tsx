@@ -57,7 +57,7 @@ const Examination: React.FC<Props> = props => {
   const subjectOver = () => {
     const nextSubjectIdx = subjectIndex(props.currentSubject) + 1;
     if (nextSubjectIdx >= props.examDefinition.subjects.length) {
-      props.updateExamPage(ExamPage.Results);
+      props.updateExamPage(ExamPage.Overview);
     } else {
       const newCurrentSubject =
         props.examDefinition.subjects[nextSubjectIdx].name;
@@ -129,7 +129,7 @@ const Examination: React.FC<Props> = props => {
             title='Pause kartlegging'
             body='Tilbake til din oversikt?'
             btnClass='pause-btn'
-            btnText='Pause'
+            btnText='Til oversikt'
           />
         );
 
