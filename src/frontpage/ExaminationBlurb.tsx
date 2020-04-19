@@ -1,5 +1,8 @@
 import React from 'react';
 import './ExaminationBlurb.css';
+import { updateAppPage } from 'redux/actions';
+import { connectDispatch } from 'redux/util';
+import { Page } from 'Types';
 
 export interface ExamInfo {
   instanceID: number;
@@ -8,9 +11,8 @@ export interface ExamInfo {
   imageFilename: string;
 }
 
-interface Props {
+interface Props extends PropsFromRedux {
   examInfo: ExamInfo;
-  chooseExamination: (instanceID: number) => void;
 }
 
 const ExaminationBlurb: React.FC<Props> = props => {
@@ -45,11 +47,21 @@ const ExaminationBlurb: React.FC<Props> = props => {
       <p className='blurb-description'>{props.examInfo.description}</p>
       <button
         className='examination-startbutton'
-        onClick={() => props.chooseExamination(props.examInfo.instanceID)}>
+        onClick={() => props.updateAppPage(Page.Examination)}>
         Start
       </button>
     </div>
   );
 };
 
-export default ExaminationBlurb;
+// Redux related:
+
+const mapToDispatch = {
+  updateAppPage
+};
+
+type PropsFromRedux = typeof mapToDispatch;
+
+const connector = connectDispatch(mapToDispatch);
+
+export default connector(ExaminationBlurb);

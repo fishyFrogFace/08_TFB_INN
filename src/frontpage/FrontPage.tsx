@@ -6,17 +6,13 @@ import { ExamInfo } from './ExaminationBlurb';
 
 interface Props {
   availableExaminations: ExamInfo[];
-  chooseExamination: (instanceID: number) => void;
 }
 
 const FrontPage: React.FC<Props> = props => {
   return (
     <div className='main'>
       <div className='questionContainer'>
-        <ExaminationList
-          examInfos={props.availableExaminations}
-          chooseExamination={props.chooseExamination}
-        />
+        <ExaminationList examInfos={props.availableExaminations} />
       </div>
     </div>
   );

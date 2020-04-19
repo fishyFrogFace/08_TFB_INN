@@ -2,11 +2,8 @@ import React from 'react';
 import './ResultPage.css';
 import ProgressBar from 'components/ProgressBar';
 import { SubjectResult } from '../Types';
-
-interface Props {
-  username: string;
-  result: SubjectResult[];
-}
+import { RootState } from 'redux/reducers';
+import { connect } from 'react-redux';
 
 const subjectResults = (element: SubjectResult, i: number) => {
   return (
@@ -19,13 +16,26 @@ const subjectResults = (element: SubjectResult, i: number) => {
   );
 };
 
-const ResultPage: React.FC<Props> = props => {
+const ResultPage: React.FC<PropsFromRedux> = props => {
   return (
     <div className='resultContainer'>
       <h1 className='h1'>Resultat for {props.username}</h1>
-      {props.result.map((subject, i) => subjectResults(subject, i))}
+      {props.results
+        .filter(res => res.results.length !== 0)
+        .map((subject, i) => subjectResults(subject, i))}
     </div>
   );
 };
 
-export default ResultPage;
+// Redux related:
+
+const mapStateToProps = (store: RootState) => ({
+  username: store.username,
+  results: store.subjectResultList
+});
+
+type PropsFromRedux = ReturnType<typeof mapStateToProps>;
+
+const connector = connect(mapStateToProps);
+
+export default connector(ResultPage);

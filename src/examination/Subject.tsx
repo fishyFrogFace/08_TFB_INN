@@ -4,20 +4,18 @@ import Start from '../questions/Start';
 import CopyText from '../questions/CopyText';
 import {
   QuestionResult,
-  Page,
   QuestionDefinition,
   SubjectDefinition,
   QuestionTemplate
 } from '../Types';
 import { connect } from 'react-redux';
 import { RootState } from 'redux/reducers';
-import { updateResults } from 'redux/actions';
+import { updateSubjectResultList, updateAppPage } from 'redux/actions';
 import CompletedSubject from 'exampages/CompletedSubject';
 
 interface Props extends PropsFromRedux {
   subject: SubjectDefinition;
   currentQuestion: number;
-  changePage: (page: Page) => void;
   subjectOver: () => void;
   updateCurrentQuestion: (currentQuestion: number) => void;
 }
@@ -28,8 +26,11 @@ const Subject: React.FC<Props> = props => {
   };
 
   const updateResult = (qResult: QuestionResult) => {
-    const newResult = props.results.concat(qResult);
-    props.updateResults(newResult);
+    const newQuestionList = props.currentSubjectResult.results.concat(qResult);
+    props.updateSubjectResultList({
+      subjectTitle: props.currentSubjectResult.subjectTitle,
+      results: newQuestionList
+    });
     const incremented = props.currentQuestion + 1;
     props.updateCurrentQuestion(incremented);
   };
@@ -73,19 +74,18 @@ const Subject: React.FC<Props> = props => {
 };
 
 const mapStateToProps = (store: RootState) => ({
-  subjectTitle: store.subjectResult.subjectTitle,
-  results: store.subjectResult.results
+  currentSubjectResult: store.subjectResultList.find(
+    res => res.subjectTitle === store.currentSubject
+  )!
 });
 
 const mapToDispatch = {
-  updateResults
+  updateSubjectResultList,
+  updateAppPage
 };
 
 type PropsFromRedux = ReturnType<typeof mapStateToProps> & typeof mapToDispatch;
 
 const connector = connect(mapStateToProps, mapToDispatch);
-
-// Kvifor blir typen til connect any? Må vi sende mapToDispatch?
-// type PropsFromRedux = ConnectedProps<typeof connector>
 
 export default connector(Subject);
