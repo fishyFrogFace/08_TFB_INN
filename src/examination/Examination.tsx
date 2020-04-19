@@ -47,7 +47,7 @@ const Examination: React.FC<Props> = props => {
   const changeExamPage = (page: ExamPage) => props.updateExamPage(page);
 
   const quitExam = () => {
-    if (lastPage === ExamPage.Overview) {
+    if ([ExamPage.Overview, ExamPage.EnterName].includes(lastPage)) {
       props.resetState();
     } else {
       props.updateExamPage(ExamPage.Overview);
@@ -146,7 +146,7 @@ const Examination: React.FC<Props> = props => {
           if (![ExamPage.Exit, ExamPage.Pause].includes(props.examPage)) {
             setLastPage(props.examPage);
           }
-          if (props.examPage === ExamPage.Overview) {
+          if ([ExamPage.Overview, ExamPage.EnterName].includes(props.examPage)) {
             changeExamPage(ExamPage.Exit);
           } else {
             changeExamPage(ExamPage.Pause);
