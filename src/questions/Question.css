@@ -15,3 +15,8 @@
 .red {
   color: red;
 }
+
+.whereInPictureImg {
+  width: 50vw;
+  max-height: 80vh;
+}

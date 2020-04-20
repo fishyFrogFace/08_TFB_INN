@@ -23,6 +23,16 @@ export const standardExamDefinition = {
           }
         },
         {
+          name: 'Find charger input',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Klikk på laderinngangen',
+            imageInformation: {image: require('./images/phone-charger.jpeg'), min: {x: 950, y: 593}, max: {x: 1035, y: 627}},
+            resultTitle: 'Kan finne ladeinngang på mobiltelefon',
+            maxPoints: 6
+          }
+        },
+        {
           name: 'Completed subject',
           templateID: QuestionTemplate.CompletedSubject,
           questionContent: {}
