@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import { RootState } from 'redux/reducers';
 import { updateSubjectResultList, updateAppPage } from 'redux/actions';
 import CompletedSubject from 'exampages/CompletedSubject';
+import WhereInPicture from 'questions/WhereInPicture';
 
 interface Props extends PropsFromRedux {
   subject: SubjectDefinition;
@@ -50,6 +51,17 @@ const Subject: React.FC<Props> = props => {
         return (
           <CopyText
             resultTitle={question.questionContent.resultTitle!}
+            maxPoints={question.questionContent.maxPoints!}
+            text={question.questionContent.text!}
+            updateResult={updateResult}
+          />
+        );
+
+      case QuestionTemplate.WhereInPicture:
+        return (
+          <WhereInPicture
+            resultTitle={question.questionContent.resultTitle!}
+            imageInformation={question.questionContent.imageInformation!}
             maxPoints={question.questionContent.maxPoints!}
             text={question.questionContent.text!}
             updateResult={updateResult}
