@@ -56,6 +56,7 @@ const SeveralButton: React.FC<Props> = props => {
       measures: props.measures,
       pointsAchieved: (input == props.correctAlt ? 1 : 0)
       //pointsAchieved: (filterAnswer >= props.maxPoints ? 1 : 0)
+      //answervalues: ...
     })
   }
 
