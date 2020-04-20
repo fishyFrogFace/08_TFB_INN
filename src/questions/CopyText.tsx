@@ -56,7 +56,7 @@ const CopyText: React.FC<Props> = props => {
           placeholder={props.text}
         />
         <Button classNames='next' onClick={() => checkInput(input)}>
-          Neste
+          {(clickedWhileCorrect) ? 'Neste' : 'Svar'}
         </Button>
       </form>
     </div>
