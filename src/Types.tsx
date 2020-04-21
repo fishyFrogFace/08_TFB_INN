@@ -52,6 +52,7 @@ export interface ImageInformation {
   min: Position;
   max: Position;
   image: string;
+  imageWithIndicator: string;
 }
 
 export interface QuestionContent {
