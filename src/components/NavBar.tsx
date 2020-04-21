@@ -1,7 +1,7 @@
 import React from 'react';
 import './NavBar.css';
 import Button from './Button';
-import exit from './exit.svg';
+import exit from '../images/exit.svg';
 
 interface Props {
   showChoice: () => void;
