@@ -1,5 +1,18 @@
 import { QuestionTemplate } from 'Types';
 
+/*
+      {
+        q:'severalbuttons',
+        params: {
+          text: 'hvilken farge liker du best?',
+          measures: 'velg et alternativ',
+          maxPoints: 1,
+          answerValues: ["grønn", "gul", "blå", "rød"],
+          correctAlt: "blå"
+        }
+      }
+      */
+
 export const standardExamDefinition = {
   subjects: [
     {

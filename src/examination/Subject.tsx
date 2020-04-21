@@ -13,6 +13,7 @@ import { RootState } from 'redux/reducers';
 import { updateSubjectResultList, updateAppPage } from 'redux/actions';
 import CompletedSubject from 'exampages/CompletedSubject';
 import WhereInPicture from 'questions/WhereInPicture';
+import SeveralButtons from 'questions/SeveralButtons';
 
 interface Props extends PropsFromRedux {
   subject: SubjectDefinition;
@@ -62,6 +63,18 @@ const Subject: React.FC<Props> = props => {
           <WhereInPicture
             resultTitle={question.questionContent.resultTitle!}
             imageInformation={question.questionContent.imageInformation!}
+            maxPoints={question.questionContent.maxPoints!}
+            text={question.questionContent.text!}
+            updateResult={updateResult}
+          />
+        );
+
+      case QuestionTemplate.SeveralButtons:
+        return (
+          <SeveralButtons
+            answerValues={question.questionContent.answerValues!}
+            correctAlt={question.questionContent.correctAlt!}
+            resultTitle={question.questionContent.resultTitle!}
             maxPoints={question.questionContent.maxPoints!}
             text={question.questionContent.text!}
             updateResult={updateResult}
