@@ -16,19 +16,24 @@ const CopyText: React.FC<Props> = props => {
   const [input, setInput] = useState('');
   const [points, setPoints] = useState(props.maxPoints);
   const [color, setColor] = useState('black');
+  const [clickedWhileCorrect, setClickedWhileCorrect] = useState(false);
 
   const checkInput = (value: string) => {
-    if (value === props.text) {
-      setColor('green');
+    if (clickedWhileCorrect) {
       props.updateResult({
         maxPoints: props.maxPoints,
         resultTitle: props.resultTitle,
         pointsAchieved: points
       });
     } else {
-      const newPoints = points > 0 ? points - 1 : 0;
-      setPoints(newPoints);
-      setColor('red');
+      if (value === props.text) {
+        setColor('green');
+        setClickedWhileCorrect(true);
+      } else {
+        const newPoints = points > 0 ? points - 1 : 0;
+        setPoints(newPoints);
+        setColor('red');
+      }
     }
   };
 
@@ -51,7 +56,7 @@ const CopyText: React.FC<Props> = props => {
           placeholder={props.text}
         />
         <Button classNames='next' onClick={() => checkInput(input)}>
-          Neste
+          {clickedWhileCorrect ? 'Neste' : 'Svar'}
         </Button>
       </form>
     </div>

@@ -88,7 +88,7 @@ context('End-to-end', () => {
       .should('be.visible');
   });
 
-  it('copytext button is clickable and renders success screen', () => {
+  it('copytext button is clickable and renders where in image', () => {
     cy.get('.inputField')
       .first()
       .type('A, b: C');
@@ -101,6 +101,44 @@ context('End-to-end', () => {
       .first()
       .type('.');
 
+    cy.get('.next')
+      .first()
+      .click();
+
+    cy.get('.next')
+      .first()
+      .click();
+
+    cy.get('.h1')
+      .first()
+      .should('contain', 'Klikk på laderinngangen');
+  });
+
+  it('where in image contains a navigation menu', () => {
+    cy.get('.navBar')
+      .first()
+      .should('be.visible');
+  });
+
+  it('next button is not visible unless you click on the correct spot', () => {
+    cy.get('.whereInPictureImg')
+      .first()
+      .click(50, 50);
+
+    cy.get('.next')
+      .first()
+      .should('not.be.visible');
+
+    cy.get('.whereInPictureImg')
+      .first()
+      .click(351, 262);
+
+    cy.get('.next')
+      .first()
+      .should('be.visible');
+  });
+
+  it('where in image button is clickable and renders success screen', () => {
     cy.get('.next')
       .first()
       .click();
@@ -167,6 +205,10 @@ context('End-to-end', () => {
       .first()
       .click();
 
+    cy.get('.next')
+      .first()
+      .click();
+
     cy.get('.h1')
       .first()
       .should('contain', 'Du har fullført Tema 2!');
@@ -200,7 +242,7 @@ context('End-to-end', () => {
   });
 
   it('result reflects what the user achieved', () => {
-    const width = ['400px', '333.328125px', '400px', '400px'];
+    const width = ['400px', '333.328125px', '333.328125px', '400px', '400px'];
     cy.get('.filler').each(($el, i) => {
       cy.wrap($el).should('have.css', 'width', width[i]);
     });

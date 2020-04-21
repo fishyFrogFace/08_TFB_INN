@@ -17,6 +17,7 @@ export enum ExamPage {
 export enum QuestionTemplate {
   Start,
   CopyText,
+  WhereInPicture,
   CompletedSubject
 }
 
@@ -42,11 +43,24 @@ export interface ExamState {
   username: string;
 }
 
+export interface Position {
+  x: number;
+  y: number;
+}
+
+export interface ImageInformation {
+  min: Position;
+  max: Position;
+  image: string;
+  imageWithIndicator: string;
+}
+
 export interface QuestionContent {
   avatar?: string;
   resultTitle?: string;
   maxPoints?: number;
   text?: string;
+  imageInformation?: ImageInformation;
 }
 
 export interface QuestionDefinition {
