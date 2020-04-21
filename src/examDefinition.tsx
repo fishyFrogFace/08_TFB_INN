@@ -27,7 +27,11 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.WhereInPicture,
           questionContent: {
             text: 'Klikk på laderinngangen',
-            imageInformation: {image: require('./images/phone-charger.jpeg'), min: {x: 950, y: 593}, max: {x: 1035, y: 627}},
+            imageInformation: {
+              image: require('./images/phone-charger.jpeg'),
+              min: { x: 350, y: 237 },
+              max: { x: 410, y: 264 }
+            },
             resultTitle: 'Kan finne ladeinngang på mobiltelefon',
             maxPoints: 6
           }

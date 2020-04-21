@@ -16,7 +16,7 @@ const CopyText: React.FC<Props> = props => {
   const [input, setInput] = useState('');
   const [points, setPoints] = useState(props.maxPoints);
   const [color, setColor] = useState('black');
-  const [clickedWhileCorrect, setClickedWhileCorrect] = useState(false)
+  const [clickedWhileCorrect, setClickedWhileCorrect] = useState(false);
 
   const checkInput = (value: string) => {
     if (clickedWhileCorrect) {
@@ -56,7 +56,7 @@ const CopyText: React.FC<Props> = props => {
           placeholder={props.text}
         />
         <Button classNames='next' onClick={() => checkInput(input)}>
-          {(clickedWhileCorrect) ? 'Neste' : 'Svar'}
+          {clickedWhileCorrect ? 'Neste' : 'Svar'}
         </Button>
       </form>
     </div>
