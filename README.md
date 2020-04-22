@@ -58,5 +58,5 @@ The GitHub contribution guidelines can be found in the Wiki.
 ## Code formatting
 ```
 prettier .prettier.config.js --write './**/*.js'
-prettier .prettier.config.js --write './**/*.tsx'
+prettier .prettier.config.js --write './**/*.tsx' 
 ```
