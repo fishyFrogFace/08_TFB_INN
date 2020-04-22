@@ -4,6 +4,8 @@ import phone from '../images/phone.svg';
 import tablet from '../images/tablet.svg';
 import laptop from '../images/laptop.svg';
 import Button from '../components/Button';
+import { setUnits } from 'redux/actions';
+import { connectDispatch } from 'redux/util';
 
 const units = [
   { image: phone, description: 'Phone' },
@@ -11,7 +13,7 @@ const units = [
   { image: tablet, description: 'Tablet' }
 ];
 
-const WhatUnits: React.FC<{}> = () => {
+const WhatUnits: React.FC<PropsFromRedux> = props => {
   const [selectedButtons, setSelectedButtons] = useState<number[]>([]);
 
   const updateAnswer = (value: number) => {
@@ -21,8 +23,6 @@ const WhatUnits: React.FC<{}> = () => {
       setSelectedButtons(selectedButtons.filter(element => element !== value));
     }
   };
-
-  const returnResult = () => {};
 
   return (
     <div>
@@ -38,7 +38,7 @@ const WhatUnits: React.FC<{}> = () => {
         ))}
       </div>
       <div>
-        <Button classNames='next' onClick={returnResult}>
+        <Button classNames='next' onClick={() => props.setUnits(selectedButtons.map(i => units[i].description))}>
           Neste
         </Button>
       </div>
@@ -46,4 +46,14 @@ const WhatUnits: React.FC<{}> = () => {
   );
 };
 
-export default WhatUnits;
+// Redux related:
+
+const mapToDispatch = dispatch => ({
+  setUnits: units => setUnits(dispatch, units)
+});
+
+type PropsFromRedux = ReturnType<typeof mapToDispatch>;
+
+const connector = connectDispatch(mapToDispatch);
+
+export default connector(WhatUnits);

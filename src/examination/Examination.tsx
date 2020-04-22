@@ -151,7 +151,7 @@ const Examination: React.FC<Props> = props => {
             setLastPage(props.examPage);
           }
           if (
-            [ExamPage.Overview, ExamPage.EnterName].includes(props.examPage)
+            [ExamPage.Overview, ExamPage.EnterName, ExamPage.WhatUnits].includes(props.examPage)
           ) {
             changeExamPage(ExamPage.Exit);
           } else {
