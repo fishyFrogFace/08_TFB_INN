@@ -135,9 +135,7 @@ const Examination: React.FC<Props> = props => {
         );
 
       case ExamPage.WhatUnits:
-        return (
-          <WhatUnits />
-        );
+        return <WhatUnits />;
 
       case ExamPage.Results:
         // TODO let App know the examination is over
