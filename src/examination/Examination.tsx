@@ -21,6 +21,7 @@ import {
 } from 'redux/actions';
 import Overview from 'exampages/Overview';
 import Choice from 'exampages/Choice';
+import WhatUnits from 'exampages/WhatUnits';
 
 interface Props extends PropsFromRedux {
   examState: ExamState;
@@ -130,6 +131,18 @@ const Examination: React.FC<Props> = props => {
             body='Tilbake til din oversikt?'
             btnClass='pause-btn'
             btnText='Til oversikt'
+          />
+        );
+
+      case ExamPage.WhatUnits:
+        return (
+          <WhatUnits
+            answerValues={[
+              require('../images/phone.svg'),
+              require('../images/laptop.svg'),
+              require('../images/tablet.svg')
+            ]}
+            text='Hvilke enheter har du?'
           />
         );
 
