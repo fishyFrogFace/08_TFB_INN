@@ -43,3 +43,11 @@
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+
+.selected:hover {
+  background-color: #03627c;
+}
+
+.selected {
+  background-color: #1da598;
+}
