@@ -22,7 +22,7 @@ const Start: React.FC<Props> = props => {
           maxPoints: props.maxPoints,
           pointsAchieved: props.maxPoints,
           mastered: true,
-          answerValues: [],
+          answerValues: []
         })
       }>
       Start

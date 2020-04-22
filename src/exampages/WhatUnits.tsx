@@ -36,7 +36,9 @@ const WhatUnits: React.FC<PropsFromRedux> = props => {
               onClick={() => updateAnswer(i)}>
               <img src={item.image} alt='' />
             </Button>
-            <h2 className='h2'>{item.description}</h2>
+            <h2 className='h2' key={i}>
+              {item.description}
+            </h2>
           </div>
         ))}
       </div>
