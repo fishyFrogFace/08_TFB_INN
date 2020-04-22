@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../App.css';
 import './Question.css';
 import Button from '../components/Button';
-import { QuestionResult } from '../Types';
+import { QuestionResult, QuestionResultType } from '../Types';
 
 interface Props {
   text: string; //hva det blir spurt om
@@ -28,6 +28,9 @@ const MultipleButtons: React.FC<Props> = props => {
 
   const returnResult = () => {
     props.updateResult({
+      mastered: true,
+      answerValues: [],
+      type: QuestionResultType.Mastery,
       maxPoints: props.maxPoints,
       resultTitle: props.resultTitle,
       pointsAchieved: 0 //TODO Fikses senere
