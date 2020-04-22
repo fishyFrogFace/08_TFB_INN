@@ -28,8 +28,16 @@ export interface SubjectResult {
 
 export interface QuestionResult {
   resultTitle: string;
+  type: QuestionResultType;
   maxPoints: number;
   pointsAchieved: number;
+  mastered: boolean;
+  answerValues: string[];
+}
+
+export enum QuestionResultType {
+  Mastery,
+  Other
 }
 
 /* the list of pages will get passed to the examination by App.tsx
