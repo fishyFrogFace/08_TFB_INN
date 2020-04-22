@@ -18,7 +18,9 @@ export enum QuestionTemplate {
   Start,
   CopyText,
   WhereInPicture,
-  CompletedSubject
+  CompletedSubject,
+  TextInput,
+  LogIn
 }
 
 export interface SubjectResult {

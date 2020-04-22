@@ -45,7 +45,7 @@ export const standardExamDefinition = {
       ]
     },
     {
-      name: 'Tema 2',
+      name: 'Passord og innlogging',
       questions: [
         {
           name: 'Start button',
