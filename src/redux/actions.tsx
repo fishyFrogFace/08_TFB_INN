@@ -42,10 +42,23 @@ export interface SetUsernameAction {
 }
 
 export const setUsername = (dispatch: Dispatch<any>, username: string) => {
-  dispatch(updateExamPage(ExamPage.Overview));
+  dispatch(updateExamPage(ExamPage.WhatUnits));
   dispatch({
     type: 'setUsername',
     username
+  });
+};
+
+export interface SetUnitsAction {
+  type: 'setUnits';
+  units: string[];
+}
+
+export const setUnits = (dispatch: Dispatch<any>, units: string[]) => {
+  dispatch(updateExamPage(ExamPage.Overview));
+  dispatch({
+    type: 'setUnits',
+    units
   });
 };
 

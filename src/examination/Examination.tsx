@@ -21,6 +21,7 @@ import {
 } from 'redux/actions';
 import Overview from 'exampages/Overview';
 import Choice from 'exampages/Choice';
+import WhatUnits from 'exampages/WhatUnits';
 
 interface Props extends PropsFromRedux {
   examState: ExamState;
@@ -48,7 +49,11 @@ const Examination: React.FC<Props> = props => {
   const changeExamPage = (page: ExamPage) => props.updateExamPage(page);
 
   const quitExam = () => {
-    if ([ExamPage.Overview, ExamPage.EnterName].includes(lastPage)) {
+    if (
+      [ExamPage.Overview, ExamPage.EnterName, ExamPage.WhatUnits].includes(
+        lastPage
+      )
+    ) {
       props.resetState();
     } else if (
       currentSubject().questions[currentQuestion()].templateID ===
@@ -133,6 +138,9 @@ const Examination: React.FC<Props> = props => {
           />
         );
 
+      case ExamPage.WhatUnits:
+        return <WhatUnits />;
+
       case ExamPage.Results:
         // TODO let App know the examination is over
         return <ResultPage result={props.subjectResultList} />;
@@ -147,7 +155,11 @@ const Examination: React.FC<Props> = props => {
             setLastPage(props.examPage);
           }
           if (
-            [ExamPage.Overview, ExamPage.EnterName].includes(props.examPage)
+            [
+              ExamPage.Overview,
+              ExamPage.EnterName,
+              ExamPage.WhatUnits
+            ].includes(props.examPage)
           ) {
             changeExamPage(ExamPage.Exit);
           } else {

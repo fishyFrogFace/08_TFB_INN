@@ -20,6 +20,9 @@ const ResultPage: React.FC<PropsFromRedux> = props => {
   return (
     <div className='resultContainer'>
       <h1 className='h1'>Resultat for {props.username}</h1>
+      <h2 className='h2'>
+        Har følgende enheter: {props.units.length === 0 ? 'Ingen' : props.units}
+      </h2>
       {props.results
         .filter(res => res.results.length !== 0)
         .map((subject, i) => subjectResults(subject, i))}
@@ -29,10 +32,15 @@ const ResultPage: React.FC<PropsFromRedux> = props => {
 
 // Redux related:
 
-const mapStateToProps = (store: RootState) => ({
-  username: store.username,
-  results: store.subjectResultList
-});
+const mapStateToProps = (store: RootState) => {
+  const joined = store.units.join(', ');
+
+  return {
+    username: store.username,
+    units: joined[0].toUpperCase() + joined.slice(1),
+    results: store.subjectResultList
+  };
+};
 
 type PropsFromRedux = ReturnType<typeof mapStateToProps>;
 
