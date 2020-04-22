@@ -69,9 +69,9 @@ const Subject: React.FC<Props> = props => {
           />
         );
 
-        case QuestionTemplate.MultipleButtons:
-          return (
-            <MultipleButtons
+      case QuestionTemplate.MultipleButtons:
+        return (
+          <MultipleButtons
             answerValues={question.questionContent.answerValues!}
             isImage={question.questionContent.isImage!}
             resultTitle={question.questionContent.resultTitle!}
@@ -79,7 +79,7 @@ const Subject: React.FC<Props> = props => {
             text={question.questionContent.text!}
             correctAlt={question.questionContent.correctAlt!}
             updateResult={updateResult}
-            />
+          />
         );
 
       case QuestionTemplate.CompletedSubject:
