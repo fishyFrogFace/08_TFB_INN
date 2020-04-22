@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import '../App.css';
+import phone from '../images/phone.svg'
+import tablet from '../images/tablet.svg'
+import laptop from '../images/laptop.svg'
 import Button from '../components/Button';
 
-interface Props {
-  text: string;
-  answerValues: string[];
-}
+const units = [
+  {image: phone, description: 'Phone'},
+  {image: laptop, description: 'Laptop'},
+  {image: tablet, description: 'Tablet'}
+]
 
-const WhatUnits: React.FC<Props> = props => {
+const WhatUnits: React.FC<{}> = () => {
   const [selectedButtons, setSelectedButtons] = useState<number[]>([]);
 
   const updateAnswer = (value: number) => {
@@ -18,18 +22,20 @@ const WhatUnits: React.FC<Props> = props => {
     }
   };
 
-  const returnResult = () => {};
+  const returnResult = () => {
+    
+  };
 
   return (
     <div>
-      <h1 className='h1'>{props.text}</h1>
+      <h1 className='h1'>Hvilke enheter har du?</h1>
       <div className='buttoncontainer'>
-        {props.answerValues.map((item, i) => (
+        {units.map((item, i) => (
           <Button
             key={i}
             classNames={selectedButtons.includes(i) ? 'selected' : ''}
             onClick={() => updateAnswer(i)}>
-            <img src={item} alt='' />
+            <img src={item.image} alt='' />
           </Button>
         ))}
       </div>

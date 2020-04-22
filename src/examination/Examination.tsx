@@ -136,14 +136,7 @@ const Examination: React.FC<Props> = props => {
 
       case ExamPage.WhatUnits:
         return (
-          <WhatUnits
-            answerValues={[
-              require('../images/phone.svg'),
-              require('../images/laptop.svg'),
-              require('../images/tablet.svg')
-            ]}
-            text='Hvilke enheter har du?'
-          />
+          <WhatUnits />
         );
 
       case ExamPage.Results:
