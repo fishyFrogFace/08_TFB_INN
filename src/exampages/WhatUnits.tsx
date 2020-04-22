@@ -8,9 +8,9 @@ import { setUnits } from 'redux/actions';
 import { connectDispatch } from 'redux/util';
 
 const units = [
-  { image: phone, description: 'Phone' },
+  { image: phone, description: 'Smarttelefon' },
   { image: laptop, description: 'Laptop' },
-  { image: tablet, description: 'Tablet' }
+  { image: tablet, description: 'Nettbrett' }
 ];
 
 const WhatUnits: React.FC<PropsFromRedux> = props => {
@@ -25,20 +25,27 @@ const WhatUnits: React.FC<PropsFromRedux> = props => {
   };
 
   return (
-    <div>
+    <div className='questionContainer'>
       <h1 className='h1'>Hvilke enheter har du?</h1>
       <div className='buttoncontainer'>
         {units.map((item, i) => (
-          <Button
-            key={i}
-            classNames={selectedButtons.includes(i) ? 'selected' : ''}
-            onClick={() => updateAnswer(i)}>
-            <img src={item.image} alt='' />
-          </Button>
+          <div className='imageWithDescription'>
+            <Button
+              key={i}
+              classNames={selectedButtons.includes(i) ? 'selected' : ''}
+              onClick={() => updateAnswer(i)}>
+              <img src={item.image} alt='' />
+            </Button>
+            <h2 className='h2'>{item.description}</h2>
+          </div>
         ))}
       </div>
       <div>
-        <Button classNames='next' onClick={() => props.setUnits(selectedButtons.map(i => units[i].description))}>
+        <Button
+          classNames='next'
+          onClick={() =>
+            props.setUnits(selectedButtons.map(i => units[i].description))
+          }>
           Neste
         </Button>
       </div>

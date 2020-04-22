@@ -124,6 +124,7 @@ const reducers = combineReducers({
   subjectResultList: subjectResultListReducer,
   currentQuestionList: currentQuestionListReducer,
   username: usernameReducer,
+  units: unitsReducer,
   examPage: examPageReducer,
   currentSubject: currentSubjectReducer,
   appPage: appPageReducer

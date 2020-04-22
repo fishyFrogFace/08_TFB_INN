@@ -20,6 +20,7 @@ const ResultPage: React.FC<PropsFromRedux> = props => {
   return (
     <div className='resultContainer'>
       <h1 className='h1'>Resultat for {props.username}</h1>
+      <h2 className='h2'>Har følgende enheter: {props.units.join(', ')}</h2>
       {props.results
         .filter(res => res.results.length !== 0)
         .map((subject, i) => subjectResults(subject, i))}
@@ -31,6 +32,7 @@ const ResultPage: React.FC<PropsFromRedux> = props => {
 
 const mapStateToProps = (store: RootState) => ({
   username: store.username,
+  units: store.units,
   results: store.subjectResultList
 });
 
