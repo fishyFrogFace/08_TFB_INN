@@ -14,6 +14,7 @@ import { updateSubjectResultList, updateAppPage } from 'redux/actions';
 import CompletedSubject from 'exampages/CompletedSubject';
 import WhereInPicture from 'questions/WhereInPicture';
 import TextInput from 'questions/TextInput';
+import MultipleButtons from 'questions/MultipleButtons';
 
 interface Props extends PropsFromRedux {
   subject: SubjectDefinition;
@@ -69,15 +70,27 @@ const Subject: React.FC<Props> = props => {
           />
         );
 
-        case QuestionTemplate.TextInput:
-          return (
-            <TextInput
+      case QuestionTemplate.TextInput:
+        return (
+          <TextInput
             resultTitle={question.questionContent.resultTitle!}
             maxPoints={question.questionContent.maxPoints!}
             text={question.questionContent.text!}
             updateResult={updateResult}
-            />
-          )
+          />
+        );
+      case QuestionTemplate.MultipleButtons:
+        return (
+          <MultipleButtons
+            answerValues={question.questionContent.answerValues!}
+            isImage={question.questionContent.isImage!}
+            resultTitle={question.questionContent.resultTitle!}
+            maxPoints={question.questionContent.maxPoints!}
+            text={question.questionContent.text!}
+            correctAlt={question.questionContent.correctAlt!}
+            updateResult={updateResult}
+          />
+        );
 
       case QuestionTemplate.CompletedSubject:
         return (
