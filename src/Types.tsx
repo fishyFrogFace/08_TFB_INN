@@ -19,7 +19,7 @@ export enum QuestionTemplate {
   CopyText,
   WhereInPicture,
   CompletedSubject,
-  SeveralButtons
+  MultipleButtons
 }
 
 export interface SubjectResult {
@@ -62,8 +62,9 @@ export interface QuestionContent {
   maxPoints?: number;
   text?: string;
   imageInformation?: ImageInformation;
-  correctAlt?: string[];
+  correctAlt?: string;
   answerValues?: string[];
+  isImage?: boolean;
 }
 
 export interface QuestionDefinition {
