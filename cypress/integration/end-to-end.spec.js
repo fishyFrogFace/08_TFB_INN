@@ -275,8 +275,8 @@ context('End-to-end', () => {
   it('result reflects what units were chosen', () => {
     cy.get('.h2')
       .first()
-      .should('contain', 'Laptop, Nettbrett')
-      .and('not.contain', 'Smarttelefon');
+      .should('contain', 'Laptop, nettbrett')
+      .and('not.contain', 'marttelefon');
   });
 
   it('result reflects what the user achieved', () => {

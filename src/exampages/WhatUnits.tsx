@@ -8,9 +8,9 @@ import { setUnits } from 'redux/actions';
 import { connectDispatch } from 'redux/util';
 
 const units = [
-  { image: phone, description: 'Smarttelefon' },
-  { image: laptop, description: 'Laptop' },
-  { image: tablet, description: 'Nettbrett' }
+  { image: phone, description: 'smarttelefon' },
+  { image: laptop, description: 'laptop' },
+  { image: tablet, description: 'nettbrett' }
 ];
 
 const WhatUnits: React.FC<PropsFromRedux> = props => {

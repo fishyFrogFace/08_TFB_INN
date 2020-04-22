@@ -49,7 +49,11 @@ const Examination: React.FC<Props> = props => {
   const changeExamPage = (page: ExamPage) => props.updateExamPage(page);
 
   const quitExam = () => {
-    if ([ExamPage.Overview, ExamPage.EnterName].includes(lastPage)) {
+    if (
+      [ExamPage.Overview, ExamPage.EnterName, ExamPage.WhatUnits].includes(
+        lastPage
+      )
+    ) {
       props.resetState();
     } else if (
       currentSubject().questions[currentQuestion()].templateID ===
