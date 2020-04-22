@@ -4,6 +4,7 @@ import ProgressBar from 'components/ProgressBar';
 import { SubjectResult } from '../Types';
 import { RootState } from 'redux/reducers';
 import { connect } from 'react-redux';
+import { capitalize } from '../Helpers';
 
 const subjectResults = (element: SubjectResult, i: number) => {
   return (
@@ -32,15 +33,11 @@ const ResultPage: React.FC<PropsFromRedux> = props => {
 
 // Redux related:
 
-const mapStateToProps = (store: RootState) => {
-  const joined = store.units.join(', ');
-
-  return {
-    username: store.username,
-    units: joined[0].toUpperCase() + joined.slice(1),
-    results: store.subjectResultList
-  };
-};
+const mapStateToProps = (store: RootState) => ({
+  username: store.username,
+  units: capitalize(store.units.join(', ')),
+  results: store.subjectResultList
+});
 
 type PropsFromRedux = ReturnType<typeof mapStateToProps>;
 

@@ -6,6 +6,7 @@ import laptop from '../images/laptop.svg';
 import Button from '../components/Button';
 import { setUnits } from 'redux/actions';
 import { connectDispatch } from 'redux/util';
+import { capitalize } from '../Helpers';
 
 const units = [
   { image: phone, description: 'smarttelefon' },
@@ -37,7 +38,7 @@ const WhatUnits: React.FC<PropsFromRedux> = props => {
               onClick={() => updateAnswer(i)}>
               <img className='unit-img' src={item.image} alt='' />
             </Button>
-            <h2 className='h2'>{item.description}</h2>
+            <h2 className='h2'>{capitalize(item.description)}</h2>
           </div>
         ))}
       </div>
