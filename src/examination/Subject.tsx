@@ -13,7 +13,7 @@ import { RootState } from 'redux/reducers';
 import { updateSubjectResultList, updateAppPage } from 'redux/actions';
 import CompletedSubject from 'exampages/CompletedSubject';
 import WhereInPicture from '../questions/WhereInPicture';
-import MultipleButtons from '../questions/MultipleButtons';
+import MultipleButtons from 'questions/MultipleButtons';
 
 interface Props extends PropsFromRedux {
   subject: SubjectDefinition;

@@ -11,7 +11,8 @@ export enum ExamPage {
   Overview,
   Exit,
   Pause,
-  Results
+  Results,
+  WhatUnits
 }
 
 export enum QuestionTemplate {
