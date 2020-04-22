@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import '../App.css';
-import phone from '../images/phone.svg'
-import tablet from '../images/tablet.svg'
-import laptop from '../images/laptop.svg'
+import phone from '../images/phone.svg';
+import tablet from '../images/tablet.svg';
+import laptop from '../images/laptop.svg';
 import Button from '../components/Button';
 
 const units = [
-  {image: phone, description: 'Phone'},
-  {image: laptop, description: 'Laptop'},
-  {image: tablet, description: 'Tablet'}
-]
+  { image: phone, description: 'Phone' },
+  { image: laptop, description: 'Laptop' },
+  { image: tablet, description: 'Tablet' }
+];
 
 const WhatUnits: React.FC<{}> = () => {
   const [selectedButtons, setSelectedButtons] = useState<number[]>([]);
@@ -22,9 +22,7 @@ const WhatUnits: React.FC<{}> = () => {
     }
   };
 
-  const returnResult = () => {
-    
-  };
+  const returnResult = () => {};
 
   return (
     <div>
