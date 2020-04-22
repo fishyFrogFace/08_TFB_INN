@@ -5,7 +5,8 @@ import {
   UpdateExamPageAction,
   UpdateCurrentSubjectAction,
   UpdateCurrentQuestionListAction,
-  UpdateAppPageAction
+  UpdateAppPageAction,
+  SetUnitsAction
 } from './actions';
 import { SubjectResult, ExamPage, Page } from 'Types';
 import { standardExamDefinition } from 'examDefinition';
@@ -77,6 +78,20 @@ export const usernameReducer = (
   }
 };
 
+const initialUnits = [];
+
+export const unitsReducer = (
+  state: string[] = initialUnits,
+  action: SetUnitsAction
+) => {
+  switch (action.type) {
+    case 'setUnits':
+      return action.units;
+    default:
+      return state;
+  }
+};
+
 const initialExamPage = ExamPage.EnterName;
 
 export const examPageReducer = (
@@ -109,6 +124,7 @@ const reducers = combineReducers({
   subjectResultList: subjectResultListReducer,
   currentQuestionList: currentQuestionListReducer,
   username: usernameReducer,
+  units: unitsReducer,
   examPage: examPageReducer,
   currentSubject: currentSubjectReducer,
   appPage: appPageReducer

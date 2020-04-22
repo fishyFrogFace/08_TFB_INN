@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import Button from '../components/Button';
-import { QuestionResult } from '../Types';
+import { QuestionResult, QuestionResultType } from '../Types';
 
 interface Props {
   resultTitle: string;
@@ -17,9 +17,12 @@ const Start: React.FC<Props> = props => {
       classNames='start'
       onClick={() =>
         props.updateResult({
+          type: QuestionResultType.Mastery,
           resultTitle: props.resultTitle,
           maxPoints: props.maxPoints,
-          pointsAchieved: props.maxPoints
+          pointsAchieved: props.maxPoints,
+          mastered: true,
+          answerValues: []
         })
       }>
       Start

@@ -4,6 +4,7 @@ import ProgressBar from 'components/ProgressBar';
 import { SubjectResult } from '../Types';
 import { RootState } from 'redux/reducers';
 import { connect } from 'react-redux';
+import { capitalize } from '../Helpers';
 
 const subjectResults = (element: SubjectResult, i: number) => {
   return (
@@ -20,6 +21,9 @@ const ResultPage: React.FC<PropsFromRedux> = props => {
   return (
     <div className='resultContainer'>
       <h1 className='h1'>Resultat for {props.username}</h1>
+      <h2 className='h2'>
+        Har følgende enheter: {props.units.length === 0 ? 'Ingen' : props.units}
+      </h2>
       {props.results
         .filter(res => res.results.length !== 0)
         .map((subject, i) => subjectResults(subject, i))}
@@ -31,6 +35,7 @@ const ResultPage: React.FC<PropsFromRedux> = props => {
 
 const mapStateToProps = (store: RootState) => ({
   username: store.username,
+  units: capitalize(store.units.join(', ')),
   results: store.subjectResultList
 });
 

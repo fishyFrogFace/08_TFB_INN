@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../App.css';
 import './Question.css';
 import Button from '../components/Button';
-import { QuestionResult } from '../Types';
+import { QuestionResult, QuestionResultType } from '../Types';
 
 interface Props {
   maxPoints: number;
@@ -21,9 +21,12 @@ const CopyText: React.FC<Props> = props => {
   const checkInput = (value: string) => {
     if (clickedWhileCorrect) {
       props.updateResult({
+        type: QuestionResultType.Mastery,
         maxPoints: props.maxPoints,
         resultTitle: props.resultTitle,
-        pointsAchieved: points
+        pointsAchieved: points,
+        mastered: true,
+        answerValues: [props.text]
       });
     } else {
       if (value === props.text) {

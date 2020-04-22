@@ -33,3 +33,4 @@ build
 .cxx
 cypress/screenshots
 cypress/videos
+.vscode
