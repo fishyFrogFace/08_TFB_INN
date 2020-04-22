@@ -40,7 +40,38 @@ context('End-to-end', () => {
       .should('contain', username);
   });
 
-  it('username button is clickable and renders overview', () => {
+  it('username button is clickable and renders what units', () => {
+    cy.get('.next')
+      .first()
+      .click();
+
+    cy.get('.h1')
+      .first()
+      .should('contain', 'Hvilke enheter har du?');
+  });
+
+  it('what units contains a navigation menu', () => {
+    cy.get('.navBar')
+      .first()
+      .should('be.visible');
+  });
+
+  it('what units buttons are clickable', () => {
+    cy.get('.unit-btn')
+      .first()
+      .click()
+      .click();
+
+    cy.get('.unit-btn')
+      .eq(1)
+      .click();
+
+    cy.get('.unit-btn')
+      .eq(2)
+      .click();
+  });
+
+  it('what units is clickable and renders overview', () => {
     cy.get('.next')
       .first()
       .click();
@@ -239,6 +270,13 @@ context('End-to-end', () => {
       .first()
       .should('contain', 'Resultat')
       .and('contain', username);
+  });
+
+  it('result reflects what units were chosen', () => {
+    cy.get('.h2')
+      .first()
+      .should('contain', 'Laptop, nettbrett')
+      .and('not.contain', 'marttelefon');
   });
 
   it('result reflects what the user achieved', () => {

@@ -11,14 +11,16 @@ export enum ExamPage {
   Overview,
   Exit,
   Pause,
-  Results
+  Results,
+  WhatUnits
 }
 
 export enum QuestionTemplate {
   Start,
   CopyText,
   WhereInPicture,
-  CompletedSubject
+  CompletedSubject,
+  MultipleButtons
 }
 
 export interface SubjectResult {
@@ -69,6 +71,9 @@ export interface QuestionContent {
   maxPoints?: number;
   text?: string;
   imageInformation?: ImageInformation;
+  correctAlt?: string;
+  answerValues?: string[];
+  isImage?: boolean;
 }
 
 export interface QuestionDefinition {
