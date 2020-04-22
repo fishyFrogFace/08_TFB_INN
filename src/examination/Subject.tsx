@@ -13,6 +13,7 @@ import { RootState } from 'redux/reducers';
 import { updateSubjectResultList, updateAppPage } from 'redux/actions';
 import CompletedSubject from 'exampages/CompletedSubject';
 import WhereInPicture from 'questions/WhereInPicture';
+import TextInput from 'questions/TextInput';
 
 interface Props extends PropsFromRedux {
   subject: SubjectDefinition;
@@ -67,6 +68,16 @@ const Subject: React.FC<Props> = props => {
             updateResult={updateResult}
           />
         );
+
+        case QuestionTemplate.TextInput:
+          return (
+            <TextInput
+            resultTitle={question.questionContent.resultTitle!}
+            maxPoints={question.questionContent.maxPoints!}
+            text={question.questionContent.text!}
+            updateResult={updateResult}
+            />
+          )
 
       case QuestionTemplate.CompletedSubject:
         return (
