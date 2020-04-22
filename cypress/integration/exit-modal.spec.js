@@ -14,6 +14,10 @@ context('Exit modal testing', () => {
       .first()
       .click();
 
+    cy.get('.next')
+      .first()
+      .click();
+
     cy.get('.subject-btn')
       .first()
       .click();

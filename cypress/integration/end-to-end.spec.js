@@ -69,12 +69,6 @@ context('End-to-end', () => {
     cy.get('.unit-btn')
       .eq(2)
       .click();
-
-    const colors = ['#f2f1f0', '#1da598', '#1da598'];
-
-    cy.get('.unit-btn').each(($el, i) => {
-      cy.wrap($el).should('have.css', 'background-color', colors[i]);
-    });
   });
 
   it('what units is clickable and renders overview', () => {
@@ -278,7 +272,7 @@ context('End-to-end', () => {
       .and('contain', username);
   });
 
-  it('result reflects what the user achieved', () => {
+  it('result reflects what units were chosen', () => {
     cy.get('.h2')
       .first()
       .should('contain', 'Laptop, Nettbrett')
