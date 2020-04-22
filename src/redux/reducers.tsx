@@ -5,7 +5,8 @@ import {
   UpdateExamPageAction,
   UpdateCurrentSubjectAction,
   UpdateCurrentQuestionListAction,
-  UpdateAppPageAction
+  UpdateAppPageAction,
+  SetUnitsAction
 } from './actions';
 import { SubjectResult, ExamPage, Page } from 'Types';
 import { standardExamDefinition } from 'examDefinition';
@@ -72,6 +73,20 @@ export const usernameReducer = (
   switch (action.type) {
     case 'setUsername':
       return action.username;
+    default:
+      return state;
+  }
+};
+
+const initialUnits = [];
+
+export const unitsReducer = (
+  state: string[] = initialUnits,
+  action: SetUnitsAction
+) => {
+  switch (action.type) {
+    case 'setUnits':
+      return action.units;
     default:
       return state;
   }
