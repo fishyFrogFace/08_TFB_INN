@@ -93,6 +93,7 @@
 
 .selected {
   background-color: #1da598;
+  color: white;
 }
 
 .selected:hover {

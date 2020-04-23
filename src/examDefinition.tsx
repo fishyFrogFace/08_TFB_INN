@@ -78,7 +78,6 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvilke(t) passord er mest sikkert?',
             resultTitle: 'Kan kjenne igjen sikre passord',
-            maxPoints: 2,
             isImage: false,
             answerValues: [
               'passord',
