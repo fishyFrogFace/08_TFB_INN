@@ -76,6 +76,8 @@ export interface QuestionContent {
   correctAlt?: string;
   answerValues?: string[];
   isImage?: boolean;
+  processString?: (input: string, maxPoints: number) => number;
+  placeholder?: string;
 }
 
 export interface QuestionDefinition {
