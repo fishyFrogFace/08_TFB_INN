@@ -89,7 +89,6 @@ const Subject: React.FC<Props> = props => {
             answerValues={question.questionContent.answerValues!}
             isImage={question.questionContent.isImage!}
             resultTitle={question.questionContent.resultTitle!}
-            maxPoints={question.questionContent.maxPoints!}
             text={question.questionContent.text!}
             correctAlt={question.questionContent.correctAlt!}
             updateResult={updateResult}

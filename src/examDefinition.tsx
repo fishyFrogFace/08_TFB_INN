@@ -17,7 +17,7 @@ import { checkPasswordSafety } from 'helpers/PasswordChecker';
 export const standardExamDefinition = {
   subjects: [
     {
-      name: 'Tema 1',
+      name: 'Introduksjon',
       questions: [
         {
           name: 'Start button',
@@ -73,12 +73,21 @@ export const standardExamDefinition = {
           }
         },
         {
-          name: 'Copy symbols by writing in an input field',
-          templateID: QuestionTemplate.CopyText,
+          name: 'Choose the safest passwords',
+          templateID: QuestionTemplate.MultipleButtons,
           questionContent: {
-            text: 'This is totally another subject',
-            resultTitle: 'Resultat 2.2',
-            maxPoints: 6
+            text: 'Hvilke(t) passord er mest sikkert?',
+            resultTitle: 'Kan kjenne igjen sikre passord',
+            isImage: false,
+            answerValues: [
+              'passord',
+              '%&¤#',
+              'zi3A47gvq8nFVkv',
+              'qwerty',
+              '34BananerVokserPåTrær!',
+              '1qaz2wsx3edc4rfv'
+            ],
+            correctAlt: ['zi3A47gvq8nFVkv', '34BananerVokserPåTrær!']
           }
         },
         {

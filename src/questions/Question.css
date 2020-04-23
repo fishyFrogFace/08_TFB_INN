@@ -43,3 +43,29 @@
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+
+.selected {
+  background-color: #1da598;
+}
+
+.selected:hover {
+  background-color: #03627c;
+}
+
+.selected:active {
+  background-color: #03627c;
+}
+
+.answer-btn {
+  display: inline-block;
+  width: fit-content;
+}
+
+.answer-btn:hover {
+  background-color: grey;
+  color: #a92876;
+}
+
+.multiple-button-container {
+  width: 50vw
+}

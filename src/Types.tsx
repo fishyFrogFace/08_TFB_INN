@@ -73,7 +73,7 @@ export interface QuestionContent {
   maxPoints?: number;
   text?: string;
   imageInformation?: ImageInformation;
-  correctAlt?: string;
+  correctAlt?: string[];
   answerValues?: string[];
   isImage?: boolean;
   processString?: (input: string, maxPoints: number) => number;
