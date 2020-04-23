@@ -5,7 +5,6 @@ import { QuestionResult, QuestionResultType } from '../Types';
 
 interface Props {
   text: string;
-  maxPoints: number;
   resultTitle: string;
   isImage: boolean;
   answerValues: string[];
@@ -24,14 +23,26 @@ const MultipleButtons: React.FC<Props> = props => {
     }
   };
 
+  const checkAnswer = () => {
+    const selectedStrings = selectedButtons.map(i => props.answerValues[i]);
+    const correctAnswers = props.correctAlt.filter(alt =>
+      selectedStrings.includes(alt)
+    );
+
+    const wrongAnswers = selectedStrings.length - correctAnswers.length;
+    const finalPoints = correctAnswers.length - wrongAnswers;
+
+    return finalPoints >= 0 ? finalPoints : 0;
+  };
+
   const returnResult = () => {
     props.updateResult({
       mastered: true,
       answerValues: [],
       type: QuestionResultType.Mastery,
-      maxPoints: props.maxPoints,
+      maxPoints: props.correctAlt.length,
       resultTitle: props.resultTitle,
-      pointsAchieved: 0 //TODO Fikses senere
+      pointsAchieved: checkAnswer()
     });
   };
 
@@ -46,11 +57,7 @@ const MultipleButtons: React.FC<Props> = props => {
               selectedButtons.includes(i) ? 'selected' : ''
             }`}
             onClick={() => updateAnswer(i)}>
-            {props.isImage ? (
-              <img src={item} alt={`Button image ${i}`} />
-            ) : (
-              item
-            )}
+            {props.isImage ? <img src={item} alt={`Button ${i}`} /> : item}
           </Button>
         ))}
       </div>
