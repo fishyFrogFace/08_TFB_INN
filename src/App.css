@@ -37,3 +37,9 @@ img {
   border-radius: 3vmin;
   text-align: center;
 }
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
