@@ -1,1 +1,3 @@
 hello svein
+
+dette er teksten vi legger til
