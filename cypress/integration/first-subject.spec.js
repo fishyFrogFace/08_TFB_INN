@@ -3,7 +3,7 @@
 context('First-subject', () => {
   const username = 'little-kangaroo';
   const title = 'Tittel';
-  const subjectTitle = 'Tema 1';
+  const subjectTitle = 'Introduksjon';
 
   before(() => {
     cy.visit('http://localhost:3000/');
@@ -125,7 +125,7 @@ context('First-subject', () => {
 
     cy.get('.h1')
       .first()
-      .should('contain', 'Du har fullført Tema 1!');
+      .should('contain', "Du har fullført 'Introduksjon'!");
   });
 
   it('success screen contains a navigation menu', () => {

@@ -44,7 +44,7 @@ context('Passwords-and-login', () => {
       .should('be.visible');
   });
 
-  it('password button is clickable and renders copytext 2', () => {
+  it('password button is clickable and renders find secure pwd', () => {
     cy.get('.inputField')
       .first()
       .type('KokosBollerEr-Godt!1');
@@ -55,22 +55,18 @@ context('Passwords-and-login', () => {
 
     cy.get('.h1')
       .first()
-      .should('contain', 'This is totally another subject');
+      .should('contain', 'Hvilke(t) passord er mest sikkert?');
   });
 
-  it('copytext 2 contains a navigation menu', () => {
+  it('find secure pwd contains a navigation menu', () => {
     cy.get('.navBar')
       .first()
       .should('be.visible');
   });
 
-  it('copytext 2 button is clickable and renders success screen 2', () => {
-    cy.get('.inputField')
-      .first()
-      .type('This is totally another subject');
-
-    cy.get('.next')
-      .first()
+  it('find secure pwd button is clickable and renders success screen 2', () => {
+    cy.get('.answer-btn')
+      .eq(2)
       .click();
 
     cy.get('.next')
@@ -79,7 +75,7 @@ context('Passwords-and-login', () => {
 
     cy.get('.h1')
       .first()
-      .should('contain', 'Du har fullført Passord og innlogging!');
+      .should('contain', "Du har fullført 'Passord og innlogging'!");
   });
 
   it('success screen 2 contains a navigation menu', () => {
@@ -109,7 +105,7 @@ context('Passwords-and-login', () => {
   });
 
   it('result reflects what the user achieved', () => {
-    const width = ['400px', '400px'];
+    const width = ['400px', '200px'];
     cy.get('.filler').each(($el, i) => {
       cy.wrap($el).should('have.css', 'width', width[i]);
     });
