@@ -125,7 +125,7 @@ context('First-subject', () => {
 
     cy.get('.h1')
       .first()
-      .should('contain', "Du har fullført 'Introduksjon!'");
+      .should('contain', "Du har fullført 'Introduksjon'!");
   });
 
   it('success screen contains a navigation menu', () => {
