@@ -2,7 +2,8 @@ import { mostCommonPasswords } from './mostCommonPwds';
 
 // Password checking
 
-const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const alpha = 'abcdefghijklmnopqrstuvwxyz';
+const caps = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const numerical = '1234567890';
 
 const countChars = (passwordArray: string[], characters: string) =>
@@ -10,10 +11,16 @@ const countChars = (passwordArray: string[], characters: string) =>
 
 const charPoints = (passwordArray: string[], maxPoints: number) => {
   const amountAlpha = countChars(passwordArray, alpha);
+  const amountCaps = countChars(passwordArray, caps);
   const amountNum = countChars(passwordArray, numerical);
   const special = passwordArray.length - amountAlpha - amountNum;
 
-  if (amountAlpha === 0 || amountNum === 0 || special === 0) {
+  if (
+    amountAlpha === 0 ||
+    amountCaps === 0 ||
+    amountNum === 0 ||
+    special === 0
+  ) {
     return -0.2 * maxPoints;
   } else {
     return 0.15 * maxPoints;
