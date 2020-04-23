@@ -192,7 +192,7 @@ context('End-to-end', () => {
 
     cy.get('.subject-btn')
       .eq(1)
-      .should('contain', 'Passord og sikkerhet');
+      .should('contain', 'Passord og innlogging');
   });
 
   it('subject button is clickable and renders start 2 button', () => {
@@ -242,7 +242,7 @@ context('End-to-end', () => {
 
     cy.get('.h1')
       .first()
-      .should('contain', 'Du har fullført Passord og sikkerhet!');
+      .should('contain', 'Du har fullført Passord og innlogging!');
   });
 
   it('success screen 2 contains a navigation menu', () => {
