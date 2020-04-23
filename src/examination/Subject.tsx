@@ -15,7 +15,7 @@ import CompletedSubject from 'exampages/CompletedSubject';
 import WhereInPicture from 'questions/WhereInPicture';
 import TextInput from 'questions/TextInput';
 import MultipleButtons from 'questions/MultipleButtons';
-import { checkPasswordSafety } from 'helpers/QuestionHelpers';
+import { checkPasswordSafety } from 'helpers/PasswordChecker';
 
 interface Props extends PropsFromRedux {
   subject: SubjectDefinition;
