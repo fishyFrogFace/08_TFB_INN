@@ -1,17 +1,69 @@
-.textAndBtn {
+.textinputAndBtn {
+  margin-top: 10vh;
+}
+
+
+
+
+.questiontextContainer {
+  width: 90%;
+  min-height: 10vh;
+  max-height: 20vh;
+  border-radius: 8px;
+  z-index: 3;
+
+  padding:1vh 5vw;
+}
+.questiontextContainer h1 {
+  vertical-align: middle;
+  font-weight: bold;
+  font-family: Tahoma, Verdana, sans-serif;
+  
+}
+
+
+.inputContainer {
+  position: absolute;
+  top: 5vh;
+  width: 100%;
+  height: 60vh;
+  background-color: #f9f9f9;
+  padding-top: 5vh;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-content: center;
 }
 
-.black {
-  color: black;
+.subjectColor {
+  background-color: #00ACC1;
 }
 
-.green {
-  color: green;
+.nextButtonContainer{
+  width: 30vh;
+  position: relative;
+  top: 60vh;
+  z-index: 3;
 }
 
-.red {
-  color: red;
+.username {
+  color:black;
 }
+
+
+#name {
+  font-size: 3vh;
+  font-weight: normal;
+}
+
+.inputField {
+  margin-bottom: 3vh;
+  width: 50vmin;
+  border-radius: 3vmin;
+  text-align: center;
+}
+/* 
+questiontext-container subjectColor
+whitetext questiontext
+inputcontainer
+*/

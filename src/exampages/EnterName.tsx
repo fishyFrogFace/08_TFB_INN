@@ -4,10 +4,10 @@ import './Pages.css';
 import Button from '../components/Button';
 import { setUsername } from 'redux/actions';
 import { connectDispatch } from 'redux/util';
-import avatar from './big-pink.png';
+//import avatar from './big-pink.png';
 
 interface Props extends PropsFromRedux {
-  avatar: string;
+  //avatar: string;
 }
 
 const adjectives = [
@@ -51,37 +51,48 @@ const EnterName: React.FC<Props> = props => {
   const [input, setInput] = useState(randomName(adjectives, animals));
 
   return (
-    <div className='questionContainer'>
+    <div className='content'>
+      {/*
       <div className='imageContainer'>
-        <img src={avatar} alt='Avatar' />
+        <!--<img src={avatar} alt='Avatar' />-->
       </div>
-      <h1 className='h1'>Mitt navn er</h1>
-      <form
-        className='textAndBtn'
-        onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
-        <input
-          id='name'
-          className='inputField'
-          type='text'
-          onChange={(e: React.FormEvent<HTMLInputElement>) => {
-            const valueTyped = e.currentTarget.value;
-            if (valueTyped.trim()) {
-              setInput(e.currentTarget.value);
-            } else {
-              setInput(randomName(adjectives, animals));
-            }
-          }}
-          placeholder='Navn'
-        />
+      */}
+      <div className="questiontextContainer subjectColor">
+        <h1 className='h2 white'>Mitt navn er</h1>
+      </div>
+      <div className="inputContainer">
+        <form
+          className='textinputAndBtn'
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
+          <input
+            id='name'
+            className='inputField'
+            type='text'
+            onChange={(e: React.FormEvent<HTMLInputElement>) => {
+              const valueTyped = e.currentTarget.value;
+              if (valueTyped.trim()) {
+                setInput(e.currentTarget.value);
+              } else {
+                setInput(randomName(adjectives, animals));
+              }
+            }}
+            placeholder='Navn'
+          />
+          
+        </form>
+        <p className='username'>{input}</p>
+        
+        </div>
+      <div className='nextButtonContainer'>
         <Button
-          classNames='next'
-          onClick={() => {
-            props.setUsername(input);
-          }}>
-          Neste
-        </Button>
-      </form>
-      <p className='username'>{input}</p>
+              classNames='next'
+              onClick={() => {
+                props.setUsername(input);
+              }}>
+              Neste
+            </Button>
+        </div>
+        
     </div>
   );
 };

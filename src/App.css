@@ -1,34 +1,43 @@
 body {
-  background-color: #282c34;
+  background-color: #E2E2E2;
+  font-family: Tahoma, Verdana, Geneva, sans-serif;
 }
 
-.questionContainer {
-  min-height: 79vh;
+.content {
+  position: relative;
+  top: 0;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  margin: 0 auto;
+  /*justify-content: center;*/
+  height: 80vh;
+  max-width: 95vw;
 }
 
-.imageContainer {
-  max-height: 25vh;
-}
-
-img {
-  max-height: 25vh;
-}
 
 .h1 {
-  color: white;
   margin-bottom: 1vh;
   font-size: 5vh;
 }
 
-.inputField {
-  margin-bottom: 3vh;
-  font-size: 5vh;
-  width: 50vmin;
-  border-radius: 3vmin;
-  text-align: center;
+.h2 {
+  font-size: 3vh;
+}
+
+.white {
+  color: white;
+}
+
+.black {
+  color: black;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
 }

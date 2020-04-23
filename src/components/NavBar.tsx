@@ -1,7 +1,7 @@
 import React from 'react';
 import './NavBar.css';
 import Button from './Button';
-import exit from './exit.svg';
+import exit from './exit-black.svg';
 
 interface Props {
   showChoice: () => void;
@@ -9,13 +9,19 @@ interface Props {
 
 const NavBar: React.FC<Props> = props => {
   return (
-    <div className='navBar'>
-      <div className='navbar-left'>
+    <header className='navBar'>
+      <div className="nav-content">
         <Button classNames='nav-btn exit' onClick={props.showChoice}>
           <img className='nav-img' src={exit} alt='Exit' />
         </Button>
-      </div>
-    </div>
+        
+        <div className="subject-name-container">
+          <p className="subject-name">Temanavn her</p> 
+        </div>
+       </div> 
+      
+    </header>
+    
   );
 };
 
