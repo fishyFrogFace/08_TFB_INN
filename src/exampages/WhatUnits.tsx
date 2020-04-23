@@ -6,7 +6,7 @@ import laptop from '../images/laptop.svg';
 import Button from '../components/Button';
 import { setUnits } from 'redux/actions';
 import { connectDispatch } from 'redux/util';
-import { capitalize } from '../Helpers';
+import { capitalize } from '../Util';
 
 const units = [
   { image: phone, description: 'smarttelefon' },

@@ -9,18 +9,11 @@ interface Props {
   text: string;
   resultTitle: string;
   updateResult: (result: QuestionResult) => void;
+  processString: (input: string, maxPoints: number) => number;
 }
 
 const TextInput: React.FC<Props> = props => {
-  // set a randomly generated name that will be kept if user doesn't type anything
-  const [points, setPoints] = useState(props.maxPoints);
-  const [color, setColor] = useState('black');
   const [input, setInput] = useState('');
-
-  const storeInput = (e: React.FormEvent<HTMLInputElement>) => {
-    setColor('black');
-    setInput(e.currentTarget.value);
-  };
 
   return (
     <div>
@@ -30,9 +23,9 @@ const TextInput: React.FC<Props> = props => {
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
         <input
           id='name'
-          className={`inputField ${color}`}
+          className={'inputField'}
           type='text'
-          onChange={e => storeInput(e)}
+          onChange={e => setInput(e.currentTarget.value)}
           placeholder={props.text}
         />
         <Button
@@ -44,7 +37,7 @@ const TextInput: React.FC<Props> = props => {
               answerValues: [],
               maxPoints: props.maxPoints,
               resultTitle: props.resultTitle,
-              pointsAchieved: points
+              pointsAchieved: props.processString(input, props.maxPoints)
             })
           }>
           Neste

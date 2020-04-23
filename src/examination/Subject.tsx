@@ -15,6 +15,7 @@ import CompletedSubject from 'exampages/CompletedSubject';
 import WhereInPicture from 'questions/WhereInPicture';
 import TextInput from 'questions/TextInput';
 import MultipleButtons from 'questions/MultipleButtons';
+import { checkPasswordSafety } from 'helpers/QuestionHelpers';
 
 interface Props extends PropsFromRedux {
   subject: SubjectDefinition;
@@ -76,9 +77,11 @@ const Subject: React.FC<Props> = props => {
             resultTitle={question.questionContent.resultTitle!}
             maxPoints={question.questionContent.maxPoints!}
             text={question.questionContent.text!}
+            processString={checkPasswordSafety}
             updateResult={updateResult}
           />
         );
+
       case QuestionTemplate.MultipleButtons:
         return (
           <MultipleButtons
