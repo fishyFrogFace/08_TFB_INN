@@ -12,8 +12,10 @@ import { connect } from 'react-redux';
 import { RootState } from 'redux/reducers';
 import { updateSubjectResultList, updateAppPage } from 'redux/actions';
 import CompletedSubject from 'exampages/CompletedSubject';
-import WhereInPicture from '../questions/WhereInPicture';
+import WhereInPicture from 'questions/WhereInPicture';
+import TextInput from 'questions/TextInput';
 import MultipleButtons from 'questions/MultipleButtons';
+import { checkPasswordSafety } from 'helpers/PasswordChecker';
 
 interface Props extends PropsFromRedux {
   subject: SubjectDefinition;
@@ -65,6 +67,18 @@ const Subject: React.FC<Props> = props => {
             imageInformation={question.questionContent.imageInformation!}
             maxPoints={question.questionContent.maxPoints!}
             text={question.questionContent.text!}
+            updateResult={updateResult}
+          />
+        );
+
+      case QuestionTemplate.TextInput:
+        return (
+          <TextInput
+            resultTitle={question.questionContent.resultTitle!}
+            maxPoints={question.questionContent.maxPoints!}
+            placeholder={question.questionContent.placeholder!}
+            text={question.questionContent.text!}
+            processString={checkPasswordSafety}
             updateResult={updateResult}
           />
         );

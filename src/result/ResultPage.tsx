@@ -4,7 +4,7 @@ import ProgressBar from 'components/ProgressBar';
 import { SubjectResult } from '../Types';
 import { RootState } from 'redux/reducers';
 import { connect } from 'react-redux';
-import { capitalize } from '../Helpers';
+import { capitalize } from '../Util';
 
 const subjectResults = (element: SubjectResult, i: number) => {
   return (
