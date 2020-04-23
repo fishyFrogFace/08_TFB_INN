@@ -7,6 +7,7 @@ import { QuestionResult, QuestionResultType } from '../Types';
 interface Props {
   maxPoints: number;
   text: string;
+  placeholder: string;
   resultTitle: string;
   updateResult: (result: QuestionResult) => void;
   processString: (input: string, maxPoints: number) => number;
@@ -26,7 +27,7 @@ const TextInput: React.FC<Props> = props => {
           className={'inputField'}
           type='text'
           onChange={e => setInput(e.currentTarget.value)}
-          placeholder={props.text}
+          placeholder={props.placeholder}
         />
         <Button
           classNames='next'

@@ -1,4 +1,5 @@
 import { QuestionTemplate } from 'Types';
+import { checkPasswordSafety } from 'helpers/PasswordChecker';
 
 /*
       {
@@ -61,11 +62,14 @@ export const standardExamDefinition = {
       name: 'Passord og innlogging',
       questions: [
         {
-          name: 'Start button',
-          templateID: QuestionTemplate.Start,
+          name: 'Test password strength of user created password',
+          templateID: QuestionTemplate.TextInput,
           questionContent: {
-            resultTitle: 'Resultat 2.1',
-            maxPoints: 1
+            text: 'Lag et sikkert passord',
+            placeholder: 'Passord',
+            resultTitle: 'Kan lage et sikkert passord',
+            maxPoints: 40,
+            processString: checkPasswordSafety
           }
         },
         {
