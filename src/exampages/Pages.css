@@ -77,15 +77,9 @@
   background: #d8db29;
 }
 
-.button-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .unit-btn {
-  height: min(50vh, 50vw);
-  width: min(50vh, 50vw);
+  height: 50vmin;
+  width: 50vmin;
 }
 
 .unit-btn:hover {
@@ -93,8 +87,8 @@
 }
 
 .unit-img {
-  height: min(40vh, 40vw);
-  width: min(40vh, 40vw);
+  height: 40vmin;
+  width: 40vmin;
 }
 
 .selected {

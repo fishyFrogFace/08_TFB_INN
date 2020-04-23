@@ -3,7 +3,7 @@
 context('Pre-exam', () => {
   const username = 'little-kangaroo';
   const title = 'Tittel';
-  const subjectTitle = 'Tema 1';
+  const subjectTitle = 'Introduksjon';
 
   before(() => {
     cy.visit('http://localhost:3000/');

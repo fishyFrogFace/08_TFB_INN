@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import '../App.css';
 import './Question.css';
 import Button from '../components/Button';
 import { QuestionResult, QuestionResultType } from '../Types';
 
 interface Props {
-  text: string; //hva det blir spurt om
-  maxPoints: number; //1
-  resultTitle: string; //kartleggingsmål
+  text: string;
+  maxPoints: number;
+  resultTitle: string;
   isImage: boolean;
-  answerValues: string[]; //eksternt ?
-  correctAlt: string; //riktig alternativ
-  updateResult: (result: QuestionResult) => void; //??
+  answerValues: string[];
+  correctAlt: string[];
+  updateResult: (result: QuestionResult) => void;
 }
 
 const MultipleButtons: React.FC<Props> = props => {
@@ -23,7 +22,6 @@ const MultipleButtons: React.FC<Props> = props => {
     } else {
       setSelectedButtons(selectedButtons.filter(element => element !== value));
     }
-    console.log(value);
   };
 
   const returnResult = () => {
@@ -40,13 +38,19 @@ const MultipleButtons: React.FC<Props> = props => {
   return (
     <div>
       <h1 className='h1'>{props.text}</h1>
-      <div className='buttoncontainer'>
+      <div className='multiple-button-container'>
         {props.answerValues.map((item, i) => (
           <Button
             key={i}
-            classNames={selectedButtons.includes(i) ? 'selected' : ''}
+            classNames={`answer-btn ${
+              selectedButtons.includes(i) ? 'selected' : ''
+            }`}
             onClick={() => updateAnswer(i)}>
-            {props.isImage ? <img src={item} alt='' /> : item}
+            {props.isImage ? (
+              <img src={item} alt={`Button image ${i}`} />
+            ) : (
+              item
+            )}
           </Button>
         ))}
       </div>

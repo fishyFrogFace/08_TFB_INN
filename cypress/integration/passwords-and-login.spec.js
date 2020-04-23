@@ -79,7 +79,7 @@ context('Passwords-and-login', () => {
 
     cy.get('.h1')
       .first()
-      .should('contain', 'Du har fullført Passord og innlogging!');
+      .should('contain', "Du har fullført 'Passord og innlogging!'");
   });
 
   it('success screen 2 contains a navigation menu', () => {

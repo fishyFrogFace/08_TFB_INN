@@ -66,7 +66,7 @@ context('Exit modal testing', () => {
 
     cy.get('.subject-btn')
       .first()
-      .should('contain', 'Tema 1');
+      .should('contain', 'Introduksjon');
   });
 
   it('exit button renders exam page', () => {
