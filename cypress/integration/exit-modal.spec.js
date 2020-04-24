@@ -82,7 +82,7 @@ context('Exit modal testing', () => {
 
     cy.get('.examination-blurb')
       .first()
-      .should('contain', 'Tittel');
+      .should('contain', 'Velkommen til Digiklar');
   });
 
   it('has reloaded state after exit', () => {
@@ -106,6 +106,6 @@ context('Exit modal testing', () => {
 
     cy.get('.examination-blurb')
       .first()
-      .should('contain', 'Tittel');
+      .should('contain', 'Velkommen til Digiklar');
   });
 });

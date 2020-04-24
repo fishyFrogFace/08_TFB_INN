@@ -2,7 +2,7 @@
 
 context('Pre-exam', () => {
   const username = 'little-kangaroo';
-  const title = 'Tittel';
+  const title = 'Velkommen til Digiklar';
   const subjectTitle = 'Introduksjon';
 
   before(() => {
