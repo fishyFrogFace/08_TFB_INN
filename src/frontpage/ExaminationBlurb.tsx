@@ -48,7 +48,7 @@ const ExaminationBlurb: React.FC<Props> = props => {
       <button
         className='examination-startbutton'
         onClick={() => props.updateAppPage(Page.Examination)}>
-        Start
+        Starte
       </button>
     </div>
   );

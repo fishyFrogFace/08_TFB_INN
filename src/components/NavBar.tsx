@@ -9,18 +9,18 @@ interface Props {
 
 const NavBar: React.FC<Props> = props => {
   return (
-    <header className='navBar'>
-      <div className="nav-content">
-        <Button classNames='nav-btn exit' onClick={props.showChoice}>
-          <img className='nav-img' src={exit} alt='Exit' />
-        </Button>
-        
-        <div className="subject-name-container">
-          <p className="subject-name">Temanavn her</p> 
+    <div className='navBar'>
+        <div className="button-container">
+          <Button classNames='nav-btn exit' onClick={props.showChoice}>
+            <img className='nav-img' src={exit} alt='Exit' />
+          </Button>
         </div>
-       </div> 
+        <div className="subject-name-container">
+          <p className="subject-name h2 black">Temanavn her</p> 
+        </div>
       
-    </header>
+      
+    </div>
     
   );
 };

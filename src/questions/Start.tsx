@@ -13,17 +13,23 @@ interface Props {
 
 const Start: React.FC<Props> = props => {
   return (
-    <Button
-      classNames='start'
-      onClick={() =>
-        props.updateResult({
-          resultTitle: props.resultTitle,
-          maxPoints: props.maxPoints,
-          pointsAchieved: props.maxPoints
-        })
-      }>
-      Start
-    </Button>
+    <div className="content">
+      <div className="inputContainer transparent">
+        <div className="nextButtonContainer">
+          <Button
+            classNames='start next'
+            onClick={() =>
+              props.updateResult({
+                resultTitle: props.resultTitle,
+                maxPoints: props.maxPoints,
+                pointsAchieved: props.maxPoints
+              })
+            }>
+            Start
+          </Button>
+          </div>
+      </div>
+    </div>
   );
 };
 

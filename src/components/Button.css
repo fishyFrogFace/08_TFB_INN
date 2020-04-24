@@ -8,7 +8,7 @@
   text-align: center;
   border: 0;
   border-radius: 8px;
-  
+
   cursor: pointer;
 }
 
@@ -37,6 +37,9 @@
   height: 5vh;
   font-size: 3vh;
   padding: 1vh auto;
+  border: 0;
+  border-radius: 8px;
+  
 }
 
 .next:hover {
@@ -49,6 +52,7 @@
 
 .start {
   background-color: #659157;
+  padding-top: 0;
 }
 
 .start:hover {
@@ -61,10 +65,14 @@
 
 .nav-btn {
   background-color: transparent;
-  margin: auto 0;  
+  /*margin: auto 0;  */
   border: none;
-  width: 3vmin;
-  height: 3vmin;
+  
+  color: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
 }
 
 .nav-btn:hover {

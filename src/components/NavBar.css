@@ -4,28 +4,38 @@
 .navBar {
   height: 10vh;
   background-color: #E2E2E2;
-  border-bottom: 1px solid red;
+  /*border-bottom: 1px solid red; */
   
 }
-.navBar .nav-content {
-  margin: 3vh 0 auto 2vw;
+.navBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  /*padding: 3vh 0 auto 2vw;*/
 }
 
 .navbar-modals {
-  position: relative;
-  margin: auto;
+  /*position: relative;
+  margin: auto;*/
   color: black;
   text-align: left;
-  float: left;  
+    
+}
+.button-container {
+  display: flex;
+  align-content: center;
+  min-width: 6vw;
+  margin-left: 2vmin;
+ 
 }
 
 .subject-name-container {
+  /*
   display: inline-block;
   margin: auto 5vw;
+  */
+  margin-left: 3vmin;
 }
 
-.subject-name {
-  color: black;
-  font-size: 3vh;
-  margin: auto 0;
-}
+
