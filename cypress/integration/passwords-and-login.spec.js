@@ -2,6 +2,8 @@
 
 context('Passwords-and-login', () => {
   const subjectTitle = 'Passord og innlogging';
+  const username = 'vaffelkjeks'
+  const password = 'JegEr1LitenFrosk:)'
 
   before(() => {
     cy.visit('http://localhost:3000/');
@@ -75,6 +77,47 @@ context('Passwords-and-login', () => {
 
     cy.get('.h1')
       .first()
+      .should('contain', "Logg inn med informasjonen under");
+  });
+
+  it('login contains a navigation menu', () => {
+    cy.get('.nav-bar')
+      .first()
+      .should('be.visible');
+  });
+
+  it('login contains user information', () => {
+    const info = [username, password];
+    cy.get('.h2').each(($el, i) => {
+      cy.wrap($el).should('contain', info[i]).and('be.visible');
+    });
+  });
+
+  it('login button is clickable and renders success screen', () => {
+    cy.get('.username')
+      .first()
+      .type(username);
+
+      cy.get('.password')
+      .first()
+      .type(password);
+
+    cy.get('.next')
+      .first()
+      .click();
+
+    cy.get('.h2')
+      .eq(2)
+      .should('contain', "Gratulerer, du er logget inn!");
+  });
+
+  it('login button is clickable and renders success screen', () => {
+    cy.get('.next')
+      .first()
+      .click();
+
+    cy.get('.h1')
+      .first()
       .should('contain', "Du har fullført 'Passord og innlogging'!");
   });
 
@@ -105,7 +148,7 @@ context('Passwords-and-login', () => {
   });
 
   it('result reflects what the user achieved', () => {
-    const width = ['400px', '200px'];
+    const width = ['400px', '200px', '400px'];
     cy.get('.filler').each(($el, i) => {
       cy.wrap($el).should('have.css', 'width', width[i]);
     });
