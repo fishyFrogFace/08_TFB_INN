@@ -91,6 +91,18 @@ export const standardExamDefinition = {
           }
         },
         {
+          name: 'Use your username and password to log into a service',
+          templateID: QuestionTemplate.LogIn,
+          questionContent: {
+            resultTitle: 'Kan bruke brukerinformasjon til å logge inn',
+            userInformation: {
+              username: 'vaffelkjeks',
+              password: 'JegEr1LitenFrosk:)'
+            },
+            maxPoints: 5
+          }
+        },
+        {
           name: 'Completed subject',
           templateID: QuestionTemplate.CompletedSubject,
           questionContent: {}
