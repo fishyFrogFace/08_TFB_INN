@@ -49,11 +49,11 @@ const CopyText: React.FC<Props> = props => {
     <div>
       <h1 className='h1'>{props.text}</h1>
       <form
-        className='textAndBtn'
+        className='text-and-btn'
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
         <input
           id='name'
-          className={`inputField ${color}`}
+          className={`input-field ${color}`}
           type='text'
           onChange={e => storeInput(e)}
           placeholder={props.text}

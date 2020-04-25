@@ -106,7 +106,7 @@ const Subject: React.FC<Props> = props => {
   };
 
   return (
-    <div className='questionContainer'>
+    <div className='question-container'>
       {chooseQuestion(props.subject.questions[props.currentQuestion])}
     </div>
   );

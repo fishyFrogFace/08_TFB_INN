@@ -26,7 +26,7 @@ const WhatUnits: React.FC<PropsFromRedux> = props => {
   };
 
   return (
-    <div className='questionContainer'>
+    <div className='question-container'>
       <h1 className='h1'>Hvilke enheter har du?</h1>
       <div className='button-container'>
         {units.map((item, i) => (

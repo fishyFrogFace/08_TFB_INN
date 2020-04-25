@@ -39,13 +39,13 @@ context('Passwords-and-login', () => {
   });
 
   it('create password contains a navigation menu', () => {
-    cy.get('.navBar')
+    cy.get('.nav-bar')
       .first()
       .should('be.visible');
   });
 
   it('password button is clickable and renders find secure pwd', () => {
-    cy.get('.inputField')
+    cy.get('.input-field')
       .first()
       .type('KokosBollerEr-Godt!1');
 
@@ -59,12 +59,12 @@ context('Passwords-and-login', () => {
   });
 
   it('find secure pwd contains a navigation menu', () => {
-    cy.get('.navBar')
+    cy.get('.nav-bar')
       .first()
       .should('be.visible');
   });
 
-  it('find secure pwd button is clickable and renders success screen 2', () => {
+  it('find secure pwd button is clickable and renders login', () => {
     cy.get('.answer-btn')
       .eq(2)
       .click();
@@ -79,7 +79,7 @@ context('Passwords-and-login', () => {
   });
 
   it('success screen 2 contains a navigation menu', () => {
-    cy.get('.navBar')
+    cy.get('.nav-bar')
       .first()
       .should('be.visible');
   });

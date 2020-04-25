@@ -11,11 +11,12 @@ import { updateAppPage } from 'redux/actions';
 // Example data for examination blurbs
 const frontpageRepresentation = {
   instanceID: 0,
-  title: 'Tittel',
-  description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.' +
-    ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.' +
-    ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.',
+  title: 'Velkommen til Digiklar',
+  description: `Velkommen til Digiklar, et kartleggingsverktøy for digital kompetanse.
+    Når du trykker på startknappen nedenfor, vil kartleggingen starte.
+    Om du vil komme tilbake til denne siden, kan du laste inn siden på nytt 
+    eller trykke på det røde krysset i høyre hjørne.
+    Nåværende kartlegging vil da slettes.`,
   imageFilename: 'big-pink.png'
 };
 

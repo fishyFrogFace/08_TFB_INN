@@ -20,11 +20,11 @@ const TextInput: React.FC<Props> = props => {
     <div>
       <h1 className='h1'>{props.text}</h1>
       <form
-        className='textAndBtn'
+        className='text-and-btn'
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
         <input
           id='name'
-          className={'inputField'}
+          className={'input-field'}
           type='text'
           onChange={e => setInput(e.currentTarget.value)}
           placeholder={props.placeholder}
