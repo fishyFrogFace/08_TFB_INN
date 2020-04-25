@@ -47,7 +47,7 @@ const WhereInPicture: React.FC<Props> = props => {
       <h1 className='h1'>{props.text}</h1>
       <div>
         <img
-          className={`whereInPictureImg ${mode}Image`}
+          className={`where-in-picture-img ${mode}-image`}
           onClick={e => {
             const xPos = e.pageX - e.currentTarget.offsetLeft;
             const yPos = e.pageY - e.currentTarget.offsetTop;

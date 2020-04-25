@@ -26,13 +26,13 @@ context('Pre-exam', () => {
   });
 
   it('username input contains a navigation menu', () => {
-    cy.get('.navBar')
+    cy.get('.nav-bar')
       .first()
       .should('be.visible');
   });
 
   it('username is visible when typing', () => {
-    cy.get('.inputField')
+    cy.get('.input-field')
       .first()
       .type(username);
 
@@ -52,7 +52,7 @@ context('Pre-exam', () => {
   });
 
   it('what units contains a navigation menu', () => {
-    cy.get('.navBar')
+    cy.get('.nav-bar')
       .first()
       .should('be.visible');
   });
@@ -83,7 +83,7 @@ context('Pre-exam', () => {
   });
 
   it('overview contains a navigation menu', () => {
-    cy.get('.navBar')
+    cy.get('.nav-bar')
       .first()
       .should('be.visible');
   });
@@ -100,7 +100,7 @@ context('Pre-exam', () => {
   });
 
   it('result contains a navigation menu', () => {
-    cy.get('.navBar')
+    cy.get('.nav-bar')
       .first()
       .should('be.visible');
   });

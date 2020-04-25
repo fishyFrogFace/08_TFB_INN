@@ -9,7 +9,7 @@ interface Props {
 
 const NavBar: React.FC<Props> = props => {
   return (
-    <div className='navBar'>
+    <div className='nav-bar'>
       <div className='navbar-left'>
         <Button classNames='nav-btn exit' onClick={props.showChoice}>
           <img className='nav-img' src={exit} alt='Exit' />

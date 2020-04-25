@@ -19,7 +19,7 @@ const subjectResults = (element: SubjectResult, i: number) => {
 
 const ResultPage: React.FC<PropsFromRedux> = props => {
   return (
-    <div className='resultContainer'>
+    <div className='result-container'>
       <h1 className='h1'>Resultat for {props.username}</h1>
       <h2 className='h2'>
         Har følgende enheter: {props.units.length === 0 ? 'Ingen' : props.units}
