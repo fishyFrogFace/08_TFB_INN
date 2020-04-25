@@ -8,20 +8,30 @@ interface Props {
   resultTitle: string;
   isImage: boolean;
   answerValues: string[];
+  correctAlt: string;
   updateResult: (result: QuestionResult) => void;
 }
 
 const ChooseOne: React.FC<Props> = props => {
   const [selectedButton, setSelectedButton] = useState<number>();
 
+  const checkAnswer = () => {
+    if (selectedButton) {
+      const selectedString = props.answerValues[selectedButton];
+      return selectedString === props.correctAlt ? 1 : 0;
+    } else {
+      return 0;
+    }
+  };
+
   const returnResult = () => {
     props.updateResult({
-      mastered: false,
-      answerValues: selectedButton ? [props.answerValues[selectedButton]] : [],
-      type: QuestionResultType.Other,
-      maxPoints: 0,
+      mastered: true,
+      answerValues: [],
+      type: QuestionResultType.Mastery,
+      maxPoints: props.correctAlt.length,
       resultTitle: props.resultTitle,
-      pointsAchieved: 0
+      pointsAchieved: checkAnswer()
     });
   };
 
