@@ -17,7 +17,10 @@ const ChooseOne: React.FC<Props> = props => {
   const returnResult = () => {
     props.updateResult({
       mastered: false,
-      answerValues: selectedButton ? [props.answerValues[selectedButton]] : [],
+      answerValues:
+        selectedButton === undefined
+          ? []
+          : [props.answerValues[selectedButton!]],
       type: QuestionResultType.Other,
       maxPoints: 0,
       resultTitle: props.resultTitle,

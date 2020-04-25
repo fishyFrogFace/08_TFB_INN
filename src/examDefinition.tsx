@@ -111,6 +111,16 @@ export const standardExamDefinition = {
           }
         },
         {
+          name: 'Has BankID',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Har du BankID (kodebrikke)?',
+            resultTitle: 'Har BankID',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
           name: 'Completed subject',
           templateID: QuestionTemplate.CompletedSubject,
           questionContent: {}
