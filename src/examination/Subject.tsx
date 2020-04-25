@@ -1,22 +1,24 @@
 import React from 'react';
-import '../App.css';
-import Start from '../questions/Start';
-import CopyText from '../questions/CopyText';
+import 'App.css';
 import {
   QuestionResult,
   QuestionDefinition,
   SubjectDefinition,
   QuestionTemplate
-} from '../Types';
+} from 'Types';
+import { checkPasswordSafety } from 'helpers/PasswordChecker';
 import { connect } from 'react-redux';
 import { RootState } from 'redux/reducers';
 import { updateSubjectResultList, updateAppPage } from 'redux/actions';
 import CompletedSubject from 'exampages/CompletedSubject';
+import Start from 'questions/Start';
+import CopyText from 'questions/CopyText';
 import WhereInPicture from 'questions/WhereInPicture';
 import TextInput from 'questions/TextInput';
 import MultipleButtons from 'questions/MultipleButtons';
 import Login from 'questions/Login';
-import { checkPasswordSafety } from 'helpers/PasswordChecker';
+import ChooseOne from 'questions/ChooseOne';
+import ChooseOneMastery from 'questions/ChooseOneMastery';
 
 interface Props extends PropsFromRedux {
   subject: SubjectDefinition;
@@ -91,7 +93,9 @@ const Subject: React.FC<Props> = props => {
             isImage={question.questionContent.isImage!}
             resultTitle={question.questionContent.resultTitle!}
             text={question.questionContent.text!}
-            correctAlt={question.questionContent.correctAlt!}
+            correctAlternativeList={
+              question.questionContent.correctAlternativeList!
+            }
             updateResult={updateResult}
           />
         );
@@ -102,6 +106,29 @@ const Subject: React.FC<Props> = props => {
             maxPoints={question.questionContent.maxPoints!}
             resultTitle={question.questionContent.resultTitle!}
             userInformation={question.questionContent.userInformation!}
+            updateResult={updateResult}
+          />
+        );
+
+      case QuestionTemplate.ChooseOne:
+        return (
+          <ChooseOne
+            text={question.questionContent.text!}
+            resultTitle={question.questionContent.resultTitle!}
+            isImage={question.questionContent.isImage!}
+            answerValues={question.questionContent.answerValues!}
+            updateResult={updateResult}
+          />
+        );
+
+      case QuestionTemplate.ChooseOneMastery:
+        return (
+          <ChooseOneMastery
+            text={question.questionContent.text!}
+            correctAlternative={question.questionContent.correctAlternative!}
+            resultTitle={question.questionContent.resultTitle!}
+            isImage={question.questionContent.isImage!}
+            answerValues={question.questionContent.answerValues!}
             updateResult={updateResult}
           />
         );

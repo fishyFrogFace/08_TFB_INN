@@ -8,7 +8,7 @@ interface Props {
   resultTitle: string;
   isImage: boolean;
   answerValues: string[];
-  correctAlt: string;
+  correctAlternative: string;
   updateResult: (result: QuestionResult) => void;
 }
 
@@ -18,7 +18,7 @@ const ChooseOne: React.FC<Props> = props => {
   const checkAnswer = () => {
     if (selectedButton) {
       const selectedString = props.answerValues[selectedButton];
-      return selectedString === props.correctAlt ? 1 : 0;
+      return selectedString === props.correctAlternative ? 1 : 0;
     } else {
       return 0;
     }
@@ -29,7 +29,7 @@ const ChooseOne: React.FC<Props> = props => {
       mastered: true,
       answerValues: [],
       type: QuestionResultType.Mastery,
-      maxPoints: props.correctAlt.length,
+      maxPoints: props.correctAlternative.length,
       resultTitle: props.resultTitle,
       pointsAchieved: checkAnswer()
     });

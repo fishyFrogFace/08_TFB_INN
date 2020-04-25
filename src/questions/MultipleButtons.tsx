@@ -8,7 +8,7 @@ interface Props {
   resultTitle: string;
   isImage: boolean;
   answerValues: string[];
-  correctAlt: string[];
+  correctAlternativeList: string[];
   updateResult: (result: QuestionResult) => void;
 }
 
@@ -29,7 +29,7 @@ const MultipleButtons: React.FC<Props> = props => {
 
   const checkAnswer = () => {
     const selectedStrings = selectedButtons.map(i => props.answerValues[i]);
-    const correctAnswers = props.correctAlt.filter(alt =>
+    const correctAnswers = props.correctAlternativeList.filter(alt =>
       selectedStrings.includes(alt)
     );
 
@@ -44,7 +44,7 @@ const MultipleButtons: React.FC<Props> = props => {
       mastered: true,
       answerValues: [],
       type: QuestionResultType.Mastery,
-      maxPoints: props.correctAlt.length,
+      maxPoints: props.correctAlternativeList.length,
       resultTitle: props.resultTitle,
       pointsAchieved: checkAnswer()
     });

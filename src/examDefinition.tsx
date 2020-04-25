@@ -1,19 +1,6 @@
 import { QuestionTemplate } from 'Types';
 import { checkPasswordSafety } from 'helpers/PasswordChecker';
 
-/*
-      {
-        q:'severalbuttons',
-        params: {
-          text: 'hvilken farge liker du best?',
-          measures: 'velg et alternativ',
-          maxPoints: 1,
-          answerValues: ["grønn", "gul", "blå", "rød"],
-          correctAlt: "blå"
-        }
-      }
-      */
-
 export const standardExamDefinition = {
   subjects: [
     {
@@ -87,7 +74,10 @@ export const standardExamDefinition = {
               '34BananerVokserPåTrær!',
               '1qaz2wsx3edc4rfv'
             ],
-            correctAlt: ['zi3A47gvq8nFVkv', '34BananerVokserPåTrær!']
+            correctAlternativeList: [
+              'zi3A47gvq8nFVkv',
+              '34BananerVokserPåTrær!'
+            ]
           }
         },
         {
@@ -117,7 +107,7 @@ export const standardExamDefinition = {
               '3487',
               'PIN1'
             ],
-            correctAlt: ['757912', '3487']
+            correctAlternativeList: ['757912', '3487']
           }
         },
         {
