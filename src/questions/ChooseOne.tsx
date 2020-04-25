@@ -8,35 +8,23 @@ interface Props {
   resultTitle: string;
   isImage: boolean;
   answerValues: string[];
-  correctAlt: string[];
+  correctAlt: string;
   updateResult: (result: QuestionResult) => void;
 }
 
 // component only works if there is a correct answer and should be remade
 // or adjusted for non-mastery questions
-// it is also not working well with pictures (CSS related)
 
-const MultipleButtons: React.FC<Props> = props => {
-  const [selectedButtons, setSelectedButtons] = useState<number[]>([]);
-
-  const updateAnswer = (value: number) => {
-    if (selectedButtons.find(element => element === value) === undefined) {
-      setSelectedButtons(selectedButtons.concat([value]));
-    } else {
-      setSelectedButtons(selectedButtons.filter(element => element !== value));
-    }
-  };
+const ChooseOne: React.FC<Props> = props => {
+  const [selectedButton, setSelectedButton] = useState<number>();
 
   const checkAnswer = () => {
-    const selectedStrings = selectedButtons.map(i => props.answerValues[i]);
-    const correctAnswers = props.correctAlt.filter(alt =>
-      selectedStrings.includes(alt)
-    );
-
-    const wrongAnswers = selectedStrings.length - correctAnswers.length;
-    const finalPoints = correctAnswers.length - wrongAnswers;
-
-    return finalPoints >= 0 ? finalPoints : 0;
+    if (selectedButton) {
+      const selectedString = props.answerValues[selectedButton];
+      return selectedString === props.correctAlt ? 1 : 0;
+    } else {
+      return 0;
+    }
   };
 
   const returnResult = () => {
@@ -57,10 +45,8 @@ const MultipleButtons: React.FC<Props> = props => {
         {props.answerValues.map((item, i) => (
           <Button
             key={i}
-            classNames={`answer-btn ${
-              selectedButtons.includes(i) ? 'selected' : ''
-            }`}
-            onClick={() => updateAnswer(i)}>
+            classNames={`answer-btn ${selectedButton === i ? 'selected' : ''}`}
+            onClick={() => setSelectedButton(i)}>
             {props.isImage ? <img src={item} alt={`Button ${i}`} /> : item}
           </Button>
         ))}
@@ -74,4 +60,4 @@ const MultipleButtons: React.FC<Props> = props => {
   );
 };
 
-export default MultipleButtons;
+export default ChooseOne;
