@@ -2,8 +2,8 @@
 
 context('Passwords-and-login', () => {
   const subjectTitle = 'Passord og innlogging';
-  const username = 'vaffelkjeks'
-  const password = 'JegEr1LitenFrosk:)'
+  const username = 'vaffelkjeks';
+  const password = 'JegEr1LitenFrosk:)';
 
   before(() => {
     cy.visit('http://localhost:3000/');
@@ -77,7 +77,7 @@ context('Passwords-and-login', () => {
 
     cy.get('.h1')
       .first()
-      .should('contain', "Logg inn med informasjonen under");
+      .should('contain', 'Logg inn med informasjonen under');
   });
 
   it('login contains a navigation menu', () => {
@@ -89,7 +89,9 @@ context('Passwords-and-login', () => {
   it('login contains user information', () => {
     const info = [username, password];
     cy.get('.h2').each(($el, i) => {
-      cy.wrap($el).should('contain', info[i]).and('be.visible');
+      cy.wrap($el)
+        .should('contain', info[i])
+        .and('be.visible');
     });
   });
 
@@ -98,7 +100,7 @@ context('Passwords-and-login', () => {
       .first()
       .type(password);
 
-      cy.get('#password')
+    cy.get('#password')
       .first()
       .type(username);
 
@@ -106,9 +108,9 @@ context('Passwords-and-login', () => {
       .first()
       .click();
 
-      cy.get('.feedback')
+    cy.get('.feedback')
       .first()
-      .should('contain', "Feil passord eller brukernavn")
+      .should('contain', 'Feil passord eller brukernavn')
       .and('have.css', 'color', 'rgb(255, 0, 0)');
 
     cy.get('#username')
@@ -116,7 +118,7 @@ context('Passwords-and-login', () => {
       .clear()
       .type(username);
 
-      cy.get('#password')
+    cy.get('#password')
       .first()
       .clear()
       .type(password);
@@ -127,11 +129,35 @@ context('Passwords-and-login', () => {
 
     cy.get('.feedback')
       .first()
-      .should('contain', "Gratulerer, du er nå logget inn!")
+      .should('contain', 'Gratulerer, du er nå logget inn!')
       .and('have.css', 'color', 'rgb(0, 128, 0)');
   });
 
-  it('login button is clickable and renders success screen', () => {
+  it('login button is clickable and renders pin code recognition', () => {
+    cy.get('.next')
+      .first()
+      .click();
+
+    cy.get('.h1')
+      .first()
+      .should('contain', 'Klikk på PIN-koden(e)');
+  });
+
+  it('pin code recognition contains a navigation menu', () => {
+    cy.get('.nav-bar')
+      .first()
+      .should('be.visible');
+  });
+
+  it('pin code recognition button is clickable and renders success screen', () => {
+    cy.get('.answer-btn')
+      .eq(1)
+      .click();
+
+    cy.get('.answer-btn')
+      .eq(4)
+      .click();
+
     cy.get('.next')
       .first()
       .click();
@@ -168,7 +194,7 @@ context('Passwords-and-login', () => {
   });
 
   it('result reflects what the user achieved', () => {
-    const width = ['400px', '200px', '320px'];
+    const width = ['400px', '200px', '320px', '400px'];
     cy.get('.filler').each(($el, i) => {
       cy.wrap($el).should('have.css', 'width', width[i]);
     });
