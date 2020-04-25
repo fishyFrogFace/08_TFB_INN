@@ -96,8 +96,8 @@ export const standardExamDefinition = {
           questionContent: {
             resultTitle: 'Kan bruke brukerinformasjon til å logge inn',
             userInformation: {
-              username: '"vaffelkjeks"',
-              password: '"JegEr1LitenFrosk:)"'
+              username: 'vaffelkjeks',
+              password: 'JegEr1LitenFrosk:)'
             },
             maxPoints: 5
           }

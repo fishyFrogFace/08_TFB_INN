@@ -93,22 +93,42 @@ context('Passwords-and-login', () => {
     });
   });
 
-  it('login button is clickable and renders success screen', () => {
-    cy.get('.username')
+  it('login button gives feedback to user', () => {
+    cy.get('#username')
+      .first()
+      .type(password);
+
+      cy.get('#password')
       .first()
       .type(username);
 
-      cy.get('.password')
+    cy.get('.next')
       .first()
+      .click();
+
+      cy.get('.feedback')
+      .first()
+      .should('contain', "Feil passord eller brukernavn")
+      .and('have.css', 'color', 'rgb(255, 0, 0)');
+
+    cy.get('#username')
+      .first()
+      .clear()
+      .type(username);
+
+      cy.get('#password')
+      .first()
+      .clear()
       .type(password);
 
     cy.get('.next')
       .first()
       .click();
 
-    cy.get('.h2')
-      .eq(2)
-      .should('contain', "Gratulerer, du er logget inn!");
+    cy.get('.feedback')
+      .first()
+      .should('contain', "Gratulerer, du er nå logget inn!")
+      .and('have.css', 'color', 'rgb(0, 128, 0)');
   });
 
   it('login button is clickable and renders success screen', () => {
@@ -148,7 +168,7 @@ context('Passwords-and-login', () => {
   });
 
   it('result reflects what the user achieved', () => {
-    const width = ['400px', '200px', '400px'];
+    const width = ['400px', '200px', '320px'];
     cy.get('.filler').each(($el, i) => {
       cy.wrap($el).should('have.css', 'width', width[i]);
     });
