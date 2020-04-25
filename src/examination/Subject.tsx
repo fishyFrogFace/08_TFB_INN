@@ -15,6 +15,7 @@ import CompletedSubject from 'exampages/CompletedSubject';
 import WhereInPicture from 'questions/WhereInPicture';
 import TextInput from 'questions/TextInput';
 import MultipleButtons from 'questions/MultipleButtons';
+import Login from 'questions/Login';
 import { checkPasswordSafety } from 'helpers/PasswordChecker';
 
 interface Props extends PropsFromRedux {
@@ -91,6 +92,16 @@ const Subject: React.FC<Props> = props => {
             resultTitle={question.questionContent.resultTitle!}
             text={question.questionContent.text!}
             correctAlt={question.questionContent.correctAlt!}
+            updateResult={updateResult}
+          />
+        );
+
+      case QuestionTemplate.LogIn:
+        return (
+          <Login
+            maxPoints={question.questionContent.maxPoints!}
+            resultTitle={question.questionContent.resultTitle!}
+            userInformation={question.questionContent.userInformation!}
             updateResult={updateResult}
           />
         );
