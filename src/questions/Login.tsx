@@ -20,8 +20,6 @@ const TextInput: React.FC<Props> = props => {
   const [clickedWhileCorrect, setClickedWhileCorrect] = useState(false);
 
   const checkInput = () => {
-    console.log(password === props.userInformation.password);
-    console.log(username);
     if (clickedWhileCorrect) {
       props.updateResult({
         mastered: true,
@@ -66,7 +64,7 @@ const TextInput: React.FC<Props> = props => {
         <input
           id='password'
           className={`input-field ${color}`}
-          type='text'
+          type='password'
           onChange={e => setPassword(e.currentTarget.value)}
           placeholder='Password'
         />
