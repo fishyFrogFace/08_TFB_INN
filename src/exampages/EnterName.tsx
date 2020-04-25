@@ -51,17 +51,17 @@ const EnterName: React.FC<Props> = props => {
   const [input, setInput] = useState(randomName(adjectives, animals));
 
   return (
-    <div className='questionContainer'>
-      <div className='imageContainer'>
+    <div className='question-container'>
+      <div className='image-container'>
         <img src={avatar} alt='Avatar' />
       </div>
       <h1 className='h1'>Mitt navn er</h1>
       <form
-        className='textAndBtn'
+        className='text-and-btn'
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
         <input
           id='name'
-          className='inputField'
+          className='input-field'
           type='text'
           onChange={(e: React.FormEvent<HTMLInputElement>) => {
             const valueTyped = e.currentTarget.value;

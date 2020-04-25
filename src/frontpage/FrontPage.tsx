@@ -11,7 +11,7 @@ interface Props {
 const FrontPage: React.FC<Props> = props => {
   return (
     <div className='main'>
-      <div className='questionContainer'>
+      <div className='question-container'>
         <ExaminationList examInfos={props.availableExaminations} />
       </div>
     </div>
