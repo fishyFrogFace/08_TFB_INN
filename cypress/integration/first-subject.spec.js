@@ -2,7 +2,7 @@
 
 context('First-subject', () => {
   const username = 'little-kangaroo';
-  const title = 'Tittel';
+  const title = 'Velkommen til Digiklar';
   const subjectTitle = 'Introduksjon';
 
   before(() => {
@@ -31,7 +31,7 @@ context('First-subject', () => {
   });
 
   it('overview contains a navigation menu', () => {
-    cy.get('.navBar')
+    cy.get('.nav-bar')
       .first()
       .should('be.visible');
   });
@@ -47,7 +47,7 @@ context('First-subject', () => {
   });
 
   it('start contains a navigation menu', () => {
-    cy.get('.navBar')
+    cy.get('.nav-bar')
       .first()
       .should('be.visible');
   });
@@ -63,13 +63,13 @@ context('First-subject', () => {
   });
 
   it('copytext contains a navigation menu', () => {
-    cy.get('.navBar')
+    cy.get('.nav-bar')
       .first()
       .should('be.visible');
   });
 
   it('copytext button is clickable and renders where in image', () => {
-    cy.get('.inputField')
+    cy.get('.input-field')
       .first()
       .type('A, b: C');
 
@@ -77,7 +77,7 @@ context('First-subject', () => {
       .first()
       .click();
 
-    cy.get('.inputField')
+    cy.get('.input-field')
       .first()
       .type('.');
 
@@ -95,13 +95,13 @@ context('First-subject', () => {
   });
 
   it('where in image contains a navigation menu', () => {
-    cy.get('.navBar')
+    cy.get('.nav-bar')
       .first()
       .should('be.visible');
   });
 
   it('next button is not visible unless you click on the correct spot', () => {
-    cy.get('.whereInPictureImg')
+    cy.get('.where-in-picture-img')
       .first()
       .click(50, 50);
 
@@ -109,7 +109,7 @@ context('First-subject', () => {
       .first()
       .should('not.be.visible');
 
-    cy.get('.whereInPictureImg')
+    cy.get('.where-in-picture-img')
       .first()
       .click(351, 262);
 
@@ -129,7 +129,7 @@ context('First-subject', () => {
   });
 
   it('success screen contains a navigation menu', () => {
-    cy.get('.navBar')
+    cy.get('.nav-bar')
       .first()
       .should('be.visible');
   });

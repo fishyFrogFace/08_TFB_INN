@@ -2,7 +2,7 @@ body {
   background-color: #282c34;
 }
 
-.questionContainer {
+.question-container {
   min-height: 79vh;
   text-align: center;
   display: flex;
@@ -11,7 +11,7 @@ body {
   justify-content: center;
 }
 
-.imageContainer {
+.image-container {
   max-height: 25vh;
 }
 
@@ -30,7 +30,7 @@ img {
   font-size: 3vh;
 }
 
-.inputField {
+.input-field {
   margin-bottom: 3vh;
   font-size: 5vh;
   width: 60vmin;
