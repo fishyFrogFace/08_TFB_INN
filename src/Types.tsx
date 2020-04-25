@@ -67,6 +67,11 @@ export interface ImageInformation {
   imageWithIndicator: string;
 }
 
+export interface UserInformation {
+  username: string;
+  password: string;
+}
+
 export interface QuestionContent {
   avatar?: string;
   resultTitle?: string;
@@ -78,6 +83,7 @@ export interface QuestionContent {
   isImage?: boolean;
   processString?: (input: string, maxPoints: number) => number;
   placeholder?: string;
+  userInformation?: UserInformation;
 }
 
 export interface QuestionDefinition {
