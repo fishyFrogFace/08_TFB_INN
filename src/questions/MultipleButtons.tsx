@@ -12,6 +12,10 @@ interface Props {
   updateResult: (result: QuestionResult) => void;
 }
 
+// component only works if there is a correct answer and should be remade
+// or adjusted for non-mastery questions
+// it is also not working well with pictures (CSS related)
+
 const MultipleButtons: React.FC<Props> = props => {
   const [selectedButtons, setSelectedButtons] = useState<number[]>([]);
 
