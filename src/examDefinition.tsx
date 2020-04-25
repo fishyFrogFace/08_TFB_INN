@@ -103,6 +103,24 @@ export const standardExamDefinition = {
           }
         },
         {
+          name: 'Choose all PIN-codes',
+          templateID: QuestionTemplate.MultipleButtons,
+          questionContent: {
+            text: 'Klikk på PIN-koden(e)',
+            resultTitle: 'Kan kjenne igjen PIN-koder',
+            isImage: false,
+            answerValues: [
+              'passord',
+              '757912',
+              '%&¤#',
+              'zi3A47gvq8nFVkv',
+              '3487',
+              'PIN1'
+            ],
+            correctAlt: ['757912', '3487']
+          }
+        },
+        {
           name: 'Completed subject',
           templateID: QuestionTemplate.CompletedSubject,
           questionContent: {}
