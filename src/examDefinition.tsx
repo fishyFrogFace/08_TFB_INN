@@ -111,13 +111,13 @@ export const standardExamDefinition = {
             isImage: false,
             answerValues: [
               'passord',
-              '7579',
+              '757912',
               '%&¤#',
               'zi3A47gvq8nFVkv',
               '3487',
               'PIN1'
             ],
-            correctAlt: ['7579', '3487']
+            correctAlt: ['757912', '3487']
           }
         },
         {
