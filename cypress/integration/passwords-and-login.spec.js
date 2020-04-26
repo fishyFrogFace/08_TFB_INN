@@ -180,14 +180,6 @@ context('Passwords-and-login', () => {
   });
 
   it('has bankid button is clickable and renders used bankid alone', () => {
-    cy.get('.answer-btn')
-      .first()
-      .click();
-
-    cy.get('.answer-btn')
-      .eq(1)
-      .click();
-
     cy.get('.next-button')
       .first()
       .click();
@@ -198,10 +190,6 @@ context('Passwords-and-login', () => {
   });
 
   it('used bankid alone button is clickable and renders true about bankid', () => {
-    cy.get('.answer-btn')
-      .eq(1)
-      .click();
-
     cy.get('.next-button')
       .first()
       .click();
@@ -253,6 +241,11 @@ context('Passwords-and-login', () => {
     const width = ['800px', '400px', '640px', '0px', '800px', '533.328125px'];
     cy.get('.filler').each(($el, i) => {
       cy.wrap($el).should('have.css', 'width', width[i]);
+    });
+
+    const str = ['Har BankID: Nei'];
+    cy.get('.other').each(($el, i) => {
+      cy.wrap($el).should('contain', str[i]);
     });
   });
 });

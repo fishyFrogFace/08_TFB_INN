@@ -14,7 +14,7 @@ const subjectResults = (element: SubjectResult, i: number) => {
         res.type === QuestionResultType.Mastery ? (
           <ProgressBar key={n} {...res} />
         ) : (
-          <h2 className='h2' key={i}>
+          <h2 className='h2 other' key={i}>
             {res.resultTitle}: {joinAndCapitalize(res.answerValues)}
           </h2>
         )
