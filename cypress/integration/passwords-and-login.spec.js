@@ -140,7 +140,7 @@ context('Passwords-and-login', () => {
 
     cy.get('.h1')
       .first()
-      .should('contain', "Klikk på PIN-koden(e)");
+      .should('contain', 'Klikk på PIN-koden(e)');
   });
 
   it('pin code recognition button is clickable and renders has bankid', () => {
@@ -158,7 +158,7 @@ context('Passwords-and-login', () => {
 
     cy.get('.h1')
       .first()
-      .should('contain', "Har du BankID (kodebrikke)?");
+      .should('contain', 'Har du BankID (kodebrikke)?');
   });
 
   it('has bankid button is clickable and renders why bankid', () => {
@@ -166,7 +166,7 @@ context('Passwords-and-login', () => {
       .first()
       .click();
 
-      cy.get('.answer-btn')
+    cy.get('.answer-btn')
       .eq(1)
       .click();
 
@@ -176,7 +176,7 @@ context('Passwords-and-login', () => {
 
     cy.get('.h1')
       .first()
-      .should('contain', "Har du brukt BankID (kodebrikke) alene før?");
+      .should('contain', 'Har du brukt BankID (kodebrikke) alene før?');
   });
 
   it('has bankid button is clickable and renders used bankid alone', () => {
@@ -184,7 +184,7 @@ context('Passwords-and-login', () => {
       .first()
       .click();
 
-      cy.get('.answer-btn')
+    cy.get('.answer-btn')
       .eq(1)
       .click();
 
@@ -194,7 +194,7 @@ context('Passwords-and-login', () => {
 
     cy.get('.h1')
       .first()
-      .should('contain', "Jeg forstår hvorfor jeg trenger BankID");
+      .should('contain', 'Jeg forstår hvorfor jeg trenger BankID');
   });
 
   it('used bankid alone button is clickable and renders true about bankid', () => {
@@ -208,7 +208,7 @@ context('Passwords-and-login', () => {
 
     cy.get('.h1')
       .first()
-      .should('contain', "Hva er sant om BankID?");
+      .should('contain', 'Hva er sant om BankID?');
   });
 
   it('true about bankid button is clickable and renders success screen', () => {
