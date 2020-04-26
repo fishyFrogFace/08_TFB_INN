@@ -9,7 +9,7 @@ context('First-subject', () => {
     cy.visit('http://localhost:3000/');
 
     // start examination
-    cy.get('.examination-startbutton')
+    cy.get('.start')
       .first()
       .click();
 
@@ -73,7 +73,7 @@ context('First-subject', () => {
       .first()
       .type('A, b: C');
 
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
@@ -81,11 +81,11 @@ context('First-subject', () => {
       .first()
       .type('.');
 
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
@@ -100,26 +100,16 @@ context('First-subject', () => {
       .should('be.visible');
   });
 
-  it('next button is not visible unless you click on the correct spot', () => {
+  it('where in image button is clickable and renders success screen', () => {
     cy.get('.where-in-picture-img')
       .first()
       .click(50, 50);
-
-    cy.get('.next')
-      .first()
-      .should('not.be.visible');
 
     cy.get('.where-in-picture-img')
       .first()
       .click(351, 262);
 
-    cy.get('.next')
-      .first()
-      .should('be.visible');
-  });
-
-  it('where in image button is clickable and renders success screen', () => {
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
@@ -134,7 +124,7 @@ context('First-subject', () => {
       .should('be.visible');
   });
 
-  it('next button is clickable and renders overview', () => {
+  it('success screen button is clickable and renders overview', () => {
     cy.get('.next')
       .first()
       .click();
@@ -161,7 +151,7 @@ context('First-subject', () => {
   });
 
   it('result reflects what the user achieved', () => {
-    const width = ['400px', '333.328125px', '333.328125px'];
+    const width = ['800px', '666.65625px', '666.65625px'];
     cy.get('.filler').each(($el, i) => {
       cy.wrap($el).should('have.css', 'width', width[i]);
     });

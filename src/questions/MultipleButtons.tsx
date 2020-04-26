@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import './Question.css';
 import Button from '../components/Button';
 import { QuestionResult, QuestionResultType } from '../Types';
+import FlowButtons from 'components/FlowButtons';
 
 interface Props {
   text: string;
   resultTitle: string;
   isImage: boolean;
   answerValues: string[];
-  correctAlt: string[];
+  correctAlternativeList: string[];
   updateResult: (result: QuestionResult) => void;
+  skipQuestion: () => void;
 }
 
 // component only works if there is a correct answer and should be remade
@@ -29,7 +31,7 @@ const MultipleButtons: React.FC<Props> = props => {
 
   const checkAnswer = () => {
     const selectedStrings = selectedButtons.map(i => props.answerValues[i]);
-    const correctAnswers = props.correctAlt.filter(alt =>
+    const correctAnswers = props.correctAlternativeList.filter(alt =>
       selectedStrings.includes(alt)
     );
 
@@ -40,11 +42,12 @@ const MultipleButtons: React.FC<Props> = props => {
   };
 
   const returnResult = () => {
+    setSelectedButtons([]);
     props.updateResult({
       mastered: true,
       answerValues: [],
       type: QuestionResultType.Mastery,
-      maxPoints: props.correctAlt.length,
+      maxPoints: props.correctAlternativeList.length,
       resultTitle: props.resultTitle,
       pointsAchieved: checkAnswer()
     });
@@ -65,11 +68,13 @@ const MultipleButtons: React.FC<Props> = props => {
           </Button>
         ))}
       </div>
-      <div>
-        <Button classNames='next' onClick={returnResult}>
-          Neste
-        </Button>
-      </div>
+      <FlowButtons
+        skip={() => {
+          setSelectedButtons([]);
+          props.skipQuestion();
+        }}
+        update={returnResult}
+      />
     </div>
   );
 };

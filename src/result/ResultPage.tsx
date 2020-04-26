@@ -1,18 +1,24 @@
 import React from 'react';
 import './ResultPage.css';
 import ProgressBar from 'components/ProgressBar';
-import { SubjectResult } from '../Types';
+import { SubjectResult, QuestionResultType } from '../Types';
 import { RootState } from 'redux/reducers';
 import { connect } from 'react-redux';
-import { capitalize } from '../Util';
+import { joinAndCapitalize } from '../Util';
 
 const subjectResults = (element: SubjectResult, i: number) => {
   return (
-    <div key={i} className='subjectResult'>
+    <div key={i} className='subject-result'>
       <h2 className='h2'>{element.subjectTitle}</h2>
-      {element.results.map((res, n) => (
-        <ProgressBar key={n} {...res} />
-      ))}
+      {element.results.map((res, n) =>
+        res.type === QuestionResultType.Mastery ? (
+          <ProgressBar key={n} {...res} />
+        ) : (
+          <h2 className='h2 other' key={i}>
+            {res.resultTitle}: {joinAndCapitalize(res.answerValues)}
+          </h2>
+        )
+      )}
     </div>
   );
 };
@@ -35,7 +41,7 @@ const ResultPage: React.FC<PropsFromRedux> = props => {
 
 const mapStateToProps = (store: RootState) => ({
   username: store.username,
-  units: capitalize(store.units.join(', ')),
+  units: joinAndCapitalize(store.units),
   results: store.subjectResultList
 });
 

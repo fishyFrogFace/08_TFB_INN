@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import '../App.css';
 import './Question.css';
-import Button from '../components/Button';
 import { QuestionResult, QuestionResultType, UserInformation } from '../Types';
+import FlowButtons from 'components/FlowButtons';
 
 interface Props {
   maxPoints: number;
   resultTitle: string;
   userInformation: UserInformation;
   updateResult: (result: QuestionResult) => void;
+  skipQuestion: () => void;
 }
 
 const TextInput: React.FC<Props> = props => {
@@ -19,10 +20,18 @@ const TextInput: React.FC<Props> = props => {
   const [color, setColor] = useState('black');
   const [clickedWhileCorrect, setClickedWhileCorrect] = useState(false);
 
+  const resetLocalState = () => {
+    setUsername('');
+    setPassword('');
+    setPoints(props.maxPoints);
+    setFeedback('');
+    setColor('black');
+    setClickedWhileCorrect(false);
+  };
+
   const checkInput = () => {
-    console.log(password === props.userInformation.password);
-    console.log(username);
     if (clickedWhileCorrect) {
+      resetLocalState();
       props.updateResult({
         mastered: true,
         type: QuestionResultType.Mastery,
@@ -66,14 +75,18 @@ const TextInput: React.FC<Props> = props => {
         <input
           id='password'
           className={`input-field ${color}`}
-          type='text'
+          type='password'
           onChange={e => setPassword(e.currentTarget.value)}
           placeholder='Password'
         />
         <h2 className={`feedback ${color}`}>{feedback}</h2>
-        <Button classNames='next' onClick={checkInput}>
-          Neste
-        </Button>
+        <FlowButtons
+          skip={() => {
+            resetLocalState();
+            props.skipQuestion();
+          }}
+          update={checkInput}
+        />
       </form>
     </div>
   );

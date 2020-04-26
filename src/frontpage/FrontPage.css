@@ -1,29 +1,23 @@
-.frontpage-buttons {
+.frontpage-main {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   justify-content: center;
-  width: 50%;
-  margin-top: 3vh;
 }
 
-.btn-header {
-  font-size: calc(10px + 4vmin);
-  margin-block-end: 0em;
-  margin-block-start: 0em;
-}
-
-.btn-body {
-  font-size: calc(5px + 2vmin);
-  margin-block-end: 0em;
-  margin-block-start: 0em;
-}
-
-.buttonContainer {
-  min-height: 100vh;
-  text-align: center;
+.frontpage-blurb {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  text-align: center;
+  width: 70vw;
+  font-size: 3vmin;
+  border-radius: 2vmin;
+  color: #282c34;
+  background-color: #059dc7;
+  margin: 20px;
+  padding: 20px;
+}
+
+.logo {
+  width: 90%;
+  max-height: 40vh;
 }

@@ -1,19 +1,6 @@
 import { QuestionTemplate } from 'Types';
 import { checkPasswordSafety } from 'helpers/PasswordChecker';
 
-/*
-      {
-        q:'severalbuttons',
-        params: {
-          text: 'hvilken farge liker du best?',
-          measures: 'velg et alternativ',
-          maxPoints: 1,
-          answerValues: ["grønn", "gul", "blå", "rød"],
-          correctAlt: "blå"
-        }
-      }
-      */
-
 export const standardExamDefinition = {
   subjects: [
     {
@@ -59,7 +46,7 @@ export const standardExamDefinition = {
       ]
     },
     {
-      name: 'Passord og innlogging',
+      name: 'Passord, innlogging og BankID',
       questions: [
         {
           name: 'Test password strength of user created password',
@@ -76,7 +63,7 @@ export const standardExamDefinition = {
           name: 'Choose the safest passwords',
           templateID: QuestionTemplate.MultipleButtons,
           questionContent: {
-            text: 'Hvilke(t) passord er mest sikkert?',
+            text: 'Hvilke passord er mest sikre?',
             resultTitle: 'Kan kjenne igjen sikre passord',
             isImage: false,
             answerValues: [
@@ -87,7 +74,10 @@ export const standardExamDefinition = {
               '34BananerVokserPåTrær!',
               '1qaz2wsx3edc4rfv'
             ],
-            correctAlt: ['zi3A47gvq8nFVkv', '34BananerVokserPåTrær!']
+            correctAlternativeList: [
+              'zi3A47gvq8nFVkv',
+              '34BananerVokserPåTrær!'
+            ]
           }
         },
         {
@@ -100,6 +90,26 @@ export const standardExamDefinition = {
               password: 'JegEr1LitenFrosk:)'
             },
             maxPoints: 5
+          }
+        },
+        {
+          name: 'What is true about login',
+          templateID: QuestionTemplate.MultipleButtons,
+          questionContent: {
+            text: 'Hva er sant når du har logget inn på en nettside?',
+            resultTitle:
+              'Forstår viktigheten av utlogging og hvordan utlogging fungerer',
+            isImage: false,
+            answerValues: [
+              'Jeg må ikke logge ut igjen',
+              'Om jeg logger ut, kan ingen se min personlige informasjon',
+              'Å lukke fanen/nettleseren er det samme som å logge ut',
+              'Det er viktig å logge ut når man er ferdig med å bruke en maskin som brukes av andre'
+            ],
+            correctAlternativeList: [
+              'Om jeg logger ut, kan ingen se min personlige informasjon',
+              'Det er viktig å logge ut når man er ferdig med å bruke en maskin som brukes av andre'
+            ]
           }
         },
         {
@@ -117,7 +127,58 @@ export const standardExamDefinition = {
               '3487',
               'PIN1'
             ],
-            correctAlt: ['757912', '3487']
+            correctAlternativeList: ['757912', '3487']
+          }
+        },
+        {
+          name: 'Has BankID',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Har du BankID (kodebrikke)?',
+            resultTitle: 'Har BankID',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
+          name: 'Uses BankID independently',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Har du brukt BankID (kodebrikke) alene før?',
+            resultTitle: 'Bruker BankID alene',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
+          name: 'Understands why they have BankID',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Jeg forstår hvorfor jeg trenger BankID',
+            resultTitle: 'Forstår hva BankID brukes til',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
+          name: 'What is true about BankID',
+          templateID: QuestionTemplate.MultipleButtons,
+          questionContent: {
+            text: 'Hva er sant om BankID?',
+            resultTitle: 'Forstår hva BankID er og hvordan den fungerer',
+            isImage: false,
+            answerValues: [
+              'BankID er personlig',
+              'BankID kan deles med andre',
+              'Med BankID kan jeg få tilgang til helseopplysninger',
+              'BankID har lav sikkerhet',
+              'BankID er en elektronisk ID/legitimasjon'
+            ],
+            correctAlternativeList: [
+              'BankID er personlig',
+              'Med BankID kan jeg få tilgang til helseopplysninger',
+              'BankID er en elektronisk ID/legitimasjon'
+            ]
           }
         },
         {

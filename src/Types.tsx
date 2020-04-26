@@ -22,7 +22,9 @@ export enum QuestionTemplate {
   CompletedSubject,
   TextInput,
   LogIn,
-  MultipleButtons
+  MultipleButtons,
+  ChooseOne,
+  ChooseOneMastery
 }
 
 export interface SubjectResult {
@@ -78,7 +80,8 @@ export interface QuestionContent {
   maxPoints?: number;
   text?: string;
   imageInformation?: ImageInformation;
-  correctAlt?: string[];
+  correctAlternativeList?: string[];
+  correctAlternative?: string;
   answerValues?: string[];
   isImage?: boolean;
   processString?: (input: string, maxPoints: number) => number;
