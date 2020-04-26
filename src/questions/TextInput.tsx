@@ -31,7 +31,8 @@ const TextInput: React.FC<Props> = props => {
         />
         <Button
           classNames='next'
-          onClick={() =>
+          onClick={() => {
+            setInput('');
             props.updateResult({
               mastered: true,
               type: QuestionResultType.Mastery,
@@ -39,8 +40,8 @@ const TextInput: React.FC<Props> = props => {
               maxPoints: props.maxPoints,
               resultTitle: props.resultTitle,
               pointsAchieved: props.processString(input, props.maxPoints)
-            })
-          }>
+            });
+          }}>
           Neste
         </Button>
       </form>
