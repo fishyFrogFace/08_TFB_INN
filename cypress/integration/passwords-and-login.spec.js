@@ -45,7 +45,7 @@ context('Passwords-and-login', () => {
       .first()
       .type('KokosBollerEr-Godt!1');
 
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
@@ -59,7 +59,7 @@ context('Passwords-and-login', () => {
       .eq(2)
       .click();
 
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
@@ -86,7 +86,7 @@ context('Passwords-and-login', () => {
       .first()
       .type(username);
 
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
@@ -105,7 +105,7 @@ context('Passwords-and-login', () => {
       .clear()
       .type(password);
 
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
@@ -116,7 +116,7 @@ context('Passwords-and-login', () => {
   });
 
   it('login button is clickable and renders true about login', () => {
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
@@ -134,7 +134,7 @@ context('Passwords-and-login', () => {
       .eq(2)
       .click();
 
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
@@ -152,7 +152,7 @@ context('Passwords-and-login', () => {
       .eq(4)
       .click();
 
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
@@ -170,7 +170,7 @@ context('Passwords-and-login', () => {
       .eq(1)
       .click();
 
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
@@ -188,7 +188,7 @@ context('Passwords-and-login', () => {
       .eq(1)
       .click();
 
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
@@ -202,7 +202,7 @@ context('Passwords-and-login', () => {
       .eq(1)
       .click();
 
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
@@ -220,7 +220,7 @@ context('Passwords-and-login', () => {
       .eq(4)
       .click();
 
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 

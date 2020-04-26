@@ -36,7 +36,7 @@ const WhereInPicture: React.FC<Props> = props => {
 
   const onNext = () => {
     resetLocalState();
-    if (mode === 'incorrect') {
+    if (mode !== 'incorrect') {
       props.updateResult({
         type: QuestionResultType.Mastery,
         maxPoints: props.maxPoints,

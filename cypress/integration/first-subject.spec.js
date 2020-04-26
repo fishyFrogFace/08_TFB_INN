@@ -73,7 +73,7 @@ context('First-subject', () => {
       .first()
       .type('A, b: C');
 
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
@@ -81,11 +81,11 @@ context('First-subject', () => {
       .first()
       .type('.');
 
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
@@ -100,26 +100,16 @@ context('First-subject', () => {
       .should('be.visible');
   });
 
-  it('next button is not visible unless you click on the correct spot', () => {
+  it('where in image button is clickable and renders success screen', () => {
     cy.get('.where-in-picture-img')
       .first()
       .click(50, 50);
-
-    cy.get('.next')
-      .first()
-      .should('not.be.visible');
 
     cy.get('.where-in-picture-img')
       .first()
       .click(351, 262);
 
-    cy.get('.next')
-      .first()
-      .should('be.visible');
-  });
-
-  it('where in image button is clickable and renders success screen', () => {
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
@@ -134,7 +124,7 @@ context('First-subject', () => {
       .should('be.visible');
   });
 
-  it('next button is clickable and renders overview', () => {
+  it('success screen button is clickable and renders overview', () => {
     cy.get('.next')
       .first()
       .click();
