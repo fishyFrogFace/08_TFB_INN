@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import './Question.css';
 import Button from '../components/Button';
 import { QuestionResult, QuestionResultType } from '../Types';
+import FlowButtons from 'components/FlowButtons';
 
 interface Props {
   text: string;
   resultTitle: string;
   isImage: boolean;
   answerValues: string[];
-  correctAlt: string;
+  correctAlternative: string;
   updateResult: (result: QuestionResult) => void;
+  skipQuestion: () => void;
 }
 
 const ChooseOne: React.FC<Props> = props => {
@@ -18,18 +20,19 @@ const ChooseOne: React.FC<Props> = props => {
   const checkAnswer = () => {
     if (selectedButton) {
       const selectedString = props.answerValues[selectedButton];
-      return selectedString === props.correctAlt ? 1 : 0;
+      return selectedString === props.correctAlternative ? 1 : 0;
     } else {
       return 0;
     }
   };
 
   const returnResult = () => {
+    setSelectedButton(undefined);
     props.updateResult({
       mastered: true,
       answerValues: [],
       type: QuestionResultType.Mastery,
-      maxPoints: props.correctAlt.length,
+      maxPoints: props.correctAlternative.length,
       resultTitle: props.resultTitle,
       pointsAchieved: checkAnswer()
     });
@@ -48,11 +51,13 @@ const ChooseOne: React.FC<Props> = props => {
           </Button>
         ))}
       </div>
-      <div>
-        <Button classNames='next' onClick={returnResult}>
-          Neste
-        </Button>
-      </div>
+      <FlowButtons
+        skip={() => {
+          setSelectedButton(undefined);
+          props.skipQuestion();
+        }}
+        update={returnResult}
+      />
     </div>
   );
 };

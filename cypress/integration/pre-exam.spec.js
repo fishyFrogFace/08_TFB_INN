@@ -10,13 +10,13 @@ context('Pre-exam', () => {
   });
 
   it('front page contains an examination blurb', () => {
-    cy.get('.examination-blurb')
+    cy.get('.frontpage-header')
       .first()
       .should('contain', title);
   });
 
   it('examination blurb button is clickable, the start page renders username input', () => {
-    cy.get('.examination-startbutton')
+    cy.get('.start')
       .first()
       .click();
 
@@ -114,7 +114,7 @@ context('Pre-exam', () => {
 
   it('a reload brings you to start page', () => {
     cy.reload();
-    cy.get('.examination-blurb')
+    cy.get('.frontpage-header')
       .first()
       .should('contain', title);
 
