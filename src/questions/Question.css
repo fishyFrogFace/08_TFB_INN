@@ -58,14 +58,10 @@
 
 .answer-btn {
   display: inline-block;
-  width: fit-content;
+  max-width: 90vw;
 }
 
 .answer-btn:hover {
   background-color: grey;
   color: #a92876;
-}
-
-.multiple-button-container {
-  width: 50vw
 }
