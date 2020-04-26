@@ -151,7 +151,7 @@ context('First-subject', () => {
   });
 
   it('result reflects what the user achieved', () => {
-    const width = ['400px', '333.328125px', '333.328125px'];
+    const width = ['800px', '666.65625px', '666.65625px'];
     cy.get('.filler').each(($el, i) => {
       cy.wrap($el).should('have.css', 'width', width[i]);
     });

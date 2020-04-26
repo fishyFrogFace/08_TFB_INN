@@ -250,7 +250,7 @@ context('Passwords-and-login', () => {
   });
 
   it('result reflects what the user achieved', () => {
-    const width = ['400px', '200px', '320px', '0px', '400px', '266.65625px'];
+    const width = ['800px', '400px', '640px', '0px', '800px', '533.328125px'];
     cy.get('.filler').each(($el, i) => {
       cy.wrap($el).should('have.css', 'width', width[i]);
     });
