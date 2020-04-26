@@ -9,7 +9,7 @@ context('First-subject', () => {
     cy.visit('http://localhost:3000/');
 
     // start examination
-    cy.get('.examination-startbutton')
+    cy.get('.start')
       .first()
       .click();
 
