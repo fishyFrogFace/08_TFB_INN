@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Question.css';
 import Button from '../components/Button';
 import { QuestionResult, QuestionResultType } from '../Types';
+import FlowButtons from 'components/FlowButtons';
 
 interface Props {
   text: string;
@@ -10,6 +11,7 @@ interface Props {
   answerValues: string[];
   correctAlternativeList: string[];
   updateResult: (result: QuestionResult) => void;
+  skipQuestion: () => void;
 }
 
 // component only works if there is a correct answer and should be remade
@@ -66,11 +68,13 @@ const MultipleButtons: React.FC<Props> = props => {
           </Button>
         ))}
       </div>
-      <div>
-        <Button classNames='next' onClick={returnResult}>
-          Neste
-        </Button>
-      </div>
+      <FlowButtons
+        skip={() => {
+          setSelectedButtons([]);
+          props.skipQuestion();
+        }}
+        update={returnResult}
+      />
     </div>
   );
 };
