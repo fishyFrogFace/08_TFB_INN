@@ -10,10 +10,10 @@ interface Props {
 const FlowButtons: React.FC<Props> = props => {
   return (
     <div id='flow-buttons'>
-      <Button classNames={'next'} onClick={props.skip}>
+      <Button classNames={'next skip-button'} onClick={props.skip}>
         Hopp over
       </Button>
-      <Button classNames='next' onClick={props.update}>
+      <Button classNames='next next-button' onClick={props.update}>
         Neste
       </Button>
     </div>
