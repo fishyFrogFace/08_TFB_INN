@@ -17,7 +17,7 @@ const FrontPage: React.FC<PropsFromRedux> = props => {
     <div className='frontpage-main'>
       <div className='frontpage-blurb'>
         <h1 className='frontpage-header'>Velkommen til Digiklar</h1>
-        <img className='logo' src={logo} />
+        <img className='logo' src={logo} alt='Application logo' />
         <p className='blurb-description'>{description}</p>
         <Button
           classNames='start'
