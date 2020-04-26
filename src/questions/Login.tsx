@@ -19,8 +19,18 @@ const TextInput: React.FC<Props> = props => {
   const [color, setColor] = useState('black');
   const [clickedWhileCorrect, setClickedWhileCorrect] = useState(false);
 
+  const resetLocalState = () => {
+    setUsername('');
+    setPassword('');
+    setPoints(props.maxPoints);
+    setFeedback('');
+    setColor('black');
+    setClickedWhileCorrect(false);
+  };
+
   const checkInput = () => {
     if (clickedWhileCorrect) {
+      resetLocalState();
       props.updateResult({
         mastered: true,
         type: QuestionResultType.Mastery,

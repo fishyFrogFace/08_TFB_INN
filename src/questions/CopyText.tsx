@@ -18,8 +18,16 @@ const CopyText: React.FC<Props> = props => {
   const [color, setColor] = useState('black');
   const [clickedWhileCorrect, setClickedWhileCorrect] = useState(false);
 
+  const resetLocalState = () => {
+    setInput('');
+    setPoints(props.maxPoints);
+    setColor('black');
+    setClickedWhileCorrect(false);
+  };
+
   const checkInput = (value: string) => {
     if (clickedWhileCorrect) {
+      resetLocalState();
       props.updateResult({
         type: QuestionResultType.Mastery,
         maxPoints: props.maxPoints,

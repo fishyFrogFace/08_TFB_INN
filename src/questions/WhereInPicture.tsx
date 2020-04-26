@@ -30,6 +30,8 @@ const WhereInPicture: React.FC<Props> = props => {
   };
 
   const onNext = () => {
+    setPoints(props.maxPoints);
+    setMode('incorrect');
     props.updateResult({
       type: QuestionResultType.Mastery,
       maxPoints: props.maxPoints,
