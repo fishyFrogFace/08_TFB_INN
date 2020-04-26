@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import '../App.css';
 import './Question.css';
-import Button from '../components/Button';
 import { QuestionResult, QuestionResultType, UserInformation } from '../Types';
+import FlowButtons from 'components/FlowButtons';
 
 interface Props {
   maxPoints: number;
   resultTitle: string;
   userInformation: UserInformation;
   updateResult: (result: QuestionResult) => void;
+  skipQuestion: () => void;
 }
 
 const TextInput: React.FC<Props> = props => {
@@ -79,9 +80,13 @@ const TextInput: React.FC<Props> = props => {
           placeholder='Password'
         />
         <h2 className={`feedback ${color}`}>{feedback}</h2>
-        <Button classNames='next' onClick={checkInput}>
-          Neste
-        </Button>
+        <FlowButtons
+          skip={() => {
+            resetLocalState();
+            props.skipQuestion();
+          }}
+          update={checkInput}
+        />
       </form>
     </div>
   );

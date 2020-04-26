@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Question.css';
 import Button from '../components/Button';
 import { QuestionResult, QuestionResultType } from '../Types';
+import FlowButtons from 'components/FlowButtons';
 
 interface Props {
   text: string;
@@ -9,6 +10,7 @@ interface Props {
   isImage: boolean;
   answerValues: string[];
   updateResult: (result: QuestionResult) => void;
+  skipQuestion: () => void;
 }
 
 const ChooseOne: React.FC<Props> = props => {
@@ -16,17 +18,18 @@ const ChooseOne: React.FC<Props> = props => {
 
   const returnResult = () => {
     setSelectedButton(undefined);
-    props.updateResult({
-      mastered: false,
-      answerValues:
-        selectedButton === undefined
-          ? []
-          : [props.answerValues[selectedButton!]],
-      type: QuestionResultType.Other,
-      maxPoints: 0,
-      resultTitle: props.resultTitle,
-      pointsAchieved: 0
-    });
+    if (selectedButton === undefined) {
+      props.skipQuestion();
+    } else {
+      props.updateResult({
+        mastered: false,
+        answerValues: [props.answerValues[selectedButton!]],
+        type: QuestionResultType.Other,
+        maxPoints: 0,
+        resultTitle: props.resultTitle,
+        pointsAchieved: 0
+      });
+    }
   };
 
   return (
@@ -42,11 +45,13 @@ const ChooseOne: React.FC<Props> = props => {
           </Button>
         ))}
       </div>
-      <div>
-        <Button classNames='next' onClick={returnResult}>
-          Neste
-        </Button>
-      </div>
+      <FlowButtons
+        skip={() => {
+          setSelectedButton(undefined);
+          props.skipQuestion();
+        }}
+        update={returnResult}
+      />
     </div>
   );
 };

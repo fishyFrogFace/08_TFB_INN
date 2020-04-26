@@ -42,6 +42,11 @@ const Subject: React.FC<Props> = props => {
     props.updateCurrentQuestion(incremented);
   };
 
+  const skipQuestion = () => {
+    const incremented = props.currentQuestion + 1;
+    props.updateCurrentQuestion(incremented);
+  };
+
   const chooseQuestion = (question: QuestionDefinition) => {
     switch (question.templateID) {
       case QuestionTemplate.Start:
@@ -60,6 +65,7 @@ const Subject: React.FC<Props> = props => {
             maxPoints={question.questionContent.maxPoints!}
             text={question.questionContent.text!}
             updateResult={updateResult}
+            skipQuestion={skipQuestion}
           />
         );
 
@@ -71,6 +77,7 @@ const Subject: React.FC<Props> = props => {
             maxPoints={question.questionContent.maxPoints!}
             text={question.questionContent.text!}
             updateResult={updateResult}
+            skipQuestion={skipQuestion}
           />
         );
 
@@ -83,6 +90,7 @@ const Subject: React.FC<Props> = props => {
             text={question.questionContent.text!}
             processString={checkPasswordSafety}
             updateResult={updateResult}
+            skipQuestion={skipQuestion}
           />
         );
 
@@ -97,6 +105,7 @@ const Subject: React.FC<Props> = props => {
               question.questionContent.correctAlternativeList!
             }
             updateResult={updateResult}
+            skipQuestion={skipQuestion}
           />
         );
 
@@ -107,6 +116,7 @@ const Subject: React.FC<Props> = props => {
             resultTitle={question.questionContent.resultTitle!}
             userInformation={question.questionContent.userInformation!}
             updateResult={updateResult}
+            skipQuestion={skipQuestion}
           />
         );
 
@@ -118,6 +128,7 @@ const Subject: React.FC<Props> = props => {
             isImage={question.questionContent.isImage!}
             answerValues={question.questionContent.answerValues!}
             updateResult={updateResult}
+            skipQuestion={skipQuestion}
           />
         );
 
@@ -130,6 +141,7 @@ const Subject: React.FC<Props> = props => {
             isImage={question.questionContent.isImage!}
             answerValues={question.questionContent.answerValues!}
             updateResult={updateResult}
+            skipQuestion={skipQuestion}
           />
         );
 
