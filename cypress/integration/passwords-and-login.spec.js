@@ -40,12 +40,6 @@ context('Passwords-and-login', () => {
       .should('contain', 'Lag et sikkert passord');
   });
 
-  it('create password contains a navigation menu', () => {
-    cy.get('.nav-bar')
-      .first()
-      .should('be.visible');
-  });
-
   it('password button is clickable and renders find secure pwd', () => {
     cy.get('.input-field')
       .first()
@@ -57,13 +51,7 @@ context('Passwords-and-login', () => {
 
     cy.get('.h1')
       .first()
-      .should('contain', 'Hvilke(t) passord er mest sikkert?');
-  });
-
-  it('find secure pwd contains a navigation menu', () => {
-    cy.get('.nav-bar')
-      .first()
-      .should('be.visible');
+      .should('contain', 'Hvilke passord er mest sikre?');
   });
 
   it('find secure pwd button is clickable and renders login', () => {
@@ -78,12 +66,6 @@ context('Passwords-and-login', () => {
     cy.get('.h1')
       .first()
       .should('contain', 'Logg inn med informasjonen under');
-  });
-
-  it('login contains a navigation menu', () => {
-    cy.get('.nav-bar')
-      .first()
-      .should('be.visible');
   });
 
   it('login contains user information', () => {
@@ -133,23 +115,17 @@ context('Passwords-and-login', () => {
       .and('have.css', 'color', 'rgb(0, 128, 0)');
   });
 
-  it('login button is clickable and renders pin code recognition', () => {
+  it('login button is clickable and renders true about login', () => {
     cy.get('.next')
       .first()
       .click();
 
     cy.get('.h1')
       .first()
-      .should('contain', 'Klikk på PIN-koden(e)');
+      .should('contain', 'Hva er sant når du har logget inn på en nettside?');
   });
 
-  it('pin code recognition contains a navigation menu', () => {
-    cy.get('.nav-bar')
-      .first()
-      .should('be.visible');
-  });
-
-  it('pin code recognition button is clickable and renders success screen', () => {
+  it('true about login button is clickable and renders pin code recognition', () => {
     cy.get('.answer-btn')
       .eq(1)
       .click();
@@ -164,13 +140,71 @@ context('Passwords-and-login', () => {
 
     cy.get('.h1')
       .first()
-      .should('contain', "Du har fullført 'Passord og innlogging'!");
+      .should('contain', "Klikk på PIN-koden(e)");
   });
 
-  it('success screen 2 contains a navigation menu', () => {
-    cy.get('.nav-bar')
+  it('pin code recognition button is clickable and renders has bankid', () => {
+    cy.get('.answer-btn')
+      .eq(1)
+      .click();
+
+    cy.get('.answer-btn')
+      .eq(4)
+      .click();
+
+    cy.get('.next')
       .first()
-      .should('be.visible');
+      .click();
+
+    cy.get('.h1')
+      .first()
+      .should('contain', "Har du BankID (kodebrikke)?");
+  });
+
+  it('has bankid button is clickable and renders used bankid alone', () => {
+    cy.get('.answer-btn')
+      .first()
+      .click();
+
+    cy.get('.next')
+      .first()
+      .click();
+
+    cy.get('.h1')
+      .first()
+      .should('contain', "Har du brukt BankID (kodebrikke) alene før?");
+  });
+
+  it('used bankid alone button is clickable and renders true about bankid', () => {
+    cy.get('.answer-btn')
+      .eq(1)
+      .click();
+
+    cy.get('.next')
+      .first()
+      .click();
+
+    cy.get('.h1')
+      .first()
+      .should('contain', "Hva er sant om BankID?");
+  });
+
+  it('true about bankid button is clickable and renders success screen', () => {
+    cy.get('.answer-btn')
+      .eq(2)
+      .click();
+
+    cy.get('.answer-btn')
+      .eq(4)
+      .click();
+
+    cy.get('.next')
+      .first()
+      .click();
+
+    cy.get('.h1')
+      .first()
+      .should('contain', "Du har fullført 'Passord og innlogging'!");
   });
 
   it('success screen 2 is clickable and renders overview', () => {
