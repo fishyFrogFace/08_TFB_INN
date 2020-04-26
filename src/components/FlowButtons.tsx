@@ -9,7 +9,7 @@ interface Props {
 
 const FlowButtons: React.FC<Props> = props => {
   return (
-    <div id='bottom-bar'>
+    <div id='flow-buttons'>
       <Button classNames={'next'} onClick={props.skip}>
         Hopp over
       </Button>
