@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 context('Passwords-and-login', () => {
-  const subjectTitle = 'Passord og innlogging';
+  const subjectTitle = 'Passord, innlogging og BankID';
   const username = 'vaffelkjeks';
   const password = 'JegEr1LitenFrosk:)';
 
@@ -131,7 +131,7 @@ context('Passwords-and-login', () => {
       .click();
 
     cy.get('.answer-btn')
-      .eq(4)
+      .eq(2)
       .click();
 
     cy.get('.next')
@@ -161,9 +161,13 @@ context('Passwords-and-login', () => {
       .should('contain', "Har du BankID (kodebrikke)?");
   });
 
-  it('has bankid button is clickable and renders used bankid alone', () => {
+  it('has bankid button is clickable and renders why bankid', () => {
     cy.get('.answer-btn')
       .first()
+      .click();
+
+      cy.get('.answer-btn')
+      .eq(1)
       .click();
 
     cy.get('.next')
@@ -173,6 +177,24 @@ context('Passwords-and-login', () => {
     cy.get('.h1')
       .first()
       .should('contain', "Har du brukt BankID (kodebrikke) alene før?");
+  });
+
+  it('has bankid button is clickable and renders used bankid alone', () => {
+    cy.get('.answer-btn')
+      .first()
+      .click();
+
+      cy.get('.answer-btn')
+      .eq(1)
+      .click();
+
+    cy.get('.next')
+      .first()
+      .click();
+
+    cy.get('.h1')
+      .first()
+      .should('contain', "Jeg forstår hvorfor jeg trenger BankID");
   });
 
   it('used bankid alone button is clickable and renders true about bankid', () => {
@@ -204,7 +226,7 @@ context('Passwords-and-login', () => {
 
     cy.get('.h1')
       .first()
-      .should('contain', "Du har fullført 'Passord og innlogging'!");
+      .should('contain', "Du har fullført 'Passord, innlogging og BankID'!");
   });
 
   it('success screen 2 is clickable and renders overview', () => {
@@ -228,7 +250,7 @@ context('Passwords-and-login', () => {
   });
 
   it('result reflects what the user achieved', () => {
-    const width = ['400px', '200px', '320px', '400px'];
+    const width = ['400px', '200px', '320px', '0px', '400px', '266.65625px'];
     cy.get('.filler').each(($el, i) => {
       cy.wrap($el).should('have.css', 'width', width[i]);
     });
