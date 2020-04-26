@@ -15,6 +15,7 @@ const ChooseOne: React.FC<Props> = props => {
   const [selectedButton, setSelectedButton] = useState<number>();
 
   const returnResult = () => {
+    setSelectedButton(undefined);
     props.updateResult({
       mastered: false,
       answerValues:
