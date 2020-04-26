@@ -40,6 +40,7 @@ const MultipleButtons: React.FC<Props> = props => {
   };
 
   const returnResult = () => {
+    setSelectedButtons([]);
     props.updateResult({
       mastered: true,
       answerValues: [],

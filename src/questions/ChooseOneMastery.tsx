@@ -25,6 +25,7 @@ const ChooseOne: React.FC<Props> = props => {
   };
 
   const returnResult = () => {
+    setSelectedButton(undefined);
     props.updateResult({
       mastered: true,
       answerValues: [],
