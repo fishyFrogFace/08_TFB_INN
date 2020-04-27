@@ -22,7 +22,8 @@ export enum QuestionTemplate {
   CompletedSubject,
   TextInput,
   LogIn,
-  MultipleButtons
+  MultipleButtons,
+  BigText
 }
 
 export interface SubjectResult {
@@ -65,6 +66,10 @@ export interface ImageInformation {
   max: Position;
   image: string;
   imageWithIndicator: string;
+}
+
+export interface BigText {
+  bigInput: string;
 }
 
 export interface QuestionContent {

@@ -16,6 +16,7 @@ import WhereInPicture from 'questions/WhereInPicture';
 import TextInput from 'questions/TextInput';
 import MultipleButtons from 'questions/MultipleButtons';
 import { checkPasswordSafety } from 'helpers/PasswordChecker';
+import BigText from 'questions/BigText';
 
 interface Props extends PropsFromRedux {
   subject: SubjectDefinition;
@@ -94,6 +95,17 @@ const Subject: React.FC<Props> = props => {
             updateResult={updateResult}
           />
         );
+      case QuestionTemplate.BigText:
+        return (
+          <BigText
+            resultTitle={question.questionContent.resultTitle!}
+            maxPoints={question.questionContent.maxPoints!}
+            placeholder={question.questionContent.placeholder!}
+            text={question.questionContent.text!}
+            processString={checkPasswordSafety}
+            updateResult={updateResult}
+          />
+        ); 
 
       case QuestionTemplate.CompletedSubject:
         return (
@@ -102,6 +114,8 @@ const Subject: React.FC<Props> = props => {
             nextSubject={nextSubject}
           />
         );
+        
+       
     }
   };
 
