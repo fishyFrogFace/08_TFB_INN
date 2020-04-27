@@ -4,6 +4,13 @@
   align-items: center;
 }
 
+.bigText {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100px;
+}
+
 .black {
   color: black;
 }
