@@ -1,12 +1,18 @@
 /// <reference types="Cypress" />
 
 context('Exit modal testing', () => {
+  const title = 'Velkommen til Digiklar';
+
   before(() => {
     cy.visit('http://localhost:3000/');
   });
 
   it('exit button renders exit screen', () => {
-    cy.get('.examination-startbutton')
+    cy.get('.start')
+      .first()
+      .click();
+
+    cy.get('.next')
       .first()
       .click();
 
@@ -24,7 +30,7 @@ context('Exit modal testing', () => {
 
     cy.get('.choice-title').should('be.visible');
 
-    cy.get('.exit-btn')
+    cy.get('.pause-btn')
       .first()
       .should('contain', 'Til oversikt');
   });
@@ -53,8 +59,8 @@ context('Exit modal testing', () => {
       .click();
   });
 
-  it('exit button renders overview page', () => {
-    cy.get('.exit-btn')
+  it('exit button renders front page', () => {
+    cy.get('.pause-btn')
       .first()
       .click();
 
@@ -62,7 +68,7 @@ context('Exit modal testing', () => {
 
     cy.get('.subject-btn')
       .first()
-      .should('contain', 'Tema 1');
+      .should('contain', 'Introduksjon');
   });
 
   it('exit button renders exam page', () => {
@@ -76,8 +82,32 @@ context('Exit modal testing', () => {
 
     cy.get('.choice-title').should('not.be.visible');
 
-    cy.get('.examination-blurb')
+    cy.get('.frontpage-header')
       .first()
-      .should('contain', 'Tittel');
+      .should('contain', title);
+  });
+
+  it('has reloaded state after exit', () => {
+    cy.get('.start')
+      .first()
+      .click();
+
+    cy.get('.h1')
+      .first()
+      .should('contain', 'Mitt navn er');
+  });
+
+  it('prevents user from not setting an username', () => {
+    cy.get('.exit')
+      .first()
+      .click();
+
+    cy.get('.exit-btn')
+      .first()
+      .click();
+
+    cy.get('.frontpage-header')
+      .first()
+      .should('contain', title);
   });
 });

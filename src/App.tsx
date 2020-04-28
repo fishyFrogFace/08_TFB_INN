@@ -2,85 +2,38 @@ import React from 'react';
 import './App.css';
 import FrontPage from 'frontpage/FrontPage';
 import Examination from 'examination/Examination';
-import { Page, QuestionTemplate } from './Types';
+import { Page } from './Types';
+import { standardExamDefinition } from './examDefinition';
 import { connect } from 'react-redux';
 import { RootState } from 'redux/reducers';
+import { updateAppPage } from 'redux/actions';
 
-// Example data for examination blurbs
-export const availableExaminations = [{
-  instanceID: 0,
-  title: 'Tittel',
-  description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.' +
-    ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.' +
-    ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.',
-  imageFilename: 'big-pink.png'
-}];
+const App: React.FC<PropsFromRedux> = props => {
+  switch (props.currentPage) {
+    /* fetch available examinations from local storage (or backend API) and pass
+       them to FrontPage */
+    case Page.FrontPage:
+      return <FrontPage />;
 
-export const standardExamDefinition = {
-  subjects: [
-    {
-      name: 'Tema 1',
-      questions: [
-        {
-          name: 'Start button',
-          templateID: QuestionTemplate.START,
-          questionContent: {
-            resultTitle: 'Forstår bruk av knapper',
-            maxPoints: 1
-          }
-        },
-        {
-          name: 'Copy symbols by writing in an input field',
-          templateID: QuestionTemplate.COPYTEXT,
-          questionContent: {
-            text: 'A, b: C.',
-            resultTitle: 'Kan skrive av tekst',
-            maxPoints: 6
-          }
-        }
-      ]
-    },
-    {
-      name: 'Tema 2',
-      questions: [
-        {
-          name: 'Start button',
-          templateID: QuestionTemplate.START,
-          questionContent: {
-            resultTitle: 'Resultat 2.1',
-            maxPoints: 1
-          }
-        },
-        {
-          name: 'Copy symbols by writing in an input field',
-          templateID: QuestionTemplate.COPYTEXT,
-          questionContent: {
-            text: 'This is totally another subject',
-            resultTitle: 'Resultat 2.2',
-            maxPoints: 6
-          }
-        }
-      ]
-    }
-  ]
-};
-
-const App: React.FC<{currentPage: Page}> = ({currentPage}) => {
-  switch (currentPage) {
-    case Page.FRONTPAGE:
-      return (
-        <FrontPage />
-      );
-    case Page.EXAMINATION:
-      return (
-        <Examination/>
-      );
+    /* fetch questions and question props from local storage (or backend API)
+       and pass them to Examination */
+    case Page.Examination:
+      return <Examination examDefinition={standardExamDefinition} />;
   }
 };
 
+// Redux related:
+
 const mapStateToProps = (store: RootState) => ({
-  currentPage: store.appState.currentPage
+  currentPage: store.appPage
 });
-const connector = connect(mapStateToProps);
+
+const mapToDispatch = {
+  updateAppPage
+};
+
+type PropsFromRedux = ReturnType<typeof mapStateToProps> & typeof mapToDispatch;
+
+const connector = connect(mapStateToProps, mapToDispatch);
+
 export default connector(App);

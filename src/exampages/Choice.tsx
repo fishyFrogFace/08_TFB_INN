@@ -5,7 +5,7 @@ import Button from '../components/Button';
 
 interface Props {
   closeChoice: () => void;
-  confirmChoice: () => void;
+  confirmAction: () => void;
   title: string;
   body: string;
   btnClass: string;
@@ -14,7 +14,7 @@ interface Props {
 
 const CompletedSubject: React.FC<Props> = props => {
   return (
-    <div className='questionContainer'>
+    <div className='question-container'>
       <div className='close h1' onClick={() => props.closeChoice()}>
         &times;
       </div>
@@ -28,7 +28,7 @@ const CompletedSubject: React.FC<Props> = props => {
         </Button>
         <Button
           classNames={`${props.btnClass}`}
-          onClick={() => props.confirmChoice()}>
+          onClick={() => props.confirmAction()}>
           {props.btnText}
         </Button>
       </div>

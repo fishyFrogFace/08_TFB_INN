@@ -1,144 +1,140 @@
 import { combineReducers } from 'redux';
 import {
-  ExamStateAction,
-  CONTINUE_SUBJECT,
-  GO_TO_NEXT_QUESTION,
-  RESET_EXAMINATION,
-  START_SUBJECT,
-  SET_CHOSEN_SUBJECTS,
-  SET_EXAM_PAGE,
-  SET_QUESTION_RESULT,
-  SET_USERNAME,
-  AppStateAction,
-  SET_APP_PAGE,
+  UpdateSubjectResultListAction,
+  SetUsernameAction,
+  UpdateExamPageAction,
+  UpdateCurrentSubjectAction,
+  UpdateCurrentQuestionListAction,
+  UpdateAppPageAction,
+  SetUnitsAction
 } from './actions';
-import { ExamState, ExamPage, AppState, Page, SubjectResult } from 'Types';
-import { standardExamDefinition, availableExaminations } from '../App';
+import { SubjectResult, ExamPage, Page } from 'Types';
+import { standardExamDefinition } from 'examDefinition';
 
-const initialExamState: ExamState = {
-  examDefinition: standardExamDefinition,
-  username: "NO USERNAME SET",
-  chosenSubjects: new Set(),
-  currentPage: ExamPage.ENTER_NAME,
-  previousPage: ExamPage.ENTER_NAME,
-  currentSubject: "NO SUBJECT SET",
-  currentQuestion: 0,
-  subjectResults: new Map<string, SubjectResult>()
-};
+const initialAppPage = Page.FrontPage;
 
-const initialAppState: AppState = {
-  currentPage: Page.FRONTPAGE,
-  availableExaminations: availableExaminations
-}
-
-export const examStateReducer = (
-  examState: ExamState = initialExamState,
-  action: ExamStateAction
-): ExamState => {
+export const appPageReducer = (
+  state: Page = initialAppPage,
+  action: UpdateAppPageAction
+) => {
   switch (action.type) {
-    case CONTINUE_SUBJECT: {
-      // Continues the subject where it was last left off, preserving any existing results for it
-      const subjectDefinition = examState.examDefinition.subjects.find(s => s.name === action.subject);
-      const subjectResult = examState.subjectResults.get(action.subject);
-      if (subjectDefinition === undefined || subjectResult === undefined)
-        return examState; // Error
-      const questionsAnswered = subjectResult.results.length;
-      const numberOfQuestions = subjectDefinition.questions.length;
-      if (questionsAnswered >= numberOfQuestions)
-        return examState; // Subject is complete and cannot be continued
-      else
-        return {
-          ...examState,
-          currentSubject: action.subject,
-          currentQuestion: questionsAnswered,
-          previousPage: examState.currentPage,
-          currentPage: ExamPage.QUESTION
-        };
-    }
-    case GO_TO_NEXT_QUESTION: {
-      const subjectDefinition = examState.examDefinition.subjects.find(s => s.name === examState.currentSubject);
-      if (subjectDefinition === undefined) return examState; // Error
-      if (examState.currentQuestion + 1 < subjectDefinition.questions.length) {
-        // If there are questions remaining in the subject: go to next question
-        return {
-          ...examState,
-          currentQuestion: examState.currentQuestion + 1
-        }
-      } else {
-        // If there are no more questions remaining: go to completed subject page
-        return {
-          ...examState,
-          currentQuestion: -1,
-          currentPage: ExamPage.COMPLETED_SUBJECT,
-          previousPage: ExamPage.QUESTION
-        };
-      }
-    }
-    case RESET_EXAMINATION:
-      return { ...initialExamState };
-    case START_SUBJECT:
-      // Starts the subject completely over, erasing any existing results for it
-      return {
-        ...examState,
-        currentSubject: action.subject,
-        currentQuestion: 0,
-        previousPage: examState.currentPage,
-        currentPage: ExamPage.QUESTION
-      };
-    case SET_CHOSEN_SUBJECTS:
-      return {
-        ...examState,
-        chosenSubjects: new Set(action.subjects)
-      };
-    case SET_EXAM_PAGE:
-      return {
-        ...examState,
-        previousPage: examState.currentPage,
-        currentPage: action.page,
-      };
-    case SET_QUESTION_RESULT:
-      // All of these confusing lines are to make sure we copy everything safely
-      let subjectResult = examState.subjectResults.get(action.subject);
-      if (subjectResult === undefined) {
-        subjectResult = { results: [] };
-      } else {
-        subjectResult = { ...subjectResult };
-      }
-      subjectResult.results[action.question] = { ...action.result };
-      const subjectResults = new Map(examState.subjectResults);
-      subjectResults.set(action.subject, subjectResult);
-      return {
-        ...examState,
-        subjectResults: subjectResults
-      };
-    case SET_USERNAME:
-      return {
-        ...examState,
-        username: action.username
-      };
+    case 'updateAppPage':
+      return action.appPage;
     default:
-      return examState;
+      return state;
   }
 };
 
-export const appStateReducer = (
-  appState: AppState = initialAppState,
-  action: AppStateAction
-): AppState => {
-  switch (action.type) {
-    case SET_APP_PAGE:
-      return {
-        ...appState,
-        currentPage: action.page
-      };
-    default:
-      return appState;
+const initialSubjectResultList: SubjectResult[] = standardExamDefinition.subjects.map(
+  subj => {
+    return { subjectTitle: subj.name, results: [] };
   }
-}
+);
 
-export const reducers = combineReducers({
-  appState: appStateReducer,
-  examState: examStateReducer
+export const subjectResultListReducer = (
+  state = initialSubjectResultList,
+  action: UpdateSubjectResultListAction
+): SubjectResult[] => {
+  switch (action.type) {
+    case 'updateSubjectResultList':
+      const newList = state
+        .filter(res => res.subjectTitle !== action.result.subjectTitle)
+        .concat(action.result);
+      return newList;
+    default:
+      return state;
+  }
+};
+
+const initialCurrentQuestionList = standardExamDefinition.subjects.map(
+  subj => 0
+);
+
+export const currentQuestionListReducer = (
+  state: number[] = initialCurrentQuestionList,
+  action: UpdateCurrentQuestionListAction
+): number[] => {
+  switch (action.type) {
+    case 'updateCurrentQuestionList':
+      const newList = [...state];
+      newList[action.index] = action.currentQuestion;
+      return newList;
+    default:
+      return state;
+  }
+};
+
+const initialUsername = '';
+
+export const usernameReducer = (
+  state: string = initialUsername,
+  action: SetUsernameAction
+) => {
+  switch (action.type) {
+    case 'setUsername':
+      return action.username;
+    default:
+      return state;
+  }
+};
+
+const initialUnits = [];
+
+export const unitsReducer = (
+  state: string[] = initialUnits,
+  action: SetUnitsAction
+) => {
+  switch (action.type) {
+    case 'setUnits':
+      return action.units;
+    default:
+      return state;
+  }
+};
+
+const initialExamPage = ExamPage.EnterName;
+
+export const examPageReducer = (
+  state: ExamPage = initialExamPage,
+  action: UpdateExamPageAction
+) => {
+  switch (action.type) {
+    case 'updateExamPage':
+      return action.examPage;
+    default:
+      return state;
+  }
+};
+
+const initialSubject = standardExamDefinition.subjects[0].name;
+
+export const currentSubjectReducer = (
+  state: string = initialSubject,
+  action: UpdateCurrentSubjectAction
+) => {
+  switch (action.type) {
+    case 'updateCurrentSubject':
+      return action.currentSubject;
+    default:
+      return state;
+  }
+};
+
+const reducers = combineReducers({
+  subjectResultList: subjectResultListReducer,
+  currentQuestionList: currentQuestionListReducer,
+  username: usernameReducer,
+  units: unitsReducer,
+  examPage: examPageReducer,
+  currentSubject: currentSubjectReducer,
+  appPage: appPageReducer
 });
+
+export const rootReducer = (state, action) => {
+  if (action.type === 'resetApp') {
+    state = undefined;
+  }
+  return reducers(state, action);
+};
 
 export type RootState = ReturnType<typeof reducers>;
