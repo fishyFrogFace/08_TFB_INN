@@ -1,28 +1,36 @@
 import React from 'react';
 import './FrontPage.css';
+import '../App.css';
 import logo from 'images/logo.svg';
 import Button from 'components/Button';
 import { updateAppPage } from 'redux/actions';
 import { connectDispatch } from 'redux/util';
 import { Page } from 'Types';
 
-const description = `Velkommen til Digiklar, et kartleggingsverktøy for digital kompetanse.
-    Når du trykker på startknappen nedenfor, vil kartleggingen starte.
+const appIntro = 'Et kartleggingsverktøy for digital kompetanse'
+const flowDescription = 
+    `Kartleggingen vil starte når du klikker på knappen nedenfor.
     Om du vil komme tilbake til denne siden, kan du laste inn siden på nytt 
     eller trykke på det røde krysset i høyre hjørne.
-    Nåværende kartlegging vil da slettes.`;
+    Da vil alle avgitte svar slettes.`;
 
 const FrontPage: React.FC<PropsFromRedux> = props => {
   return (
     <div className='frontpage-main'>
-      <div className='frontpage-blurb'>
-        <h1 className='frontpage-header'>Velkommen til Digiklar</h1>
-        <img className='logo' src={logo} alt='Application logo' />
-        <p className='blurb-description'>{description}</p>
+      <div className='frontpage-blurb grey-background'>
+        <h1 className='frontpage-header black'>Digiklar</h1>
+        <div className='scrollContainer'>
+          <p className='appIntro light-font'>{appIntro}</p>
+          <img className='logo' src={logo} alt='Application logo' />
+          <div className='descriptionContainer'>
+            <p className='flowDescription'>{flowDescription}</p>
+          </div>
+        </div>
+        
         <Button
-          classNames='start'
+          classNames='btn h2 startbutton'
           onClick={() => props.updateAppPage(Page.Examination)}>
-          Start
+          Kom i gang!
         </Button>
       </div>
     </div>

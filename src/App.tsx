@@ -8,15 +8,7 @@ import { connect } from 'react-redux';
 import { RootState } from 'redux/reducers';
 import { updateAppPage } from 'redux/actions';
 
-// Example data for examination blurbs
-/* const frontpageRepresentation = {
-  instanceID: 0,
-  title: 'DigiKlar',
-  description:
-    'En kartleggingsprøve i digital kompetanse',
-  imageFilename: 'clouds.png'
-};
-*/
+
 
 const App: React.FC<PropsFromRedux> = props => {
   switch (props.currentPage) {
