@@ -4,12 +4,20 @@
 }
 
 .subjectContainer {
+  position: absolute;
+  top: 5vh;
+  width: 100%;
+  height: 60vh;
+  padding-top: 12vh;
+  overflow: scroll;
   display: flex;
+
   flex-direction: column;
-  justify-content: center;
-  background-color: black;
-  border-radius: 2vh;
-  padding: 2vh;
+  align-items: center;
+  justify-items: center;
+  
+  border-radius: 3vh;
+  
 }
 
 .overview-header {
@@ -75,4 +83,31 @@
 
 .pause-btn:hover {
   background: #d8db29;
+}
+
+.headerColor {
+  background-color: #E26D5A;
+}
+
+.completedContainer {
+  position: relative;
+ 
+  background-color: #80D5E0;
+  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.50);
+  border-radius: 5px;
+  width: 80vw;
+  height: 30vh;
+  padding: 16px;
+  margin: 8vh auto;
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: space-around;
+}
+
+
+.completedContainer p {
+  
+  transform: translate(0, -50%);
+  font-size: 4vh;
 }

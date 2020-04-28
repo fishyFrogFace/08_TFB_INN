@@ -38,22 +38,30 @@ const CopyText: React.FC<Props> = props => {
   };
 
   return (
-    <div>
-      <h1 className='h1'>{props.text}</h1>
-      <form
-        className='textAndBtn'
-        onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
-        <input
-          id='name'
-          className={`inputField ${color}`}
-          type='text'
-          onChange={e => storeInput(e)}
-          placeholder={props.text}
-        />
-        <Button classNames='next' onClick={() => checkInput(input)}>
-          Neste
-        </Button>
-      </form>
+    <div className='content'>
+      <div className="questiontextContainer subjectColor">
+        <h1 className='h2 white normal-font'>{props.text}</h1>
+      </div>
+      <div className="inputContainer whiteBackground">
+        <form
+          className='textAndBtn'
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
+          <input
+            id='name'
+            className={`inputField ${color}`}
+            type='text'
+            onChange={e => storeInput(e)}
+            placeholder={props.text}
+          />
+          </form>
+
+        </div>
+        <div className='nextButtonContainer'>
+          <Button classNames='next' onClick={() => checkInput(input)}>
+            Neste
+          </Button>
+        </div>
+      
     </div>
   );
 };

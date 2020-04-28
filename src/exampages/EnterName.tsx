@@ -58,9 +58,9 @@ const EnterName: React.FC<Props> = props => {
       </div>
       */}
       <div className="questiontextContainer subjectColor">
-        <h1 className='h2 white'>Mitt navn er</h1>
+        <h1 className='h2 white normal-font'>Mitt navn er</h1>
       </div>
-      <div className="inputContainer">
+      <div className="inputContainer whiteBackground">
         <form
           className='textinputAndBtn'
           onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>

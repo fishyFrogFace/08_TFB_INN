@@ -1,6 +1,6 @@
 body {
   background-color: #E2E2E2;
-  font-family: Tahoma, Verdana, Geneva, sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .content {
@@ -12,7 +12,7 @@ body {
   align-items: center;
   margin: 0 auto;
   justify-content: space-between;
-  height: 80vh;
+  max-height: 75vh;
   max-width: 95vw;
 }
 
@@ -44,4 +44,16 @@ body {
 
 .transparent {
   background-color: transparent;
+}
+
+.light-font {
+  font-weight: light;
+}
+
+.normal-font {
+  font-weight: normal;
+}
+
+.bold-font {
+  font-weight: bold;
 }

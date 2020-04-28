@@ -15,7 +15,7 @@ const ProgressBar: React.FC<Props> = props => {
     percent > 50 ? `over50 p${percent}` : `p${percent}`;
 
   return (
-    <div>
+    
       <div
         className={`progress-circle ${decideClassName(calculatePercentage())}`}>
         <span>{calculatePercentage()}%</span>
@@ -24,7 +24,7 @@ const ProgressBar: React.FC<Props> = props => {
           <div className='value-bar'></div>
         </div>
       </div>
-    </div>
+    
   );
 };
 

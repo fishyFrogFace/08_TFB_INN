@@ -11,12 +11,10 @@ import { updateAppPage } from 'redux/actions';
 // Example data for examination blurbs
 const frontpageRepresentation = {
   instanceID: 0,
-  title: 'Tittel',
+  title: 'DigiKlar',
   description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.' +
-    ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.' +
-    ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue ante, porta nec venenatis ut, convallis convallis eros.',
-  imageFilename: 'big-pink.png'
+    'En kartleggingsprøve i digital kompetanse',
+  imageFilename: 'clouds.png'
 };
 
 const App: React.FC<PropsFromRedux> = props => {

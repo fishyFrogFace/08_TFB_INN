@@ -21,9 +21,12 @@ interface Props extends PropsFromRedux {
 
 const Overview: React.FC<Props> = props => {
   return (
-    <div className='questionContainer'>
-      <h1 className='h1 overview-header'>Mine temaer</h1>
-      <div className='subjectContainer'>
+    <div className='content'>
+    <div className="questiontextContainer headerColor">
+      <h1 className='h2 black normal-font'>Mine temaer</h1>
+
+    </div>
+      <div className='subjectContainer whiteBackground'>
         {props.subjects.map((subject, i) => {
           return (
             <Button
@@ -34,11 +37,13 @@ const Overview: React.FC<Props> = props => {
                 props.startExam();
               }}
               disabled={subject.completed === subject.total}>
-              <h2 className='subjectTitle'>{subject.title}</h2>
-              <CircularProgressBar
-                completed={subject.completed}
-                total={subject.total}
-              />
+              <h2 className='h2 black normal-font'>{subject.title}</h2>
+              
+                <CircularProgressBar
+                  completed={subject.completed}
+                  total={subject.total}
+                />
+              
             </Button>
           );
         })}

@@ -10,11 +10,17 @@ interface Props {
 
 const CompletedSubject: React.FC<Props> = props => {
   return (
-    <div className='questionContainer'>
-      <h1 className='h1 success-header'>Du har fullført {props.subject}!</h1>
-      <Button classNames='next' onClick={() => props.nextSubject()}>
-        Neste
-      </Button>
+    <div className='content'>
+      <div className="completedContainer ">
+        <p className='h1 white normal-font'>Du har fullført {props.subject}!</p>
+        </div>
+
+      <div className='nextButtonContainer'>
+        <Button classNames='next' onClick={() => props.nextSubject()}>
+          Tilbake til temaoversikt
+        </Button>
+      </div>
+      
     </div>
   );
 };

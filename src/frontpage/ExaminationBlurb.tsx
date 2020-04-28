@@ -21,9 +21,10 @@ const ExaminationBlurb: React.FC<Props> = props => {
       if no image exists, render a headline without an image */
     if (props.examInfo.imageFilename !== '') {
       return (
+      
         <div className='blurb-headline has-image'>
           <div className='img-container'>
-            <img src={`./media/${props.examInfo.imageFilename}`} alt='Avatar' />
+            <img src={`./media/${props.examInfo.imageFilename}`} alt='Clouds' />
           </div>
           <div className='blurb-title'>
             <h1>{props.examInfo.title}</h1>
@@ -44,11 +45,13 @@ const ExaminationBlurb: React.FC<Props> = props => {
   return (
     <div className={'examination-blurb'}>
       {blurbHeadline()}
-      <p className='blurb-description'>{props.examInfo.description}</p>
+      <div className='descriptionContainer'>
+        <p className='blurb-description'>{props.examInfo.description}</p>
+      </div>
       <button
         className='examination-startbutton'
         onClick={() => props.updateAppPage(Page.Examination)}>
-        Starte
+        Start
       </button>
     </div>
   );

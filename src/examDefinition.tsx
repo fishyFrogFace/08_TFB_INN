@@ -5,6 +5,7 @@ export const standardExamDefinition = {
     {
       name: 'Tema 1',
       questions: [
+        /*
         {
           name: 'Start button',
           templateID: QuestionTemplate.Start,
@@ -12,7 +13,7 @@ export const standardExamDefinition = {
             resultTitle: 'Forstår bruk av knapper',
             maxPoints: 1
           }
-        },
+        },*/
         {
           name: 'Copy symbols by writing in an input field',
           templateID: QuestionTemplate.CopyText,
