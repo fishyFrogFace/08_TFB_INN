@@ -1,12 +1,18 @@
 /// <reference types="Cypress" />
 
 context('Exit modal testing', () => {
+  const title = 'Velkommen til Digiklar';
+
   before(() => {
     cy.visit('http://localhost:3000/');
   });
 
   it('exit button renders exit screen', () => {
-    cy.get('.examination-startbutton')
+    cy.get('.start')
+      .first()
+      .click();
+
+    cy.get('.next')
       .first()
       .click();
 
@@ -62,7 +68,7 @@ context('Exit modal testing', () => {
 
     cy.get('.subject-btn')
       .first()
-      .should('contain', 'Tema 1');
+      .should('contain', 'Introduksjon');
   });
 
   it('exit button renders exam page', () => {
@@ -76,13 +82,13 @@ context('Exit modal testing', () => {
 
     cy.get('.choice-title').should('not.be.visible');
 
-    cy.get('.examination-blurb')
+    cy.get('.frontpage-header')
       .first()
-      .should('contain', 'Tittel');
+      .should('contain', title);
   });
 
   it('has reloaded state after exit', () => {
-    cy.get('.examination-startbutton')
+    cy.get('.start')
       .first()
       .click();
 
@@ -100,8 +106,8 @@ context('Exit modal testing', () => {
       .first()
       .click();
 
-    cy.get('.examination-blurb')
+    cy.get('.frontpage-header')
       .first()
-      .should('contain', 'Tittel');
+      .should('contain', title);
   });
 });

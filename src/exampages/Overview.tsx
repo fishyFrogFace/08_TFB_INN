@@ -15,7 +15,6 @@ export interface SubjectCompletion {
 
 interface Props extends PropsFromRedux {
   subjects: SubjectCompletion[];
-  currentSubject: string;
   startExam: () => void;
 }
 

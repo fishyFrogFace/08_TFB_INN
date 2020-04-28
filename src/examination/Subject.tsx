@@ -1,17 +1,24 @@
 import React from 'react';
-import '../App.css';
-import Start from '../questions/Start';
-import CopyText from '../questions/CopyText';
+import 'App.css';
 import {
   QuestionResult,
   QuestionDefinition,
   SubjectDefinition,
   QuestionTemplate
-} from '../Types';
+} from 'Types';
+import { checkPasswordSafety } from 'helpers/PasswordChecker';
 import { connect } from 'react-redux';
 import { RootState } from 'redux/reducers';
 import { updateSubjectResultList, updateAppPage } from 'redux/actions';
 import CompletedSubject from 'exampages/CompletedSubject';
+import Start from 'questions/Start';
+import CopyText from 'questions/CopyText';
+import WhereInPicture from 'questions/WhereInPicture';
+import TextInput from 'questions/TextInput';
+import MultipleButtons from 'questions/MultipleButtons';
+import Login from 'questions/Login';
+import ChooseOne from 'questions/ChooseOne';
+import ChooseOneMastery from 'questions/ChooseOneMastery';
 
 interface Props extends PropsFromRedux {
   subject: SubjectDefinition;
@@ -35,6 +42,11 @@ const Subject: React.FC<Props> = props => {
     props.updateCurrentQuestion(incremented);
   };
 
+  const skipQuestion = () => {
+    const incremented = props.currentQuestion + 1;
+    props.updateCurrentQuestion(incremented);
+  };
+
   const chooseQuestion = (question: QuestionDefinition) => {
     switch (question.templateID) {
       case QuestionTemplate.Start:
@@ -53,6 +65,83 @@ const Subject: React.FC<Props> = props => {
             maxPoints={question.questionContent.maxPoints!}
             text={question.questionContent.text!}
             updateResult={updateResult}
+            skipQuestion={skipQuestion}
+          />
+        );
+
+      case QuestionTemplate.WhereInPicture:
+        return (
+          <WhereInPicture
+            resultTitle={question.questionContent.resultTitle!}
+            imageInformation={question.questionContent.imageInformation!}
+            maxPoints={question.questionContent.maxPoints!}
+            text={question.questionContent.text!}
+            updateResult={updateResult}
+            skipQuestion={skipQuestion}
+          />
+        );
+
+      case QuestionTemplate.TextInput:
+        return (
+          <TextInput
+            resultTitle={question.questionContent.resultTitle!}
+            maxPoints={question.questionContent.maxPoints!}
+            placeholder={question.questionContent.placeholder!}
+            text={question.questionContent.text!}
+            processString={checkPasswordSafety}
+            updateResult={updateResult}
+            skipQuestion={skipQuestion}
+          />
+        );
+
+      case QuestionTemplate.MultipleButtons:
+        return (
+          <MultipleButtons
+            answerValues={question.questionContent.answerValues!}
+            isImage={question.questionContent.isImage!}
+            resultTitle={question.questionContent.resultTitle!}
+            text={question.questionContent.text!}
+            correctAlternativeList={
+              question.questionContent.correctAlternativeList!
+            }
+            updateResult={updateResult}
+            skipQuestion={skipQuestion}
+          />
+        );
+
+      case QuestionTemplate.LogIn:
+        return (
+          <Login
+            maxPoints={question.questionContent.maxPoints!}
+            resultTitle={question.questionContent.resultTitle!}
+            userInformation={question.questionContent.userInformation!}
+            updateResult={updateResult}
+            skipQuestion={skipQuestion}
+          />
+        );
+
+      case QuestionTemplate.ChooseOne:
+        return (
+          <ChooseOne
+            text={question.questionContent.text!}
+            resultTitle={question.questionContent.resultTitle!}
+            isImage={question.questionContent.isImage!}
+            answerValues={question.questionContent.answerValues!}
+            updateResult={updateResult}
+            skipQuestion={skipQuestion}
+          />
+        );
+
+      case QuestionTemplate.ChooseOneMastery:
+        return (
+          <ChooseOneMastery
+            text={question.questionContent.text!}
+            correctAlternative={question.questionContent.correctAlternative!}
+            resultTitle={question.questionContent.resultTitle!}
+            isImage={question.questionContent.isImage!}
+            answerValues={question.questionContent.answerValues!}
+            updateResult={updateResult}
+            skipQuestion={skipQuestion}
           />
         );
 
@@ -67,7 +156,7 @@ const Subject: React.FC<Props> = props => {
   };
 
   return (
-    <div className='questionContainer'>
+    <div className='question-container'>
       {chooseQuestion(props.subject.questions[props.currentQuestion])}
     </div>
   );

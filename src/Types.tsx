@@ -11,13 +11,20 @@ export enum ExamPage {
   Overview,
   Exit,
   Pause,
-  Results
+  Results,
+  WhatUnits
 }
 
 export enum QuestionTemplate {
   Start,
   CopyText,
-  CompletedSubject
+  WhereInPicture,
+  CompletedSubject,
+  TextInput,
+  LogIn,
+  MultipleButtons,
+  ChooseOne,
+  ChooseOneMastery
 }
 
 export interface SubjectResult {
@@ -27,8 +34,16 @@ export interface SubjectResult {
 
 export interface QuestionResult {
   resultTitle: string;
+  type: QuestionResultType;
   maxPoints: number;
   pointsAchieved: number;
+  mastered: boolean;
+  answerValues: string[];
+}
+
+export enum QuestionResultType {
+  Mastery,
+  Other
 }
 
 /* the list of pages will get passed to the examination by App.tsx
@@ -42,11 +57,36 @@ export interface ExamState {
   username: string;
 }
 
+export interface Position {
+  x: number;
+  y: number;
+}
+
+export interface ImageInformation {
+  min: Position;
+  max: Position;
+  image: string;
+  imageWithIndicator: string;
+}
+
+export interface UserInformation {
+  username: string;
+  password: string;
+}
+
 export interface QuestionContent {
   avatar?: string;
   resultTitle?: string;
   maxPoints?: number;
   text?: string;
+  imageInformation?: ImageInformation;
+  correctAlternativeList?: string[];
+  correctAlternative?: string;
+  answerValues?: string[];
+  isImage?: boolean;
+  processString?: (input: string, maxPoints: number) => number;
+  placeholder?: string;
+  userInformation?: UserInformation;
 }
 
 export interface QuestionDefinition {

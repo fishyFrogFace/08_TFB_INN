@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../App.css';
 import NavBar from '../components/NavBar';
 import ResultPage from '../result/ResultPage';
-<<<<<<< HEAD
 import EnterName from '../exampages/EnterName';
 import {
   ExamState,
@@ -22,21 +21,11 @@ import {
 } from 'redux/actions';
 import Overview from 'exampages/Overview';
 import Choice from 'exampages/Choice';
+import WhatUnits from 'exampages/WhatUnits';
 
 interface Props extends PropsFromRedux {
   examState: ExamState;
   examDefinition: ExamDefinition;
-=======
-import UsernameInput from '../questions/UsernameInput';
-import CopyText from '../questions/CopyText';
-import { Result, QuestionResult, Page, ExamState, Question } from '../Types';
-import NavBarBottom from 'components/NavBar-bottom';
-
-interface Props {
-  state: ExamState;
-  storeExam: (data: ExamState) => void;
-  changePage: (page: Page) => void;
->>>>>>> 843dd1296d2d3f2ccfb52eafecd14902c04507e7
 }
 
 const Examination: React.FC<Props> = props => {
@@ -60,7 +49,11 @@ const Examination: React.FC<Props> = props => {
   const changeExamPage = (page: ExamPage) => props.updateExamPage(page);
 
   const quitExam = () => {
-    if ([ExamPage.Overview, ExamPage.EnterName].includes(lastPage)) {
+    if (
+      [ExamPage.Overview, ExamPage.EnterName, ExamPage.WhatUnits].includes(
+        lastPage
+      )
+    ) {
       props.resetState();
     } else if (
       currentSubject().questions[currentQuestion()].templateID ===
@@ -107,16 +100,13 @@ const Examination: React.FC<Props> = props => {
       case ExamPage.Overview:
         return (
           <Overview
-            subjects={props.examDefinition.subjects.map(subject => ({
+            subjects={props.examDefinition.subjects.map((subject, i) => ({
               title: subject.name,
-              completed: props.subjectResultList.find(
-                s => s.subjectTitle === subject.name
-              )!.results.length,
+              completed: props.currentQuestionList[i],
               total: subject.questions.filter(
                 q => q.templateID !== QuestionTemplate.CompletedSubject
               ).length
             }))}
-            currentSubject={props.currentSubject}
             startExam={() => changeExamPage(ExamPage.Subject)}
           />
         );
@@ -145,22 +135,27 @@ const Examination: React.FC<Props> = props => {
           />
         );
 
+      case ExamPage.WhatUnits:
+        return <WhatUnits />;
+
       case ExamPage.Results:
-        // TODO let App know the examination is over
         return <ResultPage result={props.subjectResultList} />;
     }
   };
 
   return (
     <div className='main'>
-<<<<<<< HEAD
       <NavBar
         showChoice={() => {
           if (![ExamPage.Exit, ExamPage.Pause].includes(props.examPage)) {
             setLastPage(props.examPage);
           }
           if (
-            [ExamPage.Overview, ExamPage.EnterName].includes(props.examPage)
+            [
+              ExamPage.Overview,
+              ExamPage.EnterName,
+              ExamPage.WhatUnits
+            ].includes(props.examPage)
           ) {
             changeExamPage(ExamPage.Exit);
           } else {
@@ -169,13 +164,6 @@ const Examination: React.FC<Props> = props => {
         }}
       />
       {choosePage(props.examPage)}
-=======
-      <NavBar quitExam={quitExam} pauseExam={pauseExam} />
-      <div className='questionContainer'>
-        {chooseQuestion(questions[currentQuestion])}
-      </div>
-      <NavBarBottom/>
->>>>>>> 843dd1296d2d3f2ccfb52eafecd14902c04507e7
     </div>
   );
 };

@@ -111,3 +111,29 @@
   transform: translate(0, -50%);
   font-size: 4vh;
 }
+.unit-btn {
+  height: 50vmin;
+  width: 50vmin;
+}
+
+.unit-btn:hover {
+  background-color: grey;
+}
+
+.unit-img {
+  height: 40vmin;
+  width: 40vmin;
+}
+
+.selected {
+  background-color: #1da598;
+  color: white;
+}
+
+.selected:hover {
+  background-color: #03627c;
+}
+
+.selected:active {
+  background-color: #03627c;
+}
