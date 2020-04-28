@@ -31,16 +31,70 @@ body {
 }
 
 .black {
-  color: black;
+  color: #212121;
 }
 
-.green {
-  color: green;
+.grey-background{
+  background-color: #9E9E9E;
+}
+.bluegrey-background {
+  background-color: #60768b;
 }
 
-.red {
-  color: red;
+.green-background {
+  background-color: #259B24;
 }
+
+.light-green-background {
+  background-color: #8BC34A;
+}
+.lime-background {
+  background-color: #CDDC39;
+}
+
+.yellow-background {
+  background-color: #FFEB3B;
+}
+.amber-background {
+  background-color: #FFC107;
+}
+.orange-background {
+  background-color: #FF9800;
+}
+.deep-orange-background {
+  background-color: #FF5722;
+}
+.red-background {
+  background-color: #E51C23;
+}
+.pink-background {
+  background-color: #E91E63;
+}
+.purple-background {
+  background-color: #9C27B0;
+}
+.indigo-background {
+  background-color: #3F51B5;
+}
+
+.blue-background {
+  background-color: #5677FC;
+}
+
+.light-blue-background {
+  background-color: #03A9F4;
+}
+.cyan-background {
+  background-color: #00BCD4;
+}
+.deep-purple-background {
+  background-color: #673AB7;
+}
+.teal-background {
+  background-color: #009688;
+}
+
+
 
 .transparent {
   background-color: transparent;
