@@ -49,6 +49,7 @@ const MultipleButtons: React.FC<Props> = props => {
       type: QuestionResultType.Mastery,
       maxPoints: props.correctAlternativeList.length,
       resultTitle: props.resultTitle,
+      questionTitle: props.text,
       pointsAchieved: checkAnswer()
     });
   };

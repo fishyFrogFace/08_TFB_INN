@@ -41,6 +41,7 @@ const WhereInPicture: React.FC<Props> = props => {
         type: QuestionResultType.Mastery,
         maxPoints: props.maxPoints,
         resultTitle: props.resultTitle,
+        questionTitle: props.text,
         pointsAchieved: points,
         mastered: true,
         answerValues: []
@@ -50,6 +51,7 @@ const WhereInPicture: React.FC<Props> = props => {
         type: QuestionResultType.Mastery,
         maxPoints: props.maxPoints,
         resultTitle: props.resultTitle,
+        questionTitle: props.text,
         pointsAchieved: 0,
         mastered: false,
         answerValues: []
