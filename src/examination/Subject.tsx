@@ -1,38 +1,55 @@
 import React from 'react';
-import '../App.css';
-import Start from '../questions/Start';
-import CopyText from '../questions/CopyText';
+import 'App.css';
 import {
   QuestionResult,
   QuestionDefinition,
-  QuestionTemplate,
-  ExamState,
-  ExamPage
-} from '../Types';
+  SubjectDefinition,
+  QuestionTemplate
+} from 'Types';
+import { checkPasswordSafety } from 'helpers/PasswordChecker';
 import { connect } from 'react-redux';
 import { RootState } from 'redux/reducers';
-import { setQuestionResult, goToNextQuestion } from 'redux/actions';
+import { updateSubjectResultList, updateAppPage } from 'redux/actions';
+import CompletedSubject from 'exampages/CompletedSubject';
+import Start from 'questions/Start';
+import CopyText from 'questions/CopyText';
+import WhereInPicture from 'questions/WhereInPicture';
+import TextInput from 'questions/TextInput';
+import MultipleButtons from 'questions/MultipleButtons';
+import Login from 'questions/Login';
+import ChooseOne from 'questions/ChooseOne';
+import ChooseOneMastery from 'questions/ChooseOneMastery';
 
-interface Props extends ExamState {
-  setExamPage: (page: ExamPage) => void;
-  goToNextQuestion: () => void;
-  setQuestionResult: (subject: string, question: number, result: QuestionResult) => void;
+interface Props extends PropsFromRedux {
+  subject: SubjectDefinition;
+  currentQuestion: number;
+  subjectOver: () => void;
+  updateCurrentQuestion: (currentQuestion: number) => void;
 }
 
-const Subject: React.FC<Props> = ({ examDefinition, currentSubject, currentQuestion, goToNextQuestion, setQuestionResult }) => {
-  const currentSubjectDefinition = examDefinition.subjects.find(s => s.name === currentSubject);
-  if (currentSubjectDefinition === undefined) return (
-    <div>ERROR: SUBJECT DEFINITION UNDEFINED</div>
-  );
-
-  const updateResult = (qResult: QuestionResult) => {
-    setQuestionResult(currentSubject, currentQuestion, qResult);
-    goToNextQuestion();
+const Subject: React.FC<Props> = props => {
+  const nextSubject = () => {
+    props.subjectOver();
   };
 
-  const renderQuestion = (question: QuestionDefinition) => {
+  const updateResult = (qResult: QuestionResult) => {
+    const newQuestionList = props.currentSubjectResult.results.concat(qResult);
+    props.updateSubjectResultList({
+      subjectTitle: props.currentSubjectResult.subjectTitle,
+      results: newQuestionList
+    });
+    const incremented = props.currentQuestion + 1;
+    props.updateCurrentQuestion(incremented);
+  };
+
+  const skipQuestion = () => {
+    const incremented = props.currentQuestion + 1;
+    props.updateCurrentQuestion(incremented);
+  };
+
+  const chooseQuestion = (question: QuestionDefinition) => {
     switch (question.templateID) {
-      case QuestionTemplate.START:
+      case QuestionTemplate.Start:
         return (
           <Start
             resultTitle={question.questionContent.resultTitle!}
@@ -41,39 +58,123 @@ const Subject: React.FC<Props> = ({ examDefinition, currentSubject, currentQuest
           />
         );
 
-      case QuestionTemplate.COPYTEXT:
+      case QuestionTemplate.CopyText:
         return (
           <CopyText
             resultTitle={question.questionContent.resultTitle!}
             maxPoints={question.questionContent.maxPoints!}
             text={question.questionContent.text!}
             updateResult={updateResult}
+            skipQuestion={skipQuestion}
           />
         );
-      
-      default:
+
+      case QuestionTemplate.WhereInPicture:
         return (
-          <div>ERROR: UNRECOGNIZED TEMPLATE ID</div>
+          <WhereInPicture
+            resultTitle={question.questionContent.resultTitle!}
+            imageInformation={question.questionContent.imageInformation!}
+            maxPoints={question.questionContent.maxPoints!}
+            text={question.questionContent.text!}
+            updateResult={updateResult}
+            skipQuestion={skipQuestion}
+          />
+        );
+
+      case QuestionTemplate.TextInput:
+        return (
+          <TextInput
+            resultTitle={question.questionContent.resultTitle!}
+            maxPoints={question.questionContent.maxPoints!}
+            placeholder={question.questionContent.placeholder!}
+            text={question.questionContent.text!}
+            processString={checkPasswordSafety}
+            updateResult={updateResult}
+            skipQuestion={skipQuestion}
+          />
+        );
+
+      case QuestionTemplate.MultipleButtons:
+        return (
+          <MultipleButtons
+            answerValues={question.questionContent.answerValues!}
+            isImage={question.questionContent.isImage!}
+            resultTitle={question.questionContent.resultTitle!}
+            text={question.questionContent.text!}
+            correctAlternativeList={
+              question.questionContent.correctAlternativeList!
+            }
+            updateResult={updateResult}
+            skipQuestion={skipQuestion}
+          />
+        );
+
+      case QuestionTemplate.LogIn:
+        return (
+          <Login
+            maxPoints={question.questionContent.maxPoints!}
+            resultTitle={question.questionContent.resultTitle!}
+            userInformation={question.questionContent.userInformation!}
+            updateResult={updateResult}
+            skipQuestion={skipQuestion}
+          />
+        );
+
+      case QuestionTemplate.ChooseOne:
+        return (
+          <ChooseOne
+            text={question.questionContent.text!}
+            resultTitle={question.questionContent.resultTitle!}
+            isImage={question.questionContent.isImage!}
+            answerValues={question.questionContent.answerValues!}
+            updateResult={updateResult}
+            skipQuestion={skipQuestion}
+          />
+        );
+
+      case QuestionTemplate.ChooseOneMastery:
+        return (
+          <ChooseOneMastery
+            text={question.questionContent.text!}
+            correctAlternative={question.questionContent.correctAlternative!}
+            resultTitle={question.questionContent.resultTitle!}
+            isImage={question.questionContent.isImage!}
+            answerValues={question.questionContent.answerValues!}
+            updateResult={updateResult}
+            skipQuestion={skipQuestion}
+          />
+        );
+
+      case QuestionTemplate.CompletedSubject:
+        return (
+          <CompletedSubject
+            subject={props.subject.name}
+            nextSubject={nextSubject}
+          />
         );
     }
   };
 
   return (
-    <div className='questionContainer'>
-      {renderQuestion(currentSubjectDefinition.questions[currentQuestion])}
+    <div className='question-container'>
+      {chooseQuestion(props.subject.questions[props.currentQuestion])}
     </div>
   );
 };
 
-// Redux related:
 const mapStateToProps = (store: RootState) => ({
-  ...store.examState
+  currentSubjectResult: store.subjectResultList.find(
+    res => res.subjectTitle === store.currentSubject
+  )!
 });
-const mapDispatchToProps = (dispatch) => {
-  return {
-    goToNextQuestion: () => dispatch(goToNextQuestion()),
-    setQuestionResult: (subject: string, question: number, result: QuestionResult) => dispatch(setQuestionResult(subject, question, result))
-  };
-}
-const connector = connect(mapStateToProps, mapDispatchToProps);
+
+const mapToDispatch = {
+  updateSubjectResultList,
+  updateAppPage
+};
+
+type PropsFromRedux = ReturnType<typeof mapStateToProps> & typeof mapToDispatch;
+
+const connector = connect(mapStateToProps, mapToDispatch);
+
 export default connector(Subject);

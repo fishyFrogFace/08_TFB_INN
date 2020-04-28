@@ -1,51 +1,77 @@
 export enum Page {
-  EXAMINATION,
-  FRONTPAGE
+  Examination,
+  FrontPage
 }
 
 export enum ExamPage {
-  QUESTION,
-  ENTER_NAME,
-  CHOOSE_SUBJECTS,
-  OVERVIEW,
-  COMPLETED_SUBJECT,
-  QUIT_TO_OVERVIEW,
-  EXIT_EXAM,
-  RESULTS
+  Subject,
+  EnterName,
+  ChooseSubjects,
+  QuestionDefinition,
+  Overview,
+  Exit,
+  Pause,
+  Results,
+  WhatUnits
 }
 
 export enum QuestionTemplate {
-  START,
-  COPYTEXT
+  Start,
+  CopyText,
+  WhereInPicture,
+  CompletedSubject,
+  TextInput,
+  LogIn,
+  MultipleButtons,
+  ChooseOne,
+  ChooseOneMastery
 }
 
-export interface AppState {
-  currentPage: Page;
-  availableExaminations: ExamInfo[];
+export interface SubjectResult {
+  subjectTitle: string;
+  results: QuestionResult[];
+}
+
+export interface QuestionResult {
+  resultTitle: string;
+  type: QuestionResultType;
+  maxPoints: number;
+  pointsAchieved: number;
+  mastered: boolean;
+  answerValues: string[];
+}
+
+export enum QuestionResultType {
+  Mastery,
+  Other
 }
 
 /* the list of pages will get passed to the examination by App.tsx
    as will the props needed to build questions from question components.
    also gave up using an int here, we will have to check that elsewhere, e.g. database */
 export interface ExamState {
-  examDefinition: ExamDefinition;
-  username: string;
-  chosenSubjects: Set<string>; // Empty: hasn't chosen subjects
-  currentPage: ExamPage;
-  previousPage: ExamPage;
+  instanceID: number;
+  currentQuestions: number[];
   currentSubject: string;
-  currentQuestion: number;
-  subjectResults: Map<string, SubjectResult>;
+  results: SubjectResult[];
+  username: string;
 }
 
-export interface SubjectResult {
-  results: QuestionResult[];
+export interface Position {
+  x: number;
+  y: number;
 }
 
-export interface QuestionResult {
-  resultTitle: string;
-  maxPoints: number;
-  pointsAchieved: number;
+export interface ImageInformation {
+  min: Position;
+  max: Position;
+  image: string;
+  imageWithIndicator: string;
+}
+
+export interface UserInformation {
+  username: string;
+  password: string;
 }
 
 export interface QuestionContent {
@@ -53,6 +79,14 @@ export interface QuestionContent {
   resultTitle?: string;
   maxPoints?: number;
   text?: string;
+  imageInformation?: ImageInformation;
+  correctAlternativeList?: string[];
+  correctAlternative?: string;
+  answerValues?: string[];
+  isImage?: boolean;
+  processString?: (input: string, maxPoints: number) => number;
+  placeholder?: string;
+  userInformation?: UserInformation;
 }
 
 export interface QuestionDefinition {
@@ -68,11 +102,4 @@ export interface SubjectDefinition {
 
 export interface ExamDefinition {
   subjects: SubjectDefinition[];
-}
-
-export interface ExamInfo {
-  instanceID: number;
-  title: string;
-  description: string;
-  imageFilename: string;
 }

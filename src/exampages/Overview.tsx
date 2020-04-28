@@ -3,49 +3,48 @@ import '../App.css';
 import './Pages.css';
 import Button from '../components/Button';
 import CircularProgressBar from '../components/CircularProgressBar';
-import { ExamState, ExamPage } from 'Types';
-import { startSubject, setExamPage, continueSubject } from 'redux/actions';
-import { connect } from 'react-redux';
-import { RootState } from 'redux/reducers';
+import { updateExamPage, updateCurrentSubject } from 'redux/actions';
+import { connectDispatch } from 'redux/util';
+import { ExamPage } from 'Types';
 
-interface Props extends ExamState {
-  startSubject: (subject: string) => void;
-  continueSubject: (subject: string) => void;
-  setExamPage: (page: ExamPage) => void;
+export interface SubjectCompletion {
+  title: string;
+  completed: number;
+  total: number;
 }
 
-const Overview: React.FC<Props> = ({ examDefinition, subjectResults, startSubject, continueSubject, setExamPage }) => {
-  const startOrContinueSubject = (subjectName: string, questionsCompleted: number) => {
-    if (questionsCompleted === 0)
-      startSubject(subjectName);
-    else
-      continueSubject(subjectName);
-  }
+interface Props extends PropsFromRedux {
+  subjects: SubjectCompletion[];
+  startExam: () => void;
+}
 
+const Overview: React.FC<Props> = props => {
   return (
-    <div className='questionContainer'>
+    <div className='question-container'>
       <h1 className='h1 overview-header'>Mine temaer</h1>
-      <div className='subjectContainer'>
-        {examDefinition.subjects.map((subject, i) => {
-          const subjectResult = subjectResults.get(subject.name);
-          const questionsCompleted = (subjectResult !== undefined) ? subjectResult.results.length : 0;
-          const numberOfQuestions = subject.questions.length;
+      <div className='subject-container'>
+        {props.subjects.map((subject, i) => {
           return (
             <Button
               key={i}
               classNames='subject-btn'
-              onClick={() => startOrContinueSubject(subject.name, questionsCompleted)}
-              disabled={questionsCompleted >= numberOfQuestions}>
-              <h2 className='subjectTitle'>{subject.name}</h2>
+              onClick={() => {
+                props.updateCurrentSubject(subject.title);
+                props.startExam();
+              }}
+              disabled={subject.completed === subject.total}>
+              <h2 className='subjectTitle'>{subject.title}</h2>
               <CircularProgressBar
-                completed={questionsCompleted}
-                total={numberOfQuestions}
+                completed={subject.completed}
+                total={subject.total}
               />
             </Button>
           );
         })}
       </div>
-      <Button onClick={() => setExamPage(ExamPage.RESULTS)} classNames="next see-results">
+      <Button
+        classNames='next'
+        onClick={() => props.updateExamPage(ExamPage.Results)}>
         Se resultater
       </Button>
     </div>
@@ -53,15 +52,14 @@ const Overview: React.FC<Props> = ({ examDefinition, subjectResults, startSubjec
 };
 
 // Redux related:
-const mapStateToProps = (store: RootState) => ({
-  ...store.examState
-});
-const mapDispatchToProps = (dispatch) => {
-  return {
-    startSubject: (subject: string) => dispatch(startSubject(subject)),
-    continueSubject: (subject: string) => dispatch(continueSubject(subject)),
-    setExamPage: (page: ExamPage) => dispatch(setExamPage(page))
-  };
-}
-const connector = connect(mapStateToProps, mapDispatchToProps);
+
+const mapToDispatch = {
+  updateExamPage,
+  updateCurrentSubject
+};
+
+type PropsFromRedux = typeof mapToDispatch;
+
+const connector = connectDispatch(mapToDispatch);
+
 export default connector(Overview);
