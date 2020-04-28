@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../App.css';
 import NavBar from '../components/NavBar';
 import ResultPage from '../result/ResultPage';
+<<<<<<< HEAD
 import EnterName from '../exampages/EnterName';
 import {
   ExamState,
@@ -25,6 +26,17 @@ import Choice from 'exampages/Choice';
 interface Props extends PropsFromRedux {
   examState: ExamState;
   examDefinition: ExamDefinition;
+=======
+import UsernameInput from '../questions/UsernameInput';
+import CopyText from '../questions/CopyText';
+import { Result, QuestionResult, Page, ExamState, Question } from '../Types';
+import NavBarBottom from 'components/NavBar-bottom';
+
+interface Props {
+  state: ExamState;
+  storeExam: (data: ExamState) => void;
+  changePage: (page: Page) => void;
+>>>>>>> 843dd1296d2d3f2ccfb52eafecd14902c04507e7
 }
 
 const Examination: React.FC<Props> = props => {
@@ -141,6 +153,7 @@ const Examination: React.FC<Props> = props => {
 
   return (
     <div className='main'>
+<<<<<<< HEAD
       <NavBar
         showChoice={() => {
           if (![ExamPage.Exit, ExamPage.Pause].includes(props.examPage)) {
@@ -156,6 +169,13 @@ const Examination: React.FC<Props> = props => {
         }}
       />
       {choosePage(props.examPage)}
+=======
+      <NavBar quitExam={quitExam} pauseExam={pauseExam} />
+      <div className='questionContainer'>
+        {chooseQuestion(questions[currentQuestion])}
+      </div>
+      <NavBarBottom/>
+>>>>>>> 843dd1296d2d3f2ccfb52eafecd14902c04507e7
     </div>
   );
 };

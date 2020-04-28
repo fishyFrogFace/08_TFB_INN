@@ -53,12 +53,16 @@
 }
 
 .start {
+<<<<<<< HEAD
   background-color: #659157;
   
+=======
+  background-color: #750c67;
+>>>>>>> 843dd1296d2d3f2ccfb52eafecd14902c04507e7
 }
 
 .start:hover {
-  background-color: #a1c084;
+  background-color: #0717f6;
 }
 
 .start:active {

@@ -9,10 +9,20 @@
 }
 .navBar {
   display: flex;
+<<<<<<< HEAD
   flex-direction: row;
   justify-content: flex-start;
   align-content: center;
   /*padding: 3vh 0 auto 2vw;*/
+=======
+  justify-content: flex-end;
+  text-align: center;
+  align-items: center;
+  min-height: 10vh;
+  max-height: 10vh;
+  background-color: E2E2E2;
+  
+>>>>>>> 843dd1296d2d3f2ccfb52eafecd14902c04507e7
 }
 
 .navbar-modals {
@@ -20,6 +30,7 @@
   margin: auto;*/
   color: black;
   text-align: left;
+<<<<<<< HEAD
     
 }
 .button-container {
@@ -41,3 +52,14 @@
 }
 
 
+=======
+  max-height: 3vh;
+}
+
+#nav-bottom {
+  position: fixed;
+  bottom: 0;
+  min-height: 15vh;
+  width: 100vw;
+}
+>>>>>>> 843dd1296d2d3f2ccfb52eafecd14902c04507e7
