@@ -31,6 +31,7 @@ const CopyText: React.FC<Props> = props => {
         type: QuestionResultType.Mastery,
         maxPoints: props.maxPoints,
         resultTitle: props.resultTitle,
+        questionTitle: props.text,
         pointsAchieved: points,
         mastered: true,
         answerValues: [props.text]

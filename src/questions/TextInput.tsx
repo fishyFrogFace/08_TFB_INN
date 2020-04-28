@@ -42,6 +42,7 @@ const TextInput: React.FC<Props> = props => {
               answerValues: [],
               maxPoints: props.maxPoints,
               resultTitle: props.resultTitle,
+              questionTitle: props.text,
               pointsAchieved: props.processString(input, props.maxPoints)
             });
           }}

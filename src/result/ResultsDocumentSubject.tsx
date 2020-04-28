@@ -8,13 +8,12 @@ const styles = StyleSheet.create({
 });
 
 export interface Props {
-  subjectName: string;
   subjectResult: SubjectResult;
 }
 
-const ResultsDocumentSubject: React.FC<Props> = ({ subjectName, subjectResult }) => (
+const ResultsDocumentSubject: React.FC<Props> = ({ subjectResult }) => (
   <View>
-    <Text>{subjectName}</Text>
+    <Text>{subjectResult.subjectTitle}</Text>
   </View>
 );
 

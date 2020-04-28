@@ -13,16 +13,15 @@ const styles = StyleSheet.create({
 
 export interface Props {
   username: string;
-  subjectNames: string[];
-  subjectResults: Map<string, SubjectResult>
+  subjectResultsList: SubjectResult[];
 }
 
-const ResultsDocument: React.FC<Props> = ({ username, subjectNames, subjectResults }) => (
+const ResultsDocument: React.FC<Props> = ({ username, subjectResultsList }) => (
   <Document>
     <Page size="A4" style={styles.page} wrap>
       <ResultsDocumentTitle title="Tittel" name={username} date={new Date()} />
-      {subjectNames.filter(name => subjectResults.get(name) !== undefined).map((name, i) => {
-        return <ResultsDocumentSubject key={i} subjectName={name} subjectResult={subjectResults.get(name)!} />
+      {subjectResultsList.map((subjectResult, i) => {
+        return <ResultsDocumentSubject key={i} subjectResult={subjectResult} />
       })}
     </Page>
   </Document>

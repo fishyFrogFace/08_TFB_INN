@@ -38,6 +38,7 @@ const TextInput: React.FC<Props> = props => {
         answerValues: [],
         maxPoints: props.maxPoints,
         resultTitle: props.resultTitle,
+        questionTitle: "Logg inn med informasjonen under",
         pointsAchieved: points
       });
     } else {

@@ -27,6 +27,7 @@ const ChooseOne: React.FC<Props> = props => {
         type: QuestionResultType.Other,
         maxPoints: 0,
         resultTitle: props.resultTitle,
+        questionTitle: props.text,
         pointsAchieved: 0
       });
     }
