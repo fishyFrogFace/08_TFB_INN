@@ -99,6 +99,7 @@ const Subject: React.FC<Props> = props => {
           <MultipleButtons
             answerValues={question.questionContent.answerValues!}
             isImage={question.questionContent.isImage!}
+            illustration={question.questionContent.illustration}
             resultTitle={question.questionContent.resultTitle!}
             text={question.questionContent.text!}
             correctAlternativeList={
@@ -124,6 +125,7 @@ const Subject: React.FC<Props> = props => {
         return (
           <ChooseOne
             text={question.questionContent.text!}
+            illustration={question.questionContent.illustration}
             resultTitle={question.questionContent.resultTitle!}
             isImage={question.questionContent.isImage!}
             answerValues={question.questionContent.answerValues!}
@@ -136,6 +138,7 @@ const Subject: React.FC<Props> = props => {
         return (
           <ChooseOneMastery
             text={question.questionContent.text!}
+            illustration={question.questionContent.illustration}
             correctAlternative={question.questionContent.correctAlternative!}
             resultTitle={question.questionContent.resultTitle!}
             isImage={question.questionContent.isImage!}
