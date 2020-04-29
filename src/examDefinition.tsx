@@ -246,7 +246,22 @@ export const standardExamDefinition = {
               min: { x: 14, y: 41 },
               max: { x: 129, y: 71 }
             },
-            resultTitle: 'Kan oporette ny e-post',
+            resultTitle: 'Kan opprette ny e-post',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Find topic field',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor skriver du emnet til e-posten?',
+            imageInformation: {
+              image: require('./images/email.jpeg'),
+              imageWithIndicator: require('./images/subject-correct.png'),
+              min: { x: 0, y: 76 },
+              max: { x: 657, y: 102 }
+            },
+            resultTitle: 'Kan finne e-postemne',
             maxPoints: 6
           }
         },
