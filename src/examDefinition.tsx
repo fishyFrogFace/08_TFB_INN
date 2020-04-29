@@ -5,6 +5,7 @@ export const standardExamDefinition = {
   subjects: [
     {
       name: 'Introduksjon',
+      subjectColor: 'light-green-background',
       questions: [
         /*
         {
@@ -48,6 +49,7 @@ export const standardExamDefinition = {
     },
     {
       name: 'Passord, innlogging og BankID',
+      subjectColor: 'orange-background',
       questions: [
         {
           name: 'Test password strength of user created password',

@@ -6,18 +6,18 @@
 .questiontextContainer {
   width: 90%;
   min-height: 10vh;
-  max-height: 20vh;
+  
   border-radius: 8px;
   z-index: 3;
 
-  padding:1vh 5vw;
+  padding: 16px 32px;
   box-shadow: 0 4px 10px 0 rgba(0,0,0,0.50);
 }
 
 
 
 
-.inputContainer {
+.textinputContainer {
   position: relative;
   top: -5vh;
   width: 100%;
@@ -30,6 +30,21 @@
   display: flex;
   flex-direction: column;
   align-content: center;
+}
+.multiple-button-container {
+  position: relative;
+  top: -5vh;
+  width: 100%;
+  height: 60vh;
+  padding: 12vh 16px 16px 16px;
+  border-radius: 3px;
+  
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  
 }
 
 .subjectColor {

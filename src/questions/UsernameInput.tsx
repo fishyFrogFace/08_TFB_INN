@@ -88,7 +88,7 @@ const UsernameInput: React.FC<Props> = props => {
       <p className='username'>{input}</p>
 
 
-        <div className='next-container' onClick={() => props.getUsername(input)}>
+        <div className='nextbuttoncontainer' onClick={() => props.getUsername(input)}>
           <img src={neste} alt="Neste" ></img>
         </div>
         

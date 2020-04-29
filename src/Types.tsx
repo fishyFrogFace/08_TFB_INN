@@ -97,6 +97,7 @@ export interface QuestionDefinition {
 
 export interface SubjectDefinition {
   name: string;
+  subjectColor: string;
   questions: QuestionDefinition[];
 }
 

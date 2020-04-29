@@ -46,17 +46,24 @@ body {
 .grey-background{
   background-color: #9E9E9E;
 }
+/*Brukes i spørsmålsbokser før temaoversikt*/
 .dark-grey-background{
   background-color: #717171;
 }
 .bluegrey-background {
   background-color: #60768b;
 }
+/*neste-knapp*/
+.amber-background {
+  background-color: #FFC107;
+}
+
 
 .green-background {
   background-color: #259B24;
 }
 
+/*temafarger under her*/
 .light-green-background {
   background-color: #8BC34A;
 }
@@ -66,9 +73,6 @@ body {
 
 .yellow-background {
   background-color: #FFEB3B;
-}
-.amber-background {
-  background-color: #FFC107;
 }
 .orange-background {
   background-color: #FF9800;

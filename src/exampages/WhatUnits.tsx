@@ -26,19 +26,23 @@ const WhatUnits: React.FC<PropsFromRedux> = props => {
   };
 
   return (
-    <div className='question-container'>
-      <h1 className='h1'>Hvilke enheter har du?</h1>
-      <div className='button-container'>
+    <div className='content'>
+      <div className="questiontextContainer dark-grey-background">
+        <h1 className='h2 white normal-font'>Hvilke enheter har du?</h1>
+      </div>
+      <div className='multiple-button-container whiteBackground'>
         {units.map((item, i) => (
           <div className='image-with-description' key={i}>
-            <Button
-              classNames={`unit-btn ${
-                selectedButtons.includes(i) ? 'selected' : ''
-              }`}
-              onClick={() => updateAnswer(i)}>
-              <img className='unit-img' src={item.image} alt='' />
-            </Button>
-            <h2 className='h2'>{capitalize(item.description)}</h2>
+            <div >
+              <Button
+                classNames={`unit-btn ${
+                  selectedButtons.includes(i) ? 'selected' : ''
+                }`}
+                onClick={() => updateAnswer(i)}>
+                <img className='unit-img' src={item.image} alt='' />
+              </Button>
+              <h2 className='h2'>{capitalize(item.description)}</h2>
+            </div>
           </div>
         ))}
       </div>

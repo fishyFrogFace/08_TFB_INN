@@ -58,7 +58,7 @@ const CopyText: React.FC<Props> = props => {
       <div className="questiontextContainer subjectColor">
         <h1 className='h2 white normal-font'>{props.text}</h1>
       </div>
-      <div className="inputContainer whiteBackground">
+      <div className="textinputContainer whiteBackground">
         <form
           className='textAndBtn'
           onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>

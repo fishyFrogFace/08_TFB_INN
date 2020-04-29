@@ -8,6 +8,7 @@ import { connectDispatch } from 'redux/util';
 import { ExamPage } from 'Types';
 
 export interface SubjectCompletion {
+  subjectColor: string;
   title: string;
   completed: number;
   total: number;
@@ -21,8 +22,8 @@ interface Props extends PropsFromRedux {
 const Overview: React.FC<Props> = props => {
   return (
     <div className='content'>
-    <div className="questiontextContainer headerColor">
-      <h1 className='h2 black normal-font'>Mine temaer</h1>
+    <div className="questiontextContainer dark-grey-background">
+      <h1 className='h2 white normal-font'>Mine temaer</h1>
 
     </div>
       <div className='subjectContainer whiteBackground'>
@@ -30,18 +31,21 @@ const Overview: React.FC<Props> = props => {
           return (
             <Button
               key={i}
-              classNames='subject-btn'
+              classNames= {'subject-btn' + ' ' + subject.subjectColor }
               onClick={() => {
                 props.updateCurrentSubject(subject.title);
                 props.startExam();
               }}
               disabled={subject.completed === subject.total}>
-              <h2 className='h2 black normal-font'>{subject.title}</h2>
-              
+              <div className='subjectTitleContainer'>
+                <p className='black normal-font'>{subject.title}</p>
+              </div>
+              <div className='progressCirclecontainer'>
                 <CircularProgressBar
                   completed={subject.completed}
                   total={subject.total}
                 />
+                </div>
               
             </Button>
           );

@@ -17,7 +17,7 @@ const flowDescription =
 const FrontPage: React.FC<PropsFromRedux> = props => {
   return (
     <div className='frontpage-main'>
-      <div className='frontpage-blurb grey-background'>
+      <div className='frontpage-blurb'>
         <h1 className='frontpage-header black'>Digiklar</h1>
         <div className='scrollContainer'>
           <p className='appIntro light-font'>{appIntro}</p>
@@ -28,7 +28,7 @@ const FrontPage: React.FC<PropsFromRedux> = props => {
         </div>
         
         <Button
-          classNames='btn h2 startbutton'
+          classNames='btn h2 startbutton white teal-background'
           onClick={() => props.updateAppPage(Page.Examination)}>
           Kom i gang!
         </Button>

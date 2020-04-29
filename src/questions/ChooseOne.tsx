@@ -25,7 +25,7 @@ const ChooseOne: React.FC<Props> = props => {
         mastered: false,
         answerValues: [props.answerValues[selectedButton!]],
         type: QuestionResultType.Other,
-        maxPoints: 0,
+        maxPoints: 0, 
         resultTitle: props.resultTitle,
         pointsAchieved: 0
       });

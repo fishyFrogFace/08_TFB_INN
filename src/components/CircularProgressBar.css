@@ -1,33 +1,35 @@
 .progress-circle {
-  font-size: 4.5vmin;
+  font-size: 1.5em;
  
   position: relative; /* so that children can be absolutely positioned */
   padding: 0;
-  width: 15vmin;
-  height: 15vmin;
+  width: 100%;/*15vmin;*/
+  height: 100%;
   background-color: #F2E9E1; 
   border-radius: 50%;
-  line-height: 15vmin;
+  line-height: 100%;
+  
 }
 
 .progress-circle:after{
    border: none;
    position: absolute;
-   top: 1.05vmin;
-   left: 1.05vmin;
+   top: 7%;
+   left: 7%;
    text-align: center;
    display: block;
    border-radius: 50%;
-   width: 12.9vmin;
-   height: 12.9vmin;
+   width: 86%;
+   height: 86%;
    background-color: white;
    content: " ";
 }
 /* Text inside the control */
 .progress-circle span {
    position: absolute;
-   line-height: 15vmin;
-   width: 15vmin;
+   top:35%;
+   line-height: 100%;
+   width: 100%;
    text-align: center;
    display: block;
    color: #53777A;
@@ -36,10 +38,10 @@
 .left-half-clipper { 
   /* a round circle */
   border-radius: 50%;
-  width: 15vmin;
-  height: 15vmin;
+  width: 100%;
+  height: 100%;
   position: absolute; /* needed for clipping */
-  clip: rect(0, 15vmin, 15vmin, 7.5vmin); /* clips the whole left half*/ 
+  clip: rect(0, 100%, 100%, 50%); /* clips the whole left half*/ 
 }
 /* when p>50, don't clip left half*/
 .progress-circle.over50 .left-half-clipper {
@@ -50,9 +52,9 @@
   then it is cut to display only the left half, then rotated clockwise
   to escape the outer clipping path.*/ 
   position: absolute; /*needed for clipping*/
-  clip: rect(0, 7.5vmin, 15vmin, 0);
-  width: 15vmin;
-  height: 15vmin;
+  clip: rect(0, 50%, 100%, 0);
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   border: 1.35vmin solid #53777A; /*The border is 0.7 but making it larger removes visual artifacts */
   /*background-color: #4D642D;*/ /* for debug */
@@ -63,11 +65,11 @@
 .progress-circle.over50 .first50-bar {
   /*Progress bar for the first 50%, filling the whole right half*/
   position: absolute; /*needed for clipping*/
-  clip: rect(0, 15vmin, 15vmin, 7.5vmin);
+  clip: rect(0, 100%, 100%, 50%);
   background-color: #53777A;
   border-radius: 50%;
-  width: 15vmin;
-  height: 15vmin;
+  width: 100%;
+  height: 100%;
 }
 .progress-circle:not(.over50) .first50-bar{ display: none; }
 

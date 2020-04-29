@@ -5,9 +5,11 @@
   text-align: center;
   
   border-radius: 8px;
+  font-size: 2.6vh;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
   cursor: pointer;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);;
+  
 }
 
 .btn:disabled {
@@ -30,15 +32,7 @@
 */
 
 .next {
-  background-color: #FFA321;
-  min-width: 20vw;
-  
-  font-size: 5vmin;
-  padding: 18px 32px;
-  border: 0;
-  border-radius: 8px;
-  
-  
+  background-color: #FFC107  
 }
 
 .next:hover {
@@ -49,23 +43,10 @@
   background-color: #fbb02d;
 }
 
-.start {
-  background-color: #659157;
-  
-}
 
-.start:hover {
-  background-color: #0717f6;
-}
-
-.start:active {
-  background-color: #257c03;
-}
 
 .nav-btn {
   background-color: transparent;
-  /*margin: auto 0;  */
-  border: none;
   
   color: 0;
   margin: 0;
@@ -103,18 +84,34 @@
 
 .subject-btn {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  background-color: white;
+  
+  
   border-radius: 2vh;
-  width: 80%;
-  height: 20vmin;
+  width: 85%;
+  min-height: 12vh;
+  
   margin: 0.5vh auto;
-  font-size: 3vmin;
+  padding: 1vh 8px;
+}
+.subject-btn .subjectTitleContainer {
+  width: 75%;
   
   
+  
+}
+.subjectTitleContainer p{
+  position: relative;
+  top:-8px;
+  text-align: left;
+  font-size: 1.5em;
   font-weight: normal;
+  
+}
+.progressCirclecontainer {
+  height: 4.5em;
+  width: 4.5em;
 }
 
 .subject-btn:disabled {

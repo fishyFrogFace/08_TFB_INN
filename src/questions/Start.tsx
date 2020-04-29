@@ -14,7 +14,7 @@ interface Props {
 const Start: React.FC<Props> = props => {
   return (
     <div className="content">
-      <div className="inputContainer transparent">
+      <div className="textinputContainer transparent">
         <div className="nextButtonContainer">
             <Button
               classNames='start'

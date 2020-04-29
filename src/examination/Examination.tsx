@@ -102,6 +102,7 @@ const Examination: React.FC<Props> = props => {
           <Overview
             subjects={props.examDefinition.subjects.map((subject, i) => ({
               title: subject.name,
+              subjectColor: subject.subjectColor,
               completed: props.currentQuestionList[i],
               total: subject.questions.filter(
                 q => q.templateID !== QuestionTemplate.CompletedSubject

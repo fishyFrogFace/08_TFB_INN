@@ -57,10 +57,10 @@ const EnterName: React.FC<Props> = props => {
         <!--<img src={avatar} alt='Avatar' />-->
       </div>
       */}
-      <div className="questiontextContainer subjectColor">
-        <h1 className='h2 white normal-font'>Mitt navn er</h1>
+      <div className="questiontextContainer dark-grey-background">
+        <h1 className='h2 white normal-font'>Mitt navn er...</h1>
       </div>
-      <div className="inputContainer whiteBackground">
+      <div className="textinputContainer whiteBackground">
         <form
           className='textinputAndBtn'
           onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
@@ -85,7 +85,7 @@ const EnterName: React.FC<Props> = props => {
         </div>
       <div className='nextButtonContainer'>
         <Button
-              classNames='next'
+              classNames='btn next'
               onClick={() => {
                 props.setUsername(input);
               }}>

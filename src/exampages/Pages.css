@@ -7,7 +7,8 @@
   position: absolute;
   top: 5vh;
   width: 100%;
-  height: 60vh;
+  min-height: 50vh;
+  max-height: 80vh;
   padding-top: 12vh;
   overflow: scroll;
   display: flex;
@@ -112,8 +113,8 @@
   font-size: 4vh;
 }
 .unit-btn {
-  height: 50vmin;
-  width: 50vmin;
+  height: 30vmin;
+  width: 30vmin;
 }
 
 .unit-btn:hover {
@@ -121,8 +122,8 @@
 }
 
 .unit-img {
-  height: 40vmin;
-  width: 40vmin;
+  height: 20vmin;
+  width: 20vmin;
 }
 
 .selected {
