@@ -177,7 +177,7 @@ export const standardExamDefinition = {
             ],
             correctAlternativeList: [
               'Med BankID kan jeg få tilgang til helseopplysninger',
-              'BankID er en elektronisk ID/legitimasjon'
+              'BankID er en personlig, elektronisk ID'
             ]
           }
         },
