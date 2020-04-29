@@ -35,7 +35,7 @@ const ResultPage: React.FC<PropsFromRedux> = props => {
       {props.results
         .filter(res => res.results.length !== 0)
         .map((subject, i) => subjectResults(subject, i))}
-      <PDFDownloadLink document={<ResultsDocument username={props.username} subjectResultsList={props.results} />} fileName="document.pdf">
+      <PDFDownloadLink document={<ResultsDocument username={props.username} subjectResultsList={props.results} devices={props.units}/>} fileName="document.pdf">
         {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
       </PDFDownloadLink>
     </div>
