@@ -63,16 +63,15 @@ export const standardExamDefinition = {
           name: 'Choose the safest passwords',
           templateID: QuestionTemplate.MultipleButtons,
           questionContent: {
-            text: 'Hvilke passord er mest sikre?',
+            text: 'Hvilke to passord er mest sikre?',
             resultTitle: 'Kan kjenne igjen sikre passord',
             isImage: false,
             answerValues: [
               'passord',
               '%&¤#',
               'zi3A47gvq8nFVkv',
-              'qwerty',
-              '34BananerVokserPåTrær!',
-              '1qaz2wsx3edc4rfv'
+              '1q2w3e4r5t6y',
+              '34BananerVokserPåTrær!'
             ],
             correctAlternativeList: [
               'zi3A47gvq8nFVkv',
