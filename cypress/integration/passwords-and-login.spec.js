@@ -51,7 +51,7 @@ context('Passwords-and-login', () => {
 
     cy.get('.h1')
       .first()
-      .should('contain', 'Hvilke passord er mest sikre?');
+      .should('contain', 'Hvilke to passord er mest sikre?');
   });
 
   it('find secure pwd button is clickable and renders login', () => {
@@ -201,11 +201,11 @@ context('Passwords-and-login', () => {
 
   it('true about bankid button is clickable and renders success screen', () => {
     cy.get('.answer-btn')
-      .eq(2)
+      .eq(1)
       .click();
 
     cy.get('.answer-btn')
-      .eq(4)
+      .eq(3)
       .click();
 
     cy.get('.next-button')
@@ -238,7 +238,7 @@ context('Passwords-and-login', () => {
   });
 
   it('result reflects what the user achieved', () => {
-    const width = ['800px', '400px', '640px', '0px', '800px', '533.328125px'];
+    const width = ['800px', '400px', '640px', '0px', '800px', '800px'];
     cy.get('.filler').each(($el, i) => {
       cy.wrap($el).should('have.css', 'width', width[i]);
     });

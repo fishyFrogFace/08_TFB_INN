@@ -66,16 +66,15 @@ export const standardExamDefinition = {
           name: 'Choose the safest passwords',
           templateID: QuestionTemplate.MultipleButtons,
           questionContent: {
-            text: 'Hvilke passord er mest sikre?',
+            text: 'Hvilke to passord er mest sikre?',
             resultTitle: 'Kan kjenne igjen sikre passord',
             isImage: false,
             answerValues: [
               'passord',
               '%&¤#',
               'zi3A47gvq8nFVkv',
-              'qwerty',
-              '34BananerVokserPåTrær!',
-              '1qaz2wsx3edc4rfv'
+              '1q2w3e4r5t6y',
+              '34BananerVokserPåTrær!'
             ],
             correctAlternativeList: [
               'zi3A47gvq8nFVkv',
@@ -104,13 +103,14 @@ export const standardExamDefinition = {
               'Forstår viktigheten av utlogging og hvordan utlogging fungerer',
             isImage: false,
             answerValues: [
-              'Jeg må ikke logge ut igjen',
-              'Om jeg logger ut, kan ingen se min personlige informasjon',
-              'Å lukke fanen/nettleseren er det samme som å logge ut',
+              'Om du logger ut kan ingen andre gjøre endringer i din personlige informasjon på nettsiden',
+              'Å krysse ut vinduet med nettsiden er det samme som å logge ut',
+              '“Logg ut” betyr det samme som “logg av”, “log off” og “sign out”',
               'Det er viktig å logge ut når man er ferdig med å bruke en maskin som brukes av andre'
             ],
             correctAlternativeList: [
-              'Om jeg logger ut, kan ingen se min personlige informasjon',
+              'Om du logger ut kan ingen andre gjøre endringer i din personlige informasjon på nettsiden',
+              '“Logg ut” betyr det samme som “logg av”, “log off” og “sign out”',
               'Det er viktig å logge ut når man er ferdig med å bruke en maskin som brukes av andre'
             ]
           }
@@ -138,6 +138,7 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.ChooseOne,
           questionContent: {
             text: 'Har du BankID (kodebrikke)?',
+            illustration: require('./images/bankid-chip.svg'),
             resultTitle: 'Har BankID',
             answerValues: ['Ja', 'Nei'],
             isImage: false
@@ -169,18 +170,17 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hva er sant om BankID?',
             resultTitle: 'Forstår hva BankID er og hvordan den fungerer',
+            illustration: require('./images/bankid-logo.svg'),
             isImage: false,
             answerValues: [
-              'BankID er personlig',
               'BankID kan deles med andre',
               'Med BankID kan jeg få tilgang til helseopplysninger',
               'BankID har lav sikkerhet',
-              'BankID er en elektronisk ID/legitimasjon'
+              'BankID er en personlig, elektronisk ID'
             ],
             correctAlternativeList: [
-              'BankID er personlig',
               'Med BankID kan jeg få tilgang til helseopplysninger',
-              'BankID er en elektronisk ID/legitimasjon'
+              'BankID er en personlig, elektronisk ID'
             ]
           }
         },
