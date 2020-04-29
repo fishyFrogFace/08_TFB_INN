@@ -137,7 +137,7 @@ export const standardExamDefinition = {
             text: 'Har du BankID (kodebrikke)?',
             illustration: require('./images/bankid-chip.svg'),
             resultTitle: 'Har BankID',
-            answerValues: ['Ja', 'Nei'],
+            answerValues: ['Ja', 'Nei', 'Vet ikke'],
             isImage: false
           }
         },
@@ -179,6 +179,60 @@ export const standardExamDefinition = {
               'Med BankID kan jeg få tilgang til helseopplysninger',
               'BankID er en personlig, elektronisk ID'
             ]
+          }
+        },
+        {
+          name: 'Completed subject',
+          templateID: QuestionTemplate.CompletedSubject,
+          questionContent: {}
+        }
+      ]
+    },
+    {
+      name: 'E-post',
+      questions: [
+        {
+          name: 'Has e-mail',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Har du en e-postkonto?',
+            resultTitle: 'Har e-postkonto',
+            illustration: require('./images/email.svg'),
+            answerValues: ['Ja', 'Nei', 'Vet ikke'],
+            isImage: false
+          }
+        },
+        {
+          name: 'Recognize email inbox',
+          templateID: QuestionTemplate.ChooseOneMastery,
+          questionContent: {
+            text: 'Hvilket av bildene nedenfor er en e-postinnboks?',
+            resultTitle: 'Kan kjenne igjen en e-postinnboks',
+            answerValues: [
+              require('./images/whatsapp.svg'),
+              require('./images/inbox.png'),
+              require('./images/messages.svg'),
+              require('./images/youtube.svg'),
+              require('./images/website.svg')
+            ],
+            isImage: true,
+            correctAlternative: require('./images/inbox.png')
+          }
+        },
+        {
+          name: 'Recognize email inbox',
+          templateID: QuestionTemplate.ChooseOneMastery,
+          questionContent: {
+            text: 'Hvilket av alternativene nedenfor er en e-postadresse?',
+            resultTitle: 'Kan kjenne igjen en e-postinnboks',
+            answerValues: [
+              'www.nrk.no',
+              '“Oppskrift på lasagne”',
+              'kari@gmail.com',
+              '192.168.1.6'
+            ],
+            isImage: false,
+            correctAlternative: 'kari@gmail.com'
           }
         },
         {
