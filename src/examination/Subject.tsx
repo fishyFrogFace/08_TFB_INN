@@ -165,6 +165,8 @@ const Subject: React.FC<Props> = props => {
   );
 };
 
+// Redux related
+
 const mapStateToProps = (store: RootState) => ({
   currentSubjectResult: store.subjectResultList.find(
     res => res.subjectTitle === store.currentSubject
