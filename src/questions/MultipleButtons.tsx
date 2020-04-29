@@ -55,7 +55,7 @@ const MultipleButtons: React.FC<Props> = props => {
 
   return (
     <div>
-      <h1 className='h1'>{props.text}</h1>
+      <h1 className='h1'>{props.text} (flere valg mulig)</h1>
       <div className='multiple-button-container'>
         {props.answerValues.map((item, i) => (
           <Button
