@@ -3,15 +3,19 @@ import { StyleSheet, View, Text } from '@react-pdf/renderer';
 
 // Create styles
 const styles = StyleSheet.create({
-  title: {
+  titleContainer: {
     flexDirection: "row",
     alignContent: "space-between",
     borderBottomWidth: 1,
     borderStyle: "solid",
     borderColor: "black",
+    padding: 5,
   },
   titleItem: {
     flex: 1,
+  },
+  title: {
+    fontSize: 36,
   }
 });
 
@@ -26,8 +30,8 @@ const getDateString = (date: Date) => {
 }
 
 const ResultsDocumentTitle: React.FC<Props> = ({ title, name, date }) => (
-  <View style={styles.title}>
-    <View style={styles.titleItem}>
+  <View style={styles.titleContainer}>
+    <View style={[styles.titleItem, styles.title]}>
       <Text>{title}</Text>
     </View>
     <View style={styles.titleItem}>
