@@ -33,7 +33,7 @@ const ChooseOne: React.FC<Props> = props => {
       mastered: true,
       answerValues: [],
       type: QuestionResultType.Mastery,
-      maxPoints: props.correctAlternative.length,
+      maxPoints: 1,
       resultTitle: props.resultTitle,
       pointsAchieved: checkAnswer()
     });
