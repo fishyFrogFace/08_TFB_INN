@@ -236,6 +236,21 @@ export const standardExamDefinition = {
           }
         },
         {
+          name: 'Find new email button',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å opprette en ny e-post?',
+            imageInformation: {
+              image: require('./images/inbox.png'),
+              imageWithIndicator: require('./images/new-email-correct.png'),
+              min: { x: 14, y: 41 },
+              max: { x: 129, y: 71 }
+            },
+            resultTitle: 'Kan oporette ny e-post',
+            maxPoints: 6
+          }
+        },
+        {
           name: 'Completed subject',
           templateID: QuestionTemplate.CompletedSubject,
           questionContent: {}
