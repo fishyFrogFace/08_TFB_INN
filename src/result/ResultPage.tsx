@@ -5,6 +5,9 @@ import { SubjectResult, QuestionResultType } from '../Types';
 import { RootState } from 'redux/reducers';
 import { connect } from 'react-redux';
 import { joinAndCapitalize } from '../Util';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import ResultsDocument from '../result/ResultsDocument';
+import Button from '../components/Button';
 
 const subjectResults = (element: SubjectResult, i: number) => {
   return (
@@ -14,10 +17,10 @@ const subjectResults = (element: SubjectResult, i: number) => {
         res.type === QuestionResultType.Mastery ? (
           <ProgressBar key={n} {...res} />
         ) : (
-          <h2 className='h2 other' key={i}>
-            {res.resultTitle}: {joinAndCapitalize(res.answerValues)}
-          </h2>
-        )
+            <h2 className='h2 other' key={i}>
+              {res.resultTitle}: {joinAndCapitalize(res.answerValues)}
+            </h2>
+          )
       )}
     </div>
   );
@@ -33,6 +36,12 @@ const ResultPage: React.FC<PropsFromRedux> = props => {
       {props.results
         .filter(res => res.results.length !== 0)
         .map((subject, i) => subjectResults(subject, i))}
+      <PDFDownloadLink document={<ResultsDocument username={props.username} subjectResultsList={props.results} devices={props.units} />} fileName="document.pdf">
+        {({ blob, url, loading, error }) => (loading ?
+          <Button classNames='btn download' onClick={() => {return}}>Gjør klart resultat...</Button>
+          : <Button classNames='btn download' onClick={() => {return}}>Last ned resultat</Button>
+        )}
+      </PDFDownloadLink>
     </div>
   );
 };
