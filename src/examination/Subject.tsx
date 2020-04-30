@@ -16,6 +16,7 @@ import CopyText from 'questions/CopyText';
 import WhereInPicture from 'questions/WhereInPicture';
 import TextInput from 'questions/TextInput';
 import MultipleButtons from 'questions/MultipleButtons';
+import BigText from 'questions/BigText';
 import Login from 'questions/Login';
 import ChooseOne from 'questions/ChooseOne';
 import ChooseOneMastery from 'questions/ChooseOneMastery';
@@ -145,6 +146,14 @@ const Subject: React.FC<Props> = props => {
             answerValues={question.questionContent.answerValues!}
             updateResult={updateResult}
             skipQuestion={skipQuestion}
+          />
+        );
+      case QuestionTemplate.BigText:
+        return (
+          <BigText
+            resultTitle={question.questionContent.resultTitle!}
+            text={question.questionContent.text!}
+            updateResult={updateResult}
           />
         );
 

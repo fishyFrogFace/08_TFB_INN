@@ -39,6 +39,14 @@ export const standardExamDefinition = {
           }
         },
         {
+          name: 'Spørsmål til veileder',
+          templateID: QuestionTemplate.BigText,
+          questionContent: {
+            text: 'Har du noen spørsmål til veileder?'
+          },
+          resultTitle: 'Spørsmål til veileder'
+        },
+        {
           name: 'Completed subject',
           templateID: QuestionTemplate.CompletedSubject,
           questionContent: {}
