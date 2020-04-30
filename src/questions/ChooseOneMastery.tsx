@@ -3,6 +3,7 @@ import './Question.css';
 import Button from '../components/Button';
 import { QuestionResult, QuestionResultType } from '../Types';
 import FlowButtons from 'components/FlowButtons';
+import { inspect } from 'util';
 
 interface Props {
   text: string;
@@ -19,7 +20,7 @@ const ChooseOne: React.FC<Props> = props => {
   const [selectedButton, setSelectedButton] = useState<number>();
 
   const checkAnswer = () => {
-    if (selectedButton) {
+    if (selectedButton !== undefined) {
       const selectedString = props.answerValues[selectedButton];
       return selectedString === props.correctAlternative ? 1 : 0;
     } else {
