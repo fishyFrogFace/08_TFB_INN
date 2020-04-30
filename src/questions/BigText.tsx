@@ -6,6 +6,7 @@ import { QuestionResult, QuestionResultType } from '../Types';
 
 interface Props {
   text: string;
+  placeholder: string;
   resultTitle: string;
   updateResult: (result: QuestionResult) => void;
 }
@@ -22,6 +23,7 @@ const BigText: React.FC<Props> = props => {
         <textarea
           id='name'
           className='big-text'
+          placeholder={props.placeholder}
           onChange={e => setInput(e.currentTarget.value)}
         />
         <Button

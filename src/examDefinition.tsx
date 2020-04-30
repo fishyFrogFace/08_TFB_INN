@@ -39,10 +39,11 @@ export const standardExamDefinition = {
           }
         },
         {
-          name: 'Spørsmål til veileder',
+          name: 'Questions for supervisor',
           templateID: QuestionTemplate.BigText,
           questionContent: {
-            text: 'Har du noen spørsmål til veileder?'
+            text: 'Har du noen spørsmål til veileder?',
+            placeholder: 'Jeg lurer på...'
           },
           resultTitle: 'Spørsmål til veileder'
         },
@@ -374,10 +375,12 @@ export const standardExamDefinition = {
           name: 'Settings I want to learn',
           templateID: QuestionTemplate.BigText,
           questionContent: {
-            text: 'Hvilke andre innstillinger har du lyst til å lære deg?'
+            text: 'Hvilke andre innstillinger har du lyst til å lære deg?',
+            placeholder: 'Jeg vil lære meg å...'
           },
           resultTitle: 'Jeg ønsker å lære dette'
         },
+
         {
           name: 'Completed subject',
           templateID: QuestionTemplate.CompletedSubject
