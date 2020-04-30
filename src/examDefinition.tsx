@@ -137,7 +137,7 @@ export const standardExamDefinition = {
             text: 'Har du BankID (kodebrikke)?',
             illustration: require('./images/bankid-chip.svg'),
             resultTitle: 'Har BankID',
-            answerValues: ['Ja', 'Nei'],
+            answerValues: ['Ja', 'Nei', 'Vet ikke'],
             isImage: false
           }
         },
@@ -179,6 +179,180 @@ export const standardExamDefinition = {
               'Med BankID kan jeg få tilgang til helseopplysninger',
               'BankID er en personlig, elektronisk ID'
             ]
+          }
+        },
+        {
+          name: 'Completed subject',
+          templateID: QuestionTemplate.CompletedSubject,
+          questionContent: {}
+        }
+      ]
+    },
+    {
+      name: 'E-post',
+      questions: [
+        {
+          name: 'Has e-mail',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Har du en e-postkonto?',
+            resultTitle: 'Har e-postkonto',
+            illustration: require('./images/email.svg'),
+            answerValues: ['Ja', 'Nei', 'Vet ikke'],
+            isImage: false
+          }
+        },
+        {
+          name: 'Recognize email inbox',
+          templateID: QuestionTemplate.ChooseOneMastery,
+          questionContent: {
+            text: 'Hvilket av bildene nedenfor er en e-postinnboks?',
+            resultTitle: 'Kan kjenne igjen en e-postinnboks',
+            answerValues: [
+              require('./images/whatsapp.svg'),
+              require('./images/inbox.png'),
+              require('./images/messages.svg'),
+              require('./images/youtube.svg'),
+              require('./images/website.svg')
+            ],
+            isImage: true,
+            correctAlternative: require('./images/inbox.png')
+          }
+        },
+        {
+          name: 'Recognize email inbox',
+          templateID: QuestionTemplate.ChooseOneMastery,
+          questionContent: {
+            text: 'Hvilket av alternativene nedenfor er en e-postadresse?',
+            resultTitle: 'Kan kjenne igjen en e-postinnboks',
+            answerValues: [
+              'www.nrk.no',
+              '“Oppskrift på lasagne”',
+              'kari@gmail.com',
+              '192.168.1.6'
+            ],
+            isImage: false,
+            correctAlternative: 'kari@gmail.com'
+          }
+        },
+        {
+          name: 'Find new email button',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å opprette en ny e-post?',
+            imageInformation: {
+              image: require('./images/inbox.png'),
+              imageWithIndicator: require('./images/new-email-correct.png'),
+              min: { x: 14, y: 41 },
+              max: { x: 129, y: 71 }
+            },
+            resultTitle: 'Kan opprette ny e-post',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Find topic field',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor skriver du emnet til e-posten?',
+            imageInformation: {
+              image: require('./images/email.jpeg'),
+              imageWithIndicator: require('./images/subject-correct.png'),
+              min: { x: 0, y: 76 },
+              max: { x: 657, y: 102 }
+            },
+            resultTitle: 'Kan finne e-postemne',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Find recipient field',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor skriver du inn mottakerne av e-posten?',
+            imageInformation: {
+              image: require('./images/email.jpeg'),
+              imageWithIndicator: require('./images/recipient-correct.png'),
+              min: { x: 0, y: 53 },
+              max: { x: 657, y: 76 }
+            },
+            resultTitle: 'Kan finne e-postmottakere',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Find body field',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å skrive innholdet i e-posten?',
+            imageInformation: {
+              image: require('./images/email.jpeg'),
+              imageWithIndicator: require('./images/body-correct.png'),
+              min: { x: 0, y: 128 },
+              max: { x: 657, y: 329 }
+            },
+            resultTitle: 'Kan finne e-postinnhold',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Add attachment',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å legge til et vedlegg?',
+            imageInformation: {
+              image: require('./images/email.jpeg'),
+              imageWithIndicator: require('./images/attachment-correct.png'),
+              min: { x: 13, y: 336 },
+              max: { x: 61, y: 360 }
+            },
+            resultTitle: 'Kan legge til vedlegg',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Send email',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å sende e-posten?',
+            imageInformation: {
+              image: require('./images/email.jpeg'),
+              imageWithIndicator: require('./images/send-correct.png'),
+              min: { x: 573, y: 337 },
+              max: { x: 646, y: 360 }
+            },
+            resultTitle: 'Kan finne sendeknapp',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Open first email',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å åpne den øverste e-posten?',
+            imageInformation: {
+              image: require('./images/inbox.png'),
+              imageWithIndicator: require('./images/first-email-correct.png'),
+              min: { x: 146, y: 80 },
+              max: { x: 648, y: 124 }
+            },
+            resultTitle: 'Kan åpne e-mail fra innboksen',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Reply to email',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å svare på e-posten?',
+            imageInformation: {
+              image: require('./images/reply.png'),
+              imageWithIndicator: require('./images/reply-correct.png'),
+              min: { x: 506, y: 123 },
+              max: { x: 538, y: 145 }
+            },
+            resultTitle: 'Kan finne e-postinnhold',
+            maxPoints: 6
           }
         },
         {
