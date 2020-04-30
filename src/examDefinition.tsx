@@ -405,13 +405,32 @@ export const standardExamDefinition = {
           }
         },
         {
+          name: 'True about flight mode',
+          templateID: QuestionTemplate.MultipleButtons,
+          questionContent: {
+            text: 'Hva er sant om flymodus?',
+            resultTitle: 'Kan kjenne igjen en e-postinnboks',
+            answerValues: [
+              'Det er mulig å koble til WiFi, men ikke til mobilnett',
+              'Det kan ikke komme lyd fra telefonen, men den kan vibrere',
+              'Jeg kan motta SMS',
+              'Ingen kan ringe meg når flymodus er på'
+            ],
+            isImage: false,
+            correctAlternativeList: [
+              'Det er mulig å koble til WiFi, men ikke til mobilnett',
+              'Ingen kan ringe meg når flymodus er på'
+            ]
+          }
+        },
+        {
           name: 'Settings I want to learn',
           templateID: QuestionTemplate.BigText,
           questionContent: {
             text: 'Hvilke andre innstillinger har du lyst til å lære deg?',
-            placeholder: 'Jeg vil lære meg å...'
-          },
-          resultTitle: 'Jeg ønsker å lære dette'
+            placeholder: 'Jeg vil lære meg å...',
+            resultTitle: 'Jeg ønsker å lære dette'
+          }
         },
         {
           name: 'Completed subject',
