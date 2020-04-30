@@ -3,7 +3,6 @@ import './Question.css';
 import Button from '../components/Button';
 import { QuestionResult, QuestionResultType } from '../Types';
 import FlowButtons from 'components/FlowButtons';
-import { inspect } from 'util';
 
 interface Props {
   text: string;
