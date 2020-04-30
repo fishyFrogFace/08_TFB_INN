@@ -38,6 +38,7 @@ const TextInput: React.FC<Props> = props => {
         answerValues: [],
         maxPoints: props.maxPoints,
         resultTitle: props.resultTitle,
+        questionTitle: "Logg inn med informasjonen under",
         pointsAchieved: points
       });
     } else {
@@ -63,6 +64,7 @@ const TextInput: React.FC<Props> = props => {
       type: QuestionResultType.Mastery,
       maxPoints: props.maxPoints,
       resultTitle: props.resultTitle,
+      questionTitle: "Logg inn med informasjonen under",
       pointsAchieved: 0,
       mastered: false,
       answerValues: ["Jeg får ikke dette til"]

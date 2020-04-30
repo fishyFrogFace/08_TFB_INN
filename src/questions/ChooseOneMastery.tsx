@@ -31,13 +31,27 @@ const ChooseOne: React.FC<Props> = props => {
     setSelectedButton(undefined);
     props.updateResult({
       mastered: checkAnswer(result) === 1,
-      answerValues: [],
+      answerValues: [props.answerValues[result!]],
       type: QuestionResultType.Mastery,
       maxPoints: props.correctAlternative.length,
       resultTitle: props.resultTitle,
+      questionTitle: props.text,
       pointsAchieved: checkAnswer(result)
     });
   };
+
+  const failQuestion = () => {
+    setSelectedButton(undefined);
+    props.updateResult({
+      type: QuestionResultType.Mastery,
+      maxPoints: props.correctAlternative.length,
+      resultTitle: props.resultTitle,
+      questionTitle: props.text,
+      pointsAchieved: 0,
+      mastered: false,
+      answerValues: ["Jeg får ikke dette til"]
+    });
+  }
 
   return (
     <div>
@@ -60,7 +74,7 @@ const ChooseOne: React.FC<Props> = props => {
         ))}
       </div>
       <FlowButtons
-        skip={() => returnResult(undefined)}
+        skip={failQuestion}
         update={() => {if (selectedButton !== undefined) returnResult(selectedButton)}}
       />
     </div>

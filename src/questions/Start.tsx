@@ -19,6 +19,7 @@ const Start: React.FC<Props> = props => {
         props.updateResult({
           type: QuestionResultType.Mastery,
           resultTitle: props.resultTitle,
+          questionTitle: "Klikk startknappen",
           maxPoints: props.maxPoints,
           pointsAchieved: props.maxPoints,
           mastered: true,
