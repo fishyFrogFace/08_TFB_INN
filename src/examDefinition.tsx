@@ -372,6 +372,17 @@ export const standardExamDefinition = {
       name: 'Innstillinger og tilpasning av mobil',
       questions: [
         {
+          name: 'Can adjust volume',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Får du til å skru opp og ned lyden på mobilen din?',
+            illustration: require('./images/sound.svg'),
+            resultTitle: 'Kan endre volum',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
           name: 'Settings I want to learn',
           templateID: QuestionTemplate.BigText,
           questionContent: {
@@ -380,7 +391,6 @@ export const standardExamDefinition = {
           },
           resultTitle: 'Jeg ønsker å lære dette'
         },
-
         {
           name: 'Completed subject',
           templateID: QuestionTemplate.CompletedSubject
