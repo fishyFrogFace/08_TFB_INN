@@ -296,6 +296,66 @@ export const standardExamDefinition = {
           }
         },
         {
+          name: 'Add attachment',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å legge til et vedlegg?',
+            imageInformation: {
+              image: require('./images/email.jpeg'),
+              imageWithIndicator: require('./images/attachment-correct.png'),
+              min: { x: 13, y: 336 },
+              max: { x: 61, y: 360 }
+            },
+            resultTitle: 'Kan legge til vedlegg',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Send email',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å sende e-posten?',
+            imageInformation: {
+              image: require('./images/email.jpeg'),
+              imageWithIndicator: require('./images/send-correct.png'),
+              min: { x: 573, y: 337 },
+              max: { x: 646, y: 360 }
+            },
+            resultTitle: 'Kan finne sendeknapp',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Open first email',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å åpne den øverste e-posten?',
+            imageInformation: {
+              image: require('./images/inbox.png'),
+              imageWithIndicator: require('./images/first-email-correct.png'),
+              min: { x: 146, y: 80 },
+              max: { x: 648, y: 124 }
+            },
+            resultTitle: 'Kan åpne e-mail fra innboksen',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Reply to email',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å svare på e-posten?',
+            imageInformation: {
+              image: require('./images/reply.png'),
+              imageWithIndicator: require('./images/reply-correct.png'),
+              min: { x: 506, y: 123 },
+              max: { x: 538, y: 145 }
+            },
+            resultTitle: 'Kan finne e-postinnhold',
+            maxPoints: 6
+          }
+        },
+        {
           name: 'Completed subject',
           templateID: QuestionTemplate.CompletedSubject,
           questionContent: {}
