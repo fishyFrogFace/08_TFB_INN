@@ -47,6 +47,18 @@ const CopyText: React.FC<Props> = props => {
     }
   };
 
+  const failQuestion = () => {
+    resetLocalState();
+    props.updateResult({
+      type: QuestionResultType.Mastery,
+      maxPoints: props.maxPoints,
+      resultTitle: props.resultTitle,
+      pointsAchieved: 0,
+      mastered: false,
+      answerValues: ["Jeg får ikke dette til"]
+    });
+  }
+
   const storeInput = (e: React.FormEvent<HTMLInputElement>) => {
     setColor('black');
     setInput(e.currentTarget.value);
@@ -66,10 +78,7 @@ const CopyText: React.FC<Props> = props => {
           placeholder={props.text}
         />
         <FlowButtons
-          skip={() => {
-            resetLocalState();
-            props.skipQuestion();
-          }}
+          skip={failQuestion}
           update={checkInput}
         />
       </form>

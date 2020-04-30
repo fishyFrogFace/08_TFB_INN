@@ -18,24 +18,24 @@ interface Props {
 const ChooseOne: React.FC<Props> = props => {
   const [selectedButton, setSelectedButton] = useState<number>();
 
-  const checkAnswer = () => {
-    if (selectedButton) {
-      const selectedString = props.answerValues[selectedButton];
+  const checkAnswer = (result: number | undefined) => {
+    if (result) {
+      const selectedString = props.answerValues[result];
       return selectedString === props.correctAlternative ? 1 : 0;
     } else {
       return 0;
     }
   };
 
-  const returnResult = () => {
+  const returnResult = (result: number | undefined) => {
     setSelectedButton(undefined);
     props.updateResult({
-      mastered: true,
+      mastered: checkAnswer(result) === 1,
       answerValues: [],
       type: QuestionResultType.Mastery,
       maxPoints: props.correctAlternative.length,
       resultTitle: props.resultTitle,
-      pointsAchieved: checkAnswer()
+      pointsAchieved: checkAnswer(result)
     });
   };
 
@@ -60,11 +60,8 @@ const ChooseOne: React.FC<Props> = props => {
         ))}
       </div>
       <FlowButtons
-        skip={() => {
-          setSelectedButton(undefined);
-          props.skipQuestion();
-        }}
-        update={returnResult}
+        skip={() => returnResult(undefined)}
+        update={() => {if (selectedButton !== undefined) returnResult(selectedButton)}}
       />
     </div>
   );
