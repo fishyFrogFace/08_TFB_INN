@@ -100,16 +100,13 @@ const Examination: React.FC<Props> = props => {
       case ExamPage.Overview:
         return (
           <Overview
-            subjects={props.examDefinition.subjects.map(subject => ({
+            subjects={props.examDefinition.subjects.map((subject, i) => ({
               title: subject.name,
-              completed: props.subjectResultList.find(
-                s => s.subjectTitle === subject.name
-              )!.results.length,
+              completed: props.currentQuestionList[i],
               total: subject.questions.filter(
                 q => q.templateID !== QuestionTemplate.CompletedSubject
               ).length
             }))}
-            currentSubject={props.currentSubject}
             startExam={() => changeExamPage(ExamPage.Subject)}
           />
         );
@@ -142,7 +139,6 @@ const Examination: React.FC<Props> = props => {
         return <WhatUnits />;
 
       case ExamPage.Results:
-        // TODO let App know the examination is over
         return <ResultPage result={props.subjectResultList} />;
     }
   };

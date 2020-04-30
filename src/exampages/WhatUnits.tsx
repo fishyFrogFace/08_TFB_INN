@@ -3,6 +3,7 @@ import '../App.css';
 import phone from '../images/phone.svg';
 import tablet from '../images/tablet.svg';
 import laptop from '../images/laptop.svg';
+import desktop from '../images/desktop.svg';
 import Button from '../components/Button';
 import { setUnits } from 'redux/actions';
 import { connectDispatch } from 'redux/util';
@@ -11,7 +12,8 @@ import { capitalize } from '../Util';
 const units = [
   { image: phone, description: 'smarttelefon' },
   { image: laptop, description: 'laptop' },
-  { image: tablet, description: 'nettbrett' }
+  { image: tablet, description: 'nettbrett' },
+  { image: desktop, description: 'desktop' }
 ];
 
 const WhatUnits: React.FC<PropsFromRedux> = props => {
@@ -26,7 +28,7 @@ const WhatUnits: React.FC<PropsFromRedux> = props => {
   };
 
   return (
-    <div className='questionContainer'>
+    <div className='question-container'>
       <h1 className='h1'>Hvilke enheter har du?</h1>
       <div className='button-container'>
         {units.map((item, i) => (

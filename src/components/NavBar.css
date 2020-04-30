@@ -1,9 +1,9 @@
-.navBar {
+.nav-bar {
   display: flex;
-  justify-content: flex-end;
+  justify-content: right;
   text-align: center;
   align-items: center;
-  min-height: 20vh;
+  min-height: 10vh;
   background-color: black;
   color: #d2d7df;
   border-bottom: 0.4vh solid #d2d7df;
@@ -12,4 +12,15 @@
 .navbar-modals {
   color: black;
   text-align: left;
+}
+
+#navbar-logo {
+  margin-left: 5vw;
+  max-height: 15vh;
+}
+
+.navbar-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }

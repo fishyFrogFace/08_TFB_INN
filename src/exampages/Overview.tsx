@@ -15,15 +15,14 @@ export interface SubjectCompletion {
 
 interface Props extends PropsFromRedux {
   subjects: SubjectCompletion[];
-  currentSubject: string;
   startExam: () => void;
 }
 
 const Overview: React.FC<Props> = props => {
   return (
-    <div className='questionContainer'>
+    <div className='question-container'>
       <h1 className='h1 overview-header'>Mine temaer</h1>
-      <div className='subjectContainer'>
+      <div className='subject-container'>
         {props.subjects.map((subject, i) => {
           return (
             <Button
