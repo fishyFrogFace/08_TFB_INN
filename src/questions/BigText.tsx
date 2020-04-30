@@ -6,11 +6,8 @@ import { QuestionResult, QuestionResultType } from '../Types';
 
 interface Props {
   text: string;
-  placeholder: string;
-  maxPoints: number;
   resultTitle: string;
   updateResult: (result: QuestionResult) => void;
-  processString: (input: string, maxPoints: number) => number;
 }
 
 const BigText: React.FC<Props> = props => {
@@ -20,11 +17,11 @@ const BigText: React.FC<Props> = props => {
     <div>
       <h1 className='h1'>{props.text}</h1>
       <form
-        className='textAndBtn'
+        className='text-and-btn'
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
         <input
           id='name'
-          className={'bigText'}
+          className='big-text'
           type='text'
           onChange={e => setInput(e.currentTarget.value)}
         />
@@ -32,12 +29,12 @@ const BigText: React.FC<Props> = props => {
           classNames='next'
           onClick={() =>
             props.updateResult({
-              mastered: true,
-              type: QuestionResultType.Mastery,
-              answerValues: [],
-              maxPoints: props.maxPoints,
+              mastered: false,
+              type: QuestionResultType.Other,
+              answerValues: [input],
+              maxPoints: 0,
               resultTitle: props.resultTitle,
-              pointsAchieved: props.processString(input, props.maxPoints)
+              pointsAchieved: 0
             })
           }>
           Neste

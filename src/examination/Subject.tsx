@@ -152,10 +152,7 @@ const Subject: React.FC<Props> = props => {
         return (
           <BigText
             resultTitle={question.questionContent.resultTitle!}
-            maxPoints={question.questionContent.maxPoints!}
-            placeholder={question.questionContent.placeholder!}
             text={question.questionContent.text!}
-            processString={checkPasswordSafety}
             updateResult={updateResult}
           />
         );
