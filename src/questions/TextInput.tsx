@@ -4,6 +4,7 @@ import { QuestionResult, QuestionResultType } from '../Types';
 import FlowButtons from 'components/FlowButtons';
 
 interface Props {
+  subjectColor: string;
   maxPoints: number;
   text: string;
   placeholder: string;

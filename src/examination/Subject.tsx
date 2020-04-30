@@ -84,6 +84,7 @@ const Subject: React.FC<Props> = props => {
       case QuestionTemplate.TextInput:
         return (
           <TextInput
+            subjectColor={props.subject.subjectColor}
             resultTitle={question.questionContent.resultTitle!}
             maxPoints={question.questionContent.maxPoints!}
             placeholder={question.questionContent.placeholder!}
