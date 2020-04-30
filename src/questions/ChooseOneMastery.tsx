@@ -19,7 +19,7 @@ const ChooseOne: React.FC<Props> = props => {
   const [selectedButton, setSelectedButton] = useState<number>();
 
   const checkAnswer = () => {
-    if (selectedButton) {
+    if (selectedButton !== undefined) {
       const selectedString = props.answerValues[selectedButton];
       return selectedString === props.correctAlternative ? 1 : 0;
     } else {

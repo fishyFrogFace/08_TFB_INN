@@ -6,6 +6,7 @@ import { QuestionResult, QuestionResultType } from '../Types';
 
 interface Props {
   text: string;
+  placeholder: string;
   resultTitle: string;
   updateResult: (result: QuestionResult) => void;
 }
@@ -19,10 +20,10 @@ const BigText: React.FC<Props> = props => {
       <form
         className='text-and-btn'
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
-        <input
+        <textarea
           id='name'
           className='big-text'
-          type='text'
+          placeholder={props.placeholder}
           onChange={e => setInput(e.currentTarget.value)}
         />
         <Button
