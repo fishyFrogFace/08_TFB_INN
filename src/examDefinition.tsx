@@ -48,8 +48,7 @@ export const standardExamDefinition = {
         },
         {
           name: 'Completed subject',
-          templateID: QuestionTemplate.CompletedSubject,
-          questionContent: {}
+          templateID: QuestionTemplate.CompletedSubject
         }
       ]
     },
@@ -191,8 +190,7 @@ export const standardExamDefinition = {
         },
         {
           name: 'Completed subject',
-          templateID: QuestionTemplate.CompletedSubject,
-          questionContent: {}
+          templateID: QuestionTemplate.CompletedSubject
         }
       ]
     },
@@ -365,8 +363,24 @@ export const standardExamDefinition = {
         },
         {
           name: 'Completed subject',
-          templateID: QuestionTemplate.CompletedSubject,
-          questionContent: {}
+          templateID: QuestionTemplate.CompletedSubject
+        }
+      ]
+    },
+    {
+      name: 'Innstillinger og tilpasning av mobil',
+      questions: [
+        {
+          name: 'Settings I want to learn',
+          templateID: QuestionTemplate.BigText,
+          questionContent: {
+            text: 'Hvilke andre innstillinger har du lyst til å lære deg?'
+          },
+          resultTitle: 'Jeg ønsker å lære dette'
+        },
+        {
+          name: 'Completed subject',
+          templateID: QuestionTemplate.CompletedSubject
         }
       ]
     }

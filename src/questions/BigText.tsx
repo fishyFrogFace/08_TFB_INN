@@ -19,10 +19,9 @@ const BigText: React.FC<Props> = props => {
       <form
         className='text-and-btn'
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
-        <input
+        <textarea
           id='name'
           className='big-text'
-          type='text'
           onChange={e => setInput(e.currentTarget.value)}
         />
         <Button
