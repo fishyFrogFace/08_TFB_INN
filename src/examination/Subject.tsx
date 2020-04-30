@@ -35,6 +35,7 @@ const Subject: React.FC<Props> = props => {
   const updateResult = (qResult: QuestionResult) => {
     const newQuestionList = props.currentSubjectResult.results.concat(qResult);
     props.updateSubjectResultList({
+      subjectColor: props.currentSubjectResult.subjectColor,
       subjectTitle: props.currentSubjectResult.subjectTitle,
       results: newQuestionList
     });

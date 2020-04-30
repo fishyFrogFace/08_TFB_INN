@@ -27,7 +27,11 @@ export const appPageReducer = (
 
 const initialSubjectResultList: SubjectResult[] = standardExamDefinition.subjects.map(
   subj => {
-    return { subjectTitle: subj.name, results: [] };
+    return {
+      subjectColor: subj.subjectColor,
+      subjectTitle: subj.name,
+      results: []
+    };
   }
 );
 
