@@ -54,6 +54,18 @@ const MultipleButtons: React.FC<Props> = props => {
     });
   };
 
+  const failQuestion = () => {
+    setSelectedButtons([]);
+    props.updateResult({
+      type: QuestionResultType.Mastery,
+      maxPoints: props.correctAlternativeList.length,
+      resultTitle: props.resultTitle,
+      pointsAchieved: 0,
+      mastered: false,
+      answerValues: ["Jeg får ikke dette til"]
+    });
+  }
+
   return (
     <div>
       {props.illustration === undefined ? (
@@ -77,10 +89,7 @@ const MultipleButtons: React.FC<Props> = props => {
         ))}
       </div>
       <FlowButtons
-        skip={() => {
-          setSelectedButtons([]);
-          props.skipQuestion();
-        }}
+        skip={failQuestion}
         update={returnResult}
       />
     </div>

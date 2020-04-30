@@ -4,15 +4,18 @@ import Button from './Button';
 
 interface Props {
   update: () => void;
-  skip: () => void;
+  skip?: () => void;
 }
 
 const FlowButtons: React.FC<Props> = props => {
   return (
     <div id='flow-buttons'>
-      <Button classNames={'next skip-button'} onClick={props.skip}>
-        Hopp over
+      {props.update !== undefined
+        ? <Button classNames={'next skip-button'} onClick={props.skip!}>
+        Jeg får ikke dette til
       </Button>
+        : ""
+      }
       <Button classNames='next next-button' onClick={props.update}>
         Neste
       </Button>

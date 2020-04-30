@@ -57,6 +57,18 @@ const TextInput: React.FC<Props> = props => {
     }
   };
 
+  const failQuestion = () => {
+    resetLocalState();
+    props.updateResult({
+      type: QuestionResultType.Mastery,
+      maxPoints: props.maxPoints,
+      resultTitle: props.resultTitle,
+      pointsAchieved: 0,
+      mastered: false,
+      answerValues: ["Jeg får ikke dette til"]
+    });
+  }
+
   return (
     <div>
       <h1 className='h1'>Logg inn med informasjonen under</h1>
@@ -81,10 +93,7 @@ const TextInput: React.FC<Props> = props => {
         />
         <h2 className={`feedback ${color}`}>{feedback}</h2>
         <FlowButtons
-          skip={() => {
-            resetLocalState();
-            props.skipQuestion();
-          }}
+          skip={failQuestion}
           update={checkInput}
         />
       </form>

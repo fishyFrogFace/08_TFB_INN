@@ -57,6 +57,18 @@ const WhereInPicture: React.FC<Props> = props => {
     }
   };
 
+  const failQuestion = () => {
+    resetLocalState();
+    props.updateResult({
+      type: QuestionResultType.Mastery,
+      maxPoints: props.maxPoints,
+      resultTitle: props.resultTitle,
+      pointsAchieved: 0,
+      mastered: false,
+      answerValues: ["Jeg får ikke dette til"]
+    });
+  }
+
   return (
     <div>
       <h1 className='h1'>{props.text}</h1>
@@ -77,10 +89,7 @@ const WhereInPicture: React.FC<Props> = props => {
         />
       </div>
       <FlowButtons
-        skip={() => {
-          resetLocalState();
-          props.skipQuestion();
-        }}
+        skip={failQuestion}
         update={onNext}
       />
     </div>
