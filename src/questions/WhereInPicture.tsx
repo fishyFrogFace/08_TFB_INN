@@ -34,29 +34,17 @@ const WhereInPicture: React.FC<Props> = props => {
     setMode('incorrect');
   };
 
-  const onNext = () => {
+  const returnResult = () => {
     resetLocalState();
-    if (mode !== 'incorrect') {
-      props.updateResult({
-        type: QuestionResultType.Mastery,
-        maxPoints: props.maxPoints,
-        resultTitle: props.resultTitle,
-        questionTitle: props.text,
-        pointsAchieved: points,
-        mastered: true,
-        answerValues: []
-      });
-    } else {
-      props.updateResult({
-        type: QuestionResultType.Mastery,
-        maxPoints: props.maxPoints,
-        resultTitle: props.resultTitle,
-        questionTitle: props.text,
-        pointsAchieved: 0,
-        mastered: false,
-        answerValues: []
-      });
-    }
+    props.updateResult({
+      type: QuestionResultType.Mastery,
+      maxPoints: props.maxPoints,
+      resultTitle: props.resultTitle,
+      questionTitle: props.text,
+      pointsAchieved: points,
+      mastered: true,
+      answerValues: ["Valgte riktig område"]
+    });
   };
 
   const failQuestion = () => {
@@ -93,7 +81,7 @@ const WhereInPicture: React.FC<Props> = props => {
       </div>
       <FlowButtons
         skip={failQuestion}
-        update={onNext}
+        update={() => { if (mode !== "incorrect") returnResult() }}
       />
     </div>
   );

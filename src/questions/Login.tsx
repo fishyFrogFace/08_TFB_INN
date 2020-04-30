@@ -35,7 +35,7 @@ const TextInput: React.FC<Props> = props => {
       props.updateResult({
         mastered: true,
         type: QuestionResultType.Mastery,
-        answerValues: [],
+        answerValues: ["Logget inn"],
         maxPoints: props.maxPoints,
         resultTitle: props.resultTitle,
         questionTitle: "Logg inn med informasjonen under",

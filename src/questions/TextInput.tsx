@@ -34,7 +34,7 @@ const TextInput: React.FC<Props> = props => {
     props.updateResult({
       mastered: true,
       type: QuestionResultType.Mastery,
-      answerValues: [],
+      answerValues: [input],
       maxPoints: props.maxPoints,
       resultTitle: props.resultTitle,
       questionTitle: props.text,

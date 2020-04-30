@@ -46,7 +46,7 @@ const MultipleButtons: React.FC<Props> = props => {
     setSelectedButtons([]);
     props.updateResult({
       mastered: true,
-      answerValues: [],
+      answerValues: selectedButtons.map(i => props.answerValues[i]),
       type: QuestionResultType.Mastery,
       maxPoints: props.correctAlternativeList.length,
       resultTitle: props.resultTitle,

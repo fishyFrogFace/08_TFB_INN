@@ -52,7 +52,7 @@ const ResultsDocumentQuestion: React.FC<Props> = ({ questionResult }) => {
         <Text style={styles.title}>{isMastery ? questionResult.resultTitle : questionResult.questionTitle}</Text>
       </View>
       <Text style={styles.extraInformation}>{isMastery ? "Spørsmål: " + questionResult.questionTitle : ""}</Text>
-      <Text style={styles.extraInformation}>Svar avgitt: {questionResult.answerValues}</Text>
+      <Text style={styles.extraInformation}>Svar avgitt: {questionResult.answerValues.join(", ")}</Text>
     </View>)
 };
 
