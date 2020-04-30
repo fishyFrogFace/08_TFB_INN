@@ -266,6 +266,21 @@ export const standardExamDefinition = {
           }
         },
         {
+          name: 'Find recipient field',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor skriver du inn mottakerne av e-posten?',
+            imageInformation: {
+              image: require('./images/email.jpeg'),
+              imageWithIndicator: require('./images/recipient-correct.png'),
+              min: { x: 0, y: 53 },
+              max: { x: 657, y: 76 }
+            },
+            resultTitle: 'Kan finne e-postmottakere',
+            maxPoints: 6
+          }
+        },
+        {
           name: 'Completed subject',
           templateID: QuestionTemplate.CompletedSubject,
           questionContent: {}
