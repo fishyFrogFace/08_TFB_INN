@@ -102,3 +102,11 @@
 .subject-btn:hover {
   background-color: #ccccff
 }
+
+.download {
+  background-color: cyan;
+}
+
+.download:hover {
+  background-color: lightcyan;
+}
