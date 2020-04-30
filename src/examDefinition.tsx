@@ -39,17 +39,17 @@ export const standardExamDefinition = {
           }
         },
         {
-          name: 'Spørsmål til veileder',
+          name: 'Questions for supervisor',
           templateID: QuestionTemplate.BigText,
           questionContent: {
-            text: 'Har du noen spørsmål til veileder?'
+            text: 'Har du noen spørsmål til veileder?',
+            placeholder: 'Jeg lurer på...'
           },
           resultTitle: 'Spørsmål til veileder'
         },
         {
           name: 'Completed subject',
-          templateID: QuestionTemplate.CompletedSubject,
-          questionContent: {}
+          templateID: QuestionTemplate.CompletedSubject
         }
       ]
     },
@@ -191,8 +191,7 @@ export const standardExamDefinition = {
         },
         {
           name: 'Completed subject',
-          templateID: QuestionTemplate.CompletedSubject,
-          questionContent: {}
+          templateID: QuestionTemplate.CompletedSubject
         }
       ]
     },
@@ -365,8 +364,175 @@ export const standardExamDefinition = {
         },
         {
           name: 'Completed subject',
-          templateID: QuestionTemplate.CompletedSubject,
-          questionContent: {}
+          templateID: QuestionTemplate.CompletedSubject
+        }
+      ]
+    },
+    {
+      name: 'Innstillinger og tilpasning av mobil',
+      questions: [
+        {
+          name: 'Can adjust volume',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Får du til å skru opp og ned lyden på mobilen din?',
+            illustration: require('./images/sound.svg'),
+            resultTitle: 'Kan endre volum',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
+          name: 'Can adjust brightness',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Får du til å skru opp og ned lysstyrken på mobilen din?',
+            illustration: require('./images/brightness.svg'),
+            resultTitle: 'Kan endre lysstyrke',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
+          name: 'Can toggle flight mode',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Får du til å slå på flymodus på mobilen din?',
+            illustration: require('./images/plane.svg'),
+            resultTitle: 'Kan skru på flymodus',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
+          name: 'True about flight mode',
+          templateID: QuestionTemplate.MultipleButtons,
+          questionContent: {
+            text: 'Hva er sant om flymodus?',
+            resultTitle: 'Kan kjenne igjen en e-postinnboks',
+            answerValues: [
+              'Det er mulig å koble til WiFi, men ikke til mobilnett',
+              'Det kan ikke komme lyd fra telefonen, men den kan vibrere',
+              'Jeg kan motta SMS',
+              'Ingen kan ringe meg når flymodus er på'
+            ],
+            isImage: false,
+            correctAlternativeList: [
+              'Det er mulig å koble til WiFi, men ikke til mobilnett',
+              'Ingen kan ringe meg når flymodus er på'
+            ]
+          }
+        },
+        {
+          name: 'Can toggle soundless',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Får du til å sette mobilen din på lydløs?',
+            illustration: require('./images/soundless.svg'),
+            resultTitle: 'Kan skru på lydløs modus',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
+          name: 'Recognizes settings icon',
+          templateID: QuestionTemplate.ChooseOneMastery,
+          questionContent: {
+            text: 'Hva betyr symbolet nedenfor?',
+            illustration: require('./images/settings.svg'),
+            resultTitle: 'Kjenner igjen ikon for innstillinger',
+            answerValues: ['Bluetooth', 'Passord', 'Innstillinger', 'Bilder'],
+            isImage: false,
+            correctAlternative: 'Innstillinger'
+          }
+        },
+        {
+          name: 'Recognizes WiFi icon',
+          templateID: QuestionTemplate.ChooseOneMastery,
+          questionContent: {
+            text: 'Hva betyr symbolet nedenfor?',
+            illustration: require('./images/wifi.svg'),
+            resultTitle: 'Kjenner igjen WiFi-ikon',
+            answerValues: ['Bluetooth', 'Mobilnett', 'Innstillinger', 'WiFi'],
+            isImage: false,
+            correctAlternative: 'WiFi'
+          }
+        },
+        {
+          name: 'Can toggle wifi',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Får du til å skru av og på WiFi?',
+            illustration: require('./images/wifi.svg'),
+            resultTitle: 'Kan skru av og på WiFi',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
+          name: 'Can connect to wifi',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Får du til å koble seg på et nytt WiFi-nettverk?',
+            illustration: require('./images/wifi.svg'),
+            resultTitle: 'Kan koble på trådløst nettverk',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
+          name: 'True about WiFi and mobile data',
+          templateID: QuestionTemplate.MultipleButtons,
+          questionContent: {
+            text: 'Hvilke påstander stemmer?',
+            resultTitle: 'Forstår forskjeller mellom WiFi og mobilnett',
+            answerValues: [
+              'Der det er mulig å ringe, er det også mobilnett tilgjengelig',
+              'Mobilnett er ikke knyttet til mitt mobilabonnement',
+              'Jeg kan ofte koble meg på gratis internett på offentlige plasser, som for eksempel kaféer, bibliotek og kjøpesenter',
+              'Det er en fordel å bruke mobilnett når man skal se på film'
+            ],
+            isImage: false,
+            correctAlternativeList: [
+              'Der det er mulig å ringe, er det også mobilnett tilgjengelig',
+              'Jeg kan ofte koble meg på gratis internett på offentlige plasser, som for eksempel kaféer, bibliotek og kjøpesenter'
+            ]
+          }
+        },
+        {
+          name: 'Recognizes bluetooth icon',
+          templateID: QuestionTemplate.ChooseOneMastery,
+          questionContent: {
+            text: 'Hva betyr symbolet nedenfor?',
+            illustration: require('./images/bluetooth.svg'),
+            resultTitle: 'Kjenner igjen bluetooth-ikon',
+            answerValues: ['Bluetooth', 'Mobilnett', 'Innstillinger', 'WiFi'],
+            isImage: false,
+            correctAlternative: 'Bluetooth'
+          }
+        },
+        {
+          name: 'Can toggle mobile data',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Får du til å slå av og på mobildata?',
+            resultTitle: 'Kan slå av og på mobildata',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
+          name: 'Settings I want to learn',
+          templateID: QuestionTemplate.BigText,
+          questionContent: {
+            text: 'Hvilke andre innstillinger har du lyst til å lære deg?',
+            placeholder: 'Jeg vil lære meg å...',
+            resultTitle: 'Jeg ønsker å lære dette'
+          }
+        },
+        {
+          name: 'Completed subject',
+          templateID: QuestionTemplate.CompletedSubject
         }
       ]
     }

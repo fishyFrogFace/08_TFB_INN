@@ -153,6 +153,7 @@ const Subject: React.FC<Props> = props => {
           <BigText
             resultTitle={question.questionContent.resultTitle!}
             text={question.questionContent.text!}
+            placeholder={question.questionContent.placeholder!}
             updateResult={updateResult}
           />
         );
