@@ -52,6 +52,7 @@ const Subject: React.FC<Props> = props => {
       case QuestionTemplate.Start:
         return (
           <Start
+            subjectColor={props.subject.subjectColor}
             resultTitle={question.questionContent.resultTitle!}
             maxPoints={question.questionContent.maxPoints!}
             updateResult={updateResult}
@@ -61,6 +62,7 @@ const Subject: React.FC<Props> = props => {
       case QuestionTemplate.CopyText:
         return (
           <CopyText
+            subjectColor={props.subject.subjectColor}
             resultTitle={question.questionContent.resultTitle!}
             maxPoints={question.questionContent.maxPoints!}
             text={question.questionContent.text!}
@@ -72,6 +74,7 @@ const Subject: React.FC<Props> = props => {
       case QuestionTemplate.WhereInPicture:
         return (
           <WhereInPicture
+            subjectColor={props.subject.subjectColor}
             resultTitle={question.questionContent.resultTitle!}
             imageInformation={question.questionContent.imageInformation!}
             maxPoints={question.questionContent.maxPoints!}
@@ -98,6 +101,7 @@ const Subject: React.FC<Props> = props => {
       case QuestionTemplate.MultipleButtons:
         return (
           <MultipleButtons
+            subjectColor={props.subject.subjectColor}
             answerValues={question.questionContent.answerValues!}
             isImage={question.questionContent.isImage!}
             illustration={question.questionContent.illustration}
@@ -114,6 +118,7 @@ const Subject: React.FC<Props> = props => {
       case QuestionTemplate.LogIn:
         return (
           <Login
+            subjectColor={props.subject.subjectColor}
             maxPoints={question.questionContent.maxPoints!}
             resultTitle={question.questionContent.resultTitle!}
             userInformation={question.questionContent.userInformation!}
@@ -125,6 +130,7 @@ const Subject: React.FC<Props> = props => {
       case QuestionTemplate.ChooseOne:
         return (
           <ChooseOne
+            subjectColor={props.subject.subjectColor}
             text={question.questionContent.text!}
             illustration={question.questionContent.illustration}
             resultTitle={question.questionContent.resultTitle!}
@@ -138,6 +144,7 @@ const Subject: React.FC<Props> = props => {
       case QuestionTemplate.ChooseOneMastery:
         return (
           <ChooseOneMastery
+            subjectColor={props.subject.subjectColor}
             text={question.questionContent.text!}
             illustration={question.questionContent.illustration}
             correctAlternative={question.questionContent.correctAlternative!}
@@ -152,6 +159,7 @@ const Subject: React.FC<Props> = props => {
       case QuestionTemplate.CompletedSubject:
         return (
           <CompletedSubject
+            subjectColor={props.subject.subjectColor}
             subject={props.subject.name}
             nextSubject={nextSubject}
           />

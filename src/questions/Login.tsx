@@ -5,6 +5,7 @@ import { QuestionResult, QuestionResultType, UserInformation } from '../Types';
 import FlowButtons from 'components/FlowButtons';
 
 interface Props {
+  subjectColor: string;
   maxPoints: number;
   resultTitle: string;
   userInformation: UserInformation;
@@ -59,7 +60,9 @@ const TextInput: React.FC<Props> = props => {
 
   return (
     <div>
-      <h1 className='h1'>Logg inn med informasjonen under</h1>
+      <h1 className={`h1 ${props.subjectColor}`}>
+        Logg inn med informasjonen under
+      </h1>
       <h2 className='h2'>Brukernavn: "{props.userInformation.username}"</h2>
       <h2 className='h2'>Passord: "{props.userInformation.password}"</h2>
       <form

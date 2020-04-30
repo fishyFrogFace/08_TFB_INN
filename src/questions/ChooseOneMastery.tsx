@@ -5,6 +5,7 @@ import { QuestionResult, QuestionResultType } from '../Types';
 import FlowButtons from 'components/FlowButtons';
 
 interface Props {
+  subjectColor: string;
   text: string;
   resultTitle: string;
   illustration?: string;
@@ -42,10 +43,10 @@ const ChooseOne: React.FC<Props> = props => {
   return (
     <div>
       {props.illustration === undefined ? (
-        <h1 className='h1'>{props.text}</h1>
+        <h1 className={`h1 ${props.subjectColor}`}>{props.text}</h1>
       ) : (
         <div>
-          <h1 className='h1'>{props.text}</h1>
+          <h1 className={`h1 ${props.subjectColor}`}>{props.text}</h1>
           <img src={props.illustration} alt={'Illustration'} />
         </div>
       )}

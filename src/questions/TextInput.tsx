@@ -19,7 +19,7 @@ const TextInput: React.FC<Props> = props => {
 
   return (
     <div>
-      <h1 className='h1'>{props.text}</h1>
+      <h1 className={`h1 ${props.subjectColor}`}>{props.text}</h1>
       <form
         className='text-and-btn'
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>

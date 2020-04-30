@@ -6,6 +6,7 @@ import Subject from 'examination/Subject';
 //import Button from 'components/Button'
 
 interface Props {
+  subjectColor: string;
   maxPoints: number;
   text: string;
   resultTitle: string;
@@ -58,13 +59,17 @@ const CopyText: React.FC<Props> = props => {
 
   return (
     <div className='content'>
-      <div className={"questiontextContainer " + ''/*props.subjectColor*/ }>
-        <h1 className='h2 white normal-font'>{props.text}</h1>
+      <div className={'questiontextContainer ' + '' /*props.subjectColor*/}>
+        <h1 className={`h1 white normal-font ${props.subjectColor}`}>
+          {props.text}
+        </h1>
       </div>
-      <div className="textinputContainer whiteBackground">
+      <div className='textinputContainer whiteBackground'>
         <form
           className='textAndBtn'
-          onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
+            e.preventDefault()
+          }>
           <input
             id='name'
             className={`inputField ${color}`}
@@ -72,20 +77,17 @@ const CopyText: React.FC<Props> = props => {
             onChange={e => storeInput(e)}
             placeholder={props.text}
           />
-          
-          </form>
-
-        </div>
-        <div className='nextButtonContainer '>
-          <FlowButtons
-            skip={() => {
-              resetLocalState();
-              props.skipQuestion();
-            }}
-            update={checkInput}
-          />
-        </div>
-      
+        </form>
+      </div>
+      <div className='nextButtonContainer '>
+        <FlowButtons
+          skip={() => {
+            resetLocalState();
+            props.skipQuestion();
+          }}
+          update={checkInput}
+        />
+      </div>
     </div>
   );
 };
