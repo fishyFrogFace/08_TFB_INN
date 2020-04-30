@@ -7,6 +7,7 @@ import FlowButtons from 'components/FlowButtons';
 interface Props {
   text: string;
   resultTitle: string;
+  illustration?: string;
   isImage: boolean;
   answerValues: string[];
   correctAlternativeList: string[];
@@ -56,7 +57,14 @@ const MultipleButtons: React.FC<Props> = props => {
 
   return (
     <div>
-      <h1 className='h1'>{props.text}</h1>
+      {props.illustration === undefined ? (
+        <h1 className='h1'>{props.text} (flere valg mulig)</h1>
+      ) : (
+        <div>
+          <h1 className='h1'>{props.text} (flere valg mulig)</h1>
+          <img src={props.illustration} alt={'Illustration'} />
+        </div>
+      )}
       <div className='multiple-button-container'>
         {props.answerValues.map((item, i) => (
           <Button

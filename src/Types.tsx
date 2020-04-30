@@ -88,6 +88,7 @@ export interface QuestionContent {
   processString?: (input: string, maxPoints: number) => number;
   placeholder?: string;
   userInformation?: UserInformation;
+  illustration?: string;
 }
 
 export interface QuestionDefinition {
