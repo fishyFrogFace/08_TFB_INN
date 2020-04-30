@@ -281,6 +281,21 @@ export const standardExamDefinition = {
           }
         },
         {
+          name: 'Find body field',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å skrive innholdet i e-posten?',
+            imageInformation: {
+              image: require('./images/email.jpeg'),
+              imageWithIndicator: require('./images/body-correct.png'),
+              min: { x: 0, y: 128 },
+              max: { x: 657, y: 329 }
+            },
+            resultTitle: 'Kan finne e-postinnhold',
+            maxPoints: 6
+          }
+        },
+        {
           name: 'Completed subject',
           templateID: QuestionTemplate.CompletedSubject,
           questionContent: {}
