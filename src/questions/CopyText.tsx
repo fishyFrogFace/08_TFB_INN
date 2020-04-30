@@ -1,25 +1,32 @@
 import React, { useState } from 'react';
-import '../App.css';
 import './Question.css';
-import Button from '../components/Button';
 import { QuestionResult, QuestionResultType } from '../Types';
+import FlowButtons from 'components/FlowButtons';
 
 interface Props {
   maxPoints: number;
   text: string;
   resultTitle: string;
   updateResult: (result: QuestionResult) => void;
+  skipQuestion: () => void;
 }
 
 const CopyText: React.FC<Props> = props => {
-  // set a randomly generated name that will be kept if user doesn't type anything
   const [input, setInput] = useState('');
   const [points, setPoints] = useState(props.maxPoints);
   const [color, setColor] = useState('black');
   const [clickedWhileCorrect, setClickedWhileCorrect] = useState(false);
 
-  const checkInput = (value: string) => {
+  const resetLocalState = () => {
+    setInput('');
+    setPoints(props.maxPoints);
+    setColor('black');
+    setClickedWhileCorrect(false);
+  };
+
+  const checkInput = () => {
     if (clickedWhileCorrect) {
+      resetLocalState();
       props.updateResult({
         type: QuestionResultType.Mastery,
         maxPoints: props.maxPoints,
@@ -29,7 +36,7 @@ const CopyText: React.FC<Props> = props => {
         answerValues: [props.text]
       });
     } else {
-      if (value === props.text) {
+      if (input === props.text) {
         setColor('green');
         setClickedWhileCorrect(true);
       } else {
@@ -49,18 +56,22 @@ const CopyText: React.FC<Props> = props => {
     <div>
       <h1 className='h1'>{props.text}</h1>
       <form
-        className='textAndBtn'
+        className='text-and-btn'
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
         <input
           id='name'
-          className={`inputField ${color}`}
+          className={`input-field ${color}`}
           type='text'
           onChange={e => storeInput(e)}
           placeholder={props.text}
         />
-        <Button classNames='next' onClick={() => checkInput(input)}>
-          {clickedWhileCorrect ? 'Neste' : 'Svar'}
-        </Button>
+        <FlowButtons
+          skip={() => {
+            resetLocalState();
+            props.skipQuestion();
+          }}
+          update={checkInput}
+        />
       </form>
     </div>
   );

@@ -2,15 +2,22 @@ import React, { useState } from 'react';
 import './Question.css';
 import Button from '../components/Button';
 import { QuestionResult, QuestionResultType } from '../Types';
+import FlowButtons from 'components/FlowButtons';
 
 interface Props {
   text: string;
   resultTitle: string;
+  illustration?: string;
   isImage: boolean;
   answerValues: string[];
-  correctAlt: string[];
+  correctAlternativeList: string[];
   updateResult: (result: QuestionResult) => void;
+  skipQuestion: () => void;
 }
+
+// component only works if there is a correct answer and should be remade
+// or adjusted for non-mastery questions
+// it is also not working well with pictures (CSS related)
 
 const MultipleButtons: React.FC<Props> = props => {
   const [selectedButtons, setSelectedButtons] = useState<number[]>([]);
@@ -25,7 +32,7 @@ const MultipleButtons: React.FC<Props> = props => {
 
   const checkAnswer = () => {
     const selectedStrings = selectedButtons.map(i => props.answerValues[i]);
-    const correctAnswers = props.correctAlt.filter(alt =>
+    const correctAnswers = props.correctAlternativeList.filter(alt =>
       selectedStrings.includes(alt)
     );
 
@@ -36,11 +43,12 @@ const MultipleButtons: React.FC<Props> = props => {
   };
 
   const returnResult = () => {
+    setSelectedButtons([]);
     props.updateResult({
       mastered: true,
       answerValues: [],
       type: QuestionResultType.Mastery,
-      maxPoints: props.correctAlt.length,
+      maxPoints: props.correctAlternativeList.length,
       resultTitle: props.resultTitle,
       pointsAchieved: checkAnswer()
     });
@@ -48,7 +56,14 @@ const MultipleButtons: React.FC<Props> = props => {
 
   return (
     <div>
-      <h1 className='h1'>{props.text}</h1>
+      {props.illustration === undefined ? (
+        <h1 className='h1'>{props.text} (flere valg mulig)</h1>
+      ) : (
+        <div>
+          <h1 className='h1'>{props.text} (flere valg mulig)</h1>
+          <img src={props.illustration} alt={'Illustration'} />
+        </div>
+      )}
       <div className='multiple-button-container'>
         {props.answerValues.map((item, i) => (
           <Button
@@ -61,11 +76,13 @@ const MultipleButtons: React.FC<Props> = props => {
           </Button>
         ))}
       </div>
-      <div>
-        <Button classNames='next' onClick={returnResult}>
-          Neste
-        </Button>
-      </div>
+      <FlowButtons
+        skip={() => {
+          setSelectedButtons([]);
+          props.skipQuestion();
+        }}
+        update={returnResult}
+      />
     </div>
   );
 };

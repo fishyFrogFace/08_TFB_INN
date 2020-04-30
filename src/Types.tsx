@@ -23,7 +23,9 @@ export enum QuestionTemplate {
   TextInput,
   LogIn,
   MultipleButtons,
-  BigText
+  BigText,
+  ChooseOne,
+  ChooseOneMastery
 }
 
 export interface SubjectResult {
@@ -68,8 +70,9 @@ export interface ImageInformation {
   imageWithIndicator: string;
 }
 
-export interface BigText {
-  bigInput: string;
+export interface UserInformation {
+  username: string;
+  password: string;
 }
 
 export interface QuestionContent {
@@ -78,11 +81,14 @@ export interface QuestionContent {
   maxPoints?: number;
   text?: string;
   imageInformation?: ImageInformation;
-  correctAlt?: string[];
+  correctAlternativeList?: string[];
+  correctAlternative?: string;
   answerValues?: string[];
   isImage?: boolean;
   processString?: (input: string, maxPoints: number) => number;
   placeholder?: string;
+  userInformation?: UserInformation;
+  illustration?: string;
 }
 
 export interface QuestionDefinition {

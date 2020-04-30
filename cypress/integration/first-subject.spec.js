@@ -2,14 +2,14 @@
 
 context('First-subject', () => {
   const username = 'little-kangaroo';
-  const title = 'Tittel';
+  const title = 'Velkommen til Digiklar';
   const subjectTitle = 'Introduksjon';
 
   before(() => {
     cy.visit('http://localhost:3000/');
 
     // start examination
-    cy.get('.examination-startbutton')
+    cy.get('.start')
       .first()
       .click();
 
@@ -31,7 +31,7 @@ context('First-subject', () => {
   });
 
   it('overview contains a navigation menu', () => {
-    cy.get('.navBar')
+    cy.get('.nav-bar')
       .first()
       .should('be.visible');
   });
@@ -47,7 +47,7 @@ context('First-subject', () => {
   });
 
   it('start contains a navigation menu', () => {
-    cy.get('.navBar')
+    cy.get('.nav-bar')
       .first()
       .should('be.visible');
   });
@@ -63,29 +63,29 @@ context('First-subject', () => {
   });
 
   it('copytext contains a navigation menu', () => {
-    cy.get('.navBar')
+    cy.get('.nav-bar')
       .first()
       .should('be.visible');
   });
 
   it('copytext button is clickable and renders where in image', () => {
-    cy.get('.inputField')
+    cy.get('.input-field')
       .first()
       .type('A, b: C');
 
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
-    cy.get('.inputField')
+    cy.get('.input-field')
       .first()
       .type('.');
 
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
-    cy.get('.next')
+    cy.get('.next-button')
       .first()
       .click();
 
@@ -95,31 +95,21 @@ context('First-subject', () => {
   });
 
   it('where in image contains a navigation menu', () => {
-    cy.get('.navBar')
-      .first()
-      .should('be.visible');
-  });
-
-  it('next button is not visible unless you click on the correct spot', () => {
-    cy.get('.whereInPictureImg')
-      .first()
-      .click(50, 50);
-
-    cy.get('.next')
-      .first()
-      .should('not.be.visible');
-
-    cy.get('.whereInPictureImg')
-      .first()
-      .click(351, 262);
-
-    cy.get('.next')
+    cy.get('.nav-bar')
       .first()
       .should('be.visible');
   });
 
   it('where in image button is clickable and renders success screen', () => {
-    cy.get('.next')
+    cy.get('.where-in-picture-img')
+      .first()
+      .click(50, 50);
+
+    cy.get('.where-in-picture-img')
+      .first()
+      .click(351, 262);
+
+    cy.get('.next-button')
       .first()
       .click();
 
@@ -129,12 +119,12 @@ context('First-subject', () => {
   });
 
   it('success screen contains a navigation menu', () => {
-    cy.get('.navBar')
+    cy.get('.nav-bar')
       .first()
       .should('be.visible');
   });
 
-  it('next button is clickable and renders overview', () => {
+  it('success screen button is clickable and renders overview', () => {
     cy.get('.next')
       .first()
       .click();
@@ -161,7 +151,7 @@ context('First-subject', () => {
   });
 
   it('result reflects what the user achieved', () => {
-    const width = ['400px', '333.328125px', '333.328125px'];
+    const width = ['800px', '666.65625px', '666.65625px'];
     cy.get('.filler').each(($el, i) => {
       cy.wrap($el).should('have.css', 'width', width[i]);
     });

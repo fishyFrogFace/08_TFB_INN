@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import '../App.css';
 import './Question.css';
-import Button from '../components/Button';
 import { QuestionResult, ImageInformation, QuestionResultType } from '../Types';
+import FlowButtons from 'components/FlowButtons';
 
 interface Props {
   maxPoints: number;
@@ -10,6 +9,7 @@ interface Props {
   resultTitle: string;
   imageInformation: ImageInformation;
   updateResult: (result: QuestionResult) => void;
+  skipQuestion: () => void;
 }
 
 const WhereInPicture: React.FC<Props> = props => {
@@ -29,25 +29,40 @@ const WhereInPicture: React.FC<Props> = props => {
     }
   };
 
-  const onNext = () => {
-    props.updateResult({
-      type: QuestionResultType.Mastery,
-      maxPoints: props.maxPoints,
-      resultTitle: props.resultTitle,
-      pointsAchieved: points,
-      mastered: true,
-      answerValues: []
-    });
+  const resetLocalState = () => {
+    setPoints(props.maxPoints);
+    setMode('incorrect');
   };
 
-  // onClick might not work on touch screens, but is harder to test in development
-  // due to the application not being live. will test in production branch
+  const onNext = () => {
+    resetLocalState();
+    if (mode !== 'incorrect') {
+      props.updateResult({
+        type: QuestionResultType.Mastery,
+        maxPoints: props.maxPoints,
+        resultTitle: props.resultTitle,
+        pointsAchieved: points,
+        mastered: true,
+        answerValues: []
+      });
+    } else {
+      props.updateResult({
+        type: QuestionResultType.Mastery,
+        maxPoints: props.maxPoints,
+        resultTitle: props.resultTitle,
+        pointsAchieved: 0,
+        mastered: false,
+        answerValues: []
+      });
+    }
+  };
+
   return (
     <div>
       <h1 className='h1'>{props.text}</h1>
       <div>
         <img
-          className={`whereInPictureImg ${mode}Image`}
+          className={`where-in-picture-img ${mode}-image`}
           onClick={e => {
             const xPos = e.pageX - e.currentTarget.offsetLeft;
             const yPos = e.pageY - e.currentTarget.offsetTop;
@@ -61,10 +76,13 @@ const WhereInPicture: React.FC<Props> = props => {
           alt={props.text}
         />
       </div>
-
-      <Button classNames={`next ${mode}`} onClick={() => onNext()}>
-        Neste
-      </Button>
+      <FlowButtons
+        skip={() => {
+          resetLocalState();
+          props.skipQuestion();
+        }}
+        update={onNext}
+      />
     </div>
   );
 };

@@ -998,5 +998,6 @@ export const mostCommonPasswords = [
   'vanessa1',
   'happy123',
   'a bcd123',
-  'fuckyou!'
+  'fuckyou!',
+  '1qaz2wsx3edc4rfv'
 ];

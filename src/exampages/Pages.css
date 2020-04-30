@@ -3,13 +3,14 @@
   font-size: 3vh;
 }
 
-.subjectContainer {
+.subject-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-color: black;
   border-radius: 2vh;
   padding: 2vh;
+  min-width: 400px;
 }
 
 .overview-header {
