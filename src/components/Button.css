@@ -1,7 +1,7 @@
 .btn {
   padding: 2.6vh 8vw; 
   
-  margin: 2vmin;
+  margin: 1vmin;
   text-align: center;
   
   border-radius: 8px;
@@ -12,38 +12,48 @@
   
 }
 
+.btn:hover {
+  filter: brightness(95%);
+}
+.btn:active{
+  box-shadow: none;
+}
+.btn.selected {
+  box-shadow: none;
+ 
+  filter: brightness(1.1);
+ 
+}
+
+
+
+.btn.multibtn:hover {
+  filter:none;
+  background-color: #ACDAE0;
+}
+.btn.selected {
+  background-color: #73D0DC;
+}
 .btn:disabled {
   cursor: not-allowed;
   pointer-events: none;
 }
 
-/*
-.new {
-  background-color: #059dc7;
-}
 
-.new:hover {
-  background-color: #61dafb;
-}
 
-.new:active {
-  background-color: #03627c;
-}
-*/
+/*NEXT page*/
 
 .next {
   background-color: #FFC107  
 }
-
-.next:hover {
-  background-color: #f2c14e;
-}
-
-.next:active {
-  background-color: #fbb02d;
+.skip {
+  
 }
 
 
+
+
+/*EXIT button in navbar*/
 
 .nav-btn {
   background-color: transparent;
@@ -64,24 +74,15 @@
 }
 
 .nav-img {
-  
-  /*
-  height: 3vw;
-  width: 3vw;
-  display: block;
-  
-  position: relative;
-  */
+ 
   margin: auto;
   height: inherit;
   width: inherit;
 
 }
 
-.pause:active {
-  background-color: transparent;
-}
 
+/*SUBJECT BUTTON in overview*/
 .subject-btn {
   display: flex;
   justify-content: space-between;
@@ -95,12 +96,12 @@
   margin: 0.5vh auto;
   padding: 1vh 8px;
 }
+
 .subject-btn .subjectTitleContainer {
   width: 75%;
   
-  
-  
 }
+
 .subjectTitleContainer p{
   position: relative;
   top:-8px;
@@ -114,11 +115,13 @@
   width: 4.5em;
 }
 
+
+
+.subject-btn:hover {
+  filter: brightness(1.05);
+}
+
 .subject-btn:disabled {
   color: #8c8c8c;
   background-color: #d9d9d9;
-}
-
-.subject-btn:hover {
-  background-color: #ccccff
 }

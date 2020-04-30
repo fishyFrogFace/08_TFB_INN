@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Question.css';
 import { QuestionResult, QuestionResultType } from '../Types';
 import FlowButtons from 'components/FlowButtons';
+import Subject from 'examination/Subject';
 //import Button from 'components/Button'
 
 interface Props {
@@ -13,6 +14,7 @@ interface Props {
 }
 
 const CopyText: React.FC<Props> = props => {
+  //const [subjectColor, setSubjectColor] = useState('');
   const [input, setInput] = useState('');
   const [points, setPoints] = useState(props.maxPoints);
   const [color, setColor] = useState('black');
@@ -21,6 +23,7 @@ const CopyText: React.FC<Props> = props => {
   const resetLocalState = () => {
     setInput('');
     setPoints(props.maxPoints);
+    //setSubjectColor(props.subjectColor);
     setColor('black');
     setClickedWhileCorrect(false);
   };
@@ -55,7 +58,7 @@ const CopyText: React.FC<Props> = props => {
 
   return (
     <div className='content'>
-      <div className="questiontextContainer subjectColor">
+      <div className={"questiontextContainer " + ''/*props.subjectColor*/ }>
         <h1 className='h2 white normal-font'>{props.text}</h1>
       </div>
       <div className="textinputContainer whiteBackground">
@@ -73,7 +76,7 @@ const CopyText: React.FC<Props> = props => {
           </form>
 
         </div>
-        <div className='nextButtonContainer'>
+        <div className='nextButtonContainer '>
           <FlowButtons
             skip={() => {
               resetLocalState();

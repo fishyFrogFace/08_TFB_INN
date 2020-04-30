@@ -22,7 +22,7 @@ interface Props extends PropsFromRedux {
 const Overview: React.FC<Props> = props => {
   return (
     <div className='content'>
-    <div className="questiontextContainer dark-grey-background">
+    <div className="questiontextContainer bluegrey-background">
       <h1 className='h2 white normal-font'>Mine temaer</h1>
 
     </div>
@@ -52,7 +52,7 @@ const Overview: React.FC<Props> = props => {
         })}
       </div>
       <Button
-        classNames='next'
+        classNames='next btn'
         onClick={() => props.updateExamPage(ExamPage.Results)}>
         Se resultater
       </Button>

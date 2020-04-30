@@ -57,7 +57,7 @@ const EnterName: React.FC<Props> = props => {
         <!--<img src={avatar} alt='Avatar' />-->
       </div>
       */}
-      <div className="questiontextContainer dark-grey-background">
+      <div className="questiontextContainer bluegrey-background">
         <h1 className='h2 white normal-font'>Mitt navn er...</h1>
       </div>
       <div className="textinputContainer whiteBackground">
