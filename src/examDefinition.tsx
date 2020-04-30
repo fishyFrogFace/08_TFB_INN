@@ -383,6 +383,28 @@ export const standardExamDefinition = {
           }
         },
         {
+          name: 'Can adjust brightness',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Får du til å skru opp og ned lysstyrken på mobilen din?',
+            illustration: require('./images/brightness.svg'),
+            resultTitle: 'Kan endre lysstyrke',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
+          name: 'Can toggle flight mode',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Får du til å slå på flymodus på mobilen din?',
+            illustration: require('./images/plane.svg'),
+            resultTitle: 'Kan skru på flymodus',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
           name: 'Settings I want to learn',
           templateID: QuestionTemplate.BigText,
           questionContent: {
