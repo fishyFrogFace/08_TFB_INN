@@ -46,11 +46,25 @@ const MultipleButtons: React.FC<Props> = props => {
     setSelectedButtons([]);
     props.updateResult({
       mastered: true,
-      answerValues: [],
+      answerValues: selectedButtons.map(i => props.answerValues[i]),
       type: QuestionResultType.Mastery,
       maxPoints: props.correctAlternativeList.length,
       resultTitle: props.resultTitle,
+      questionTitle: props.text,
       pointsAchieved: checkAnswer()
+    });
+  };
+
+  const failQuestion = () => {
+    setSelectedButtons([]);
+    props.updateResult({
+      type: QuestionResultType.Mastery,
+      maxPoints: props.correctAlternativeList.length,
+      resultTitle: props.resultTitle,
+      questionTitle: props.text,
+      pointsAchieved: 0,
+      mastered: false,
+      answerValues: ['Jeg får ikke dette til']
     });
   };
 
@@ -76,13 +90,7 @@ const MultipleButtons: React.FC<Props> = props => {
           </Button>
         ))}
       </div>
-      <FlowButtons
-        skip={() => {
-          setSelectedButtons([]);
-          props.skipQuestion();
-        }}
-        update={returnResult}
-      />
+      <FlowButtons skip={failQuestion} update={returnResult} />
     </div>
   );
 };

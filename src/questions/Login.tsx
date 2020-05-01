@@ -35,9 +35,10 @@ const TextInput: React.FC<Props> = props => {
       props.updateResult({
         mastered: true,
         type: QuestionResultType.Mastery,
-        answerValues: [],
+        answerValues: ['Logget inn'],
         maxPoints: props.maxPoints,
         resultTitle: props.resultTitle,
+        questionTitle: 'Logg inn med informasjonen under',
         pointsAchieved: points
       });
     } else {
@@ -55,6 +56,19 @@ const TextInput: React.FC<Props> = props => {
         setFeedback('Feil passord eller brukernavn');
       }
     }
+  };
+
+  const failQuestion = () => {
+    resetLocalState();
+    props.updateResult({
+      type: QuestionResultType.Mastery,
+      maxPoints: props.maxPoints,
+      resultTitle: props.resultTitle,
+      questionTitle: 'Logg inn med informasjonen under',
+      pointsAchieved: 0,
+      mastered: false,
+      answerValues: ['Jeg får ikke dette til']
+    });
   };
 
   return (
@@ -80,13 +94,7 @@ const TextInput: React.FC<Props> = props => {
           placeholder='Password'
         />
         <h2 className={`feedback ${color}`}>{feedback}</h2>
-        <FlowButtons
-          skip={() => {
-            resetLocalState();
-            props.skipQuestion();
-          }}
-          update={checkInput}
-        />
+        <FlowButtons skip={failQuestion} update={checkInput} />
       </form>
     </div>
   );

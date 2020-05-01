@@ -17,17 +17,26 @@ interface Props {
 const ChooseOne: React.FC<Props> = props => {
   const [selectedButton, setSelectedButton] = useState<number>();
 
-  const returnResult = () => {
+  const returnResult = (result: number | undefined) => {
     setSelectedButton(undefined);
-    if (selectedButton === undefined) {
-      props.skipQuestion();
-    } else {
+    if (result === undefined) {
       props.updateResult({
         mastered: false,
-        answerValues: [props.answerValues[selectedButton!]],
+        answerValues: ['Jeg får ikke dette til'],
         type: QuestionResultType.Other,
         maxPoints: 0,
         resultTitle: props.resultTitle,
+        questionTitle: props.text,
+        pointsAchieved: 0
+      });
+    } else {
+      props.updateResult({
+        mastered: false,
+        answerValues: [props.answerValues[result!]],
+        type: QuestionResultType.Other,
+        maxPoints: 0,
+        resultTitle: props.resultTitle,
+        questionTitle: props.text,
         pointsAchieved: 0
       });
     }
@@ -55,10 +64,11 @@ const ChooseOne: React.FC<Props> = props => {
       </div>
       <FlowButtons
         skip={() => {
-          setSelectedButton(undefined);
-          props.skipQuestion();
+          returnResult(undefined);
         }}
-        update={returnResult}
+        update={() => {
+          if (selectedButton !== undefined) returnResult(selectedButton);
+        }}
       />
     </div>
   );
