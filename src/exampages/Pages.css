@@ -114,26 +114,27 @@
   font-size: 4vh;
 }
 .unit-btn {
-  height: 22vmin;
-  width: 34vmin;
+  flex: 1 1 90px;
+  max-height: 200px;
   
+  /*
   flex-direction: column;
-  align-items: center;
+  align-items: center;*/
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 900px)  and (max-width: 1200){
   .unit-btn {
-    height: 32vmin;
-    max-height: 100px;
-    width: 32vmin;
+    flex: 1 1 40%;
+    max-height: 150px;
   }
 }
+/*
 @media only screen and (min-width: 601px) and (max-width: 899px) {
   .unit-btn {
     height: 20vh;
     width: 32vw;
   }
-}
+} */
 
 .unitName {
   margin-top:0;
@@ -149,4 +150,3 @@
   height: 15vmin;
   width: 15vmin;
 }
-

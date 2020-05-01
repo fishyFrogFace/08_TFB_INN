@@ -94,7 +94,7 @@
   min-height: 12vh;
   
   margin: 0.5vh auto;
-  padding: 1vh 8px;
+  padding: 1vh 16px;
 }
 
 .subject-btn .subjectTitleContainer {
@@ -107,6 +107,7 @@
   top:-8px;
   text-align: left;
   font-size: 1.5em;
+
   font-weight: normal;
   
 }

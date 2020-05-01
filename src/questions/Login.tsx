@@ -58,28 +58,45 @@ const TextInput: React.FC<Props> = props => {
   };
 
   return (
-    <div>
-      <h1 className='h1'>Logg inn med informasjonen under</h1>
-      <h2 className='h2'>Brukernavn: "{props.userInformation.username}"</h2>
-      <h2 className='h2'>Passord: "{props.userInformation.password}"</h2>
-      <form
-        className='text-and-btn'
-        onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
-        <input
-          id='username'
-          className={`input-field ${color}`}
-          type='text'
-          onChange={e => setUsername(e.currentTarget.value)}
-          placeholder='Username'
-        />
-        <input
-          id='password'
-          className={`input-field ${color}`}
-          type='password'
-          onChange={e => setPassword(e.currentTarget.value)}
-          placeholder='Password'
-        />
-        <h2 className={`feedback ${color}`}>{feedback}</h2>
+    <div className='content'>
+       <div className={"questiontextContainer " + 'bluegrey-background' }>
+        <h1 className='h2 white normal-font'>Logg inn med informasjonen under</h1>
+        
+        </div>
+      <div className="textinputContainer whiteBackground">
+        <div>
+          <p className='black questionDetails'>
+            Brukernavn: "{props.userInformation.username}" <br></br>
+            Passord: "{props.userInformation.password}"</p>
+        </div>
+        <form
+          className='text-and-btn login orange-background'
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
+          <div>
+            <p className="inputP black">Username:</p>
+            <input
+              id='username'
+              className={`inputField ${color}`}
+              type='text'
+              onChange={e => setUsername(e.currentTarget.value)}
+              placeholder='Username'
+            />
+          </div>
+          <div>
+          <p className="inputP black">Password:</p>
+          <input
+            id='password'
+            className={`inputField ${color}`}
+            type='password'
+            onChange={e => setPassword(e.currentTarget.value)}
+            placeholder='Password'
+          />
+          </div>
+          </form>
+          <h2 className={`feedback h2 normal-font ${color}`}>{feedback}</h2>
+          
+          
+        </div>
         <FlowButtons
           skip={() => {
             resetLocalState();
@@ -87,7 +104,7 @@ const TextInput: React.FC<Props> = props => {
           }}
           update={checkInput}
         />
-      </form>
+      
     </div>
   );
 };

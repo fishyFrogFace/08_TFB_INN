@@ -17,36 +17,44 @@ const TextInput: React.FC<Props> = props => {
   const [input, setInput] = useState('');
 
   return (
-    <div>
-      <h1 className='h1'>{props.text}</h1>
-      <form
-        className='text-and-btn'
-        onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
-        <input
-          id='name'
-          className={'input-field'}
-          type='text'
-          onChange={e => setInput(e.currentTarget.value)}
-          placeholder={props.placeholder}
-        />
+    <div className='content'>
+      <div className={"questiontextContainer " + ''/*props.subjectColor*/ }>
+        <h1 className='h2 white normal-font'>{props.text}</h1>
+      </div>
+      <div className="textinputContainer whiteBackground">
+        <form
+          className='text-and-btn'
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
+          <input
+            id='name'
+            className={'inputField'}
+            type='text'
+            onChange={e => setInput(e.currentTarget.value)}
+            placeholder={props.placeholder}
+          />
+       
+        
+          </form>
+        </div>
+      <div className='nextButtonContainer '>
         <FlowButtons
-          skip={() => {
-            setInput('');
-            props.skipQuestion();
-          }}
-          update={() => {
-            setInput('');
-            props.updateResult({
-              mastered: true,
-              type: QuestionResultType.Mastery,
-              answerValues: [],
-              maxPoints: props.maxPoints,
-              resultTitle: props.resultTitle,
-              pointsAchieved: props.processString(input, props.maxPoints)
-            });
-          }}
-        />
-      </form>
+            skip={() => {
+              setInput('');
+              props.skipQuestion();
+            }}
+            update={() => {
+              setInput('');
+              props.updateResult({
+                mastered: true,
+                type: QuestionResultType.Mastery,
+                answerValues: [],
+                maxPoints: props.maxPoints,
+                resultTitle: props.resultTitle,
+                pointsAchieved: props.processString(input, props.maxPoints)
+              });
+            }}
+          />
+        </div>
     </div>
   );
 };

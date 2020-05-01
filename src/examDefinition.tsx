@@ -73,7 +73,6 @@ export const standardExamDefinition = {
               'passord',
               '%&¤#',
               'zi3A47gvq8nFVkv',
-              '1q2w3e4r5t6y',
               '34BananerVokserPåTrær!'
             ],
             correctAlternativeList: [
