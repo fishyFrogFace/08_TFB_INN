@@ -1,4 +1,4 @@
- import React, { useState } from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import phone from '../images/phone.svg';
 import tablet from '../images/tablet.svg';
@@ -29,22 +29,23 @@ const WhatUnits: React.FC<PropsFromRedux> = props => {
 
   return (
     <div className='content'>
-      <div className="questiontextContainer bluegrey-background">
+      <div className='questiontextContainer bluegrey-background'>
         <h1 className='h2 white normal-font'>Hvilke enheter har du?</h1>
       </div>
       <div className='multiple-button-container whiteBackground'>
         {units.map((item, i) => (
           <div className='image-with-description ' key={i}>
-            <div >
+            <div>
               <Button
-                classNames={`unit-btn multibtn btn ${
+                classNames={`unit-btn btn multibtn ${
                   selectedButtons.includes(i) ? 'selected' : ''
                 }`}
                 onClick={() => updateAnswer(i)}>
-                <img className='unit-img' src={item.image} alt='' />
-                <p className='h2 unitName'>{capitalize(item.description)}</p>
+                <div className='buttonContent'>
+                  <img className='unit-img' src={item.image} alt='' />
+                  <p className='h2 unitName'>{capitalize(item.description)}</p>
+                </div>
               </Button>
-              
             </div>
           </div>
         ))}

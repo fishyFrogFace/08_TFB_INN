@@ -59,11 +59,13 @@ const WhereInPicture: React.FC<Props> = props => {
   };
 
   return (
-    <div>
-      <h1 className={`h1 ${props.subjectColor}`}>{props.text}</h1>
+    <div className='content'>
+      <div className={`questiontextContainer ${props.subjectColor}`}>
+        <p className={`h2 white normal-font`}>{props.text}</p>
+      </div>
       <div>
         <img
-          className={`where-in-picture-img ${mode}-image`}
+          className={`where-in-picture-img ${mode}-image whiteBackground`}
           onClick={e => {
             const xPos = e.pageX - e.currentTarget.offsetLeft;
             const yPos = e.pageY - e.currentTarget.offsetTop;
@@ -77,13 +79,15 @@ const WhereInPicture: React.FC<Props> = props => {
           alt={props.text}
         />
       </div>
-      <FlowButtons
-        skip={() => {
-          resetLocalState();
-          props.skipQuestion();
-        }}
-        update={onNext}
-      />
+      <div className='nextButtonContainer'>
+        <FlowButtons
+          skip={() => {
+            resetLocalState();
+            props.skipQuestion();
+          }}
+          update={onNext}
+        />
+      </div>
     </div>
   );
 };

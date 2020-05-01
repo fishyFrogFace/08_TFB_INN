@@ -59,10 +59,8 @@ const CopyText: React.FC<Props> = props => {
 
   return (
     <div className='content'>
-      <div className={'questiontextContainer ' + '' /*props.subjectColor*/}>
-        <h1 className={`h1 white normal-font ${props.subjectColor}`}>
-          {props.text}
-        </h1>
+      <div className={`questiontextContainer ${props.subjectColor}`}>
+        <h1 className={`h2 white normal-font`}>{props.text}</h1>
       </div>
       <div className='textinputContainer whiteBackground'>
         <form

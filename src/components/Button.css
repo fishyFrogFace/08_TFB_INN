@@ -25,6 +25,13 @@
  
 }
 
+.multibtn {
+  flex: 1 1 300px;
+}
+.buttonContent {
+  max-width: 90%;
+  max-height: 90%;
+}
 
 
 .btn.multibtn:hover {

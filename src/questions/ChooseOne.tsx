@@ -35,24 +35,31 @@ const ChooseOne: React.FC<Props> = props => {
   };
 
   return (
-    <div>
-      {props.illustration === undefined ? (
-        <h1 className={`h1 ${props.subjectColor}`}>{props.text}</h1>
-      ) : (
+    <div className='content'>
+      <div className={`questiontextContainer ${props.subjectColor}`}>
+        <p className='h2 white normal-font'>{props.text}</p>
+      </div>
+
+      <div className='multiple-button-container whiteBackground'>
+        {props.illustration === undefined ? (
+          ''
+        ) : (
+          <div className='questionImgContainer'>
+            <img src={props.illustration} alt={'Illustration'} />
+          </div>
+        )}
         <div>
-          <h1 className={`h1 ${props.subjectColor}`}>{props.text}</h1>
-          <img src={props.illustration} alt={'Illustration'} />
+          {props.answerValues.map((item, i) => (
+            <Button
+              key={i}
+              classNames={`answer-btn multibtn btn ${
+                selectedButton === i ? 'selected' : ''
+              }`}
+              onClick={() => setSelectedButton(i)}>
+              {props.isImage ? <img src={item} alt={`Button ${i}`} /> : item}
+            </Button>
+          ))}
         </div>
-      )}
-      <div className='multiple-button-container'>
-        {props.answerValues.map((item, i) => (
-          <Button
-            key={i}
-            classNames={`answer-btn ${selectedButton === i ? 'selected' : ''}`}
-            onClick={() => setSelectedButton(i)}>
-            {props.isImage ? <img src={item} alt={`Button ${i}`} /> : item}
-          </Button>
-        ))}
       </div>
       <FlowButtons
         skip={() => {

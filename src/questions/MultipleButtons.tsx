@@ -57,34 +57,34 @@ const MultipleButtons: React.FC<Props> = props => {
 
   return (
     <div className='content'>
-      
-      {props.illustration === undefined ? (
-        <div className={`questiontextContainer ${props.subjectColor}`}>
-          <p className='h2 white normal-font'>{props.text} (flere valg mulig)</p>
-        </div>
-        
-      ) : (
-        <div>
-        <div className="questiontextContainer bluegrey-background">
-            <h1 className='h1'>{props.text} (flere valg mulig)</h1>
-          </div>
+      <div className={`questiontextContainer ${props.subjectColor}`}>
+        <p className='h2 white normal-font'>{props.text} (flere valg mulig)</p>
+      </div>
 
-          <div className="questionImgContainer">
-            <img src={props.illustration} alt={'Illustration'} />
-            </div>
+      <div className='whiteBackground multiwhite inputContainerIfImg'>
+        {props.illustration === undefined ? (
+          ''
+        ) : (
+          <div className='questionImgContainer'>
+            <img
+              id='questionimg'
+              src={props.illustration}
+              alt={'Illustration'}
+            />
+          </div>
+        )}
+        <div className='multiple-button-container'>
+          {props.answerValues.map((item, i) => (
+            <Button
+              key={i}
+              classNames={`answer-btn multibtn btn unit-btn ${
+                selectedButtons.includes(i) ? 'selected' : ''
+              }`}
+              onClick={() => updateAnswer(i)}>
+              {props.isImage ? <img src={item} alt={`Button ${i}`} /> : item}
+            </Button>
+          ))}
         </div>
-      )}
-      <div className='multiple-button-container whiteBackground' >
-        {props.answerValues.map((item, i) => (
-          <Button
-            key={i}
-            classNames={`answer-btn multibtn btn ${
-              selectedButtons.includes(i) ? 'selected' : ''
-            }`}
-            onClick={() => updateAnswer(i)}>
-            {props.isImage ? <img src={item} alt={`Button ${i}`} /> : item}
-          </Button>
-        ))}
       </div>
       <FlowButtons
         skip={() => {

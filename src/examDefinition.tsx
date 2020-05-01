@@ -5,7 +5,7 @@ export const standardExamDefinition = {
   subjects: [
     {
       name: 'Introduksjon',
-      subjectColor: 'light-green-background',
+      subjectColor: 'bluegrey-background',
       questions: [
         /*
         {
@@ -57,7 +57,7 @@ export const standardExamDefinition = {
     },
     {
       name: 'Passord, innlogging og BankID',
-      subjectColor: 'orange-background',
+      subjectColor: 'blue-background',
       questions: [
         {
           name: 'Test password strength of user created password',
@@ -96,7 +96,7 @@ export const standardExamDefinition = {
             resultTitle: 'Kan bruke brukerinformasjon til å logge inn',
             userInformation: {
               username: 'vaffelkjeks',
-              password: 'JegEr1LitenFrosk:)'
+              password: 'JegEr3nLitenFrosk:)'
             },
             maxPoints: 5
           }
@@ -199,6 +199,7 @@ export const standardExamDefinition = {
     },
     {
       name: 'E-post',
+      subjectColor: 'red-background',
       questions: [
         {
           name: 'Has e-mail',
@@ -372,6 +373,7 @@ export const standardExamDefinition = {
     },
     {
       name: 'Innstillinger og tilpasning av mobil',
+      subjectColor: 'lime-background',
       questions: [
         {
           name: 'Can adjust volume',
