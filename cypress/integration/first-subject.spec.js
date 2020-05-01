@@ -189,17 +189,4 @@ context('First-subject', () => {
       .first()
       .should('contain', 'Resultat');
   });
-
-  it('result reflects what units were chosen', () => {
-    cy.get('.h2')
-      .first()
-      .should('contain', 'Ingen');
-  });
-
-  it('result reflects what the user achieved', () => {
-    const width = ['800px', '666.65625px', '666.65625px'];
-    cy.get('.filler').each(($el, i) => {
-      cy.wrap($el).should('have.css', 'width', width[i]);
-    });
-  });
 });

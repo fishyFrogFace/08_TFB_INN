@@ -31,6 +31,7 @@ const CopyText: React.FC<Props> = props => {
         type: QuestionResultType.Mastery,
         maxPoints: props.maxPoints,
         resultTitle: props.resultTitle,
+        questionTitle: props.text,
         pointsAchieved: points,
         mastered: true,
         answerValues: [props.text]
@@ -45,6 +46,19 @@ const CopyText: React.FC<Props> = props => {
         setColor('red');
       }
     }
+  };
+
+  const failQuestion = () => {
+    resetLocalState();
+    props.updateResult({
+      type: QuestionResultType.Mastery,
+      maxPoints: props.maxPoints,
+      resultTitle: props.resultTitle,
+      questionTitle: props.text,
+      pointsAchieved: 0,
+      mastered: false,
+      answerValues: ['Jeg får ikke dette til']
+    });
   };
 
   const storeInput = (e: React.FormEvent<HTMLInputElement>) => {
@@ -65,13 +79,7 @@ const CopyText: React.FC<Props> = props => {
           onChange={e => storeInput(e)}
           placeholder={props.text}
         />
-        <FlowButtons
-          skip={() => {
-            resetLocalState();
-            props.skipQuestion();
-          }}
-          update={checkInput}
-        />
+        <FlowButtons skip={failQuestion} update={checkInput} />
       </form>
     </div>
   );

@@ -18,24 +18,38 @@ interface Props {
 const ChooseOne: React.FC<Props> = props => {
   const [selectedButton, setSelectedButton] = useState<number>();
 
-  const checkAnswer = () => {
-    if (selectedButton !== undefined) {
-      const selectedString = props.answerValues[selectedButton];
+  const checkAnswer = (result: number | undefined) => {
+    if (result) {
+      const selectedString = props.answerValues[result];
       return selectedString === props.correctAlternative ? 1 : 0;
     } else {
       return 0;
     }
   };
 
-  const returnResult = () => {
+  const returnResult = (result: number | undefined) => {
     setSelectedButton(undefined);
     props.updateResult({
-      mastered: true,
-      answerValues: [],
+      mastered: checkAnswer(result) === 1,
+      answerValues: [props.answerValues[result!]],
       type: QuestionResultType.Mastery,
       maxPoints: 1,
       resultTitle: props.resultTitle,
-      pointsAchieved: checkAnswer()
+      questionTitle: props.text,
+      pointsAchieved: checkAnswer(result)
+    });
+  };
+
+  const failQuestion = () => {
+    setSelectedButton(undefined);
+    props.updateResult({
+      type: QuestionResultType.Mastery,
+      maxPoints: props.correctAlternative.length,
+      resultTitle: props.resultTitle,
+      questionTitle: props.text,
+      pointsAchieved: 0,
+      mastered: false,
+      answerValues: ['Jeg får ikke dette til']
     });
   };
 
@@ -60,11 +74,10 @@ const ChooseOne: React.FC<Props> = props => {
         ))}
       </div>
       <FlowButtons
-        skip={() => {
-          setSelectedButton(undefined);
-          props.skipQuestion();
+        skip={failQuestion}
+        update={() => {
+          if (selectedButton !== undefined) returnResult(selectedButton);
         }}
-        update={returnResult}
       />
     </div>
   );
