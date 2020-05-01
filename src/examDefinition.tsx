@@ -41,9 +41,17 @@ export const standardExamDefinition = {
           }
         },
         {
+          name: 'Questions for supervisor',
+          templateID: QuestionTemplate.BigText,
+          questionContent: {
+            text: 'Har du noen spørsmål til veileder?',
+            placeholder: 'Jeg lurer på...'
+          },
+          resultTitle: 'Spørsmål til veileder'
+        },
+        {
           name: 'Completed subject',
-          templateID: QuestionTemplate.CompletedSubject,
-          questionContent: {}
+          templateID: QuestionTemplate.CompletedSubject
         }
       ]
     },
@@ -139,7 +147,7 @@ export const standardExamDefinition = {
             text: 'Har du BankID (kodebrikke)?',
             illustration: require('./images/bankid-chip.svg'),
             resultTitle: 'Har BankID',
-            answerValues: ['Ja', 'Nei'],
+            answerValues: ['Ja', 'Nei', 'Vet ikke'],
             isImage: false
           }
         },
@@ -185,8 +193,348 @@ export const standardExamDefinition = {
         },
         {
           name: 'Completed subject',
-          templateID: QuestionTemplate.CompletedSubject,
-          questionContent: {}
+          templateID: QuestionTemplate.CompletedSubject
+        }
+      ]
+    },
+    {
+      name: 'E-post',
+      questions: [
+        {
+          name: 'Has e-mail',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Har du en e-postkonto?',
+            resultTitle: 'Har e-postkonto',
+            illustration: require('./images/email.svg'),
+            answerValues: ['Ja', 'Nei', 'Vet ikke'],
+            isImage: false
+          }
+        },
+        {
+          name: 'Recognize email inbox',
+          templateID: QuestionTemplate.ChooseOneMastery,
+          questionContent: {
+            text: 'Hvilket av bildene nedenfor er en e-postinnboks?',
+            resultTitle: 'Kan kjenne igjen en e-postinnboks',
+            answerValues: [
+              require('./images/whatsapp.svg'),
+              require('./images/inbox.png'),
+              require('./images/messages.svg'),
+              require('./images/youtube.svg'),
+              require('./images/website.svg')
+            ],
+            isImage: true,
+            correctAlternative: require('./images/inbox.png')
+          }
+        },
+        {
+          name: 'Recognize email inbox',
+          templateID: QuestionTemplate.ChooseOneMastery,
+          questionContent: {
+            text: 'Hvilket av alternativene nedenfor er en e-postadresse?',
+            resultTitle: 'Kan kjenne igjen en e-postinnboks',
+            answerValues: [
+              'www.nrk.no',
+              '“Oppskrift på lasagne”',
+              'kari@gmail.com',
+              '192.168.1.6'
+            ],
+            isImage: false,
+            correctAlternative: 'kari@gmail.com'
+          }
+        },
+        {
+          name: 'Find new email button',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å opprette en ny e-post?',
+            imageInformation: {
+              image: require('./images/inbox.png'),
+              imageWithIndicator: require('./images/new-email-correct.png'),
+              min: { x: 14, y: 41 },
+              max: { x: 129, y: 71 }
+            },
+            resultTitle: 'Kan opprette ny e-post',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Find topic field',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor skriver du emnet til e-posten?',
+            imageInformation: {
+              image: require('./images/email.jpeg'),
+              imageWithIndicator: require('./images/subject-correct.png'),
+              min: { x: 0, y: 76 },
+              max: { x: 657, y: 102 }
+            },
+            resultTitle: 'Kan finne e-postemne',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Find recipient field',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor skriver du inn mottakerne av e-posten?',
+            imageInformation: {
+              image: require('./images/email.jpeg'),
+              imageWithIndicator: require('./images/recipient-correct.png'),
+              min: { x: 0, y: 53 },
+              max: { x: 657, y: 76 }
+            },
+            resultTitle: 'Kan finne e-postmottakere',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Find body field',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å skrive innholdet i e-posten?',
+            imageInformation: {
+              image: require('./images/email.jpeg'),
+              imageWithIndicator: require('./images/body-correct.png'),
+              min: { x: 0, y: 128 },
+              max: { x: 657, y: 329 }
+            },
+            resultTitle: 'Kan finne e-postinnhold',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Add attachment',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å legge til et vedlegg?',
+            imageInformation: {
+              image: require('./images/email.jpeg'),
+              imageWithIndicator: require('./images/attachment-correct.png'),
+              min: { x: 13, y: 336 },
+              max: { x: 61, y: 360 }
+            },
+            resultTitle: 'Kan legge til vedlegg',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Send email',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å sende e-posten?',
+            imageInformation: {
+              image: require('./images/email.jpeg'),
+              imageWithIndicator: require('./images/send-correct.png'),
+              min: { x: 573, y: 337 },
+              max: { x: 646, y: 360 }
+            },
+            resultTitle: 'Kan finne sendeknapp',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Open first email',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å åpne den øverste e-posten?',
+            imageInformation: {
+              image: require('./images/inbox.png'),
+              imageWithIndicator: require('./images/first-email-correct.png'),
+              min: { x: 146, y: 80 },
+              max: { x: 648, y: 124 }
+            },
+            resultTitle: 'Kan åpne e-mail fra innboksen',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Reply to email',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å svare på e-posten?',
+            imageInformation: {
+              image: require('./images/reply.png'),
+              imageWithIndicator: require('./images/reply-correct.png'),
+              min: { x: 506, y: 123 },
+              max: { x: 538, y: 145 }
+            },
+            resultTitle: 'Kan finne e-postinnhold',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Completed subject',
+          templateID: QuestionTemplate.CompletedSubject
+        }
+      ]
+    },
+    {
+      name: 'Innstillinger og tilpasning av mobil',
+      questions: [
+        {
+          name: 'Can adjust volume',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Får du til å skru opp og ned lyden på mobilen din?',
+            illustration: require('./images/sound.svg'),
+            resultTitle: 'Kan endre volum',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
+          name: 'Can adjust brightness',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Får du til å skru opp og ned lysstyrken på mobilen din?',
+            illustration: require('./images/brightness.svg'),
+            resultTitle: 'Kan endre lysstyrke',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
+          name: 'Can toggle flight mode',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Får du til å slå på flymodus på mobilen din?',
+            illustration: require('./images/plane.svg'),
+            resultTitle: 'Kan skru på flymodus',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
+          name: 'True about flight mode',
+          templateID: QuestionTemplate.MultipleButtons,
+          questionContent: {
+            text: 'Hva er sant om flymodus?',
+            resultTitle: 'Kan kjenne igjen en e-postinnboks',
+            answerValues: [
+              'Det er mulig å koble til WiFi, men ikke til mobilnett',
+              'Det kan ikke komme lyd fra telefonen, men den kan vibrere',
+              'Jeg kan motta SMS',
+              'Ingen kan ringe meg når flymodus er på'
+            ],
+            isImage: false,
+            correctAlternativeList: [
+              'Det er mulig å koble til WiFi, men ikke til mobilnett',
+              'Ingen kan ringe meg når flymodus er på'
+            ]
+          }
+        },
+        {
+          name: 'Can toggle soundless',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Får du til å sette mobilen din på lydløs?',
+            illustration: require('./images/soundless.svg'),
+            resultTitle: 'Kan skru på lydløs modus',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
+          name: 'Recognizes settings icon',
+          templateID: QuestionTemplate.ChooseOneMastery,
+          questionContent: {
+            text: 'Hva betyr symbolet nedenfor?',
+            illustration: require('./images/settings.svg'),
+            resultTitle: 'Kjenner igjen ikon for innstillinger',
+            answerValues: ['Bluetooth', 'Passord', 'Innstillinger', 'Bilder'],
+            isImage: false,
+            correctAlternative: 'Innstillinger'
+          }
+        },
+        {
+          name: 'Recognizes WiFi icon',
+          templateID: QuestionTemplate.ChooseOneMastery,
+          questionContent: {
+            text: 'Hva betyr symbolet nedenfor?',
+            illustration: require('./images/wifi.svg'),
+            resultTitle: 'Kjenner igjen WiFi-ikon',
+            answerValues: ['Bluetooth', 'Mobilnett', 'Innstillinger', 'WiFi'],
+            isImage: false,
+            correctAlternative: 'WiFi'
+          }
+        },
+        {
+          name: 'Can toggle wifi',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Får du til å skru av og på WiFi?',
+            illustration: require('./images/wifi.svg'),
+            resultTitle: 'Kan skru av og på WiFi',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
+          name: 'Can connect to wifi',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Får du til å koble seg på et nytt WiFi-nettverk?',
+            illustration: require('./images/wifi.svg'),
+            resultTitle: 'Kan koble på trådløst nettverk',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
+          name: 'True about WiFi and mobile data',
+          templateID: QuestionTemplate.MultipleButtons,
+          questionContent: {
+            text: 'Hvilke påstander stemmer?',
+            resultTitle: 'Forstår forskjeller mellom WiFi og mobilnett',
+            answerValues: [
+              'Der det er mulig å ringe, er det også mobilnett tilgjengelig',
+              'Mobilnett er ikke knyttet til mitt mobilabonnement',
+              'Jeg kan ofte koble meg på gratis internett på offentlige plasser, som for eksempel kaféer, bibliotek og kjøpesenter',
+              'Det er en fordel å bruke mobilnett når man skal se på film'
+            ],
+            isImage: false,
+            correctAlternativeList: [
+              'Der det er mulig å ringe, er det også mobilnett tilgjengelig',
+              'Jeg kan ofte koble meg på gratis internett på offentlige plasser, som for eksempel kaféer, bibliotek og kjøpesenter'
+            ]
+          }
+        },
+        {
+          name: 'Recognizes bluetooth icon',
+          templateID: QuestionTemplate.ChooseOneMastery,
+          questionContent: {
+            text: 'Hva betyr symbolet nedenfor?',
+            illustration: require('./images/bluetooth.svg'),
+            resultTitle: 'Kjenner igjen bluetooth-ikon',
+            answerValues: ['Bluetooth', 'Mobilnett', 'Innstillinger', 'WiFi'],
+            isImage: false,
+            correctAlternative: 'Bluetooth'
+          }
+        },
+        {
+          name: 'Can toggle mobile data',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Får du til å slå av og på mobildata?',
+            resultTitle: 'Kan slå av og på mobildata',
+            answerValues: ['Ja', 'Nei'],
+            isImage: false
+          }
+        },
+        {
+          name: 'Settings I want to learn',
+          templateID: QuestionTemplate.BigText,
+          questionContent: {
+            text: 'Hvilke andre innstillinger har du lyst til å lære deg?',
+            placeholder: 'Jeg vil lære meg å...',
+            resultTitle: 'Jeg ønsker å lære dette'
+          }
+        },
+        {
+          name: 'Completed subject',
+          templateID: QuestionTemplate.CompletedSubject
         }
       ]
     }

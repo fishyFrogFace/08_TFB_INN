@@ -23,6 +23,7 @@ export enum QuestionTemplate {
   TextInput,
   LogIn,
   MultipleButtons,
+  BigText,
   ChooseOne,
   ChooseOneMastery
 }
