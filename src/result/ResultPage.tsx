@@ -9,7 +9,7 @@ import { joinAndCapitalize } from '../Util';
 const subjectResults = (element: SubjectResult, i: number) => {
   return (
     <div key={i} className='subject-result'>
-      <h2 className='h2'>{element.subjectTitle}</h2>
+      <h2 className={`h2 ${element.subjectColor}`}>{element.subjectTitle}</h2>
       {element.results.map((res, n) =>
         res.type === QuestionResultType.Mastery ? (
           <ProgressBar key={n} {...res} />

@@ -4,6 +4,7 @@ import { QuestionResult, QuestionResultType } from '../Types';
 import FlowButtons from 'components/FlowButtons';
 
 interface Props {
+  subjectColor: string;
   maxPoints: number;
   text: string;
   placeholder: string;
@@ -18,7 +19,7 @@ const TextInput: React.FC<Props> = props => {
 
   return (
     <div className='content'>
-      <div className={"questiontextContainer " + ''/*props.subjectColor*/ }>
+      <div className={`questiontextContainer ${props.subjectColor}`}>
         <h1 className='h2 white normal-font'>{props.text}</h1>
       </div>
       <div className="textinputContainer whiteBackground">

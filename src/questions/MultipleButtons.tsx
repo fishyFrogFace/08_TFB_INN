@@ -5,6 +5,7 @@ import { QuestionResult, QuestionResultType } from '../Types';
 import FlowButtons from 'components/FlowButtons';
 
 interface Props {
+  subjectColor: string;
   text: string;
   resultTitle: string;
   illustration?: string;
@@ -58,7 +59,7 @@ const MultipleButtons: React.FC<Props> = props => {
     <div className='content'>
       
       {props.illustration === undefined ? (
-        <div className={"questiontextContainer " + ''/*props.subjectColor*/ }>
+        <div className={`questiontextContainer ${props.subjectColor}`}>
           <p className='h2 white normal-font'>{props.text} (flere valg mulig)</p>
         </div>
         

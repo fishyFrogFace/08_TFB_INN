@@ -4,23 +4,25 @@ import './Pages.css';
 import Button from '../components/Button';
 
 interface Props {
-  subject: String;
+  subjectColor: string;
+  subject: string;
   nextSubject: () => void;
 }
 
 const CompletedSubject: React.FC<Props> = props => {
   return (
     <div className='content'>
-      <div className="completedContainer ">
-        <p className='h1 white normal-font'>Du har fullført {props.subject}!</p>
-        </div>
+      <div className='completedContainer '>
+        <h1 className={`h1 white normal-font${props.subjectColor}`}>
+          Du har fullført {props.subject}
+        </h1>
+      </div>
 
       <div className='nextButtonContainer'>
         <Button classNames='next' onClick={() => props.nextSubject()}>
           Tilbake til temaoversikt
         </Button>
       </div>
-      
     </div>
   );
 };

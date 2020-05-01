@@ -28,6 +28,7 @@ export enum QuestionTemplate {
 }
 
 export interface SubjectResult {
+  subjectColor: string;
   subjectTitle: string;
   results: QuestionResult[];
 }

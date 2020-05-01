@@ -5,6 +5,7 @@ import { QuestionResult, QuestionResultType, UserInformation } from '../Types';
 import FlowButtons from 'components/FlowButtons';
 
 interface Props {
+  subjectColor: string;
   maxPoints: number;
   resultTitle: string;
   userInformation: UserInformation;
@@ -59,7 +60,7 @@ const TextInput: React.FC<Props> = props => {
 
   return (
     <div className='content'>
-       <div className={"questiontextContainer " + 'bluegrey-background' }>
+       <div className={`questiontextContainer ${props.subjectColor}`}>
         <h1 className='h2 white normal-font'>Logg inn med informasjonen under</h1>
         
         </div>

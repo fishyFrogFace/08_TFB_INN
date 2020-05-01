@@ -4,6 +4,7 @@ import { QuestionResult, ImageInformation, QuestionResultType } from '../Types';
 import FlowButtons from 'components/FlowButtons';
 
 interface Props {
+  subjectColor: string;
   maxPoints: number;
   text: string;
   resultTitle: string;
@@ -59,7 +60,7 @@ const WhereInPicture: React.FC<Props> = props => {
 
   return (
     <div>
-      <h1 className='h1'>{props.text}</h1>
+      <h1 className={`h1 ${props.subjectColor}`}>{props.text}</h1>
       <div>
         <img
           className={`where-in-picture-img ${mode}-image`}
