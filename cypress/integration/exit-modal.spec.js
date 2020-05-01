@@ -5,9 +5,6 @@ context('Exit modal testing', () => {
 
   before(() => {
     cy.visit('http://localhost:3000/');
-  });
-
-  it('exit button renders exit screen', () => {
     cy.get('.start')
       .first()
       .click();
@@ -23,7 +20,9 @@ context('Exit modal testing', () => {
     cy.get('.subject-btn')
       .first()
       .click();
+  });
 
+  it('exit button renders exit screen', () => {
     cy.get('.exit')
       .first()
       .click();

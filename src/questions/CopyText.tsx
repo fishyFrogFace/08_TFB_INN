@@ -57,9 +57,9 @@ const CopyText: React.FC<Props> = props => {
       questionTitle: props.text,
       pointsAchieved: 0,
       mastered: false,
-      answerValues: ["Jeg får ikke dette til"]
+      answerValues: ['Jeg får ikke dette til']
     });
-  }
+  };
 
   const storeInput = (e: React.FormEvent<HTMLInputElement>) => {
     setColor('black');
@@ -79,10 +79,7 @@ const CopyText: React.FC<Props> = props => {
           onChange={e => storeInput(e)}
           placeholder={props.text}
         />
-        <FlowButtons
-          skip={failQuestion}
-          update={checkInput}
-        />
+        <FlowButtons skip={failQuestion} update={checkInput} />
       </form>
     </div>
   );

@@ -4,18 +4,18 @@ import { StyleSheet, View, Text } from '@react-pdf/renderer';
 // Create styles
 const styles = StyleSheet.create({
   titleContainer: {
-    flexDirection: "row",
-    alignContent: "space-between",
+    flexDirection: 'row',
+    alignContent: 'space-between',
     borderBottomWidth: 1,
-    borderStyle: "solid",
-    borderColor: "black",
-    padding: 5,
+    borderStyle: 'solid',
+    borderColor: 'black',
+    padding: 5
   },
   titleItem: {
-    flex: 1,
+    flex: 1
   },
   title: {
-    fontSize: 36,
+    fontSize: 36
   }
 });
 
@@ -26,8 +26,14 @@ export interface Props {
 }
 
 const getDateString = (date: Date) => {
-  return date.getFullYear().toString() + "/" + date.getMonth().toString() + "/" + date.getDate().toString();
-}
+  return (
+    date.getFullYear().toString() +
+    '/' +
+    date.getMonth().toString() +
+    '/' +
+    date.getDate().toString()
+  );
+};
 
 const ResultsDocumentTitle: React.FC<Props> = ({ title, name, date }) => (
   <View style={styles.titleContainer}>
@@ -35,10 +41,10 @@ const ResultsDocumentTitle: React.FC<Props> = ({ title, name, date }) => (
       <Text>{title}</Text>
     </View>
     <View style={styles.titleItem}>
-      <Text style={{ textAlign: "right" }}>Navn: {name}</Text>
-<Text style={{ textAlign: "right" }}>Dato: {getDateString(date)}</Text>
+      <Text style={{ textAlign: 'right' }}>Navn: {name}</Text>
+      <Text style={{ textAlign: 'right' }}>Dato: {getDateString(date)}</Text>
     </View>
   </View>
 );
 
-export default ResultsDocumentTitle
+export default ResultsDocumentTitle;

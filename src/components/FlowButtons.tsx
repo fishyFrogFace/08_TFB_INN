@@ -10,12 +10,13 @@ interface Props {
 const FlowButtons: React.FC<Props> = props => {
   return (
     <div id='flow-buttons'>
-      {props.update !== undefined
-        ? <Button classNames={'next skip-button'} onClick={props.skip!}>
-        Jeg får ikke dette til
-      </Button>
-        : ""
-      }
+      {props.update !== undefined ? (
+        <Button classNames={'next skip-button'} onClick={props.skip!}>
+          Jeg får ikke dette til
+        </Button>
+      ) : (
+        ''
+      )}
       <Button classNames='next next-button' onClick={props.update}>
         Neste
       </Button>

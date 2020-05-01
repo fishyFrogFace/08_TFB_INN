@@ -64,9 +64,9 @@ const MultipleButtons: React.FC<Props> = props => {
       questionTitle: props.text,
       pointsAchieved: 0,
       mastered: false,
-      answerValues: ["Jeg får ikke dette til"]
+      answerValues: ['Jeg får ikke dette til']
     });
-  }
+  };
 
   return (
     <div>
@@ -90,10 +90,7 @@ const MultipleButtons: React.FC<Props> = props => {
           </Button>
         ))}
       </div>
-      <FlowButtons
-        skip={failQuestion}
-        update={returnResult}
-      />
+      <FlowButtons skip={failQuestion} update={returnResult} />
     </div>
   );
 };

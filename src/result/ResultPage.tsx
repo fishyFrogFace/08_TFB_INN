@@ -30,11 +30,34 @@ const ResultPage: React.FC<PropsFromRedux> = props => {
   return (
     <div className='result-container'>
       <h1 className='h1'>Resultat for {props.username}</h1>
-      <PDFDownloadLink document={<ResultsDocument username={props.username} subjectResultsList={props.results} devices={props.units} />} fileName="document.pdf">
-        {({ blob, url, loading, error }) => (loading ?
-          <Button classNames='btn download' onClick={() => {return}}>Gjør klart resultat...</Button>
-          : <Button classNames='btn download' onClick={() => {return}}>Last ned resultat</Button>
-        )}
+      <PDFDownloadLink
+        document={
+          <ResultsDocument
+            username={props.username}
+            subjectResultsList={props.results}
+            devices={props.units}
+          />
+        }
+        fileName='document.pdf'>
+        {({ blob, url, loading, error }) =>
+          loading ? (
+            <Button
+              classNames='btn download'
+              onClick={() => {
+                return;
+              }}>
+              Gjør klart resultat...
+            </Button>
+          ) : (
+            <Button
+              classNames='btn download'
+              onClick={() => {
+                return;
+              }}>
+              Last ned resultat
+            </Button>
+          )
+        }
       </PDFDownloadLink>
     </div>
   );

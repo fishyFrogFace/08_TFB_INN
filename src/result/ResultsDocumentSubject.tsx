@@ -7,16 +7,16 @@ import ResultsDocumentQuestion from './ResultsDocumentQuestion';
 const styles = StyleSheet.create({
   subject: {
     borderBottomWidth: 1,
-    borderStyle: "solid",
-    borderColor: "black",
-    padding: 10,
+    borderStyle: 'solid',
+    borderColor: 'black',
+    padding: 10
   },
   numbers: {
-    textAlign: "right"
+    textAlign: 'right'
   },
   subjectTitle: {
     fontSize: 24,
-    marginBottom: 5,
+    marginBottom: 5
   }
 });
 
@@ -25,17 +25,31 @@ export interface Props {
 }
 
 const ResultsDocumentSubject: React.FC<Props> = ({ subjectResult }) => {
-  const masteryQuestions = subjectResult.results.filter(result => result.type === QuestionResultType.Mastery).length;
-  const mastered = subjectResult.results.filter(result => result.type === QuestionResultType.Mastery).filter(result => result.mastered).length;
+  const masteryQuestions = subjectResult.results.filter(
+    result => result.type === QuestionResultType.Mastery
+  ).length;
+  const mastered = subjectResult.results
+    .filter(result => result.type === QuestionResultType.Mastery)
+    .filter(result => result.mastered).length;
 
   return (
-  <View key={subjectResult.subjectTitle} style={styles.subject}>
-    <Text style={styles.subjectTitle}>Tema: {subjectResult.subjectTitle}</Text>
-    {subjectResult.results.map((questionResult, index) => {
-      return <ResultsDocumentQuestion key={questionResult.resultTitle} questionResult={questionResult} />
-    })}
-    <Text style={styles.numbers}>Mestret: {mastered}/{masteryQuestions}</Text>
-  </View>
-);}
+    <View key={subjectResult.subjectTitle} style={styles.subject}>
+      <Text style={styles.subjectTitle}>
+        Tema: {subjectResult.subjectTitle}
+      </Text>
+      {subjectResult.results.map((questionResult, index) => {
+        return (
+          <ResultsDocumentQuestion
+            key={questionResult.resultTitle}
+            questionResult={questionResult}
+          />
+        );
+      })}
+      <Text style={styles.numbers}>
+        Mestret: {mastered}/{masteryQuestions}
+      </Text>
+    </View>
+  );
+};
 
-export default ResultsDocumentSubject
+export default ResultsDocumentSubject;

@@ -22,7 +22,7 @@ const ChooseOne: React.FC<Props> = props => {
     if (result === undefined) {
       props.updateResult({
         mastered: false,
-        answerValues: ["Jeg får ikke dette til"],
+        answerValues: ['Jeg får ikke dette til'],
         type: QuestionResultType.Other,
         maxPoints: 0,
         resultTitle: props.resultTitle,
@@ -66,7 +66,9 @@ const ChooseOne: React.FC<Props> = props => {
         skip={() => {
           returnResult(undefined);
         }}
-        update={() => {if (selectedButton !== undefined) returnResult(selectedButton)}}
+        update={() => {
+          if (selectedButton !== undefined) returnResult(selectedButton);
+        }}
       />
     </div>
   );

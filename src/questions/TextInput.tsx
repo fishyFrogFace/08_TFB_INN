@@ -17,7 +17,7 @@ const TextInput: React.FC<Props> = props => {
   const [input, setInput] = useState('');
 
   const failQuestion = () => {
-    setInput("")
+    setInput('');
     props.updateResult({
       type: QuestionResultType.Mastery,
       maxPoints: props.maxPoints,
@@ -25,9 +25,9 @@ const TextInput: React.FC<Props> = props => {
       questionTitle: props.text,
       pointsAchieved: 0,
       mastered: false,
-      answerValues: ["Jeg får ikke dette til"]
+      answerValues: ['Jeg får ikke dette til']
     });
-  }
+  };
 
   const returnResult = () => {
     setInput('');
@@ -40,7 +40,7 @@ const TextInput: React.FC<Props> = props => {
       questionTitle: props.text,
       pointsAchieved: props.processString(input, props.maxPoints)
     });
-  }
+  };
 
   return (
     <div>
@@ -55,10 +55,7 @@ const TextInput: React.FC<Props> = props => {
           onChange={e => setInput(e.currentTarget.value)}
           placeholder={props.placeholder}
         />
-        <FlowButtons
-          skip={failQuestion}
-          update={returnResult}
-        />
+        <FlowButtons skip={failQuestion} update={returnResult} />
       </form>
     </div>
   );
