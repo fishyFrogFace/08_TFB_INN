@@ -105,13 +105,6 @@ context('Pre-exam', () => {
       .should('be.visible');
   });
 
-  it('result reflects what units were chosen', () => {
-    cy.get('.h2')
-      .first()
-      .should('contain', 'Laptop, nettbrett')
-      .and('not.contain', 'marttelefon');
-  });
-
   it('a reload brings you to start page', () => {
     cy.reload();
     cy.get('.frontpage-header')
