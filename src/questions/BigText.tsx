@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import '../App.css';
 import './Question.css';
 import Button from '../components/Button';
-import { QuestionResult, QuestionResultType } from '../Types';
+import { QuestionResult } from '../Types';
+import { makeOtherResult } from 'helpers/makeResult';
 
 interface Props {
   text: string;
@@ -28,17 +29,7 @@ const BigText: React.FC<Props> = props => {
         />
         <Button
           classNames='next'
-          onClick={() =>
-            props.updateResult({
-              mastered: false,
-              type: QuestionResultType.Other,
-              answerValues: [input],
-              maxPoints: 0,
-              resultTitle: props.resultTitle,
-              questionTitle: props.text,
-              pointsAchieved: 0
-            })
-          }>
+          onClick={() => props.updateResult(makeOtherResult(props, [input]))}>
           Neste
         </Button>
       </form>

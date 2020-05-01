@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from '@react-pdf/renderer';
-import { QuestionResult, QuestionResultType } from 'Types';
+import { QuestionResult } from 'Types';
 
 // Create styles
 const styles = StyleSheet.create({
@@ -29,39 +29,66 @@ export interface Props {
   questionResult: QuestionResult;
 }
 
-const getSymbolPath = (isMastery: boolean, mastered: boolean) => {
-  if (isMastery) {
-    if (mastered) {
-      return 'symbols/checkmark.png';
-    } else {
-      return 'symbols/cross.png';
-    }
-  } else {
-    return 'symbols/circle.png';
+const getSymbolPath = (questionResult: any) => {
+  switch (questionResult.common.type) {
+    case 'mastery':
+      return (
+        <Image
+          style={styles.symbol}
+          src={
+            questionResult.mastered
+              ? 'symbols/checkmark.png'
+              : 'symbols/cross.png'
+          }
+        />
+      );
+
+    case 'points':
+      return (
+        <Image
+          style={styles.symbol}
+          src={
+            questionResult.pointsAchieved / questionResult.maxPoints === 1
+              ? 'symbols/checkmark.png'
+              : 'symbols/percentage.svg'
+          }
+        />
+      );
+
+    case 'other':
+      return <Image style={styles.symbol} src='symbols/circle.png' />;
   }
 };
 
 const ResultsDocumentQuestion: React.FC<Props> = ({ questionResult }) => {
-  const isMastery = questionResult.type === QuestionResultType.Mastery;
-  const mastered = questionResult.mastered;
+  const isMastery = questionResult.common.type === 'mastery';
+  const isPoints = questionResult.common.type === 'points';
+  const isMasteryOrPoints = isMastery || isPoints;
+
+  const pointsAchieved = (questionResult: any) =>
+    `${questionResult.pointsAchieved} / ${questionResult.maxPoints}`;
 
   return (
     <View style={styles.question}>
       <View style={styles.lineWithImages}>
-        <Image
-          style={styles.symbol}
-          src={getSymbolPath(isMastery, mastered)}></Image>
+        {getSymbolPath(questionResult)}
         <Text style={styles.title}>
-          {isMastery
-            ? questionResult.resultTitle
-            : questionResult.questionTitle}
+          {isMasteryOrPoints
+            ? questionResult.common.resultTitle
+            : questionResult.common.questionTitle}
         </Text>
       </View>
+      {isMasteryOrPoints ? (
+        <Text style={styles.extraInformation}>
+          {isMastery
+            ? `Spørsmål: ${questionResult.common.questionTitle}`
+            : `Poeng oppådd: ${pointsAchieved(questionResult)}`}
+        </Text>
+      ) : (
+        ''
+      )}
       <Text style={styles.extraInformation}>
-        {isMastery ? 'Spørsmål: ' + questionResult.questionTitle : ''}
-      </Text>
-      <Text style={styles.extraInformation}>
-        Svar avgitt: {questionResult.answerValues.join(', ')}
+        Svar avgitt: {questionResult.common.answerValues.join(', ')}
       </Text>
     </View>
   );
