@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from '@react-pdf/renderer';
+import { StyleSheet, View, Text } from '@react-pdf/renderer';
 import { SubjectResult, QuestionResultType } from 'Types';
 import ResultsDocumentQuestion from './ResultsDocumentQuestion';
 

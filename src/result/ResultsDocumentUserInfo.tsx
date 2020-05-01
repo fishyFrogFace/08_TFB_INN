@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from '@react-pdf/renderer';
-import { QuestionResult, QuestionResultType } from 'Types';
+import { StyleSheet, View, Text } from '@react-pdf/renderer';
 
 // Create styles
 const styles = StyleSheet.create({
