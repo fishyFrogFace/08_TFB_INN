@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './Question.css';
-import { QuestionResult, QuestionResultType } from '../Types';
+import { QuestionResult } from '../Types';
 import FlowButtons from 'components/FlowButtons';
+import { makePointResult, failPointResult } from 'helpers/makeResult';
 
 interface Props {
   maxPoints: number;
@@ -18,28 +19,18 @@ const TextInput: React.FC<Props> = props => {
 
   const failQuestion = () => {
     setInput('');
-    props.updateResult({
-      type: QuestionResultType.Mastery,
-      maxPoints: props.maxPoints,
-      resultTitle: props.resultTitle,
-      questionTitle: props.text,
-      pointsAchieved: 0,
-      mastered: false,
-      answerValues: ['Jeg får ikke dette til']
-    });
+    props.updateResult(failPointResult(props));
   };
 
   const returnResult = () => {
     setInput('');
-    props.updateResult({
-      mastered: true,
-      type: QuestionResultType.Mastery,
-      answerValues: [input],
-      maxPoints: props.maxPoints,
-      resultTitle: props.resultTitle,
-      questionTitle: props.text,
-      pointsAchieved: props.processString(input, props.maxPoints)
-    });
+    props.updateResult(
+      makePointResult(
+        props,
+        [input],
+        props.processString(input, props.maxPoints)
+      )
+    );
   };
 
   return (

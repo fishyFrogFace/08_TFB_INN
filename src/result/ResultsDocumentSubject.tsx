@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from '@react-pdf/renderer';
-import { SubjectResult, QuestionResultType } from 'Types';
+import { SubjectResult } from 'Types';
 import ResultsDocumentQuestion from './ResultsDocumentQuestion';
 
 // Create styles
@@ -26,11 +26,12 @@ export interface Props {
 
 const ResultsDocumentSubject: React.FC<Props> = ({ subjectResult }) => {
   const masteryQuestions = subjectResult.results.filter(
-    result => result.type === QuestionResultType.Mastery
+    result => result.common.type === 'mastery'
   ).length;
+
   const mastered = subjectResult.results
-    .filter(result => result.type === QuestionResultType.Mastery)
-    .filter(result => result.mastered).length;
+    .filter(result => result.common.type === 'mastery')
+    .filter((result: any) => result.mastered).length;
 
   return (
     <View key={subjectResult.subjectTitle} style={styles.subject}>
@@ -40,7 +41,7 @@ const ResultsDocumentSubject: React.FC<Props> = ({ subjectResult }) => {
       {subjectResult.results.map((questionResult, index) => {
         return (
           <ResultsDocumentQuestion
-            key={questionResult.resultTitle}
+            key={questionResult.common.resultTitle}
             questionResult={questionResult}
           />
         );
