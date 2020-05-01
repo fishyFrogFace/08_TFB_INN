@@ -43,7 +43,7 @@ const WhereInPicture: React.FC<Props> = props => {
       questionTitle: props.text,
       pointsAchieved: points,
       mastered: true,
-      answerValues: ["Valgte riktig område"]
+      answerValues: ['Valgte riktig område']
     });
   };
 
@@ -56,9 +56,9 @@ const WhereInPicture: React.FC<Props> = props => {
       questionTitle: props.text,
       pointsAchieved: 0,
       mastered: false,
-      answerValues: ["Jeg får ikke dette til"]
+      answerValues: ['Jeg får ikke dette til']
     });
-  }
+  };
 
   return (
     <div>
@@ -81,7 +81,9 @@ const WhereInPicture: React.FC<Props> = props => {
       </div>
       <FlowButtons
         skip={failQuestion}
-        update={() => { if (mode !== "incorrect") returnResult() }}
+        update={() => {
+          if (mode !== 'incorrect') returnResult();
+        }}
       />
     </div>
   );

@@ -18,14 +18,24 @@ export interface Props {
   devices: string;
 }
 
-const ResultsDocument: React.FC<Props> = ({ username, subjectResultsList, devices}) => (
+const ResultsDocument: React.FC<Props> = ({
+  username,
+  subjectResultsList,
+  devices
+}) => (
   <Document>
-    <Page size="A4" style={styles.page} wrap>
-      <ResultsDocumentTitle title="Resultat" name={username} date={new Date()} />
+    <Page size='A4' style={styles.page} wrap>
+      <ResultsDocumentTitle
+        title='Resultat'
+        name={username}
+        date={new Date()}
+      />
       <ResultsDocumentUserInfo devices={devices} />
-      {subjectResultsList.filter((subjectResult) => subjectResult.results.length > 0).map((subjectResult, i) => {
-        return <ResultsDocumentSubject subjectResult={subjectResult} />
-      })}
+      {subjectResultsList
+        .filter(subjectResult => subjectResult.results.length > 0)
+        .map((subjectResult, i) => {
+          return <ResultsDocumentSubject subjectResult={subjectResult} />;
+        })}
     </Page>
   </Document>
 );

@@ -7,23 +7,23 @@ import ResultsDocumentQuestion from './ResultsDocumentQuestion';
 const styles = StyleSheet.create({
   subject: {
     borderBottomWidth: 1,
-    borderStyle: "solid",
-    borderColor: "black",
-    padding: 10,
+    borderStyle: 'solid',
+    borderColor: 'black',
+    padding: 10
   },
   numbers: {
-    textAlign: "right"
+    textAlign: 'right'
   },
   subjectTitle: {
     fontSize: 24,
-    marginBottom: 5,
+    marginBottom: 5
   },
   heading: {
-    fontSize: 18,
+    fontSize: 18
   },
   listItem: {
-    marginLeft: 24,
-  },
+    marginLeft: 24
+  }
 });
 
 export interface Props {
@@ -33,19 +33,37 @@ export interface Props {
 const ResultsDocumentSummary: React.FC<Props> = ({ subjectResultsList }) => {
   let totalMasteryQuestions = 0;
   let totalMastered = 0;
-  subjectResultsList.forEach(subjectResult => totalMasteryQuestions += subjectResult.results.filter(result => result.type === QuestionResultType.Mastery).length);
-  subjectResultsList.forEach(subjectResult => totalMastered += subjectResult.results.filter(result => result.type === QuestionResultType.Mastery && result.mastered).length);
+  subjectResultsList.forEach(
+    subjectResult =>
+      (totalMasteryQuestions += subjectResult.results.filter(
+        result => result.type === QuestionResultType.Mastery
+      ).length)
+  );
+  subjectResultsList.forEach(
+    subjectResult =>
+      (totalMastered += subjectResult.results.filter(
+        result => result.type === QuestionResultType.Mastery && result.mastered
+      ).length)
+  );
 
   return (
     <View style={styles.subject}>
       <Text style={styles.subjectTitle}>Oppsummering</Text>
       <Text style={styles.heading}>Emner kartlagt:</Text>
-      {subjectResultsList.filter((subjectResult) => subjectResult.results.length > 0).map((subjectResult, index) => {
-        return <Text key={index} style={styles.listItem}>{subjectResult.subjectTitle}</Text>
-      })}
-      <Text style={styles.numbers}>Totalt mestret: {totalMastered}/{totalMasteryQuestions}</Text>
+      {subjectResultsList
+        .filter(subjectResult => subjectResult.results.length > 0)
+        .map((subjectResult, index) => {
+          return (
+            <Text key={index} style={styles.listItem}>
+              {subjectResult.subjectTitle}
+            </Text>
+          );
+        })}
+      <Text style={styles.numbers}>
+        Totalt mestret: {totalMastered}/{totalMasteryQuestions}
+      </Text>
     </View>
   );
-}
+};
 
-export default ResultsDocumentSummary
+export default ResultsDocumentSummary;
