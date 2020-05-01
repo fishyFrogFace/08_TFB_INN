@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Document, Page, View, Text } from '@react-pdf/renderer';
+import { StyleSheet, Document, Page } from '@react-pdf/renderer';
 import ResultsDocumentTitle from './ResultsDocumentTitle';
 import ResultsDocumentSubject from './ResultsDocumentSubject';
 import { SubjectResult } from 'Types';
