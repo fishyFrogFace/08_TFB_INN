@@ -251,8 +251,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor klikker du for å opprette en ny e-post?',
             imageInformation: {
-              image: require('./images/inbox.png'),
-              imageWithIndicator: require('./images/new-email-correct.png'),
+              image: require('./images/gmail-overview.png'),
+              imageWithIndicator: require('./images/gmail-new-mail-correct.png'),
               min: { x: 14, y: 41 },
               max: { x: 129, y: 71 }
             },
@@ -266,7 +266,7 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor skriver du emnet til e-posten?',
             imageInformation: {
-              image: require('./images/email.jpeg'),
+              image: require('./images/gmail-edit.png'),
               imageWithIndicator: require('./images/subject-correct.png'),
               min: { x: 0, y: 76 },
               max: { x: 657, y: 102 }
@@ -281,8 +281,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor skriver du inn mottakerne av e-posten?',
             imageInformation: {
-              image: require('./images/email.jpeg'),
-              imageWithIndicator: require('./images/recipient-correct.png'),
+              image: require('./images/gmail-edit.png'),
+              imageWithIndicator: require('./images/gmail-recipient-correct.png'),
               min: { x: 0, y: 53 },
               max: { x: 657, y: 76 }
             },
@@ -296,8 +296,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor klikker du for å skrive innholdet i e-posten?',
             imageInformation: {
-              image: require('./images/email.jpeg'),
-              imageWithIndicator: require('./images/body-correct.png'),
+              image: require('./images/gmail-edit.png'),
+              imageWithIndicator: require('./images/gmail-body-correct.png'),
               min: { x: 0, y: 128 },
               max: { x: 657, y: 329 }
             },
@@ -311,8 +311,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor klikker du for å legge til et vedlegg?',
             imageInformation: {
-              image: require('./images/email.jpeg'),
-              imageWithIndicator: require('./images/attachment-correct.png'),
+              image: require('./images/gmail-edit.png'),
+              imageWithIndicator: require('./images/gmail-attachment-correct.png'),
               min: { x: 13, y: 336 },
               max: { x: 61, y: 360 }
             },
@@ -326,8 +326,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor klikker du for å sende e-posten?',
             imageInformation: {
-              image: require('./images/email.jpeg'),
-              imageWithIndicator: require('./images/send-correct.png'),
+              image: require('./images/gmail-send.png'),
+              imageWithIndicator: require('./images/gmail-send-correct.png'),
               min: { x: 573, y: 337 },
               max: { x: 646, y: 360 }
             },
@@ -341,8 +341,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor klikker du for å åpne den øverste e-posten?',
             imageInformation: {
-              image: require('./images/inbox.png'),
-              imageWithIndicator: require('./images/first-email-correct.png'),
+              image: require('./images/gmail-overview.png'),
+              imageWithIndicator: require('./images/gmail-first-email-correct.png'),
               min: { x: 146, y: 80 },
               max: { x: 648, y: 124 }
             },
@@ -356,8 +356,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor klikker du for å svare på e-posten?',
             imageInformation: {
-              image: require('./images/reply.png'),
-              imageWithIndicator: require('./images/reply-correct.png'),
+              image: require('./images/gmail-reply.png'),
+              imageWithIndicator: require('./images/gmail-reply-correct.png'),
               min: { x: 506, y: 123 },
               max: { x: 538, y: 145 }
             },

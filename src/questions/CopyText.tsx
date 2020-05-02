@@ -3,7 +3,7 @@ import './Question.css';
 import { QuestionResult, QuestionResultType } from '../Types';
 import FlowButtons from 'components/FlowButtons';
 import Subject from 'examination/Subject';
-//import Button from 'components/Button'
+import Button from 'components/Button';
 
 interface Props {
   subjectColor: string;

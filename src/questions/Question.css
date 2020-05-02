@@ -191,6 +191,23 @@ img {
   max-width: 200px;
 }
 
+@media only screen and (max-width: 500px) {
+  .where-in-picture-img {
+    max-height: 350px;
+  }
+}
+@media only screen and (min-width: 501px) and (max-width: 900px) {
+  .where-in-picture-img {
+    max-width: 400px;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .where-in-picture-img {
+    max-width: 600px;
+  }
+}
+
+
 .not-column {
   flex-direction: row;
 }
