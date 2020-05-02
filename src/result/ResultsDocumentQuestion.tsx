@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from '@react-pdf/renderer';
-import { QuestionResult } from 'Types';
+import { QuestionResult, Points } from 'Types';
 
 // Create styles
 const styles = StyleSheet.create({
@@ -29,76 +29,88 @@ export interface Props {
   questionResult: QuestionResult;
 }
 
-const getSymbolPath = (questionResult: any) => {
-  switch (questionResult.common.type) {
+const getSymbolPath = (questionResult: Points) => {
+  switch (questionResult.pointsAchieved / questionResult.maxPoints) {
+    case 0:
+      return <Image style={styles.symbol} src={'symbols/percentage-red.svg'} />;
+    case 1:
+      return (
+        <Image style={styles.symbol} src={'symbols/percentage-green.svg'} />
+      );
+    default:
+      return (
+        <Image style={styles.symbol} src={'symbols/percentage-yellow.svg'} />
+      );
+  }
+};
+
+const pointsAchieved = (questionResult: Points) =>
+  `${questionResult.pointsAchieved} / ${questionResult.maxPoints}`;
+
+const questionResultView = (questionResult: QuestionResult) => {
+  switch (questionResult.type) {
     case 'mastery':
       return (
-        <Image
-          style={styles.symbol}
-          src={
-            questionResult.mastered
-              ? 'symbols/checkmark.png'
-              : 'symbols/cross.png'
-          }
-        />
+        <View style={styles.question}>
+          <View style={styles.lineWithImages}>
+            <Image
+              style={styles.symbol}
+              src={
+                questionResult.mastered
+                  ? 'symbols/checkmark.png'
+                  : 'symbols/cross.png'
+              }
+            />
+            <Text style={styles.title}>
+              {questionResult.common.resultTitle}
+            </Text>
+          </View>
+          <Text style={styles.extraInformation}>
+            Spørsmål: {questionResult.common.questionTitle}}
+          </Text>
+          <Text style={styles.extraInformation}>
+            Svar avgitt: {questionResult.common.answerValues.join(', ')}
+          </Text>
+        </View>
       );
 
     case 'points':
-      switch (questionResult.pointsAchieved / questionResult.maxPoints) {
-        case 0:
-          return (
-            <Image style={styles.symbol} src={'symbols/percentage-red.svg'} />
-          );
-        case 1:
-          return (
-            <Image style={styles.symbol} src={'symbols/percentage-green.svg'} />
-          );
-        default:
-          return (
-            <Image
-              style={styles.symbol}
-              src={'symbols/percentage-yellow.svg'}
-            />
-          );
-      }
+      return (
+        <View style={styles.question}>
+          <View style={styles.lineWithImages}>
+            {getSymbolPath(questionResult)}
+            <Text style={styles.title}>
+              {questionResult.common.resultTitle}
+            </Text>
+          </View>
+          <Text style={styles.extraInformation}>
+            Poeng oppnådd: {pointsAchieved(questionResult)}
+          </Text>
+          <Text style={styles.extraInformation}>
+            Svar avgitt: {questionResult.common.answerValues.join(', ')}
+          </Text>
+        </View>
+      );
 
-    case 'other':
-      return <Image style={styles.symbol} src='symbols/circle.png' />;
+    default:
+      return (
+        <View style={styles.question}>
+          <View style={styles.lineWithImages}>
+            <Image style={styles.symbol} src='symbols/circle.png' />
+            <Text style={styles.title}>
+              {questionResult.common.questionTitle}
+            </Text>
+          </View>
+          <Text style={styles.extraInformation}>
+            Svar avgitt: {questionResult.common.answerValues.join(', ')}
+          </Text>
+        </View>
+      );
   }
 };
 
 const ResultsDocumentQuestion: React.FC<Props> = ({ questionResult }) => {
-  const isMastery = questionResult.common.type === 'mastery';
-  const isPoints = questionResult.common.type === 'points';
-  const isMasteryOrPoints = isMastery || isPoints;
-
-  const pointsAchieved = (questionResult: any) =>
-    `${questionResult.pointsAchieved} / ${questionResult.maxPoints}`;
-
-  return (
-    <View style={styles.question}>
-      <View style={styles.lineWithImages}>
-        {getSymbolPath(questionResult)}
-        <Text style={styles.title}>
-          {isMasteryOrPoints
-            ? questionResult.common.resultTitle
-            : questionResult.common.questionTitle}
-        </Text>
-      </View>
-      {isMasteryOrPoints ? (
-        <Text style={styles.extraInformation}>
-          {isMastery
-            ? `Spørsmål: ${questionResult.common.questionTitle}`
-            : `Poeng oppådd: ${pointsAchieved(questionResult)}`}
-        </Text>
-      ) : (
-        ''
-      )}
-      <Text style={styles.extraInformation}>
-        Svar avgitt: {questionResult.common.answerValues.join(', ')}
-      </Text>
-    </View>
-  );
+  return questionResultView(questionResult);
 };
 
 export default ResultsDocumentQuestion;
