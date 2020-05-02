@@ -112,10 +112,6 @@
   text-align: center;
 }
 
-.where-in-picture-img {
-  max-width: 80vw;
-  max-height: 369px;
-}
 
 .incorrect {
   display: none;
@@ -186,27 +182,31 @@
   text-align: left;
   font-size: 3vh;
 }
-
+/* give class
 img {
   max-width: 200px;
-}
+}*/
 
 @media only screen and (max-width: 500px) {
   .where-in-picture-img {
+    max-width: 100%;
     max-height: 350px;
+    
   }
 }
-@media only screen and (min-width: 501px) and (max-width: 900px) {
+@media only screen and (min-width: 501px) {
   .where-in-picture-img {
-    max-width: 400px;
+    max-height: 550px;
+    max-width: 100%;
   }
 }
+/*
 @media only screen and (min-width: 900px) {
   .where-in-picture-img {
-    max-width: 600px;
+    max-height: 500px;
   }
 }
-
+*/
 
 .not-column {
   flex-direction: row;
