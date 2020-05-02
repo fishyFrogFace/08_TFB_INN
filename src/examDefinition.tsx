@@ -369,6 +369,175 @@ export const standardExamDefinition = {
           questionContent: {}
         }
       ]
+    },
+    {
+        name: 'Å ringe og sende SMS',
+        questions: [
+          {
+            name: 'Send and Receive',
+            templateID: QuestionTemplate.ChooseOne,
+            questionContent: {
+              text: 'Har du sendt og mottatt SMS før (tekstmelding til telefonnummer)?',
+              resultTitle: 'Har sendt eller mottatt SMS',
+              answerValues: ['Ja','Nei','Vet ikke']
+            }
+          },
+          {
+            name: 'Open SMS-app',
+            templateID: QuestionTemplate.WhereInPicture,
+            questionContent: {
+              text: 'Finn og trykk på SMS-appen',
+              imageInformation: {
+                image: require('./images/finnMessages.jpeg'),
+                imageWithIndicator: require('./images/finnMessagesCor.jpeg'),
+                min: {x: 111, y: 147},
+                max: {x: 135, y: 172}
+              },
+              resultTitle: 'Kan finne SMS-app',
+              maxPoints: 6
+            }
+          },
+          {
+            name: 'Open Sara message',
+            templateID: QuestionTemplate.WhereInPicture,
+            questionContent: {
+              text: 'Hvor klikker du for å åpne meldingen fra Sara?',
+              imageInformation: {
+                image: require('./images/Sara.jpg'),
+                imageWithIndicator: require('./images/SaraCor.jpeg'),
+                min: {x: 0, y: 0},
+                max: {x: 0, y: 0}
+              },
+              resultTitle: 'Kan klikke på SMS',
+              maxPoints: 6
+            }
+          },
+          {
+            name: 'Respond message',
+            templateID: QuestionTemplate.WhereInPicture,
+            questionContent: {
+              text: 'Hvor klikker du for å skrive et svar til Sara?',
+              imageInformation: {
+                image: require('./images/smsSaraBase.jpeg'),
+                imageWithIndicator: require('./images/smsSaraResp.jpeg'),
+                min: {x: 0, y: 0},
+                max: {x: 0, y: 0}
+              },
+              resultTitle: 'Vet hvor man svarer på SMS',
+              maxPoints: 6
+            }
+          },
+          {
+            name: 'Send message',
+            templateID: QuestionTemplate.WhereInPicture,
+            questionContent: {
+              text: 'Hvor klikker du for å sende meldingen til Sara?',
+              imageInformation: {
+                image: require('./images/smsSaraBase.jpeg'),
+                imageWithIndicator: require('./images/smsSaraSend.jpeg'),
+                min: {x: 0, y: 0},
+                max: {x: 0, y: 0}
+              },
+              resultTitle: 'Kan sende SMS',
+              maxPoints: 6
+            }
+          },
+          {
+            name: 'Create new message',
+            templateID: QuestionTemplate.WhereInPicture,
+            questionContent: {
+              text: 'Hvor klikker du for å opprette en ny melding?',
+              imageInformation: {
+                image: require('./images/Sara.jpg'),
+                imageWithIndicator: require('./images/nyMelding.jpeg'),
+                min: {x: 0, y: 0},
+                max: {x: 0, y: 0}
+              },
+              resultTitle: 'Kan opprette ny melding',
+              maxPoints: 6
+            } 
+          },
+          {
+            name: 'Open contactlist',
+            templateID: QuestionTemplate.WhereInPicture,
+            questionContent: {
+              text: 'Åpne kontaktliste',
+              imageInformation: {
+                image: require('./images/finnMessages.jpeg'),
+                imageWithIndicator: require('./images/finnContactsCor.jpeg'),
+                min: {x: 0, y: 0},
+                max: {x: 0, y: 0}
+              },
+              resultTitle: 'Kan åpne kontaktliste',
+              maxPoints: 6
+            }
+          },
+          {
+            name: 'Open contact',
+            templateID: QuestionTemplate.WhereInPicture,
+            questionContent: {
+              text: 'Hvor trykker du for å se Janis sitt telefonnummer?',
+              imageInformation: {
+                image: require('./images/contactList.png'),
+                imageWithIndicator: require('./images/contactListCor.png'),
+                min: {x: 0, y: 0},
+                max: {x: 0, y: 0}
+              },
+              resultTitle: 'Kan åpne kontakt',
+              maxPoints: 6
+            } 
+          },
+          {
+            name: 'Call contact',
+            templateID: QuestionTemplate.WhereInPicture,
+            questionContent: {
+              text: 'Hvor trykker du for å ringe Janis?',
+              imageInformation: {
+                image: require('./images/CallBase.jpeg'),
+                imageWithIndicator: require('./images/CallCor.jpeg'),
+                min: {x: 0, y: 0},
+                max: {x: 0, y: 0}
+              },
+              resultTitle: 'Kan ringe kontakt',
+              maxPoints: 6
+            }
+          },
+          {
+            name: 'SMS to contact',
+            templateID: QuestionTemplate.WhereInPicture,
+            questionContent: {
+              text: 'Hvor trykker du for å sende melding til Sara?',
+              imageInformation: {
+                image: require('./images/CallBase.jpeg'),
+                imageWithIndicator: require('./images/CallSMSCor.jpg'),
+                min: {x: 0, y: 0},
+                max: {x: 0, y: 0}
+              },
+              resultTitle: 'Kan ringe kontakt',
+              maxPoints: 6
+            }
+          },
+          {
+            name: 'Add new contact',
+            templateID: QuestionTemplate.WhereInPicture,
+            questionContent: {
+              text: 'Hvor trykker du for å legge til en person i kontaktlisten?',
+              imageInformation: {
+                image: require('./images/contactList.png'),
+                imageWithIndicator: require('./images/contactListNew.png'),
+                min: {x: 0, y: 0},
+                max: {x: 0, y: 0}
+              },
+              resultTitle: 'Kan ringe kontakt',
+              maxPoints: 6
+            }
+          },
+          {
+            name: 'Completed subject',
+            templateID: QuestionTemplate.CompletedSubject,
+            questionContent: {}
+          }
+        ]
     }
   ]
 };
