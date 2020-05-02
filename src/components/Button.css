@@ -6,7 +6,7 @@
   
   border-radius: 8px;
   font-size: 2.6vh;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ 
   cursor: pointer;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);;
   
@@ -18,29 +18,26 @@
 .btn:active{
   box-shadow: none;
 }
+
+/*
 .btn.selected {
   box-shadow: none;
  
   filter: brightness(1.1);
  
 }
-
-.multibtn {
-  flex: 1 1 300px;
-}
-.buttonContent {
-  max-width: 90%;
-  max-height: 90%;
-}
+*/
 
 
-.btn.multibtn:hover {
+.multibtn:hover {
   filter:none;
   background-color: #ACDAE0;
 }
-.btn.selected {
-  background-color: #73D0DC;
+.multibtn.selected {
+  box-shadow: none;
+  background-color:#73D0DC;
 }
+
 .btn:disabled {
   cursor: not-allowed;
   pointer-events: none;
@@ -142,3 +139,43 @@
 .download:hover {
   background-color: lightcyan;
 }
+
+.buttons-underneath-container .rowbtn {
+  flex: 1 1 30px;
+}
+
+
+
+/* MULTIPLE BUTTONS */
+.answer-btn{
+  flex: 1 1 96%;
+  max-width: 96%;
+  font-size: 16px;
+  margin: 1%;
+  min-height: 7vh;
+  max-height: 30vh;
+  font-size: 20px;
+  padding: 2vmin;
+
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 501px) {
+  .answer-btn {
+    flex: 1 1 48%;
+    max-width: 48%;
+    min-height: 10vh;
+    max-height: 25vh;
+    font-size: 18px;
+
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+
+    }
+}
+  
+/* --------------- */
+

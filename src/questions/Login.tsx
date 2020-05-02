@@ -79,7 +79,7 @@ const TextInput: React.FC<Props> = props => {
           Logg inn med informasjonen under
         </h1>
       </div>
-      <div className='textinputContainer whiteBackground'>
+      <div className='inputContainer whiteBackground'>
         <div>
           <p className='black questionDetails'>
             Brukernavn: "{props.userInformation.username}" <br></br>

@@ -48,7 +48,7 @@ const TextInput: React.FC<Props> = props => {
       <div className={`questiontextContainer ${props.subjectColor}`}>
         <h1 className='h2 white normal-font'>{props.text}</h1>
       </div>
-      <div className='textinputContainer whiteBackground'>
+      <div className='inputContainer whiteBackground'>
         <form
           className='text-and-btn'
           onSubmit={(e: React.FormEvent<HTMLFormElement>) =>

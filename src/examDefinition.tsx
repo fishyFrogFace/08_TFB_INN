@@ -129,14 +129,7 @@ export const standardExamDefinition = {
             text: 'Klikk på PIN-koden(e)',
             resultTitle: 'Kan kjenne igjen PIN-koder',
             isImage: false,
-            answerValues: [
-              'passord',
-              '757912',
-              '%&¤#',
-              'zi3A47gvq8nFVkv',
-              '3487',
-              'PIN1'
-            ],
+            answerValues: ['757912', '%&¤#', 'zi3A47gvq8nFVkv', '3487'],
             correctAlternativeList: ['757912', '3487']
           }
         },
@@ -180,7 +173,7 @@ export const standardExamDefinition = {
             illustration: require('./images/bankid-logo.svg'),
             isImage: false,
             answerValues: [
-              'BankID kan deles med andre',
+              'BankID kan deles av flere personer',
               'Med BankID kan jeg få tilgang til helseopplysninger',
               'BankID har lav sikkerhet',
               'BankID er en personlig, elektronisk ID'
@@ -221,7 +214,7 @@ export const standardExamDefinition = {
             answerValues: [
               require('./images/whatsapp.svg'),
               require('./images/inbox.png'),
-              require('./images/messages.svg'),
+
               require('./images/youtube.svg'),
               require('./images/website.svg')
             ],

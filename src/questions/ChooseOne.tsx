@@ -49,23 +49,37 @@ const ChooseOne: React.FC<Props> = props => {
         <p className='h2 white normal-font'>{props.text}</p>
       </div>
 
-      <div className='multiple-button-container whiteBackground'>
+      <div className='inputContainer whiteBackground'>
         {props.illustration === undefined ? (
           ''
         ) : (
-          <div className='questionImgContainer'>
-            <img src={props.illustration} alt={'Illustration'} />
+          <div className='imageContainer'>
+            <img
+              className='illustrationImg'
+              src={props.illustration}
+              alt={'Illustration'}
+            />
           </div>
         )}
-        <div>
+        <div className='multiple-button-container'>
           {props.answerValues.map((item, i) => (
             <Button
               key={i}
-              classNames={`answer-btn multibtn btn ${
+              classNames={`multibtn answer-btn  btn ${
                 selectedButton === i ? 'selected' : ''
               }`}
               onClick={() => setSelectedButton(i)}>
-              {props.isImage ? <img src={item} alt={`Button ${i}`} /> : item}
+              {props.isImage ? (
+                <div className='imageContainer'>
+                  <img
+                    className='illustrationImg'
+                    src={item}
+                    alt={`Button ${i}`}
+                  />
+                </div>
+              ) : (
+                item
+              )}
             </Button>
           ))}
         </div>

@@ -66,9 +66,9 @@ const WhereInPicture: React.FC<Props> = props => {
       <div className={`questiontextContainer ${props.subjectColor}`}>
         <p className={`h2 white normal-font`}>{props.text}</p>
       </div>
-      <div className='textinputContainer whiteBackground'>
+      <div className='inputContainer whiteBackground'>
         <img
-          className={`where-in-picture-img ${mode}-image whiteBackground`}
+          className={`where-in-picture-img ${mode}-image `}
           onClick={e => {
             const xPos = e.pageX - e.currentTarget.offsetLeft;
             const yPos = e.pageY - e.currentTarget.offsetTop;

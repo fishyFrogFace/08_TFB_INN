@@ -32,10 +32,10 @@ const WhatUnits: React.FC<PropsFromRedux> = props => {
       <div className='questiontextContainer bluegrey-background'>
         <h1 className='h2 white normal-font'>Hvilke enheter har du?</h1>
       </div>
-      <div className='multiple-button-container whiteBackground'>
-        {units.map((item, i) => (
-          <div className='image-with-description ' key={i}>
-            <div>
+      <div className='inputContainer whiteBackground'>
+        <div className='multiple-button-container '>
+          {units.map((item, i) => (
+            <div className='image-with-description ' key={i}>
               <Button
                 classNames={`unit-btn btn multibtn ${
                   selectedButtons.includes(i) ? 'selected' : ''
@@ -47,8 +47,8 @@ const WhatUnits: React.FC<PropsFromRedux> = props => {
                 </div>
               </Button>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       <div>
         <Button
