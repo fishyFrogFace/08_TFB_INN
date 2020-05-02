@@ -32,14 +32,14 @@ export interface Props {
 const getSymbolPath = (questionResult: Points) => {
   switch (questionResult.pointsAchieved / questionResult.maxPoints) {
     case 0:
-      return <Image style={styles.symbol} src={'symbols/percentage-red.svg'} />;
+      return <Image style={styles.symbol} src={'symbols/percentage-red.png'} />;
     case 1:
       return (
-        <Image style={styles.symbol} src={'symbols/percentage-green.svg'} />
+        <Image style={styles.symbol} src={'symbols/percentage-green.png'} />
       );
     default:
       return (
-        <Image style={styles.symbol} src={'symbols/percentage-yellow.svg'} />
+        <Image style={styles.symbol} src={'symbols/percentage-yellow.png'} />
       );
   }
 };
@@ -66,7 +66,7 @@ const questionResultView = (questionResult: QuestionResult) => {
             </Text>
           </View>
           <Text style={styles.extraInformation}>
-            Spørsmål: {questionResult.common.questionTitle}}
+            Spørsmål: {questionResult.common.questionTitle}
           </Text>
           <Text style={styles.extraInformation}>
             Svar avgitt: {questionResult.common.answerValues.join(', ')}
