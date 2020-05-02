@@ -5,6 +5,9 @@ import { SubjectResult, QuestionResultType } from '../Types';
 import { RootState } from 'redux/reducers';
 import { connect } from 'react-redux';
 import { joinAndCapitalize } from '../Util';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import ResultsDocument from '../result/ResultsDocument';
+import Button from '../components/Button';
 
 const subjectResults = (element: SubjectResult, i: number) => {
   return (
@@ -27,12 +30,35 @@ const ResultPage: React.FC<PropsFromRedux> = props => {
   return (
     <div className='result-container'>
       <h1 className='h1'>Resultat for {props.username}</h1>
-      <h2 className='h2'>
-        Har følgende enheter: {props.units.length === 0 ? 'Ingen' : props.units}
-      </h2>
-      {props.results
-        .filter(res => res.results.length !== 0)
-        .map((subject, i) => subjectResults(subject, i))}
+      <PDFDownloadLink
+        document={
+          <ResultsDocument
+            username={props.username}
+            subjectResultsList={props.results}
+            devices={props.units}
+          />
+        }
+        fileName='document.pdf'>
+        {({ blob, url, loading, error }) =>
+          loading ? (
+            <Button
+              classNames='btn download'
+              onClick={() => {
+                return;
+              }}>
+              Gjør klart resultat...
+            </Button>
+          ) : (
+            <Button
+              classNames='btn download'
+              onClick={() => {
+                return;
+              }}>
+              Last ned resultat
+            </Button>
+          )
+        }
+      </PDFDownloadLink>
     </div>
   );
 };

@@ -36,9 +36,10 @@ const TextInput: React.FC<Props> = props => {
       props.updateResult({
         mastered: true,
         type: QuestionResultType.Mastery,
-        answerValues: [],
+        answerValues: ['Logget inn'],
         maxPoints: props.maxPoints,
         resultTitle: props.resultTitle,
+        questionTitle: 'Logg inn med informasjonen under',
         pointsAchieved: points
       });
     } else {
@@ -58,23 +59,40 @@ const TextInput: React.FC<Props> = props => {
     }
   };
 
+  const failQuestion = () => {
+    resetLocalState();
+    props.updateResult({
+      type: QuestionResultType.Mastery,
+      maxPoints: props.maxPoints,
+      resultTitle: props.resultTitle,
+      questionTitle: 'Logg inn med informasjonen under',
+      pointsAchieved: 0,
+      mastered: false,
+      answerValues: ['Jeg får ikke dette til']
+    });
+  };
+
   return (
     <div className='content'>
-       <div className={`questiontextContainer ${props.subjectColor}`}>
-        <h1 className='h2 white normal-font'>Logg inn med informasjonen under</h1>
-        
-        </div>
-      <div className="textinputContainer whiteBackground">
+      <div className={`questiontextContainer ${props.subjectColor}`}>
+        <h1 className='h2 white normal-font'>
+          Logg inn med informasjonen under
+        </h1>
+      </div>
+      <div className='textinputContainer whiteBackground'>
         <div>
           <p className='black questionDetails'>
             Brukernavn: "{props.userInformation.username}" <br></br>
-            Passord: "{props.userInformation.password}"</p>
+            Passord: "{props.userInformation.password}"
+          </p>
         </div>
         <form
           className='text-and-btn login orange-background'
-          onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
+            e.preventDefault()
+          }>
           <div>
-            <p className="inputP black">Username:</p>
+            <p className='inputP black'>Username:</p>
             <input
               id='username'
               className={`inputField ${color}`}
@@ -84,28 +102,19 @@ const TextInput: React.FC<Props> = props => {
             />
           </div>
           <div>
-          <p className="inputP black">Password:</p>
-          <input
-            id='password'
-            className={`inputField ${color}`}
-            type='password'
-            onChange={e => setPassword(e.currentTarget.value)}
-            placeholder='Password'
-          />
+            <p className='inputP black'>Password:</p>
+            <input
+              id='password'
+              className={`inputField ${color}`}
+              type='password'
+              onChange={e => setPassword(e.currentTarget.value)}
+              placeholder='Password'
+            />
           </div>
-          </form>
-          <h2 className={`feedback h2 normal-font ${color}`}>{feedback}</h2>
-          
-          
-        </div>
-        <FlowButtons
-          skip={() => {
-            resetLocalState();
-            props.skipQuestion();
-          }}
-          update={checkInput}
-        />
-      
+        </form>
+        <h2 className={`feedback h2 normal-font ${color}`}>{feedback}</h2>
+      </div>
+      <FlowButtons skip={failQuestion} update={checkInput} />
     </div>
   );
 };

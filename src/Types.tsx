@@ -36,6 +36,7 @@ export interface SubjectResult {
 
 export interface QuestionResult {
   resultTitle: string;
+  questionTitle: string;
   type: QuestionResultType;
   maxPoints: number;
   pointsAchieved: number;

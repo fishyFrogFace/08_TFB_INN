@@ -132,4 +132,13 @@
 .subject-btn:disabled {
   color: #8c8c8c;
   background-color: #d9d9d9;
+  background-color: #ccccff
+}
+
+.download {
+  background-color: cyan;
+}
+
+.download:hover {
+  background-color: lightcyan;
 }

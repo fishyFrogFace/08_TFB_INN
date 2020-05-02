@@ -4,10 +4,9 @@ context('Exit modal testing', () => {
   const title = 'Velkommen til Digiklar';
 
   before(() => {
-    cy.visit('http://localhost:3000/');
-  });
+    cy.wait(10000); //try to let site load before starting the first test
 
-  it('exit button renders exit screen', () => {
+    cy.visit('http://localhost:3000/');
     cy.get('.start')
       .first()
       .click();
@@ -23,7 +22,9 @@ context('Exit modal testing', () => {
     cy.get('.subject-btn')
       .first()
       .click();
+  });
 
+  it('exit button renders exit screen', () => {
     cy.get('.exit')
       .first()
       .click();

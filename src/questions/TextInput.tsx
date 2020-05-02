@@ -17,15 +17,43 @@ interface Props {
 const TextInput: React.FC<Props> = props => {
   const [input, setInput] = useState('');
 
+  const failQuestion = () => {
+    setInput('');
+    props.updateResult({
+      type: QuestionResultType.Mastery,
+      maxPoints: props.maxPoints,
+      resultTitle: props.resultTitle,
+      questionTitle: props.text,
+      pointsAchieved: 0,
+      mastered: false,
+      answerValues: ['Jeg får ikke dette til']
+    });
+  };
+
+  const returnResult = () => {
+    setInput('');
+    props.updateResult({
+      mastered: true,
+      type: QuestionResultType.Mastery,
+      answerValues: [input],
+      maxPoints: props.maxPoints,
+      resultTitle: props.resultTitle,
+      questionTitle: props.text,
+      pointsAchieved: props.processString(input, props.maxPoints)
+    });
+  };
+
   return (
     <div className='content'>
       <div className={`questiontextContainer ${props.subjectColor}`}>
         <h1 className='h2 white normal-font'>{props.text}</h1>
       </div>
-      <div className="textinputContainer whiteBackground">
+      <div className='textinputContainer whiteBackground'>
         <form
           className='text-and-btn'
-          onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
+            e.preventDefault()
+          }>
           <input
             id='name'
             className={'inputField'}
@@ -33,29 +61,11 @@ const TextInput: React.FC<Props> = props => {
             onChange={e => setInput(e.currentTarget.value)}
             placeholder={props.placeholder}
           />
-       
-        
-          </form>
-        </div>
+        </form>
+      </div>
       <div className='nextButtonContainer '>
-        <FlowButtons
-            skip={() => {
-              setInput('');
-              props.skipQuestion();
-            }}
-            update={() => {
-              setInput('');
-              props.updateResult({
-                mastered: true,
-                type: QuestionResultType.Mastery,
-                answerValues: [],
-                maxPoints: props.maxPoints,
-                resultTitle: props.resultTitle,
-                pointsAchieved: props.processString(input, props.maxPoints)
-              });
-            }}
-          />
-        </div>
+        <FlowButtons skip={failQuestion} update={returnResult} />
+      </div>
     </div>
   );
 };

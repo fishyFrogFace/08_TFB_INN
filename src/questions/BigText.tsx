@@ -35,6 +35,7 @@ const BigText: React.FC<Props> = props => {
               answerValues: [input],
               maxPoints: 0,
               resultTitle: props.resultTitle,
+              questionTitle: props.text,
               pointsAchieved: 0
             })
           }>
