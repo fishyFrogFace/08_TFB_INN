@@ -8,10 +8,10 @@ export const makeMasteryResult = (
   common: {
     resultTitle: props.resultTitle,
     questionTitle: props.text,
-    answerValues: answers,
-    type: 'mastery'
+    answerValues: answers
   },
-  mastered: mastered
+  mastered: mastered,
+  type: 'mastery'
 });
 
 export const makePointResult = (
@@ -22,23 +22,24 @@ export const makePointResult = (
   common: {
     resultTitle: props.resultTitle,
     questionTitle: props.text,
-    answerValues: answers,
-    type: 'points'
+    answerValues: answers
   },
   maxPoints:
     props.maxPoints === undefined
       ? props.correctAlternativeList.length
       : props.maxPoints,
-  pointsAchieved: points
+  pointsAchieved: points,
+  type: 'points'
 });
 
-export const failPointResult = props => failPointResult(props);
+export const failPointResult = props =>
+  makePointResult(props, ['Jeg får ikke dette til'], 0);
 
 export const makeOtherResult = (props, answers: string[]): Other => ({
   common: {
     resultTitle: props.resultTitle,
     questionTitle: props.text,
-    answerValues: answers,
-    type: 'other'
-  }
+    answerValues: answers
+  },
+  type: 'other'
 });

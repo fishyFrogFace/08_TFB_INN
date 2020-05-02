@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from '@react-pdf/renderer';
+import { StyleSheet, Text, View } from '@react-pdf/renderer';
 import { SubjectResult } from 'Types';
 
 // Create styles
@@ -30,20 +30,21 @@ export interface Props {
 }
 
 const ResultsDocumentSummary: React.FC<Props> = ({ subjectResultsList }) => {
-  let totalMasteryQuestions = 0;
-  let totalMastered = 0;
-  subjectResultsList.forEach(
-    subjectResult =>
-      (totalMasteryQuestions += subjectResult.results.filter(
-        result => result.type === QuestionResultType.Mastery
-      ).length)
-  );
-  subjectResultsList.forEach(
-    subjectResult =>
-      (totalMastered += subjectResult.results.filter(
-        result => result.type === QuestionResultType.Mastery && result.mastered
-      ).length)
-  );
+  const totalMasteryQuestions = subjectResultsList
+    .map(
+      subjectResult =>
+        subjectResult.results.filter(result => result.type === 'mastery').length
+    )
+    .reduce((a, b) => a + b, 0);
+
+  const totalMastered = subjectResultsList
+    .map(
+      subjectResult =>
+        subjectResult.results.filter(
+          result => result.type === 'mastery' && result.mastered
+        ).length
+    )
+    .reduce((a, b) => a + b, 0);
 
   return (
     <View style={styles.subject}>

@@ -17,12 +17,12 @@ const Start: React.FC<Props> = props => {
       onClick={() =>
         props.updateResult({
           common: {
-            type: 'mastery',
             resultTitle: props.resultTitle,
             questionTitle: 'Klikk startknappen',
             answerValues: ['Klikket på knappen']
           },
-          mastered: true
+          mastered: true,
+          type: 'mastery'
         })
       }>
       Start

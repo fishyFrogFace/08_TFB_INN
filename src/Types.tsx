@@ -37,22 +37,24 @@ export interface CommonResult {
   resultTitle: string;
   questionTitle: string;
   answerValues: string[];
-  type: string;
 }
 
 export interface Mastery {
   common: CommonResult;
   mastered: boolean;
+  type: 'mastery';
 }
 
 export interface Points {
   common: CommonResult;
   maxPoints: number;
   pointsAchieved: number;
+  type: 'points';
 }
 
 export interface Other {
   common: CommonResult;
+  type: 'other';
 }
 
 export type QuestionResult = Mastery | Points | Other;

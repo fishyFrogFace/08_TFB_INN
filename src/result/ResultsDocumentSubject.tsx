@@ -26,11 +26,11 @@ export interface Props {
 
 const ResultsDocumentSubject: React.FC<Props> = ({ subjectResult }) => {
   const masteryQuestions = subjectResult.results.filter(
-    result => result.common.type === 'mastery'
+    result => result.type === 'mastery'
   ).length;
 
   const mastered = subjectResult.results
-    .filter(result => result.common.type === 'mastery')
+    .filter(result => result.type === 'mastery')
     .filter((result: any) => result.mastered).length;
 
   return (
