@@ -44,16 +44,23 @@ const getSymbolPath = (questionResult: any) => {
       );
 
     case 'points':
-      return (
-        <Image
-          style={styles.symbol}
-          src={
-            questionResult.pointsAchieved / questionResult.maxPoints === 1
-              ? 'symbols/checkmark.png'
-              : 'symbols/percentage.svg'
-          }
-        />
-      );
+      switch (questionResult.pointsAchieved / questionResult.maxPoints) {
+        case 0:
+          return (
+            <Image style={styles.symbol} src={'symbols/percentage-red.svg'} />
+          );
+        case 1:
+          return (
+            <Image style={styles.symbol} src={'symbols/percentage-green.svg'} />
+          );
+        default:
+          return (
+            <Image
+              style={styles.symbol}
+              src={'symbols/percentage-yellow.svg'}
+            />
+          );
+      }
 
     case 'other':
       return <Image style={styles.symbol} src='symbols/circle.png' />;
