@@ -3,7 +3,7 @@ import './Question.css';
 import Button from '../components/Button';
 import { QuestionResult } from '../Types';
 import FlowButtons from 'components/FlowButtons';
-import { makeMasteryResult } from 'helpers/makeResult';
+import { makeMasteryResult, imageAnswer } from 'helpers/makeResult';
 
 interface Props {
   text: string;
@@ -24,7 +24,9 @@ const ChooseOne: React.FC<Props> = props => {
     props.updateResult(
       makeMasteryResult(
         props,
-        [props.answerValues[result]],
+        props.isImage
+          ? [imageAnswer(props.answerValues[result])]
+          : [props.answerValues[result]],
         props.answerValues[result] === props.correctAlternative
       )
     );

@@ -3,7 +3,7 @@ import './Question.css';
 import Button from '../components/Button';
 import { QuestionResult } from '../Types';
 import FlowButtons from 'components/FlowButtons';
-import { makeOtherResult } from 'helpers/makeResult';
+import { makeOtherResult, imageAnswer } from 'helpers/makeResult';
 
 interface Props {
   text: string;
@@ -23,7 +23,14 @@ const ChooseOne: React.FC<Props> = props => {
     if (result === undefined) {
       props.updateResult(makeOtherResult(props, ['Jeg får ikke dette til']));
     } else {
-      props.updateResult(makeOtherResult(props, [props.answerValues[result!]]));
+      props.updateResult(
+        makeOtherResult(
+          props,
+          props.isImage
+            ? [imageAnswer(props.answerValues[result])]
+            : [props.answerValues[result]]
+        )
+      );
     }
   };
 
