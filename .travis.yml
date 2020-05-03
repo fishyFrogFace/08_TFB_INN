@@ -15,9 +15,13 @@ cache:
     - ~/.cache
 install:
   - npm install
-script:
+
+before_script:
   - npm start -- --silent &
+
+script:
   - $(npm bin)/cypress run
+
 env:
   - CI=false
 
