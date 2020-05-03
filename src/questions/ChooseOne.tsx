@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './Question.css';
 import Button from '../components/Button';
-import { QuestionResult, QuestionResultType } from '../Types';
+import { QuestionResult } from '../Types';
 import FlowButtons from 'components/FlowButtons';
+import { makeOtherResult, imageAnswer } from 'helpers/makeResult';
 
 interface Props {
   text: string;
@@ -20,25 +21,16 @@ const ChooseOne: React.FC<Props> = props => {
   const returnResult = (result: number | undefined) => {
     setSelectedButton(undefined);
     if (result === undefined) {
-      props.updateResult({
-        mastered: false,
-        answerValues: ['Jeg får ikke dette til'],
-        type: QuestionResultType.Other,
-        maxPoints: 0,
-        resultTitle: props.resultTitle,
-        questionTitle: props.text,
-        pointsAchieved: 0
-      });
+      props.updateResult(makeOtherResult(props, ['Jeg får ikke dette til']));
     } else {
-      props.updateResult({
-        mastered: false,
-        answerValues: [props.answerValues[result!]],
-        type: QuestionResultType.Other,
-        maxPoints: 0,
-        resultTitle: props.resultTitle,
-        questionTitle: props.text,
-        pointsAchieved: 0
-      });
+      props.updateResult(
+        makeOtherResult(
+          props,
+          props.isImage
+            ? [imageAnswer(props.answerValues[result])]
+            : [props.answerValues[result]]
+        )
+      );
     }
   };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from '@react-pdf/renderer';
-import { QuestionResult, QuestionResultType } from 'Types';
+import { QuestionResult, Points } from 'Types';
 
 // Create styles
 const styles = StyleSheet.create({
@@ -29,42 +29,88 @@ export interface Props {
   questionResult: QuestionResult;
 }
 
-const getSymbolPath = (isMastery: boolean, mastered: boolean) => {
-  if (isMastery) {
-    if (mastered) {
-      return 'symbols/checkmark.png';
-    } else {
-      return 'symbols/cross.png';
-    }
-  } else {
-    return 'symbols/circle.png';
+const getSymbolPath = (questionResult: Points) => {
+  switch (questionResult.pointsAchieved / questionResult.maxPoints) {
+    case 0:
+      return <Image style={styles.symbol} src={'symbols/percentage-red.png'} />;
+    case 1:
+      return (
+        <Image style={styles.symbol} src={'symbols/percentage-green.png'} />
+      );
+    default:
+      return (
+        <Image style={styles.symbol} src={'symbols/percentage-yellow.png'} />
+      );
+  }
+};
+
+const pointsAchieved = (questionResult: Points) =>
+  `${questionResult.pointsAchieved} / ${questionResult.maxPoints}`;
+
+const questionResultView = (questionResult: QuestionResult) => {
+  switch (questionResult.type) {
+    case 'mastery':
+      return (
+        <View style={styles.question}>
+          <View style={styles.lineWithImages}>
+            <Image
+              style={styles.symbol}
+              src={
+                questionResult.mastered
+                  ? 'symbols/checkmark.png'
+                  : 'symbols/cross.png'
+              }
+            />
+            <Text style={styles.title}>
+              {questionResult.common.resultTitle}
+            </Text>
+          </View>
+          <Text style={styles.extraInformation}>
+            Spørsmål: {questionResult.common.questionTitle}
+          </Text>
+          <Text style={styles.extraInformation}>
+            Svar avgitt: {questionResult.common.answerValues.join(', ')}
+          </Text>
+        </View>
+      );
+
+    case 'points':
+      return (
+        <View style={styles.question}>
+          <View style={styles.lineWithImages}>
+            {getSymbolPath(questionResult)}
+            <Text style={styles.title}>
+              {questionResult.common.resultTitle}
+            </Text>
+          </View>
+          <Text style={styles.extraInformation}>
+            Poeng oppnådd: {pointsAchieved(questionResult)}
+          </Text>
+          <Text style={styles.extraInformation}>
+            Svar avgitt: {questionResult.common.answerValues.join(', ')}
+          </Text>
+        </View>
+      );
+
+    default:
+      return (
+        <View style={styles.question}>
+          <View style={styles.lineWithImages}>
+            <Image style={styles.symbol} src='symbols/circle.png' />
+            <Text style={styles.title}>
+              {questionResult.common.questionTitle}
+            </Text>
+          </View>
+          <Text style={styles.extraInformation}>
+            Svar avgitt: {questionResult.common.answerValues.join(', ')}
+          </Text>
+        </View>
+      );
   }
 };
 
 const ResultsDocumentQuestion: React.FC<Props> = ({ questionResult }) => {
-  const isMastery = questionResult.type === QuestionResultType.Mastery;
-  const mastered = questionResult.mastered;
-
-  return (
-    <View style={styles.question}>
-      <View style={styles.lineWithImages}>
-        <Image
-          style={styles.symbol}
-          src={getSymbolPath(isMastery, mastered)}></Image>
-        <Text style={styles.title}>
-          {isMastery
-            ? questionResult.resultTitle
-            : questionResult.questionTitle}
-        </Text>
-      </View>
-      <Text style={styles.extraInformation}>
-        {isMastery ? 'Spørsmål: ' + questionResult.questionTitle : ''}
-      </Text>
-      <Text style={styles.extraInformation}>
-        Svar avgitt: {questionResult.answerValues.join(', ')}
-      </Text>
-    </View>
-  );
+  return questionResultView(questionResult);
 };
 
 export default ResultsDocumentQuestion;

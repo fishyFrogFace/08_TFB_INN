@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, Document, Page, View, Text } from '@react-pdf/renderer';
+import { StyleSheet, Document, Page } from '@react-pdf/renderer';
 import ResultsDocumentTitle from './ResultsDocumentTitle';
 import ResultsDocumentSubject from './ResultsDocumentSubject';
 import { SubjectResult } from 'Types';
 import ResultsDocumentUserInfo from './ResultsDocumentUserInfo';
+import ResultsDocumentSummary from './ResultsDocumentSummary';
 
 // Create styles
 const styles = StyleSheet.create({
@@ -36,6 +37,7 @@ const ResultsDocument: React.FC<Props> = ({
         .map((subjectResult, i) => {
           return <ResultsDocumentSubject subjectResult={subjectResult} />;
         })}
+      <ResultsDocumentSummary subjectResultsList={subjectResultsList} />
     </Page>
   </Document>
 );
