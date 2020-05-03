@@ -35,7 +35,13 @@ const ResultsDocument: React.FC<Props> = ({
       {subjectResultsList
         .filter(subjectResult => subjectResult.results.length > 0)
         .map((subjectResult, i) => {
-          return <ResultsDocumentSubject subjectResult={subjectResult} />;
+          return (
+            <ResultsDocumentSubject
+              key={i}
+              i={i}
+              subjectResult={subjectResult}
+            />
+          );
         })}
       <ResultsDocumentSummary subjectResultsList={subjectResultsList} />
     </Page>
