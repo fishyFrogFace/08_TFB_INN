@@ -131,7 +131,7 @@ const Examination: React.FC<Props> = props => {
             closeChoice={() => props.updateExamPage(lastPage)}
             title='Gå tilbake til temaoversikten?'
             body=''
-            btnClass='teal-background '
+            btnClass='teal-background white'
             btnText='Til oversikt'
           />
         );

@@ -30,7 +30,7 @@ const CompletedSubject: React.FC<Props> = props => {
         </div>
         <div className='choice-buttoncontainer'>
           <Button
-            classNames={`${props.btnClass} choicebtn red-background`}
+            classNames={`${props.btnClass} choicebtn`}
             onClick={() => props.confirmAction()}>
             {props.btnText}
           </Button>

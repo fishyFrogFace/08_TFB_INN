@@ -177,4 +177,6 @@
 
 .download {
   margin: 2vh;
+  max-height: 10vh;
+  padding: 2vmin;
 }
