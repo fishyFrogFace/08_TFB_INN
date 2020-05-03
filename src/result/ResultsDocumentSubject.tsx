@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
 
 export interface Props {
   subjectResult: SubjectResult;
+  i: number;
 }
 
 export const totalSubjectPoints = (subjectResult: SubjectResult) => {
@@ -54,16 +55,16 @@ export const totalAchievedPoints = (subjectResult: SubjectResult) => {
   return totalAchieved;
 };
 
-const ResultsDocumentSubject: React.FC<Props> = ({ subjectResult }) => {
+const ResultsDocumentSubject: React.FC<Props> = ({ subjectResult, i }) => {
   return (
-    <View key={subjectResult.subjectTitle} style={styles.subject}>
+    <View style={styles.subject}>
       <Text style={styles.subjectTitle}>
         Tema: {subjectResult.subjectTitle}
       </Text>
-      {subjectResult.results.map(questionResult => {
+      {subjectResult.results.map((questionResult, n) => {
         return (
           <ResultsDocumentQuestion
-            key={questionResult.common.resultTitle}
+            key={`${i}-${n}`}
             questionResult={questionResult}
           />
         );

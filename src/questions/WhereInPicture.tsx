@@ -56,6 +56,7 @@ const WhereInPicture: React.FC<Props> = props => {
           onClick={e => {
             const xPos = e.pageX - e.currentTarget.offsetLeft;
             const yPos = e.pageY - e.currentTarget.offsetTop;
+            console.log(xPos, yPos);
             checkInput(xPos, yPos);
           }}
           src={
