@@ -1,6 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from '@react-pdf/renderer';
 import { SubjectResult } from 'Types';
+import {
+  totalSubjectPoints,
+  totalAchievedPoints
+} from './ResultsDocumentSubject';
 
 // Create styles
 const styles = StyleSheet.create({
@@ -30,20 +34,11 @@ export interface Props {
 }
 
 const ResultsDocumentSummary: React.FC<Props> = ({ subjectResultsList }) => {
-  const totalMasteryQuestions = subjectResultsList
-    .map(
-      subjectResult =>
-        subjectResult.results.filter(result => result.type === 'mastery').length
-    )
+  const totalPointsAchieved = subjectResultsList
+    .map(subjectResult => totalAchievedPoints(subjectResult))
     .reduce((a, b) => a + b, 0);
-
-  const totalMastered = subjectResultsList
-    .map(
-      subjectResult =>
-        subjectResult.results.filter(
-          result => result.type === 'mastery' && result.mastered
-        ).length
-    )
+  const totalPointsPossible = subjectResultsList
+    .map(subjectResult => totalSubjectPoints(subjectResult))
     .reduce((a, b) => a + b, 0);
 
   return (
@@ -60,7 +55,7 @@ const ResultsDocumentSummary: React.FC<Props> = ({ subjectResultsList }) => {
           );
         })}
       <Text style={styles.numbers}>
-        Totalt mestret: {totalMastered}/{totalMasteryQuestions}
+        Totalt mestret: {totalPointsAchieved}/{totalPointsPossible}
       </Text>
     </View>
   );

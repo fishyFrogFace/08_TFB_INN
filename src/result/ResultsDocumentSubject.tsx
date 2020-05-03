@@ -24,35 +24,37 @@ export interface Props {
   subjectResult: SubjectResult;
 }
 
-export const subjectPoints = (subjectResult: SubjectResult) => {
+export const totalSubjectPoints = (subjectResult: SubjectResult) => {
   const masteryQuestions = subjectResult.results.filter(
     result => result.type === 'mastery'
   ).length;
-
-  const mastered = subjectResult.results
-    .filter(result => result.type === 'mastery')
-    .filter(result => (result as Mastery).mastered).length;
 
   const totalFromPoints = subjectResult.results
     .filter(result => result.type === 'points')
     .map(result => (result as Points).maxPoints)
     .reduce((a, b) => a + b, 0);
 
+  const totalPoints = masteryQuestions + totalFromPoints;
+
+  return totalPoints;
+};
+
+export const totalAchievedPoints = (subjectResult: SubjectResult) => {
+  const mastered = subjectResult.results
+    .filter(result => result.type === 'mastery')
+    .filter(result => (result as Mastery).mastered).length;
+
   const achievedFromPoints = subjectResult.results
     .filter(result => result.type === 'points')
     .map(result => (result as Points).pointsAchieved)
     .reduce((a, b) => a + b, 0);
 
-  const totalPoints = masteryQuestions + totalFromPoints;
-
   const totalAchieved = mastered + achievedFromPoints;
 
-  return [totalAchieved, totalPoints];
+  return totalAchieved;
 };
 
 const ResultsDocumentSubject: React.FC<Props> = ({ subjectResult }) => {
-  const [totalAchieved, totalPoints] = subjectPoints(subjectResult);
-
   return (
     <View key={subjectResult.subjectTitle} style={styles.subject}>
       <Text style={styles.subjectTitle}>
@@ -67,7 +69,8 @@ const ResultsDocumentSubject: React.FC<Props> = ({ subjectResult }) => {
         );
       })}
       <Text style={styles.numbers}>
-        Poeng: {totalAchieved}/{totalPoints}
+        Poeng: {totalAchievedPoints(subjectResult)}/
+        {totalSubjectPoints(subjectResult)}
       </Text>
     </View>
   );
