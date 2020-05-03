@@ -3,7 +3,11 @@ import './Question.css';
 import Button from '../components/Button';
 import { QuestionResult } from '../Types';
 import FlowButtons from 'components/FlowButtons';
-import { makePointResult, failPointResult } from 'helpers/makeResult';
+import {
+  makePointResult,
+  failPointResult,
+  imageAnswer
+} from 'helpers/makeResult';
 
 interface Props {
   text: string;
@@ -48,7 +52,9 @@ const MultipleButtons: React.FC<Props> = props => {
     props.updateResult(
       makePointResult(
         props,
-        selectedButtons.map(i => props.answerValues[i]),
+        props.isImage
+          ? selectedButtons.map(i => imageAnswer(props.answerValues[i]))
+          : selectedButtons.map(i => props.answerValues[i]),
         checkAnswer()
       )
     );

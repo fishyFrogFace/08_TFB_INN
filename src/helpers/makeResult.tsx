@@ -43,3 +43,9 @@ export const makeOtherResult = (props, answers: string[]): Other => ({
   },
   type: 'other'
 });
+
+export const imageAnswer = (imagePath: string) => {
+  // eslint-disable-next-line
+  const [filename, _hash, ending] = imagePath.split('/')[3].split('.');
+  return `"${filename} . ${ending}"`;
+};
