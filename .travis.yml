@@ -16,11 +16,9 @@ cache:
 
 install:
   - npm install
-
-compile:
   - npm start -- --silent &
 
-after_success:
+script:
   - $(npm bin)/cypress run
 
 env:
