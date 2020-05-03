@@ -1,7 +1,10 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from '@react-pdf/renderer';
-import { SubjectResult, QuestionResultType, QuestionResult } from 'Types';
-import ResultsDocumentQuestion from './ResultsDocumentQuestion';
+import { StyleSheet, Text, View } from '@react-pdf/renderer';
+import { SubjectResult } from 'Types';
+import {
+  totalSubjectPoints,
+  totalAchievedPoints
+} from './ResultsDocumentSubject';
 
 // Create styles
 const styles = StyleSheet.create({
@@ -31,20 +34,12 @@ export interface Props {
 }
 
 const ResultsDocumentSummary: React.FC<Props> = ({ subjectResultsList }) => {
-  let totalMasteryQuestions = 0;
-  let totalMastered = 0;
-  subjectResultsList.forEach(
-    subjectResult =>
-      (totalMasteryQuestions += subjectResult.results.filter(
-        result => result.type === QuestionResultType.Mastery
-      ).length)
-  );
-  subjectResultsList.forEach(
-    subjectResult =>
-      (totalMastered += subjectResult.results.filter(
-        result => result.type === QuestionResultType.Mastery && result.mastered
-      ).length)
-  );
+  const totalPointsAchieved = subjectResultsList
+    .map(subjectResult => totalAchievedPoints(subjectResult))
+    .reduce((a, b) => a + b, 0);
+  const totalPointsPossible = subjectResultsList
+    .map(subjectResult => totalSubjectPoints(subjectResult))
+    .reduce((a, b) => a + b, 0);
 
   return (
     <View style={styles.subject}>
@@ -60,7 +55,7 @@ const ResultsDocumentSummary: React.FC<Props> = ({ subjectResultsList }) => {
           );
         })}
       <Text style={styles.numbers}>
-        Totalt mestret: {totalMastered}/{totalMasteryQuestions}
+        Totalt mestret: {totalPointsAchieved}/{totalPointsPossible}
       </Text>
     </View>
   );

@@ -12,8 +12,7 @@ export const standardExamDefinition = {
           name: 'Start button',
           templateID: QuestionTemplate.Start,
           questionContent: {
-            resultTitle: 'Forstår bruk av knapper',
-            maxPoints: 1
+            resultTitle: 'Forstår bruk av knapper'
           }
         },*/
         {
@@ -93,6 +92,7 @@ export const standardExamDefinition = {
           name: 'Use your username and password to log into a service',
           templateID: QuestionTemplate.LogIn,
           questionContent: {
+            text: 'Logg inn med informasjonen under',
             resultTitle: 'Kan bruke brukerinformasjon til å logge inn',
             userInformation: {
               username: 'vaffelkjeks',

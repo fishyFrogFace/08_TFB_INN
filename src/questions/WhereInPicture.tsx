@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './Question.css';
-import { QuestionResult, ImageInformation, QuestionResultType } from '../Types';
+import { QuestionResult, ImageInformation } from '../Types';
 import FlowButtons from 'components/FlowButtons';
+import { makePointResult, failPointResult } from 'helpers/makeResult';
 
 interface Props {
   subjectColor: string;
@@ -37,28 +38,14 @@ const WhereInPicture: React.FC<Props> = props => {
 
   const returnResult = () => {
     resetLocalState();
-    props.updateResult({
-      type: QuestionResultType.Mastery,
-      maxPoints: props.maxPoints,
-      resultTitle: props.resultTitle,
-      questionTitle: props.text,
-      pointsAchieved: points,
-      mastered: true,
-      answerValues: ['Valgte riktig område']
-    });
+    props.updateResult(
+      makePointResult(props, ['Valgte riktig område'], points)
+    );
   };
 
   const failQuestion = () => {
     resetLocalState();
-    props.updateResult({
-      type: QuestionResultType.Mastery,
-      maxPoints: props.maxPoints,
-      resultTitle: props.resultTitle,
-      questionTitle: props.text,
-      pointsAchieved: 0,
-      mastered: false,
-      answerValues: ['Jeg får ikke dette til']
-    });
+    props.updateResult(failPointResult(props));
   };
 
   return (

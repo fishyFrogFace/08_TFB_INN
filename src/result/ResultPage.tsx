@@ -1,30 +1,11 @@
 import React from 'react';
 import './ResultPage.css';
-import ProgressBar from 'components/ProgressBar';
-import { SubjectResult, QuestionResultType } from '../Types';
 import { RootState } from 'redux/reducers';
 import { connect } from 'react-redux';
 import { joinAndCapitalize } from '../Util';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import ResultsDocument from '../result/ResultsDocument';
 import Button from '../components/Button';
-
-const subjectResults = (element: SubjectResult, i: number) => {
-  return (
-    <div key={i} className='subject-result'>
-      <h2 className={`h2 ${element.subjectColor}`}>{element.subjectTitle}</h2>
-      {element.results.map((res, n) =>
-        res.type === QuestionResultType.Mastery ? (
-          <ProgressBar key={n} {...res} />
-        ) : (
-          <h2 className='h2 other' key={n}>
-            {res.resultTitle}: {joinAndCapitalize(res.answerValues)}
-          </h2>
-        )
-      )}
-    </div>
-  );
-};
 
 const ResultPage: React.FC<PropsFromRedux> = props => {
   return (

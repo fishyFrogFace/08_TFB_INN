@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import '../App.css';
 import './Question.css';
-import { QuestionResult, QuestionResultType, UserInformation } from '../Types';
+import { QuestionResult, UserInformation } from '../Types';
 import FlowButtons from 'components/FlowButtons';
+import { makePointResult, failPointResult } from 'helpers/makeResult';
 
 interface Props {
   subjectColor: string;
   maxPoints: number;
   resultTitle: string;
   userInformation: UserInformation;
+  text: string;
   updateResult: (result: QuestionResult) => void;
   skipQuestion: () => void;
 }
@@ -33,15 +35,7 @@ const TextInput: React.FC<Props> = props => {
   const checkInput = () => {
     if (clickedWhileCorrect) {
       resetLocalState();
-      props.updateResult({
-        mastered: true,
-        type: QuestionResultType.Mastery,
-        answerValues: ['Logget inn'],
-        maxPoints: props.maxPoints,
-        resultTitle: props.resultTitle,
-        questionTitle: 'Logg inn med informasjonen under',
-        pointsAchieved: points
-      });
+      props.updateResult(makePointResult(props, ['Logget inn'], points));
     } else {
       if (
         password === props.userInformation.password &&
@@ -61,15 +55,7 @@ const TextInput: React.FC<Props> = props => {
 
   const failQuestion = () => {
     resetLocalState();
-    props.updateResult({
-      type: QuestionResultType.Mastery,
-      maxPoints: props.maxPoints,
-      resultTitle: props.resultTitle,
-      questionTitle: 'Logg inn med informasjonen under',
-      pointsAchieved: 0,
-      mastered: false,
-      answerValues: ['Jeg får ikke dette til']
-    });
+    props.updateResult(failPointResult(props));
   };
 
   return (

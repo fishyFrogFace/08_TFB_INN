@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './Question.css';
 import Button from '../components/Button';
-import { QuestionResult, QuestionResultType } from '../Types';
+import { QuestionResult } from '../Types';
 import FlowButtons from 'components/FlowButtons';
+import { makeMasteryResult, imageAnswer } from 'helpers/makeResult';
 
 interface Props {
   subjectColor: string;
@@ -19,39 +20,24 @@ interface Props {
 const ChooseOne: React.FC<Props> = props => {
   const [selectedButton, setSelectedButton] = useState<number>();
 
-  const checkAnswer = (result: number | undefined) => {
-    if (result) {
-      const selectedString = props.answerValues[result];
-      return selectedString === props.correctAlternative ? 1 : 0;
-    } else {
-      return 0;
-    }
-  };
-
-  const returnResult = (result: number | undefined) => {
+  const returnResult = (result: number) => {
     setSelectedButton(undefined);
-    props.updateResult({
-      mastered: checkAnswer(result) === 1,
-      answerValues: [props.answerValues[result!]],
-      type: QuestionResultType.Mastery,
-      maxPoints: 1,
-      resultTitle: props.resultTitle,
-      questionTitle: props.text,
-      pointsAchieved: checkAnswer(result)
-    });
+    props.updateResult(
+      makeMasteryResult(
+        props,
+        props.isImage
+          ? [imageAnswer(props.answerValues[result])]
+          : [props.answerValues[result]],
+        props.answerValues[result] === props.correctAlternative
+      )
+    );
   };
 
   const failQuestion = () => {
     setSelectedButton(undefined);
-    props.updateResult({
-      type: QuestionResultType.Mastery,
-      maxPoints: props.correctAlternative.length,
-      resultTitle: props.resultTitle,
-      questionTitle: props.text,
-      pointsAchieved: 0,
-      mastered: false,
-      answerValues: ['Jeg får ikke dette til']
-    });
+    props.updateResult(
+      makeMasteryResult(props, ['Jeg får ikke dette til'], false)
+    );
   };
 
   return (

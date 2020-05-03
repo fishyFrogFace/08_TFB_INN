@@ -56,7 +56,6 @@ const Subject: React.FC<Props> = props => {
           <Start
             subjectColor={props.subject.subjectColor}
             resultTitle={question.questionContent.resultTitle!}
-            maxPoints={question.questionContent.maxPoints!}
             updateResult={updateResult}
           />
         );
@@ -121,6 +120,7 @@ const Subject: React.FC<Props> = props => {
         return (
           <Login
             subjectColor={props.subject.subjectColor}
+            text={question.questionContent.text!}
             maxPoints={question.questionContent.maxPoints!}
             resultTitle={question.questionContent.resultTitle!}
             userInformation={question.questionContent.userInformation!}
