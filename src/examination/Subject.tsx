@@ -160,6 +160,7 @@ const Subject: React.FC<Props> = props => {
       case QuestionTemplate.BigText:
         return (
           <BigText
+            subjectColor={props.subject.subjectColor}
             resultTitle={question.questionContent.resultTitle!}
             text={question.questionContent.text!}
             placeholder={question.questionContent.placeholder!}

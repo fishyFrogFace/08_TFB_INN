@@ -1,3 +1,4 @@
+/*
 .result-container {
   display: flex;
   flex-flow: column nowrap;
@@ -25,4 +26,11 @@
 
 p {
   margin-bottom: 0vh;
+}
+
+*/
+
+.choice-title {
+  margin: 3vh auto;
+  font-size: 1.6em;
 }

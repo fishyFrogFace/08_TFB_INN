@@ -22,16 +22,15 @@ interface Props extends PropsFromRedux {
 const Overview: React.FC<Props> = props => {
   return (
     <div className='content'>
-    <div className="questiontextContainer bluegrey-background">
-      <h1 className='h2 white normal-font'>Mine temaer</h1>
-
-    </div>
+      <div className='questiontextContainer teal-background'>
+        <h1 className='h2 white normal-font'>Mine temaer</h1>
+      </div>
       <div className='subjectContainer whiteBackground'>
         {props.subjects.map((subject, i) => {
           return (
             <Button
               key={i}
-              classNames= {'subject-btn' + ' ' + subject.subjectColor }
+              classNames={'subject-btn' + ' ' + subject.subjectColor}
               onClick={() => {
                 props.updateCurrentSubject(subject.title);
                 props.startExam();
@@ -45,8 +44,7 @@ const Overview: React.FC<Props> = props => {
                   completed={subject.completed}
                   total={subject.total}
                 />
-                </div>
-              
+              </div>
             </Button>
           );
         })}

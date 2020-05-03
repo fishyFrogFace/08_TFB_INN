@@ -4,6 +4,7 @@
 
 
 .questiontextContainer {
+  margin-top: 16px;
   width: 90%;
   min-height: 12vh;
   border-radius: 8px;
@@ -31,6 +32,7 @@
   flex-direction: column;
   align-content: center;
   align-items: center;
+  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.50);
 }
 .multiple-button-container {
   flex:1 1 60%;
@@ -82,6 +84,7 @@ Button .imageContainer , Button .illustrationImg {
   height: 30vh;
   font-size: 3vh;
   padding: 2vh;
+  
 }
 
 /*

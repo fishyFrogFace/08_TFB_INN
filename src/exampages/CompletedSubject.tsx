@@ -12,14 +12,14 @@ interface Props {
 const CompletedSubject: React.FC<Props> = props => {
   return (
     <div className='content'>
-      <div className='completedContainer '>
-        <h1 className={`h1 white normal-font${props.subjectColor}`}>
+      <div className={`choiceContent ${props.subjectColor}`}>
+        <p className={`choice-title  light-font`}>
           Du har fullført {props.subject}
-        </h1>
+        </p>
       </div>
 
       <div className='nextButtonContainer'>
-        <Button classNames='next' onClick={() => props.nextSubject()}>
+        <Button classNames='next btn' onClick={() => props.nextSubject()}>
           Tilbake til temaoversikt
         </Button>
       </div>

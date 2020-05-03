@@ -3,18 +3,19 @@ import { checkPasswordSafety } from 'helpers/PasswordChecker';
 
 export const standardExamDefinition = {
   subjects: [
+    /*
     {
       name: 'Introduksjon',
       subjectColor: 'bluegrey-background',
       questions: [
-        /*
+      
         {
           name: 'Start button',
           templateID: QuestionTemplate.Start,
           questionContent: {
             resultTitle: 'Forstår bruk av knapper'
           }
-        },*/
+        },
         {
           name: 'Copy symbols by writing in an input field',
           templateID: QuestionTemplate.CopyText,
@@ -54,6 +55,7 @@ export const standardExamDefinition = {
         }
       ]
     },
+    */
     {
       name: 'Passord, innlogging og BankID',
       subjectColor: 'blue-background',
@@ -260,7 +262,7 @@ export const standardExamDefinition = {
             text: 'Hvor skriver du emnet til e-posten?',
             imageInformation: {
               image: require('./images/gmail-edit.png'),
-              imageWithIndicator: require('./images/subject-correct.png'),
+              imageWithIndicator: require('./images/gmail-subject-correct.png'),
               min: { x: 0, y: 76 },
               max: { x: 657, y: 102 }
             },
@@ -366,7 +368,7 @@ export const standardExamDefinition = {
     },
     {
       name: 'Innstillinger og tilpasning av mobil',
-      subjectColor: 'lime-background',
+      subjectColor: 'light-green-background',
       questions: [
         {
           name: 'Can adjust volume',

@@ -4,7 +4,7 @@
 .navBar {
   height: 10vh;
   background-color: #E2E2E2;
-  /*border-bottom: 1px solid red; */
+  
   
 }
 .navBar {
@@ -29,13 +29,7 @@
 
 }
 
-.navbar-modals {
-  /*position: relative;
-  margin: auto;*/
-  color: black;
-  text-align: left;
-    
-}
+
 .button-container {
   display: flex;
   align-content: center;

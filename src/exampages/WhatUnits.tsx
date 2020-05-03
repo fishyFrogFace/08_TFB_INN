@@ -29,7 +29,7 @@ const WhatUnits: React.FC<PropsFromRedux> = props => {
 
   return (
     <div className='content'>
-      <div className='questiontextContainer bluegrey-background'>
+      <div className='questiontextContainer teal-background'>
         <h1 className='h2 white normal-font'>Hvilke enheter har du?</h1>
       </div>
       <div className='inputContainer whiteBackground'>

@@ -8,7 +8,7 @@
   font-size: 2.6vh;
  
   cursor: pointer;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
   
 }
 
@@ -50,9 +50,7 @@
 .next {
   background-color: #FFC107  
 }
-.skip {
-  
-}
+
 
 
 
@@ -99,6 +97,8 @@
   
   margin: 0.5vh auto;
   padding: 1vh 16px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+  
 }
 
 .subject-btn .subjectTitleContainer {
@@ -110,9 +110,10 @@
   position: relative;
   top:-8px;
   text-align: left;
-  font-size: 1.5em;
+  font-size: 2.7vh;
 
   font-weight: normal;
+  color: white;
   
 }
 .progressCirclecontainer {
@@ -127,18 +128,13 @@
 }
 
 .subject-btn:disabled {
-  color: #8c8c8c;
-  background-color: #d9d9d9;
-  background-color: #ccccff
+  color: black;
+  background-color: #E2E2E2;
+  
 }
 
-.download {
-  background-color: cyan;
-}
 
-.download:hover {
-  background-color: lightcyan;
-}
+
 
 .buttons-underneath-container .rowbtn {
   flex: 1 1 30px;
@@ -179,3 +175,6 @@
   
 /* --------------- */
 
+.download {
+  margin: 2vh;
+}

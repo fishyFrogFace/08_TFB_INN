@@ -6,6 +6,7 @@ import { QuestionResult } from '../Types';
 import { makeOtherResult } from 'helpers/makeResult';
 
 interface Props {
+  subjectColor: string;
   text: string;
   placeholder: string;
   resultTitle: string;
@@ -16,23 +17,31 @@ const BigText: React.FC<Props> = props => {
   const [input, setInput] = useState('');
 
   return (
-    <div>
-      <h1 className='h1'>{props.text}</h1>
-      <form
-        className='text-and-btn'
-        onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
-        <textarea
-          id='name'
-          className='big-text'
-          placeholder={props.placeholder}
-          onChange={e => setInput(e.currentTarget.value)}
-        />
+    <div className='content'>
+      <div className={`questiontextContainer ${props.subjectColor}`}>
+        <h1 className='h2 white normal-font'>{props.text}</h1>
+      </div>
+      <div className='inputContainer whiteBackground'>
+        <form
+          className='text-and-btn'
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
+            e.preventDefault()
+          }>
+          <textarea
+            id='name'
+            className='big-text'
+            placeholder={props.placeholder}
+            onChange={e => setInput(e.currentTarget.value)}
+          />
+        </form>
+      </div>
+      <div className='nextButtonContainer '>
         <Button
-          classNames='next'
+          classNames='next btn'
           onClick={() => props.updateResult(makeOtherResult(props, [input]))}>
           Neste
         </Button>
-      </form>
+      </div>
     </div>
   );
 };

@@ -117,9 +117,9 @@ const Examination: React.FC<Props> = props => {
           <Choice
             confirmAction={quitExam}
             closeChoice={() => props.updateExamPage(lastPage)}
-            title='Avslutte kartlegging'
-            body='Fremgang vil bli slettet. Fortsette?'
-            btnClass='exit-btn'
+            title='Avslutt kartlegging?'
+            body='Fremgang vil bli slettet. '
+            btnClass='red-background white '
             btnText='Avslutt'
           />
         );
@@ -129,9 +129,9 @@ const Examination: React.FC<Props> = props => {
           <Choice
             confirmAction={quitExam}
             closeChoice={() => props.updateExamPage(lastPage)}
-            title='Pause kartlegging'
-            body='Tilbake til din oversikt?'
-            btnClass='pause-btn'
+            title='Gå tilbake til temaoversikten?'
+            body=''
+            btnClass='teal-background '
             btnText='Til oversikt'
           />
         );
