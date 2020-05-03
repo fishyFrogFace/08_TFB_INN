@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import '../App.css';
 import './Question.css';
-import { QuestionResult, QuestionResultType, UserInformation } from '../Types';
+import { QuestionResult, UserInformation } from '../Types';
 import FlowButtons from 'components/FlowButtons';
+import { makePointResult, failPointResult } from 'helpers/makeResult';
 
 interface Props {
   maxPoints: number;
   resultTitle: string;
   userInformation: UserInformation;
+  text: string;
   updateResult: (result: QuestionResult) => void;
   skipQuestion: () => void;
 }
@@ -32,14 +34,7 @@ const TextInput: React.FC<Props> = props => {
   const checkInput = () => {
     if (clickedWhileCorrect) {
       resetLocalState();
-      props.updateResult({
-        mastered: true,
-        type: QuestionResultType.Mastery,
-        answerValues: [],
-        maxPoints: props.maxPoints,
-        resultTitle: props.resultTitle,
-        pointsAchieved: points
-      });
+      props.updateResult(makePointResult(props, ['Logget inn'], points));
     } else {
       if (
         password === props.userInformation.password &&
@@ -55,6 +50,11 @@ const TextInput: React.FC<Props> = props => {
         setFeedback('Feil passord eller brukernavn');
       }
     }
+  };
+
+  const failQuestion = () => {
+    resetLocalState();
+    props.updateResult(failPointResult(props));
   };
 
   return (
@@ -80,13 +80,7 @@ const TextInput: React.FC<Props> = props => {
           placeholder='Password'
         />
         <h2 className={`feedback ${color}`}>{feedback}</h2>
-        <FlowButtons
-          skip={() => {
-            resetLocalState();
-            props.skipQuestion();
-          }}
-          update={checkInput}
-        />
+        <FlowButtons skip={failQuestion} update={checkInput} />
       </form>
     </div>
   );

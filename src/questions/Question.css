@@ -6,7 +6,9 @@
 
 .big-text {
   width: 100%;
-  height: 100px;
+  height: 30vh;
+  font-size: 3vh;
+  padding: 2vh;
 }
 
 .black {

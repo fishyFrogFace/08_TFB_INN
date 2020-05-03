@@ -54,7 +54,6 @@ const Subject: React.FC<Props> = props => {
         return (
           <Start
             resultTitle={question.questionContent.resultTitle!}
-            maxPoints={question.questionContent.maxPoints!}
             updateResult={updateResult}
           />
         );
@@ -114,6 +113,7 @@ const Subject: React.FC<Props> = props => {
       case QuestionTemplate.LogIn:
         return (
           <Login
+            text={question.questionContent.text!}
             maxPoints={question.questionContent.maxPoints!}
             resultTitle={question.questionContent.resultTitle!}
             userInformation={question.questionContent.userInformation!}
@@ -153,6 +153,7 @@ const Subject: React.FC<Props> = props => {
           <BigText
             resultTitle={question.questionContent.resultTitle!}
             text={question.questionContent.text!}
+            placeholder={question.questionContent.placeholder!}
             updateResult={updateResult}
           />
         );

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './Question.css';
-import { QuestionResult, QuestionResultType } from '../Types';
+import { QuestionResult } from '../Types';
 import FlowButtons from 'components/FlowButtons';
+import { makePointResult, failPointResult } from 'helpers/makeResult';
 
 interface Props {
   maxPoints: number;
@@ -16,6 +17,22 @@ interface Props {
 const TextInput: React.FC<Props> = props => {
   const [input, setInput] = useState('');
 
+  const failQuestion = () => {
+    setInput('');
+    props.updateResult(failPointResult(props));
+  };
+
+  const returnResult = () => {
+    setInput('');
+    props.updateResult(
+      makePointResult(
+        props,
+        [input],
+        props.processString(input, props.maxPoints)
+      )
+    );
+  };
+
   return (
     <div>
       <h1 className='h1'>{props.text}</h1>
@@ -29,23 +46,7 @@ const TextInput: React.FC<Props> = props => {
           onChange={e => setInput(e.currentTarget.value)}
           placeholder={props.placeholder}
         />
-        <FlowButtons
-          skip={() => {
-            setInput('');
-            props.skipQuestion();
-          }}
-          update={() => {
-            setInput('');
-            props.updateResult({
-              mastered: true,
-              type: QuestionResultType.Mastery,
-              answerValues: [],
-              maxPoints: props.maxPoints,
-              resultTitle: props.resultTitle,
-              pointsAchieved: props.processString(input, props.maxPoints)
-            });
-          }}
-        />
+        <FlowButtons skip={failQuestion} update={returnResult} />
       </form>
     </div>
   );

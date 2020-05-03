@@ -33,19 +33,31 @@ export interface SubjectResult {
   results: QuestionResult[];
 }
 
-export interface QuestionResult {
+export interface CommonResult {
   resultTitle: string;
-  type: QuestionResultType;
-  maxPoints: number;
-  pointsAchieved: number;
-  mastered: boolean;
+  questionTitle: string;
   answerValues: string[];
 }
 
-export enum QuestionResultType {
-  Mastery,
-  Other
+export interface Mastery {
+  common: CommonResult;
+  mastered: boolean;
+  type: 'mastery';
 }
+
+export interface Points {
+  common: CommonResult;
+  maxPoints: number;
+  pointsAchieved: number;
+  type: 'points';
+}
+
+export interface Other {
+  common: CommonResult;
+  type: 'other';
+}
+
+export type QuestionResult = Mastery | Points | Other;
 
 /* the list of pages will get passed to the examination by App.tsx
    as will the props needed to build questions from question components.

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './Question.css';
 import Button from '../components/Button';
-import { QuestionResult, QuestionResultType } from '../Types';
+import { QuestionResult } from '../Types';
 import FlowButtons from 'components/FlowButtons';
+import { makeOtherResult, imageAnswer } from 'helpers/makeResult';
 
 interface Props {
   text: string;
@@ -17,19 +18,19 @@ interface Props {
 const ChooseOne: React.FC<Props> = props => {
   const [selectedButton, setSelectedButton] = useState<number>();
 
-  const returnResult = () => {
+  const returnResult = (result: number | undefined) => {
     setSelectedButton(undefined);
-    if (selectedButton === undefined) {
-      props.skipQuestion();
+    if (result === undefined) {
+      props.updateResult(makeOtherResult(props, ['Jeg får ikke dette til']));
     } else {
-      props.updateResult({
-        mastered: false,
-        answerValues: [props.answerValues[selectedButton!]],
-        type: QuestionResultType.Other,
-        maxPoints: 0,
-        resultTitle: props.resultTitle,
-        pointsAchieved: 0
-      });
+      props.updateResult(
+        makeOtherResult(
+          props,
+          props.isImage
+            ? [imageAnswer(props.answerValues[result])]
+            : [props.answerValues[result]]
+        )
+      );
     }
   };
 
@@ -55,10 +56,11 @@ const ChooseOne: React.FC<Props> = props => {
       </div>
       <FlowButtons
         skip={() => {
-          setSelectedButton(undefined);
-          props.skipQuestion();
+          returnResult(undefined);
         }}
-        update={returnResult}
+        update={() => {
+          if (selectedButton !== undefined) returnResult(selectedButton);
+        }}
       />
     </div>
   );
