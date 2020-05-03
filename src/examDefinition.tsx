@@ -229,7 +229,7 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.ChooseOneMastery,
           questionContent: {
             text: 'Hvilket av alternativene nedenfor er en e-postadresse?',
-            resultTitle: 'Kan kjenne igjen en e-postinnboks',
+            resultTitle: 'Kan kjenne igjen en e-postadresse',
             answerValues: [
               'www.nrk.no',
               '“Oppskrift på lasagne”',
@@ -356,7 +356,7 @@ export const standardExamDefinition = {
               min: { x: 506, y: 123 },
               max: { x: 538, y: 145 }
             },
-            resultTitle: 'Kan finne e-postinnhold',
+            resultTitle: 'Kan svare på e-post',
             maxPoints: 6
           }
         },
@@ -408,7 +408,7 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.MultipleButtons,
           questionContent: {
             text: 'Hva er sant om flymodus?',
-            resultTitle: 'Kan kjenne igjen en e-postinnboks',
+            resultTitle: 'Forstår hvordan flymodus fungerer',
             answerValues: [
               'Det er mulig å koble til WiFi, men ikke til mobilnett',
               'Det kan ikke komme lyd fra telefonen, men den kan vibrere',
@@ -532,6 +532,177 @@ export const standardExamDefinition = {
         {
           name: 'Completed subject',
           templateID: QuestionTemplate.CompletedSubject
+        }
+      ]
+    },
+    {
+      name: 'Å ringe og sende SMS',
+      subjectColor: 'purple-background',
+      questions: [
+        {
+          name: 'Send and Receive',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text:
+              'Har du sendt og mottatt SMS før (tekstmelding til telefonnummer)?',
+            resultTitle: 'Har sendt eller mottatt SMS',
+            answerValues: ['Ja', 'Nei', 'Vet ikke']
+          }
+        },
+        {
+          name: 'Open SMS-app',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Finn og trykk på SMS-appen',
+            imageInformation: {
+              image: require('./images/find-app.jpeg'),
+              imageWithIndicator: require('./images/find-messages-correct.png'),
+              min: { x: 108, y: 139 },
+              max: { x: 140, y: 180 }
+            },
+            resultTitle: 'Kan finne SMS-app',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Open Sara message',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å åpne meldingen fra Sara?',
+            imageInformation: {
+              image: require('./images/sms-inbox.jpg'),
+              imageWithIndicator: require('./images/open-message-correct.png'),
+              min: { x: 0, y: 35 },
+              max: { x: 215, y: 82 }
+            },
+            resultTitle: 'Kan klikke på SMS',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Respond message',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å skrive et svar til Sara?',
+            imageInformation: {
+              image: require('./images/sms.png'),
+              imageWithIndicator: require('./images/sms-respond-correct.png'),
+              min: { x: 0, y: 344 },
+              max: { x: 170, y: 365 }
+            },
+            resultTitle: 'Vet hvor man svarer på SMS',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Send message',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å sende meldingen til Sara?',
+            imageInformation: {
+              image: require('./images/sms.png'),
+              imageWithIndicator: require('./images/sms-send-correct.png'),
+              min: { x: 189, y: 346 },
+              max: { x: 213, y: 365 }
+            },
+            resultTitle: 'Kan sende SMS',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Create new message',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor klikker du for å opprette en ny melding?',
+            imageInformation: {
+              image: require('./images/sms-inbox.jpg'),
+              imageWithIndicator: require('./images/new-message-correct.png'),
+              min: { x: 167, y: 321 },
+              max: { x: 204, y: 351 }
+            },
+            resultTitle: 'Kan opprette ny melding',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Open contactlist',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Åpne kontaktliste',
+            imageInformation: {
+              image: require('./images/find-app.jpeg'),
+              imageWithIndicator: require('./images/find-contacts-correct.png'),
+              min: { x: 74, y: 87 },
+              max: { x: 108, y: 129 }
+            },
+            resultTitle: 'Kan åpne kontaktliste',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Open contact',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor trykker du for å se Janis sitt telefonnummer?',
+            imageInformation: {
+              image: require('./images/contact-list.png'),
+              imageWithIndicator: require('./images/contact-list-correct.png'),
+              min: { x: 11, y: 279 },
+              max: { x: 182, y: 307 }
+            },
+            resultTitle: 'Kan åpne kontakt',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Call contact',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor trykker du for å ringe Janis?',
+            imageInformation: {
+              image: require('./images/profile.jpeg'),
+              imageWithIndicator: require('./images/profile-call-correct.png'),
+              min: { x: 78, y: 179 },
+              max: { x: 135, y: 222 }
+            },
+            resultTitle: 'Kan ringe kontakt',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'SMS to contact',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor trykker du for å sende melding til Janis?',
+            imageInformation: {
+              image: require('./images/profile.jpeg'),
+              imageWithIndicator: require('./images/profile-sms-correct.png'),
+              min: { x: 0, y: 179 },
+              max: { x: 71, y: 222 }
+            },
+            resultTitle: 'Kan melde kontakt',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Add new contact',
+          templateID: QuestionTemplate.WhereInPicture,
+          questionContent: {
+            text: 'Hvor trykker du for å legge til en person i kontaktlisten?',
+            imageInformation: {
+              image: require('./images/contact-list.png'),
+              imageWithIndicator: require('./images/new-contact-correct.png'),
+              min: { x: 171, y: 309 },
+              max: { x: 202, y: 339 }
+            },
+            resultTitle: 'Kan legge til ny kontakt',
+            maxPoints: 6
+          }
+        },
+        {
+          name: 'Completed subject',
+          templateID: QuestionTemplate.CompletedSubject,
+          questionContent: {}
         }
       ]
     }

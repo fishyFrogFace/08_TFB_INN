@@ -12,7 +12,7 @@ interface Props {
 const CompletedSubject: React.FC<Props> = props => {
   return (
     <div className='content'>
-      <div className={`choiceContent ${props.subjectColor}`}>
+      <div className={`choiceContent white ${props.subjectColor}`}>
         <p className={`choice-title  light-font`}>
           Du har fullført {props.subject}
         </p>
