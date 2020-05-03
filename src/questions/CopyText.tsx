@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './Question.css';
-import { QuestionResult, QuestionResultType } from '../Types';
+import { QuestionResult } from '../Types';
 import FlowButtons from 'components/FlowButtons';
+import { makePointResult, failPointResult } from 'helpers/makeResult';
 
 interface Props {
   maxPoints: number;
@@ -27,15 +28,7 @@ const CopyText: React.FC<Props> = props => {
   const checkInput = () => {
     if (clickedWhileCorrect) {
       resetLocalState();
-      props.updateResult({
-        type: QuestionResultType.Mastery,
-        maxPoints: props.maxPoints,
-        resultTitle: props.resultTitle,
-        questionTitle: props.text,
-        pointsAchieved: points,
-        mastered: true,
-        answerValues: [props.text]
-      });
+      props.updateResult(makePointResult(props, [props.text], points));
     } else {
       if (input === props.text) {
         setColor('green');
@@ -50,15 +43,7 @@ const CopyText: React.FC<Props> = props => {
 
   const failQuestion = () => {
     resetLocalState();
-    props.updateResult({
-      type: QuestionResultType.Mastery,
-      maxPoints: props.maxPoints,
-      resultTitle: props.resultTitle,
-      questionTitle: props.text,
-      pointsAchieved: 0,
-      mastered: false,
-      answerValues: ['Jeg får ikke dette til']
-    });
+    props.updateResult(failPointResult(props));
   };
 
   const storeInput = (e: React.FormEvent<HTMLInputElement>) => {

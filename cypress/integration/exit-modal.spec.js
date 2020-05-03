@@ -4,7 +4,7 @@ context('Exit modal testing', () => {
   const title = 'Velkommen til Digiklar';
 
   before(() => {
-    cy.wait(10000); //try to let site load before starting the first test
+    cy.wait(20000); //try to let site load before starting the first test
 
     cy.visit('http://localhost:3000/');
     cy.get('.start')
