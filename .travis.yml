@@ -14,20 +14,13 @@ cache:
     # we also need to cache folder with Cypress binary
     - ~/.cache
 
-stages:
-  - install
-  - compile
-  - test
-  - name: deploy
-    if: branch = master
-
 install:
   - npm install
 
 compile:
   - npm start -- --silent &
 
-test:
+after_success:
   - $(npm bin)/cypress run
 
 env:
