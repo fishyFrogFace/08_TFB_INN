@@ -1,11 +1,10 @@
 import React from 'react';
 import '../App.css';
 import Button from '../components/Button';
-import { QuestionResult, QuestionResultType } from '../Types';
+import { QuestionResult } from '../Types';
 
 interface Props {
   resultTitle: string;
-  maxPoints: number;
   updateResult: (qResult: QuestionResult) => void;
 }
 
@@ -17,12 +16,13 @@ const Start: React.FC<Props> = props => {
       classNames='start'
       onClick={() =>
         props.updateResult({
-          type: QuestionResultType.Mastery,
-          resultTitle: props.resultTitle,
-          maxPoints: props.maxPoints,
-          pointsAchieved: props.maxPoints,
+          common: {
+            resultTitle: props.resultTitle,
+            questionTitle: 'Klikk startknappen',
+            answerValues: ['Klikket på knappen']
+          },
           mastered: true,
-          answerValues: []
+          type: 'mastery'
         })
       }>
       Start

@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import './Question.css';
 import Button from '../components/Button';
-import { QuestionResult, QuestionResultType } from '../Types';
+import { QuestionResult } from '../Types';
 import FlowButtons from 'components/FlowButtons';
+import {
+  makePointResult,
+  failPointResult,
+  imageAnswer
+} from 'helpers/makeResult';
 
 interface Props {
   text: string;
@@ -44,14 +49,20 @@ const MultipleButtons: React.FC<Props> = props => {
 
   const returnResult = () => {
     setSelectedButtons([]);
-    props.updateResult({
-      mastered: true,
-      answerValues: [],
-      type: QuestionResultType.Mastery,
-      maxPoints: props.correctAlternativeList.length,
-      resultTitle: props.resultTitle,
-      pointsAchieved: checkAnswer()
-    });
+    props.updateResult(
+      makePointResult(
+        props,
+        props.isImage
+          ? selectedButtons.map(i => imageAnswer(props.answerValues[i]))
+          : selectedButtons.map(i => props.answerValues[i]),
+        checkAnswer()
+      )
+    );
+  };
+
+  const failQuestion = () => {
+    setSelectedButtons([]);
+    props.updateResult(failPointResult(props));
   };
 
   return (
@@ -76,13 +87,7 @@ const MultipleButtons: React.FC<Props> = props => {
           </Button>
         ))}
       </div>
-      <FlowButtons
-        skip={() => {
-          setSelectedButtons([]);
-          props.skipQuestion();
-        }}
-        update={returnResult}
-      />
+      <FlowButtons skip={failQuestion} update={returnResult} />
     </div>
   );
 };

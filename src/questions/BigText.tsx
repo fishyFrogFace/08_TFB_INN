@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import '../App.css';
 import './Question.css';
 import Button from '../components/Button';
-import { QuestionResult, QuestionResultType } from '../Types';
+import { QuestionResult } from '../Types';
+import { makeOtherResult } from 'helpers/makeResult';
 
 interface Props {
   text: string;
+  placeholder: string;
   resultTitle: string;
   updateResult: (result: QuestionResult) => void;
 }
@@ -19,24 +21,15 @@ const BigText: React.FC<Props> = props => {
       <form
         className='text-and-btn'
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
-        <input
+        <textarea
           id='name'
           className='big-text'
-          type='text'
+          placeholder={props.placeholder}
           onChange={e => setInput(e.currentTarget.value)}
         />
         <Button
           classNames='next'
-          onClick={() =>
-            props.updateResult({
-              mastered: false,
-              type: QuestionResultType.Other,
-              answerValues: [input],
-              maxPoints: 0,
-              resultTitle: props.resultTitle,
-              pointsAchieved: 0
-            })
-          }>
+          onClick={() => props.updateResult(makeOtherResult(props, [input]))}>
           Neste
         </Button>
       </form>
