@@ -13,23 +13,13 @@ cache:
   directories:
     # we also need to cache folder with Cypress binary
     - ~/.cache
-
-stages:
-  - compile
-  - check
-  - deploy
-
+install:
+  - npm install
+script:
+  - npm start -- --silent &
+  - $(npm bin)/cypress run
 env:
   - CI=false
-
-jobs:
-  include:
-    - stage: compile
-      script:
-        - npm install
-        - npm start -- --silent &
-    - stage: check
-      script: $(npm bin)/cypress run
 
 before_deploy:
   - npm install netlify-cli -g
