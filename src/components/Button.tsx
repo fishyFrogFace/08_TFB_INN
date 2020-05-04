@@ -11,13 +11,15 @@ interface Props {
 const Button: React.FC<Props> = props => {
   if (props.disabled) {
     return (
-      <button className={/*`btn*/` ${props.classNames}`} disabled>
+      <button className={/*`btn*/ ` ${props.classNames}`} disabled>
         {props.children}
       </button>
     );
   } else {
     return (
-      <button className={/*`btn*/` ${props.classNames}`} onClick={props.onClick}>
+      <button
+        className={/*`btn*/ ` ${props.classNames}`}
+        onClick={props.onClick}>
         {props.children}
       </button>
     );

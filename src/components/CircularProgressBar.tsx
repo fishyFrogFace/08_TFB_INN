@@ -15,16 +15,14 @@ const ProgressBar: React.FC<Props> = props => {
     percent > 50 ? `over50 p${percent}` : `p${percent}`;
 
   return (
-    
-      <div
-        className={`progress-circle ${decideClassName(calculatePercentage())}`}>
-        <span>{calculatePercentage()}%</span>
-        <div className='left-half-clipper'>
-          <div className='first50-bar'></div>
-          <div className='value-bar'></div>
-        </div>
+    <div
+      className={`progress-circle ${decideClassName(calculatePercentage())}`}>
+      <span>{calculatePercentage()}%</span>
+      <div className='left-half-clipper'>
+        <div className='first50-bar'></div>
+        <div className='value-bar'></div>
       </div>
-    
+    </div>
   );
 };
 

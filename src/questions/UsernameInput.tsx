@@ -60,10 +60,9 @@ const UsernameInput: React.FC<Props> = props => {
   <div className='imageContainer'>
         <img src={avatar} alt='Avatar' />
       </div>*/
-  
+
   return (
     <div>
-      
       <h1 className='h1'>Hva heter du?</h1>
       <form
         className='textAndBtn'
@@ -84,15 +83,14 @@ const UsernameInput: React.FC<Props> = props => {
           }}
           placeholder='Navn'
         />
-        </form>
+      </form>
       <p className='username'>{input}</p>
 
-
-        <div className='nextbuttoncontainer' onClick={() => props.getUsername(input)}>
-          <img src={neste} alt="Neste" ></img>
-        </div>
-        
-      
+      <div
+        className='nextbuttoncontainer'
+        onClick={() => props.getUsername(input)}>
+        <img src={neste} alt='Neste'></img>
+      </div>
     </div>
   );
 };

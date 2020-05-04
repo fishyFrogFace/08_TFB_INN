@@ -705,6 +705,6 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.CompletedSubject
         }
       ]
-    },
+    }
   ]
 };

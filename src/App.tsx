@@ -8,8 +8,6 @@ import { connect } from 'react-redux';
 import { RootState } from 'redux/reducers';
 import { updateAppPage } from 'redux/actions';
 
-
-
 const App: React.FC<PropsFromRedux> = props => {
   switch (props.currentPage) {
     /* fetch available examinations from local storage (or backend API) and pass
