@@ -21,7 +21,7 @@ const ResultPage: React.FC<PropsFromRedux> = props => {
               devices={props.units}
             />
           }
-          fileName='document.pdf'>
+          fileName={'Digiklar-resultat ' + props.username + '.pdf'}>
           {({ blob, url, loading, error }) =>
             loading ? (
               <Button
