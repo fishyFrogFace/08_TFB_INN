@@ -2,8 +2,7 @@
 
 context('Pre-exam', () => {
   const username = 'little-kangaroo';
-  const title = 'Velkommen til Digiklar';
-  const subjectTitle = 'Introduksjon';
+  const title = 'Digiklar';
 
   before(() => {
     cy.visit('http://localhost:3000/');
@@ -14,13 +13,13 @@ context('Pre-exam', () => {
   });
 
   it('examination blurb button is clickable, the start page renders username input', () => {
-    cy.get('.start').first().click();
+    cy.get('.startbutton').first().click();
 
-    cy.get('.h1').first().should('contain', 'Mitt navn er');
+    cy.get('.h2').eq(1).should('contain', 'Mitt navn er');
   });
 
   it('username input contains a navigation menu', () => {
-    cy.get('.nav-bar').first().should('be.visible');
+    cy.get('.nav-img').first().should('be.visible');
   });
 
   it('username is visible when typing', () => {
@@ -32,11 +31,11 @@ context('Pre-exam', () => {
   it('username button is clickable and renders what units', () => {
     cy.get('.next-button').first().click();
 
-    cy.get('.h1').first().should('contain', 'Hvilke enheter har du?');
+    cy.get('.h2').eq(1).should('contain', 'Hvilke enheter har du?');
   });
 
   it('what units contains a navigation menu', () => {
-    cy.get('.nav-bar').first().should('be.visible');
+    cy.get('.nav-img').first().should('be.visible');
   });
 
   it('what units buttons are clickable', () => {
@@ -50,24 +49,36 @@ context('Pre-exam', () => {
   it('what units is clickable and renders overview', () => {
     cy.get('.next-button').first().click();
 
-    cy.get('.subject-btn').first().should('contain', subjectTitle);
+    const titles = [
+      'Å ringe og sende SMS',
+      'Innstillinger og tilpasning av mobil',
+      'Passord, innlogging og BankID',
+      'E-post'
+    ];
+    cy.get('.subject-btn').each(($el, i) =>
+      cy.wrap($el).should('contain', titles[i])
+    );
   });
 
   it('overview contains a navigation menu', () => {
-    cy.get('.nav-bar').first().should('be.visible');
+    cy.get('.nav-img').first().should('be.visible');
   });
 
   it('overview button is clickable and renders result', () => {
     cy.get('.next-button').first().click();
 
-    cy.get('.h1')
+    cy.get('.choice-title')
       .first()
       .should('contain', 'Resultat')
       .and('contain', username);
   });
 
   it('result contains a navigation menu', () => {
-    cy.get('.nav-bar').first().should('be.visible');
+    cy.get('.nav-img').first().should('be.visible');
+  });
+
+  it('result is downloadable', () => {
+    cy.get('.download').first().click();
   });
 
   it('a reload brings you to start page', () => {

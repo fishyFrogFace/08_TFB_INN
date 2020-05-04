@@ -12,7 +12,6 @@
   align-items: center;
   justify-content: center;
   padding: 16px 32px;
-  /*padding-top: 0;*/
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
 }
 
@@ -21,26 +20,22 @@
   top: -5vh;
   width: 100%;
   min-height: 50vh;
-
   padding: 10vh 16px 16px 16px;
-
   border-radius: 3px;
-
   display: flex;
   flex-direction: column;
   align-content: center;
   align-items: center;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
 }
+
 .multiple-button-container {
   flex: 1 1 60%;
   width: 100%;
   margin-top: 2vh;
-
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
   align-content: center;
   justify-content: center;
 }
@@ -49,6 +44,7 @@
   max-width: 100%;
   max-height: 100%;
 }
+
 Button .imageContainer,
 Button .illustrationImg {
   max-height: 20vh;
@@ -69,12 +65,6 @@ Button .illustrationImg {
   font-size: 3vh;
   padding: 2vh;
 }
-
-/*
-.username {
-  color:black;
-}
-*/
 
 .not-column {
   flex-direction: row;
@@ -156,7 +146,7 @@ Button .illustrationImg {
   font-weight: normal;
 }
 
-.inputP {
+.input-label {
   display: inline;
   margin-right: 8px;
   font-size: 3vh;
@@ -164,15 +154,15 @@ Button .illustrationImg {
   color: white;
 }
 
-.questionDetails {
+.question-details {
   margin-bottom: 5vh;
   text-align: left;
   font-size: 3vh;
 }
+
 .login {
   padding: 4vh 1vh;
   padding-bottom: 0;
-
   border-radius: 8px;
 }
 
@@ -184,8 +174,13 @@ Button .illustrationImg {
 }
 
 .feedback {
-  color: #ff5722;
   margin-bottom: 5vh;
 }
 
-/* -------------*/
+.feedback-incorrect {
+  color: #ff5722;
+}
+
+.feedback-correct {
+  color: #0e4909;
+}

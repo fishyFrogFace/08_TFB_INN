@@ -41,13 +41,13 @@ const TextInput: React.FC<Props> = props => {
         password === props.userInformation.password &&
         username === props.userInformation.username
       ) {
-        setColor('green');
+        setColor('feedback-correct');
         setFeedback('Gratulerer, du er nå logget inn!');
         setClickedWhileCorrect(true);
       } else {
         const newPoints = points - 1;
         setPoints(newPoints >= 0 ? newPoints : 0);
-        setColor('red');
+        setColor('feedback-incorrect');
         setFeedback('Feil passord eller brukernavn');
       }
     }
@@ -67,7 +67,7 @@ const TextInput: React.FC<Props> = props => {
       </div>
       <div className='inputContainer whiteBackground'>
         <div>
-          <p className='black questionDetails'>
+          <p className='black question-details'>
             Brukernavn: "{props.userInformation.username}" <br></br>
             Passord: "{props.userInformation.password}"
           </p>
@@ -78,7 +78,7 @@ const TextInput: React.FC<Props> = props => {
             e.preventDefault()
           }>
           <div>
-            <p className='inputP black'>Username:</p>
+            <p className='input-label black'>Username:</p>
             <input
               id='username'
               className={`input-field ${color}`}
@@ -88,7 +88,7 @@ const TextInput: React.FC<Props> = props => {
             />
           </div>
           <div>
-            <p className='inputP black'>Password:</p>
+            <p className='input-label black'>Password:</p>
             <input
               id='password'
               className={`input-field ${color}`}
