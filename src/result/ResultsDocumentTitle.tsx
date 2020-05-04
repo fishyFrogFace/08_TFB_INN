@@ -29,7 +29,7 @@ const getDateString = (date: Date) => {
   return (
     date.getFullYear().toString() +
     '/' +
-    date.getMonth().toString() +
+    (date.getMonth()+1).toString() +
     '/' +
     date.getDate().toString()
   );
