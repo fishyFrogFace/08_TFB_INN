@@ -1,13 +1,12 @@
 /// <reference types="Cypress" />
 
 context('Exit modal testing', () => {
-  const title = 'Velkommen til Digiklar';
+  const title = 'Digiklar';
 
   before(() => {
-    cy.wait(20000); //try to let site load before starting the first test
 
     cy.visit('http://localhost:3000/');
-    cy.get('.start')
+    cy.get('.startbutton')
       .first()
       .click();
 
@@ -31,14 +30,14 @@ context('Exit modal testing', () => {
 
     cy.get('.choice-title').should('be.visible');
 
-    cy.get('.pause-btn')
+    cy.get('.choicebtn')
       .first()
       .should('contain', 'Til oversikt');
   });
 
   it('close button closes exit screen', () => {
-    cy.get('.close-btn')
-      .first()
+    cy.get('.choicebtn')
+      .eq(1)
       .click();
 
     cy.get('.choice-title').should('not.be.visible');
@@ -49,7 +48,7 @@ context('Exit modal testing', () => {
   });
 
   it('x in corner closes exit screen', () => {
-    cy.get('.close-btn')
+    cy.get('.choice-nav-exit-btn')
       .first()
       .click();
 
@@ -60,8 +59,8 @@ context('Exit modal testing', () => {
       .click();
   });
 
-  it('exit button renders front page', () => {
-    cy.get('.pause-btn')
+  it('exit button renders overview', () => {
+    cy.get('.choicebtn')
       .first()
       .click();
 
@@ -69,16 +68,17 @@ context('Exit modal testing', () => {
 
     cy.get('.subject-btn')
       .first()
-      .should('contain', 'Introduksjon');
+      .should('contain', 'Å ringe og sende SMS');
   });
 
-  it('exit button renders exam page', () => {
+  it('exit button renders front page', () => {
     cy.get('.exit')
       .first()
       .click();
 
-    cy.get('.exit-btn')
+    cy.get('.choicebtn')
       .first()
+      .should('contain', 'Avslutt')
       .click();
 
     cy.get('.choice-title').should('not.be.visible');
@@ -89,12 +89,12 @@ context('Exit modal testing', () => {
   });
 
   it('has reloaded state after exit', () => {
-    cy.get('.start')
+    cy.get('.startbutton')
       .first()
       .click();
 
-    cy.get('.h1')
-      .first()
+    cy.get('.h2')
+      .eq(1)
       .should('contain', 'Mitt navn er');
   });
 
@@ -103,7 +103,29 @@ context('Exit modal testing', () => {
       .first()
       .click();
 
-    cy.get('.exit-btn')
+    cy.get('.choicebtn')
+      .first()
+      .click();
+
+    cy.get('.frontpage-header')
+      .first()
+      .should('contain', title);
+  });
+
+  it('prevents user from not setting devices', () => {
+    cy.get('.startbutton')
+    .first()
+    .click();
+
+    cy.get('.next')
+    .first()
+    .click();
+
+    cy.get('.exit')
+      .first()
+      .click();
+
+    cy.get('.choicebtn')
       .first()
       .click();
 
