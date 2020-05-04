@@ -27,11 +27,9 @@ export interface Props {
 
 const getDateString = (date: Date) => {
   return (
-    date.getFullYear().toString() +
-    '/' +
-    date.getMonth().toString() +
-    '/' +
-    date.getDate().toString()
+    `${date.getFullYear().toString()}
+    '/'${date.getMonth().toString()}
+    '/'${date.getDate().toString()}`
   );
 };
 

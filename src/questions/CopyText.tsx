@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import './Question.css';
 import { QuestionResult } from '../Types';
 import FlowButtons from 'components/FlowButtons';
-import Subject from 'examination/Subject';
-import Button from 'components/Button';
 import { makePointResult, failPointResult } from 'helpers/makeResult';
 
 interface Props {

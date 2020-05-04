@@ -30,7 +30,7 @@ const Overview: React.FC<Props> = props => {
           return (
             <Button
               key={i}
-              classNames={'subject-btn' + ' ' + subject.subjectColor}
+              classNames={`subject-btn ${subject.subjectColor}`}
               onClick={() => {
                 props.updateCurrentSubject(subject.title);
                 props.startExam();
