@@ -68,7 +68,7 @@ const EnterName: React.FC<Props> = props => {
           }>
           <input
             id='name'
-            className='inputField'
+            className='input-field'
             type='text'
             onChange={(e: React.FormEvent<HTMLInputElement>) => {
               const valueTyped = e.currentTarget.value;
@@ -85,7 +85,7 @@ const EnterName: React.FC<Props> = props => {
       </div>
       <div className='nextButtonContainer'>
         <Button
-          classNames='btn next'
+          classNames='btn next-button'
           onClick={() => {
             props.setUsername(input);
           }}>

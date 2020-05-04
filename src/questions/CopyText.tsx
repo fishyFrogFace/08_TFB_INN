@@ -66,7 +66,7 @@ const CopyText: React.FC<Props> = props => {
           }>
           <input
             id='name'
-            className={`inputField ${color}`}
+            className={`input-field ${color}`}
             type='text'
             onChange={e => storeInput(e)}
             placeholder={props.text}

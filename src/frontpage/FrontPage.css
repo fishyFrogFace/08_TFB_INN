@@ -1,49 +1,35 @@
-
-
 .frontpage-main {
   display: flex;
   flex-direction: column;
-  
   height: 100vh;
   align-items: center;
   justify-content: space-around;
-  
-  
 }
 
 .frontpage-blurb {
   width: 90%;
-  
   border-radius: 2vmin;
-  
   padding: 10vh 2vw;
- 
   height: 90vh;
   display: flex;
-  
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
   text-align: center;
-  
 }
 
 .frontpage-header {
   font-family: 'Courier New', Courier, monospace;
   font-size: 36px;
-  
   letter-spacing: -2.5px;
   text-align: center;
 }
 
-.appIntro {
+.app-intro {
   position: relative;
   font-size: 1.5em;
   top: -4vh;
   opacity: 60%;
-  
-  
 }
 
 /* -- Frontpage -- */
@@ -52,26 +38,10 @@
   max-height: 40vh;
 }
 
-.descriptionContainer {
+.description-container {
   margin-top: 5vh;
   margin-bottom: 5vh;
-  
   font-size: 16px;
   align-content: center;
-
-
+  max-width: 1000px;
 }
-/* -------- */
-
-
-
-/*
-@media (min-width: 900px) and (max-height: 470px) {
-.scrollContainer {
-  padding: 16px;
-  overflow: scroll;
-  background-color: lightgray;
-}
-}
-
-*/

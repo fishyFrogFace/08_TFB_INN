@@ -30,7 +30,7 @@ context('Pre-exam', () => {
   });
 
   it('username button is clickable and renders what units', () => {
-    cy.get('.next').first().click();
+    cy.get('.next-button').first().click();
 
     cy.get('.h1').first().should('contain', 'Hvilke enheter har du?');
   });
@@ -48,7 +48,7 @@ context('Pre-exam', () => {
   });
 
   it('what units is clickable and renders overview', () => {
-    cy.get('.next').first().click();
+    cy.get('.next-button').first().click();
 
     cy.get('.subject-btn').first().should('contain', subjectTitle);
   });
@@ -58,7 +58,7 @@ context('Pre-exam', () => {
   });
 
   it('overview button is clickable and renders result', () => {
-    cy.get('.next').first().click();
+    cy.get('.next-button').first().click();
 
     cy.get('.h1')
       .first()

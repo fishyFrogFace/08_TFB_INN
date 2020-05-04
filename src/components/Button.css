@@ -1,41 +1,29 @@
 .btn {
-  padding: 2.6vh 8vw; 
-  
+  padding: 2.6vh 8vw;
   margin: 1vmin;
   text-align: center;
-  
   border-radius: 8px;
   font-size: 2.6vh;
- 
   cursor: pointer;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
-  
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
 .btn:hover {
   filter: brightness(95%);
 }
-.btn:active{
+
+.btn:active {
   box-shadow: none;
 }
-
-/*
-.btn.selected {
-  box-shadow: none;
- 
-  filter: brightness(1.1);
- 
-}
-*/
-
 
 .multibtn:hover {
-  filter:none;
-  background-color: #ACDAE0;
+  filter: none;
+  background-color: #acdae0;
 }
+
 .multibtn.selected {
   box-shadow: none;
-  background-color:#73D0DC;
+  background-color: #73d0dc;
 }
 
 .btn:disabled {
@@ -43,23 +31,17 @@
   pointer-events: none;
 }
 
-
-
 /*NEXT page*/
 
-.next {
-  background-color: #FFC107  
+.next-button {
+  background-color: #ffc107;
 }
-
-
-
-
 
 /*EXIT button in navbar*/
 
 .nav-btn {
   background-color: transparent;
-  
+
   color: 0;
   margin: 0;
   border: 0;
@@ -68,60 +50,50 @@
 }
 
 .nav-btn:hover {
-  filter: invert(55%) sepia(55%) saturate(4482%) hue-rotate(161deg) brightness(94%) contrast(105%);
-  
+  filter: invert(55%) sepia(55%) saturate(4482%) hue-rotate(161deg)
+    brightness(94%) contrast(105%);
 }
+
 .nav-btn:active {
   background-color: transparent;
 }
 
 .nav-img {
- 
   margin: auto;
   height: inherit;
   width: inherit;
-
 }
-
 
 /*SUBJECT BUTTON in overview*/
 .subject-btn {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
-  
   border-radius: 2vh;
   width: 85%;
   min-height: 12vh;
-  
   margin: 0.5vh auto;
   padding: 1vh 16px;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
-  
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
 .subject-btn .subjectTitleContainer {
   width: 75%;
-  
 }
 
-.subjectTitleContainer p{
+.subjectTitleContainer p {
   position: relative;
-  top:-8px;
+  top: -8px;
   text-align: left;
   font-size: 2.7vh;
-
   font-weight: normal;
   color: white;
-  
 }
+
 .progressCirclecontainer {
   height: 4.5em;
   width: 4.5em;
 }
-
-
 
 .subject-btn:hover {
   filter: brightness(1.05);
@@ -129,21 +101,15 @@
 
 .subject-btn:disabled {
   color: black;
-  background-color: #E2E2E2;
-  
+  background-color: #e2e2e2;
 }
-
-
-
 
 .buttons-underneath-container .rowbtn {
   flex: 1 1 30px;
 }
 
-
-
 /* MULTIPLE BUTTONS */
-.answer-btn{
+.answer-btn {
   flex: 1 1 96%;
   max-width: 96%;
   font-size: 16px;
@@ -152,7 +118,6 @@
   max-height: 30vh;
   font-size: 20px;
   padding: 2vmin;
-
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -165,14 +130,12 @@
     min-height: 10vh;
     max-height: 25vh;
     font-size: 18px;
-
     flex-direction: row;
     align-items: center;
     justify-items: center;
-
-    }
+  }
 }
-  
+
 /* --------------- */
 
 .download {

@@ -69,7 +69,7 @@ const UsernameInput: React.FC<Props> = props => {
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
         <input
           id='name'
-          className='inputField'
+          className='input-field'
           type='text'
           onKeyUp={(e: React.FormEvent<HTMLInputElement>) => {
             const valueTyped = e.currentTarget.value;

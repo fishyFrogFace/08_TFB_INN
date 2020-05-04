@@ -37,7 +37,7 @@ const BigText: React.FC<Props> = props => {
       </div>
       <div className='nextButtonContainer '>
         <Button
-          classNames='next btn'
+          classNames='next-button btn'
           onClick={() => props.updateResult(makeOtherResult(props, [input]))}>
           Neste
         </Button>

@@ -1,51 +1,31 @@
 * {
   box-sizing: border-box;
 }
+
 .navBar {
   height: 10vh;
-  background-color: #E2E2E2;
-  
-  
+  background-color: #e2e2e2;
 }
+
 .navBar {
   display: flex;
-
   flex-direction: row;
   justify-content: flex-start;
   align-content: center;
-  /*padding: 3vh 0 auto 2vw;*/
-
-  
-  
-  
   min-height: 10vh;
-
   max-height: 10vh;
-  background-color: #E2E2E2;
-
-  
+  background-color: #e2e2e2;
   color: #d2d7df;
-  
-
 }
-
 
 .button-container {
   display: flex;
   align-content: center;
   min-width: 6vw;
   margin-left: 2vmin;
- 
 }
 
 .subject-name-container {
-  /*
-  display: inline-block;
-  margin: auto 5vw;
-  */
   margin-left: 3vmin;
   opacity: 50%;
-  
 }
-
-

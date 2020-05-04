@@ -2,7 +2,6 @@
   margin-top: 10vh;
 }
 
-
 .questiontextContainer {
   margin-top: 16px;
   width: 90%;
@@ -14,68 +13,53 @@
   justify-content: center;
   padding: 16px 32px;
   /*padding-top: 0;*/
-  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.50);
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
 }
-
 
 .inputContainer {
   position: relative;
   top: -5vh;
   width: 100%;
   min-height: 50vh;
-  
+
   padding: 10vh 16px 16px 16px;
-  
+
   border-radius: 3px;
-  
+
   display: flex;
   flex-direction: column;
   align-content: center;
   align-items: center;
-  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.50);
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
 }
 .multiple-button-container {
-  flex:1 1 60%;
+  flex: 1 1 60%;
   width: 100%;
   margin-top: 2vh;
-  
-  
 
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  
+
   align-content: center;
   justify-content: center;
-  
 }
 
 .imageContainer {
-  
   max-width: 100%;
   max-height: 100%;
- 
-  
 }
-Button .imageContainer , Button .illustrationImg {
-  max-height: 20vh; 
-  
-  
+Button .imageContainer,
+Button .illustrationImg {
+  max-height: 20vh;
 }
 
 .illustrationImg {
-  max-height:20vh;
+  max-height: 20vh;
   max-width: 100%;
- 
 }
 
-
-
-
-
-
-
-.nextButtonContainer{
+.nextButtonContainer {
   z-index: 3;
 }
 
@@ -84,7 +68,6 @@ Button .imageContainer , Button .illustrationImg {
   height: 30vh;
   font-size: 3vh;
   padding: 2vh;
-  
 }
 
 /*
@@ -93,21 +76,9 @@ Button .imageContainer , Button .illustrationImg {
 }
 */
 
-
-
-
-
-
 .not-column {
   flex-direction: row;
 }
-
-
-
-
-
-
-
 
 /*WHERE IN PICTURE*/
 
@@ -141,25 +112,46 @@ Button .imageContainer , Button .illustrationImg {
 }
 
 @keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
 }
 /* -------------- */
 
-
-
-
 /*Login-task*/
-#name, #password, #username {
+#name,
+#password,
+#username {
   font-size: 3vh;
   font-weight: normal;
 }
@@ -172,19 +164,19 @@ Button .imageContainer , Button .illustrationImg {
   color: white;
 }
 
-.questionDetails{
+.questionDetails {
   margin-bottom: 5vh;
   text-align: left;
   font-size: 3vh;
 }
 .login {
-  padding:4vh 1vh;
+  padding: 4vh 1vh;
   padding-bottom: 0;
-  
+
   border-radius: 8px;
 }
 
-.inputField {
+.input-field {
   margin-bottom: 3vh;
   width: 50vmin;
   border-radius: 3vmin;
@@ -192,10 +184,8 @@ Button .imageContainer , Button .illustrationImg {
 }
 
 .feedback {
-  color: #FF5722;
+  color: #ff5722;
   margin-bottom: 5vh;
 }
-
-
 
 /* -------------*/

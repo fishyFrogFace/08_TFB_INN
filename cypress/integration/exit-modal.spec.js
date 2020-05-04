@@ -7,9 +7,9 @@ context('Exit modal testing', () => {
     cy.visit('http://localhost:3000/');
     cy.get('.startbutton').first().click();
 
-    cy.get('.next').first().click();
+    cy.get('.next-button').first().click();
 
-    cy.get('.next').first().click();
+    cy.get('.next-button').first().click();
 
     cy.get('.subject-btn').first().click();
   });
@@ -73,7 +73,7 @@ context('Exit modal testing', () => {
   it('prevents user from not setting devices', () => {
     cy.get('.startbutton').first().click();
 
-    cy.get('.next').first().click();
+    cy.get('.next-button').first().click();
 
     cy.get('.exit').first().click();
 

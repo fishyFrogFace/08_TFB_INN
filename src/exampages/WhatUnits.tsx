@@ -52,7 +52,7 @@ const WhatUnits: React.FC<PropsFromRedux> = props => {
       </div>
       <div>
         <Button
-          classNames='next btn'
+          classNames='next-button btn'
           onClick={() =>
             props.setUnits(selectedButtons.map(i => units[i].description))
           }>

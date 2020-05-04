@@ -18,11 +18,11 @@ const FrontPage: React.FC<PropsFromRedux> = props => {
     <div className='frontpage-main'>
       <div className='frontpage-blurb'>
         <h1 className='frontpage-header black'>Digiklar</h1>
-        <div className='scrollContainer'>
-          <p className='appIntro light-font'>{appIntro}</p>
+        <div className='scroll-container'>
+          <p className='app-intro light-font'>{appIntro}</p>
           <img className='logo' src={logo} alt='Application logo' />
-          <div className='descriptionContainer'>
-            <p className='flowDescription'>{flowDescription}</p>
+          <div className='description-container'>
+            <p>{flowDescription}</p>
           </div>
         </div>
 

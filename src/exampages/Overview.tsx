@@ -50,7 +50,7 @@ const Overview: React.FC<Props> = props => {
         })}
       </div>
       <Button
-        classNames='next btn'
+        classNames='next-button btn'
         onClick={() => props.updateExamPage(ExamPage.Results)}>
         Se resultater
       </Button>

@@ -47,7 +47,7 @@ const TextInput: React.FC<Props> = props => {
           }>
           <input
             id='name'
-            className={'inputField'}
+            className={'input-field'}
             type='text'
             onChange={e => setInput(e.currentTarget.value)}
             placeholder={props.placeholder}

@@ -81,7 +81,7 @@ const TextInput: React.FC<Props> = props => {
             <p className='inputP black'>Username:</p>
             <input
               id='username'
-              className={`inputField ${color}`}
+              className={`input-field ${color}`}
               type='text'
               onChange={e => setUsername(e.currentTarget.value)}
               placeholder='Username'
@@ -91,7 +91,7 @@ const TextInput: React.FC<Props> = props => {
             <p className='inputP black'>Password:</p>
             <input
               id='password'
-              className={`inputField ${color}`}
+              className={`input-field ${color}`}
               type='password'
               onChange={e => setPassword(e.currentTarget.value)}
               placeholder='Password'

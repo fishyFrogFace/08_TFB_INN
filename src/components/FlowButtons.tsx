@@ -19,7 +19,7 @@ const FlowButtons: React.FC<Props> = props => {
       ) : (
         ''
       )}
-      <Button classNames='btn next' onClick={props.update}>
+      <Button classNames='btn next-button' onClick={props.update}>
         Neste
       </Button>
     </div>
