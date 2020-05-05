@@ -17,6 +17,7 @@ const ProgressBar: React.FC<Props> = props => {
       <img
         className='progress-background'
         src={`percentages/${calculatePercentage()}.svg`}
+        alt='Percentage completed'
       />
     </div>
   );
