@@ -9,7 +9,7 @@ interface Props {
   maxPoints: number;
   text: string;
   resultTitle: string;
-  imageInformation: ImageInformation;
+  imageInformationList: ImageInformation[];
   updateResult: (result: QuestionResult) => void;
   skipQuestion: () => void;
 }
@@ -19,11 +19,13 @@ const WhereInPicture: React.FC<Props> = props => {
   const [mode, setMode] = useState('incorrect');
 
   const checkInput = (x, y) => {
-    const xInArea =
-      x >= props.imageInformation.min.x && x <= props.imageInformation.max.x;
-    const yInArea =
-      y >= props.imageInformation.min.y && y <= props.imageInformation.max.y;
-    if (xInArea && yInArea) {
+    const correct = props.imageInformationList.filter(imageInfo => {
+      const xInArea = x >= imageInfo.min.x && x <= imageInfo.max.x;
+      const yInArea = y >= imageInfo.min.y && y <= imageInfo.max.y;
+      return xInArea && yInArea;
+    });
+
+    if (correct.length > 0) {
       setMode('correct');
     } else {
       const newPoints = points > 0 ? points - 1 : 0;
@@ -68,8 +70,8 @@ const WhereInPicture: React.FC<Props> = props => {
           }}
           src={
             mode === 'incorrect'
-              ? props.imageInformation.image
-              : props.imageInformation.imageWithIndicator
+              ? props.imageInformationList[0].image
+              : props.imageInformationList[0].imageWithIndicator
           }
           alt={props.text}
         />

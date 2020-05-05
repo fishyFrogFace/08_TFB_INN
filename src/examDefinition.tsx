@@ -22,12 +22,14 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.WhereInPicture,
           questionContent: {
             text: 'Finn og trykk på SMS-appen',
-            imageInformation: {
-              image: require('./images/find-app.jpeg'),
-              imageWithIndicator: require('./images/find-messages-correct.png'),
-              min: { x: 148, y: 199 },
-              max: { x: 190, y: 245 }
-            },
+            imageInformationList: [
+              {
+                image: require('./images/find-app.jpeg'),
+                imageWithIndicator: require('./images/find-messages-correct.png'),
+                min: { x: 148, y: 199 },
+                max: { x: 190, y: 245 }
+              }
+            ],
             resultTitle: 'Kan finne SMS-app',
             maxPoints: 6
           }
@@ -37,12 +39,14 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.WhereInPicture,
           questionContent: {
             text: 'Hvor klikker du for å åpne meldingen fra Sara?',
-            imageInformation: {
-              image: require('./images/sms-inbox.jpg'),
-              imageWithIndicator: require('./images/open-message-correct.png'),
-              min: { x: 0, y: 49 },
-              max: { x: 300, y: 110 }
-            },
+            imageInformationList: [
+              {
+                image: require('./images/sms-inbox.jpg'),
+                imageWithIndicator: require('./images/open-message-correct.png'),
+                min: { x: 0, y: 49 },
+                max: { x: 300, y: 110 }
+              }
+            ],
             resultTitle: 'Kan klikke på SMS',
             maxPoints: 6
           }
@@ -52,12 +56,14 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.WhereInPicture,
           questionContent: {
             text: 'Hvor klikker du for å skrive et svar til Sara?',
-            imageInformation: {
-              image: require('./images/sms.png'),
-              imageWithIndicator: require('./images/sms-respond-correct.png'),
-              min: { x: 0, y: 465 },
-              max: { x: 220, y: 498 }
-            },
+            imageInformationList: [
+              {
+                image: require('./images/sms.png'),
+                imageWithIndicator: require('./images/sms-respond-correct.png'),
+                min: { x: 0, y: 465 },
+                max: { x: 220, y: 498 }
+              }
+            ],
             resultTitle: 'Vet hvor man svarer på SMS',
             maxPoints: 6
           }
@@ -67,12 +73,14 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.WhereInPicture,
           questionContent: {
             text: 'Hvor klikker du for å sende meldingen til Sara?',
-            imageInformation: {
-              image: require('./images/sms.png'),
-              imageWithIndicator: require('./images/sms-send-correct.png'),
-              min: { x: 256, y: 468 },
-              max: { x: 288, y: 497 }
-            },
+            imageInformationList: [
+              {
+                image: require('./images/sms.png'),
+                imageWithIndicator: require('./images/sms-send-correct.png'),
+                min: { x: 256, y: 468 },
+                max: { x: 288, y: 497 }
+              }
+            ],
             resultTitle: 'Kan sende SMS',
             maxPoints: 6
           }
@@ -82,12 +90,14 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.WhereInPicture,
           questionContent: {
             text: 'Hvor klikker du for å opprette en ny melding?',
-            imageInformation: {
-              image: require('./images/sms-inbox.jpg'),
-              imageWithIndicator: require('./images/new-message-correct.png'),
-              min: { x: 226, y: 433 },
-              max: { x: 277, y: 485 }
-            },
+            imageInformationList: [
+              {
+                image: require('./images/sms-inbox.jpg'),
+                imageWithIndicator: require('./images/new-message-correct.png'),
+                min: { x: 226, y: 433 },
+                max: { x: 277, y: 485 }
+              }
+            ],
             resultTitle: 'Kan opprette ny melding',
             maxPoints: 6
           }
@@ -97,12 +107,14 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.WhereInPicture,
           questionContent: {
             text: 'Åpne kontaktliste',
-            imageInformation: {
-              image: require('./images/find-app.jpeg'),
-              imageWithIndicator: require('./images/find-contacts-correct.png'),
-              min: { x: 101, y: 126 },
-              max: { x: 144, y: 175 }
-            },
+            imageInformationList: [
+              {
+                image: require('./images/find-app.jpeg'),
+                imageWithIndicator: require('./images/find-contacts-correct.png'),
+                min: { x: 101, y: 126 },
+                max: { x: 144, y: 175 }
+              }
+            ],
             resultTitle: 'Kan åpne kontaktliste',
             maxPoints: 6
           }
@@ -112,12 +124,14 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.WhereInPicture,
           questionContent: {
             text: 'Hvor trykker du for å se Janis sitt telefonnummer?',
-            imageInformation: {
-              image: require('./images/contact-list.png'),
-              imageWithIndicator: require('./images/contact-list-correct.png'),
-              min: { x: 18, y: 376 },
-              max: { x: 224, y: 416 }
-            },
+            imageInformationList: [
+              {
+                image: require('./images/contact-list.png'),
+                imageWithIndicator: require('./images/contact-list-correct.png'),
+                min: { x: 18, y: 376 },
+                max: { x: 224, y: 416 }
+              }
+            ],
             resultTitle: 'Kan åpne kontakt',
             maxPoints: 6
           }
@@ -127,12 +141,14 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.WhereInPicture,
           questionContent: {
             text: 'Hvor trykker du for å ringe Janis?',
-            imageInformation: {
-              image: require('./images/profile.jpeg'),
-              imageWithIndicator: require('./images/profile-call-correct.png'),
-              min: { x: 105, y: 244 },
-              max: { x: 181, y: 300 }
-            },
+            imageInformationList: [
+              {
+                image: require('./images/profile.jpeg'),
+                imageWithIndicator: require('./images/profile-call-correct.png'),
+                min: { x: 105, y: 244 },
+                max: { x: 181, y: 300 }
+              }
+            ],
             resultTitle: 'Kan ringe kontakt',
             maxPoints: 6
           }
@@ -142,12 +158,14 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.WhereInPicture,
           questionContent: {
             text: 'Hvor trykker du for å sende melding til Janis?',
-            imageInformation: {
-              image: require('./images/profile.jpeg'),
-              imageWithIndicator: require('./images/profile-sms-correct.png'),
-              min: { x: 0, y: 245 },
-              max: { x: 91, y: 298 }
-            },
+            imageInformationList: [
+              {
+                image: require('./images/profile.jpeg'),
+                imageWithIndicator: require('./images/profile-sms-correct.png'),
+                min: { x: 0, y: 245 },
+                max: { x: 91, y: 298 }
+              }
+            ],
             resultTitle: 'Kan melde kontakt',
             maxPoints: 6
           }
@@ -157,12 +175,14 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.WhereInPicture,
           questionContent: {
             text: 'Hvor trykker du for å legge til en person i kontaktlisten?',
-            imageInformation: {
-              image: require('./images/contact-list.png'),
-              imageWithIndicator: require('./images/new-contact-correct.png'),
-              min: { x: 230, y: 417 },
-              max: { x: 275, y: 459 }
-            },
+            imageInformationList: [
+              {
+                image: require('./images/contact-list.png'),
+                imageWithIndicator: require('./images/new-contact-correct.png'),
+                min: { x: 230, y: 417 },
+                max: { x: 275, y: 459 }
+              }
+            ],
             resultTitle: 'Kan legge til ny kontakt',
             maxPoints: 6
           }
@@ -532,12 +552,14 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.WhereInPicture,
           questionContent: {
             text: 'Hvor klikker du for å opprette en ny e-post?',
-            imageInformation: {
-              image: require('./images/gmail-overview.png'),
-              imageWithIndicator: require('./images/gmail-new-mail-correct.png'),
-              min: { x: 221, y: 406 },
-              max: { x: 274, y: 452 }
-            },
+            imageInformationList: [
+              {
+                image: require('./images/gmail-overview.png'),
+                imageWithIndicator: require('./images/gmail-new-mail-correct.png'),
+                min: { x: 221, y: 406 },
+                max: { x: 274, y: 452 }
+              }
+            ],
             resultTitle: 'Kan opprette ny e-post',
             maxPoints: 6
           }
@@ -547,12 +569,14 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.WhereInPicture,
           questionContent: {
             text: 'Hvor skriver du emnet til e-posten?',
-            imageInformation: {
-              image: require('./images/gmail-edit.png'),
-              imageWithIndicator: require('./images/gmail-subject-correct.png'),
-              min: { x: 0, y: 190 },
-              max: { x: 477, y: 243 }
-            },
+            imageInformationList: [
+              {
+                image: require('./images/gmail-edit.png'),
+                imageWithIndicator: require('./images/gmail-subject-correct.png'),
+                min: { x: 0, y: 190 },
+                max: { x: 477, y: 243 }
+              }
+            ],
             resultTitle: 'Kan finne e-postemne',
             maxPoints: 6
           }
@@ -562,12 +586,14 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.WhereInPicture,
           questionContent: {
             text: 'Hvor skriver du inn mottakerne av e-posten?',
-            imageInformation: {
-              image: require('./images/gmail-edit.png'),
-              imageWithIndicator: require('./images/gmail-recipient-correct.png'),
-              min: { x: 0, y: 72 },
-              max: { x: 476, y: 132 }
-            },
+            imageInformationList: [
+              {
+                image: require('./images/gmail-edit.png'),
+                imageWithIndicator: require('./images/gmail-recipient-correct.png'),
+                min: { x: 0, y: 72 },
+                max: { x: 476, y: 132 }
+              }
+            ],
             resultTitle: 'Kan finne e-postmottakere',
             maxPoints: 6
           }
@@ -577,12 +603,14 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.WhereInPicture,
           questionContent: {
             text: 'Hvor klikker du for å skrive innholdet i e-posten?',
-            imageInformation: {
-              image: require('./images/gmail-edit.png'),
-              imageWithIndicator: require('./images/gmail-body-correct.png'),
-              min: { x: 0, y: 249 },
-              max: { x: 475, y: 498 }
-            },
+            imageInformationList: [
+              {
+                image: require('./images/gmail-edit.png'),
+                imageWithIndicator: require('./images/gmail-body-correct.png'),
+                min: { x: 0, y: 249 },
+                max: { x: 475, y: 498 }
+              }
+            ],
             resultTitle: 'Kan finne e-postinnhold',
             maxPoints: 6
           }
@@ -592,12 +620,14 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.WhereInPicture,
           questionContent: {
             text: 'Hvor klikker du for å legge til et vedlegg?',
-            imageInformation: {
-              image: require('./images/gmail-edit.png'),
-              imageWithIndicator: require('./images/gmail-attachment-correct.png'),
-              min: { x: 294, y: 11 },
-              max: { x: 356, y: 65 }
-            },
+            imageInformationList: [
+              {
+                image: require('./images/gmail-edit.png'),
+                imageWithIndicator: require('./images/gmail-attachment-correct.png'),
+                min: { x: 294, y: 11 },
+                max: { x: 356, y: 65 }
+              }
+            ],
             resultTitle: 'Kan legge til vedlegg',
             maxPoints: 6
           }
@@ -607,12 +637,14 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.WhereInPicture,
           questionContent: {
             text: 'Hvor klikker du for å sende e-posten?',
-            imageInformation: {
-              image: require('./images/gmail-send.png'),
-              imageWithIndicator: require('./images/gmail-send-correct.png'),
-              min: { x: 352, y: 5 },
-              max: { x: 410, y: 60 }
-            },
+            imageInformationList: [
+              {
+                image: require('./images/gmail-send.png'),
+                imageWithIndicator: require('./images/gmail-send-correct.png'),
+                min: { x: 352, y: 5 },
+                max: { x: 410, y: 60 }
+              }
+            ],
             resultTitle: 'Kan finne sendeknapp',
             maxPoints: 6
           }
@@ -622,12 +654,14 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.WhereInPicture,
           questionContent: {
             text: 'Hvor klikker du for å åpne den øverste e-posten?',
-            imageInformation: {
-              image: require('./images/gmail-overview.png'),
-              imageWithIndicator: require('./images/gmail-first-email-correct.png'),
-              min: { x: 0, y: 200 },
-              max: { x: 279, y: 266 }
-            },
+            imageInformationList: [
+              {
+                image: require('./images/gmail-overview.png'),
+                imageWithIndicator: require('./images/gmail-first-email-correct.png'),
+                min: { x: 0, y: 200 },
+                max: { x: 279, y: 266 }
+              }
+            ],
             resultTitle: 'Kan åpne e-mail fra innboksen',
             maxPoints: 6
           }
@@ -637,12 +671,20 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.WhereInPicture,
           questionContent: {
             text: 'Hvor klikker du for å svare på e-posten?',
-            imageInformation: {
-              image: require('./images/gmail-reply.png'),
-              imageWithIndicator: require('./images/gmail-reply-correct.png'),
-              min: { x: 219, y: 91 },
-              max: { x: 252, y: 121 }
-            },
+            imageInformationList: [
+              {
+                image: require('./images/gmail-reply.png'),
+                imageWithIndicator: require('./images/gmail-reply-correct.png'),
+                min: { x: 219, y: 91 },
+                max: { x: 252, y: 121 }
+              },
+              {
+                image: require('./images/gmail-reply.png'),
+                imageWithIndicator: require('./images/gmail-reply-correct.png'),
+                min: { x: 15, y: 465 },
+                max: { x: 142, y: 492 }
+              }
+            ],
             resultTitle: 'Kan svare på e-post',
             maxPoints: 6
           }

@@ -93,7 +93,7 @@ export interface QuestionContent {
   resultTitle?: string;
   maxPoints?: number;
   text?: string;
-  imageInformation?: ImageInformation;
+  imageInformationList?: ImageInformation[];
   correctAlternativeList?: string[];
   correctAlternative?: string;
   answerValues?: string[];
