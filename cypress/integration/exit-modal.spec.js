@@ -5,6 +5,7 @@ context('Exit modal testing', () => {
 
   before(() => {
     cy.visit('http://localhost:3000/');
+
     cy.get('.startbutton').first().click();
 
     cy.get('.next-button').first().click();
