@@ -655,5 +655,3 @@ export const standardExamDefinition = {
     }
   ]
 };
-
-console.log(standardExamDefinition.subjects.map(s => s.questions.length));
