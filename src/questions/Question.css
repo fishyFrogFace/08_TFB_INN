@@ -72,11 +72,11 @@ Button .illustrationImg {
 
 /*WHERE IN PICTURE*/
 
-
+/*
 @media only screen and (max-width: 500px) {
   .where-in-picture-img {
     max-width: 100%;
-    max-height: auto;
+    max-height: 350px;
     
   }
 }
@@ -86,11 +86,12 @@ Button .illustrationImg {
     max-width: auto;
   }
 }
-/*
+
+*/
 .where-in-picture-img {
+  height: 500px;
   width: auto;
-  max-height: 369px;
-}*/
+}
 
 .incorrect {
   display: none;
