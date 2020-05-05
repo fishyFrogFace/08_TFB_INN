@@ -55,7 +55,7 @@ const ResultsDocumentSummary: React.FC<Props> = ({ subjectResultsList }) => {
           );
         })}
       <Text style={styles.numbers}>
-        Totalt mestret: {totalPointsAchieved}/{totalPointsPossible}
+        Totalt mestret: {Math.round(100 * totalPointsAchieved / totalPointsPossible)}%
       </Text>
     </View>
   );
