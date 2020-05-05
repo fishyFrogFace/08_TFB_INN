@@ -11,17 +11,13 @@ const ProgressBar: React.FC<Props> = props => {
     return Math.round((props.completed / props.total) * 100);
   };
 
-  const decideClassName = (percent: number) =>
-    percent > 50 ? `over50 p${percent}` : `p${percent}`;
-
   return (
-    <div
-      className={`progress-circle ${decideClassName(calculatePercentage())}`}>
+    <div className='progress-circle-container'>
       <span>{calculatePercentage()}%</span>
-      <div className='left-half-clipper'>
-        <div className='first50-bar'></div>
-        <div className='value-bar'></div>
-      </div>
+      <img
+        className='progress-background'
+        src={`percentages/${calculatePercentage()}.svg`}
+      />
     </div>
   );
 };

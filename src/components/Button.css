@@ -90,11 +90,6 @@
   color: white;
 }
 
-.progressCirclecontainer {
-  height: 4.5em;
-  width: 4.5em;
-}
-
 .subject-btn:hover {
   filter: brightness(1.05);
 }

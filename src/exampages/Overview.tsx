@@ -39,12 +39,10 @@ const Overview: React.FC<Props> = props => {
               <div className='subjectTitleContainer'>
                 <p className='black normal-font'>{subject.title}</p>
               </div>
-              <div className='progressCirclecontainer'>
-                <CircularProgressBar
-                  completed={subject.completed}
-                  total={subject.total}
-                />
-              </div>
+              <CircularProgressBar
+                completed={subject.completed}
+                total={subject.total}
+              />
             </Button>
           );
         })}

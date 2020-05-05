@@ -3,59 +3,6 @@ import { checkPasswordSafety } from 'helpers/PasswordChecker';
 
 export const standardExamDefinition = {
   subjects: [
-    /*
-    {
-      name: 'Introduksjon',
-      subjectColor: 'bluegrey-background',
-      questions: [
-      
-        {
-          name: 'Start button',
-          templateID: QuestionTemplate.Start,
-          questionContent: {
-            resultTitle: 'Forstår bruk av knapper'
-          }
-        },
-        {
-          name: 'Copy symbols by writing in an input field',
-          templateID: QuestionTemplate.CopyText,
-          questionContent: {
-            text: 'A, b: C.',
-            resultTitle: 'Kan skrive av tekst',
-            maxPoints: 6
-          }
-        },
-        {
-          name: 'Find charger input',
-          templateID: QuestionTemplate.WhereInPicture,
-          questionContent: {
-            text: 'Klikk på laderinngangen',
-            imageInformation: {
-              image: require('./images/phone-charger.jpeg'),
-              imageWithIndicator: require('./images/phone-charger-correct.jpg'),
-              min: { x: 350, y: 237 },
-              max: { x: 410, y: 264 }
-            },
-            resultTitle: 'Kan finne ladeinngang på mobiltelefon',
-            maxPoints: 6
-          }
-        },
-        {
-          name: 'Questions for supervisor',
-          templateID: QuestionTemplate.BigText,
-          questionContent: {
-            text: 'Har du noen spørsmål til veileder?',
-            placeholder: 'Jeg lurer på...'
-          },
-          resultTitle: 'Spørsmål til veileder'
-        },
-        {
-          name: 'Completed subject',
-          templateID: QuestionTemplate.CompletedSubject
-        }
-      ]
-    },
-    */
     {
       name: 'Å ringe og sende SMS',
       subjectColor: 'purple-background',
@@ -708,3 +655,5 @@ export const standardExamDefinition = {
     }
   ]
 };
+
+console.log(standardExamDefinition.subjects.map(s => s.questions.length));
