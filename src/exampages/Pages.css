@@ -13,51 +13,42 @@
   padding-bottom: 16px;
   overflow: scroll;
   display: flex;
-
   flex-direction: column;
   align-items: center;
   justify-items: center;
-  
   border-radius: 3vh;
-  
 }
 
-
 .pause_exit-container {
-  background-color: #E2E2E2;
+  background-color: #e2e2e2;
   position: absolute;
   top: 0;
   width: 100%;
   height: 100vh;
-  
 }
 
 .exit-btn-container {
   height: 10vh;
-  padding-left: 1.4vw; 
+  padding-left: 1.4vw;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
 }
 
-
 .choiceContent {
   width: 80%;
-  max-width:390px;
+  max-width: 390px;
   min-height: 35vh;
   padding: 2vmin;
   margin: 10% auto;
   text-align: center;
-  
   display: flex;
   flex-direction: column;
-  
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.50);
-  
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
 }
 
 .close {
@@ -88,7 +79,7 @@
   padding-bottom: 2vh;
   display: flex;
   justify-content: space-evenly;
-  width:100%;
+  width: 100%;
 }
 
 .choicebtn {
@@ -96,7 +87,7 @@
   margin: 8px;
   font-size: 2.6vh;
   border-radius: 8px;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   text-align: center;
   filter: none;
 }
@@ -116,8 +107,6 @@
   background: #57b322;
 }
 
-
-
 .exit-btn:hover {
   background: #fc5537;
 }
@@ -130,13 +119,10 @@
   background: #d8db29;
 }
 
-
-
 .completedContainer {
   position: relative;
- 
-  background-color: #80D5E0;
-  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.50);
+  background-color: #80d5e0;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   width: 80vw;
   height: 30vh;
@@ -144,40 +130,32 @@
   margin: 8vh auto;
   display: flex;
   flex-direction: column;
-  
   justify-content: space-around;
 }
 
-
 .completedContainer p {
-  
   transform: translate(0, -50%);
   font-size: 4vh;
 }
 
-
 /* -- What units-question -- */
 .image-with-description {
-  padding: 0; 
+  padding: 0;
   flex: 1 1 50%;
   max-width: 50%;
-  
 }
 
 .unit-btn {
   margin: 2min;
   width: 95%;
-
   flex-direction: column;
   align-items: center;
 }
 
-
 .unitName {
-  margin-top:0;
+  margin-top: 0;
   font-size: 1em;
 }
-
 
 .unit-img {
   height: 10vmin;
