@@ -73,8 +73,8 @@ Button .illustrationImg {
 /*WHERE IN PICTURE*/
 
 .where-in-picture-img {
+  height: 500px;
   width: auto;
-  height: 370px;
 }
 
 .incorrect {

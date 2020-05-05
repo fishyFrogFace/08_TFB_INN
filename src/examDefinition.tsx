@@ -25,8 +25,8 @@ export const standardExamDefinition = {
             imageInformation: {
               image: require('./images/find-app.jpeg'),
               imageWithIndicator: require('./images/find-messages-correct.png'),
-              min: { x: 108, y: 139 },
-              max: { x: 140, y: 180 }
+              min: { x: 148, y: 199 },
+              max: { x: 190, y: 245 }
             },
             resultTitle: 'Kan finne SMS-app',
             maxPoints: 6
@@ -40,8 +40,8 @@ export const standardExamDefinition = {
             imageInformation: {
               image: require('./images/sms-inbox.jpg'),
               imageWithIndicator: require('./images/open-message-correct.png'),
-              min: { x: 0, y: 35 },
-              max: { x: 215, y: 82 }
+              min: { x: 0, y: 49 },
+              max: { x: 300, y: 110 }
             },
             resultTitle: 'Kan klikke på SMS',
             maxPoints: 6
@@ -55,8 +55,8 @@ export const standardExamDefinition = {
             imageInformation: {
               image: require('./images/sms.png'),
               imageWithIndicator: require('./images/sms-respond-correct.png'),
-              min: { x: 0, y: 344 },
-              max: { x: 170, y: 365 }
+              min: { x: 0, y: 465 },
+              max: { x: 220, y: 498 }
             },
             resultTitle: 'Vet hvor man svarer på SMS',
             maxPoints: 6
@@ -70,8 +70,8 @@ export const standardExamDefinition = {
             imageInformation: {
               image: require('./images/sms.png'),
               imageWithIndicator: require('./images/sms-send-correct.png'),
-              min: { x: 189, y: 346 },
-              max: { x: 213, y: 365 }
+              min: { x: 256, y: 468 },
+              max: { x: 288, y: 497 }
             },
             resultTitle: 'Kan sende SMS',
             maxPoints: 6
@@ -85,8 +85,8 @@ export const standardExamDefinition = {
             imageInformation: {
               image: require('./images/sms-inbox.jpg'),
               imageWithIndicator: require('./images/new-message-correct.png'),
-              min: { x: 167, y: 321 },
-              max: { x: 204, y: 351 }
+              min: { x: 226, y: 433 },
+              max: { x: 277, y: 485 }
             },
             resultTitle: 'Kan opprette ny melding',
             maxPoints: 6
@@ -100,8 +100,8 @@ export const standardExamDefinition = {
             imageInformation: {
               image: require('./images/find-app.jpeg'),
               imageWithIndicator: require('./images/find-contacts-correct.png'),
-              min: { x: 74, y: 87 },
-              max: { x: 108, y: 129 }
+              min: { x: 101, y: 126 },
+              max: { x: 144, y: 175 }
             },
             resultTitle: 'Kan åpne kontaktliste',
             maxPoints: 6
@@ -115,8 +115,8 @@ export const standardExamDefinition = {
             imageInformation: {
               image: require('./images/contact-list.png'),
               imageWithIndicator: require('./images/contact-list-correct.png'),
-              min: { x: 11, y: 279 },
-              max: { x: 182, y: 307 }
+              min: { x: 18, y: 376 },
+              max: { x: 224, y: 416 }
             },
             resultTitle: 'Kan åpne kontakt',
             maxPoints: 6
@@ -130,8 +130,8 @@ export const standardExamDefinition = {
             imageInformation: {
               image: require('./images/profile.jpeg'),
               imageWithIndicator: require('./images/profile-call-correct.png'),
-              min: { x: 78, y: 179 },
-              max: { x: 135, y: 222 }
+              min: { x: 105, y: 244 },
+              max: { x: 181, y: 300 }
             },
             resultTitle: 'Kan ringe kontakt',
             maxPoints: 6
@@ -145,8 +145,8 @@ export const standardExamDefinition = {
             imageInformation: {
               image: require('./images/profile.jpeg'),
               imageWithIndicator: require('./images/profile-sms-correct.png'),
-              min: { x: 0, y: 179 },
-              max: { x: 71, y: 222 }
+              min: { x: 0, y: 245 },
+              max: { x: 91, y: 298 }
             },
             resultTitle: 'Kan melde kontakt',
             maxPoints: 6
@@ -160,8 +160,8 @@ export const standardExamDefinition = {
             imageInformation: {
               image: require('./images/contact-list.png'),
               imageWithIndicator: require('./images/new-contact-correct.png'),
-              min: { x: 171, y: 309 },
-              max: { x: 202, y: 339 }
+              min: { x: 230, y: 417 },
+              max: { x: 275, y: 459 }
             },
             resultTitle: 'Kan legge til ny kontakt',
             maxPoints: 6
@@ -535,8 +535,8 @@ export const standardExamDefinition = {
             imageInformation: {
               image: require('./images/gmail-overview.png'),
               imageWithIndicator: require('./images/gmail-new-mail-correct.png'),
-              min: { x: 14, y: 41 },
-              max: { x: 129, y: 71 }
+              min: { x: 221, y: 406 },
+              max: { x: 274, y: 452 }
             },
             resultTitle: 'Kan opprette ny e-post',
             maxPoints: 6
@@ -550,8 +550,8 @@ export const standardExamDefinition = {
             imageInformation: {
               image: require('./images/gmail-edit.png'),
               imageWithIndicator: require('./images/gmail-subject-correct.png'),
-              min: { x: 0, y: 76 },
-              max: { x: 657, y: 102 }
+              min: { x: 0, y: 190 },
+              max: { x: 477, y: 243 }
             },
             resultTitle: 'Kan finne e-postemne',
             maxPoints: 6
@@ -565,8 +565,8 @@ export const standardExamDefinition = {
             imageInformation: {
               image: require('./images/gmail-edit.png'),
               imageWithIndicator: require('./images/gmail-recipient-correct.png'),
-              min: { x: 0, y: 53 },
-              max: { x: 657, y: 76 }
+              min: { x: 0, y: 72 },
+              max: { x: 476, y: 132 }
             },
             resultTitle: 'Kan finne e-postmottakere',
             maxPoints: 6
@@ -580,8 +580,8 @@ export const standardExamDefinition = {
             imageInformation: {
               image: require('./images/gmail-edit.png'),
               imageWithIndicator: require('./images/gmail-body-correct.png'),
-              min: { x: 0, y: 128 },
-              max: { x: 657, y: 329 }
+              min: { x: 0, y: 249 },
+              max: { x: 475, y: 498 }
             },
             resultTitle: 'Kan finne e-postinnhold',
             maxPoints: 6
@@ -595,8 +595,8 @@ export const standardExamDefinition = {
             imageInformation: {
               image: require('./images/gmail-edit.png'),
               imageWithIndicator: require('./images/gmail-attachment-correct.png'),
-              min: { x: 13, y: 336 },
-              max: { x: 61, y: 360 }
+              min: { x: 294, y: 11 },
+              max: { x: 356, y: 65 }
             },
             resultTitle: 'Kan legge til vedlegg',
             maxPoints: 6
@@ -610,8 +610,8 @@ export const standardExamDefinition = {
             imageInformation: {
               image: require('./images/gmail-send.png'),
               imageWithIndicator: require('./images/gmail-send-correct.png'),
-              min: { x: 573, y: 337 },
-              max: { x: 646, y: 360 }
+              min: { x: 352, y: 5 },
+              max: { x: 410, y: 60 }
             },
             resultTitle: 'Kan finne sendeknapp',
             maxPoints: 6
@@ -625,8 +625,8 @@ export const standardExamDefinition = {
             imageInformation: {
               image: require('./images/gmail-overview.png'),
               imageWithIndicator: require('./images/gmail-first-email-correct.png'),
-              min: { x: 146, y: 80 },
-              max: { x: 648, y: 124 }
+              min: { x: 0, y: 200 },
+              max: { x: 279, y: 266 }
             },
             resultTitle: 'Kan åpne e-mail fra innboksen',
             maxPoints: 6
@@ -640,8 +640,8 @@ export const standardExamDefinition = {
             imageInformation: {
               image: require('./images/gmail-reply.png'),
               imageWithIndicator: require('./images/gmail-reply-correct.png'),
-              min: { x: 506, y: 123 },
-              max: { x: 538, y: 145 }
+              min: { x: 219, y: 91 },
+              max: { x: 252, y: 121 }
             },
             resultTitle: 'Kan svare på e-post',
             maxPoints: 6

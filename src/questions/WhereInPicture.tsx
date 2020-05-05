@@ -57,8 +57,12 @@ const WhereInPicture: React.FC<Props> = props => {
         <img
           className={`where-in-picture-img ${mode}-image `}
           onClick={e => {
-            const xPos = e.pageX - e.currentTarget.offsetLeft;
-            const yPos = e.pageY - e.currentTarget.offsetTop;
+            const xPos =
+              e.pageX -
+              (e.currentTarget.getBoundingClientRect().left + window.scrollX);
+            const yPos =
+              e.pageY -
+              (e.currentTarget.getBoundingClientRect().top + window.scrollY);
             console.log(xPos, yPos);
             checkInput(xPos, yPos);
           }}
