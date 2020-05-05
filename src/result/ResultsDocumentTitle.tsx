@@ -26,9 +26,9 @@ export interface Props {
 }
 
 const getDateString = (date: Date) => {
-  return `${date.getFullYear().toString()}/${(
+  return `${date.getDate().toString()}/${(
     date.getMonth() + 1
-  ).toString()}/${date.getDate().toString()}`;
+  ).toString()}/${date.getFullYear().toString()}`;
 };
 
 const ResultsDocumentTitle: React.FC<Props> = ({ title, name, date }) => (

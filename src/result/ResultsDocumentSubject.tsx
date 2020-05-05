@@ -26,14 +26,11 @@ export interface Props {
 }
 
 export const totalSubjectPoints = (subjectResult: SubjectResult) => {
-  const masteryQuestions = subjectResult.results.filter(
-    result => result.type === 'mastery'
-  ).length;
+  const masteryQuestions = subjectResult.results
+    .filter(result => result.type === 'mastery').length;
 
   const totalFromPoints = subjectResult.results
-    .filter(result => result.type === 'points')
-    .map(result => (result as Points).maxPoints)
-    .reduce((a, b) => a + b, 0);
+    .filter(result => result.type === 'points').length;
 
   const totalPoints = masteryQuestions + totalFromPoints;
 
@@ -47,7 +44,7 @@ export const totalAchievedPoints = (subjectResult: SubjectResult) => {
 
   const achievedFromPoints = subjectResult.results
     .filter(result => result.type === 'points')
-    .map(result => (result as Points).pointsAchieved)
+    .map(result => (result as Points).pointsAchieved / (result as Points).maxPoints)
     .reduce((a, b) => a + b, 0);
 
   const totalAchieved = mastered + achievedFromPoints;
@@ -70,8 +67,7 @@ const ResultsDocumentSubject: React.FC<Props> = ({ subjectResult, i }) => {
         );
       })}
       <Text style={styles.numbers}>
-        Poeng: {totalAchievedPoints(subjectResult)}/
-        {totalSubjectPoints(subjectResult)}
+        Poeng: {Math.round(100 * totalAchievedPoints(subjectResult)/totalSubjectPoints(subjectResult))}%
       </Text>
     </View>
   );
