@@ -14,6 +14,14 @@ const flowDescription = `Kartleggingen vil starte når du klikker på knappen ne
     Da vil alle avgitte svar slettes.`;
 
 const FrontPage: React.FC<PropsFromRedux> = props => {
+  console.log(`Digiklar  Copyright (C) 2020  Camilla Rygh, Erle Seljelid Sørlie, Svein Magnus 
+  Vennevik Johansen, Adrian Gautham Joseph
+
+  This program comes with ABSOLUTELY NO WARRANTY.
+
+  This is free software, and you are welcome to redistribute it under certain conditions,
+  see https://github.com/fishyFrogFace/08_TFB_INN/blob/master/LICENSE for details`);
+
   return (
     <div className='frontpage-main'>
       <div className='frontpage-blurb'>
