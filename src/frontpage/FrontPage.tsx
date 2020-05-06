@@ -10,7 +10,7 @@ import { Page } from 'Types';
 const appIntro = 'Et kartleggingsverktøy for digital kompetanse';
 const flowDescription = `Kartleggingen vil starte når du klikker på knappen nedenfor.
     Om du vil komme tilbake til denne siden, kan du laste inn siden på nytt 
-    eller trykke på det røde krysset i høyre hjørne.
+    eller trykke på det grå krysset i venstre hjørne.
     Da vil alle avgitte svar slettes.`;
 
 const FrontPage: React.FC<PropsFromRedux> = props => {
