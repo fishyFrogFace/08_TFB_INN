@@ -40,22 +40,30 @@ const ResultsDocumentSummary: React.FC<Props> = ({ subjectResultsList }) => {
   const totalPointsPossible = subjectResultsList
     .map(subjectResult => totalSubjectPoints(subjectResult))
     .reduce((a, b) => a + b, 0);
+  const nonEmptyResults = subjectResultsList.filter(
+    subjectResult => subjectResult.results.length > 0
+  );
 
   return (
     <View style={styles.subject}>
       <Text style={styles.subjectTitle}>Oppsummering</Text>
       <Text style={styles.heading}>Emner kartlagt:</Text>
-      {subjectResultsList
-        .filter(subjectResult => subjectResult.results.length > 0)
-        .map((subjectResult, index) => {
+      {nonEmptyResults.length === 0 ? (
+        <Text style={styles.listItem}>Ingen</Text>
+      ) : (
+        nonEmptyResults.map((subjectResult, index) => {
           return (
             <Text key={index} style={styles.listItem}>
               {subjectResult.subjectTitle}
             </Text>
           );
-        })}
+        })
+      )}
       <Text style={styles.numbers}>
-        Totalt mestret: {Math.round(100 * totalPointsAchieved / totalPointsPossible)}%
+        Totalt mestret:{' '}
+        {totalPointsPossible === 0
+          ? '0'
+          : `${Math.round((100 * totalPointsAchieved) / totalPointsPossible)}%`}
       </Text>
     </View>
   );

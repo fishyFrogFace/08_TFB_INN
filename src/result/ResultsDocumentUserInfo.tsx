@@ -27,7 +27,7 @@ const ResultsDocumentUserInfo: React.FC<Props> = ({ devices }) => {
     <View style={styles.userInfo}>
       <Text style={styles.title}>Om brukeren</Text>
       <Text style={styles.extraInformation}>
-        Har følgende enheter: {devices}
+        Har følgende enheter: {devices === '' ? 'Ingen' : devices}
       </Text>
     </View>
   );
