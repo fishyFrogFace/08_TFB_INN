@@ -45,7 +45,7 @@ const getSymbolPath = (questionResult: Points) => {
 };
 
 const pointsAchieved = (questionResult: Points) =>
-  `${questionResult.pointsAchieved} / ${questionResult.maxPoints}`;
+  `${Math.round(100 * questionResult.pointsAchieved / questionResult.maxPoints)}%`;
 
 const questionResultView = (questionResult: QuestionResult) => {
   switch (questionResult.type) {
@@ -71,6 +71,9 @@ const questionResultView = (questionResult: QuestionResult) => {
           <Text style={styles.extraInformation}>
             Svar avgitt: {questionResult.common.answerValues.join(', ')}
           </Text>
+          <Text style={styles.extraInformation}>
+            Poeng oppnådd: {questionResult.mastered ? "100%" : "0%"}
+          </Text>
         </View>
       );
 
@@ -83,6 +86,9 @@ const questionResultView = (questionResult: QuestionResult) => {
               {questionResult.common.resultTitle}
             </Text>
           </View>
+          <Text style={styles.extraInformation}>
+            Spørsmål: {questionResult.common.questionTitle}
+          </Text>
           <Text style={styles.extraInformation}>
             Poeng oppnådd: {pointsAchieved(questionResult)}
           </Text>
