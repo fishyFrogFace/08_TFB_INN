@@ -60,3 +60,8 @@ The GitHub contribution guidelines can be found in the Wiki.
 prettier .prettier.config.js --write './**/*.js'
 prettier .prettier.config.js --write './**/*.tsx'
 ```
+## Images
+Most of the vector images have been found on [Pixabay] and are released under [Creative Commons CC0]. Some images are also self-produced.
+
+[Pixabay]: https://pixabay.com/en/users/Clker-Free-Vector-Images-3736/
+[Creative Commons CC0]: https://creativecommons.org/publicdomain/zero/1.0/deed.en
