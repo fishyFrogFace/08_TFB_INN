@@ -28,6 +28,7 @@ const WhereInPicture: React.FC<Props> = props => {
     if (correct.length > 0) {
       setMode('correct');
     } else {
+      setMode('incorrect');
       const newPoints = points > 0 ? points - 1 : 0;
       setPoints(newPoints);
     }
@@ -57,7 +58,9 @@ const WhereInPicture: React.FC<Props> = props => {
       </div>
       <div className='inputContainer whiteBackground'>
         <img
-          className={`where-in-picture-img ${mode}-image `}
+          className={`where-in-picture-img ${
+            mode === 'incorrect' ? 'incorrect-image' : 'hidden-image'
+          }`}
           onClick={e => {
             const xPos =
               e.pageX -
@@ -68,11 +71,14 @@ const WhereInPicture: React.FC<Props> = props => {
             console.log(xPos, yPos);
             checkInput(xPos, yPos);
           }}
-          src={
-            mode === 'incorrect'
-              ? props.imageInformationList[0].image
-              : props.imageInformationList[0].imageWithIndicator
-          }
+          src={props.imageInformationList[0].image}
+          alt={props.text}
+        />
+        <img
+          className={`where-in-picture-img ${
+            mode === 'incorrect' ? 'hidden-image' : ''
+          }`}
+          src={props.imageInformationList[0].imageWithIndicator}
           alt={props.text}
         />
       </div>
@@ -80,7 +86,7 @@ const WhereInPicture: React.FC<Props> = props => {
         <FlowButtons
           skip={failQuestion}
           update={() => {
-            if (mode !== 'incorrect') returnResult();
+            if (mode === 'correct') returnResult();
           }}
         />
       </div>
