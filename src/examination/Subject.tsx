@@ -77,9 +77,7 @@ const Subject: React.FC<Props> = props => {
           <WhereInPicture
             subjectColor={props.subject.subjectColor}
             resultTitle={question.questionContent.resultTitle!}
-            imageInformationList={
-              question.questionContent.imageInformationList!
-            }
+            imageInformation={question.questionContent.imageInformation!}
             maxPoints={question.questionContent.maxPoints!}
             text={question.questionContent.text!}
             updateResult={updateResult}

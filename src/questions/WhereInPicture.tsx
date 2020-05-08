@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Question.css';
-import { QuestionResult, ImageInformation } from '../Types';
+import { QuestionResult, ImageInformation, Position } from '../Types';
 import FlowButtons from 'components/FlowButtons';
 import { makePointResult, failPointResult } from 'helpers/makeResult';
 
@@ -9,17 +9,21 @@ interface Props {
   maxPoints: number;
   text: string;
   resultTitle: string;
-  imageInformationList: ImageInformation[];
+  imageInformation: ImageInformation;
   updateResult: (result: QuestionResult) => void;
   skipQuestion: () => void;
 }
 
 const WhereInPicture: React.FC<Props> = props => {
-  const [points, setPoints] = useState(props.maxPoints);
-  const [mode, setMode] = useState('incorrect');
+  const [points, setPoints] = useState<number>(props.maxPoints);
+  const [mode, setMode] = useState<string>('incorrect');
 
   const checkInput = (x, y) => {
-    const correct = props.imageInformationList.filter(imageInfo => {
+    const positionList =
+      window.innerWidth > 500
+        ? props.imageInformation.largeScreen
+        : props.imageInformation.smallScreen;
+    const correct = positionList.filter(imageInfo => {
       const xInArea = x >= imageInfo.min.x && x <= imageInfo.max.x;
       const yInArea = y >= imageInfo.min.y && y <= imageInfo.max.y;
       return xInArea && yInArea;
@@ -71,14 +75,14 @@ const WhereInPicture: React.FC<Props> = props => {
             console.log(xPos, yPos);
             checkInput(xPos, yPos);
           }}
-          src={props.imageInformationList[0].image}
+          src={props.imageInformation.image}
           alt={props.text}
         />
         <img
           className={`where-in-picture-img ${
             mode === 'incorrect' ? 'hidden-image' : ''
           }`}
-          src={props.imageInformationList[0].imageWithIndicator}
+          src={props.imageInformation.imageWithIndicator}
           alt={props.text}
         />
       </div>
