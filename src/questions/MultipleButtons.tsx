@@ -89,7 +89,7 @@ const MultipleButtons: React.FC<Props> = props => {
           {props.answerValues.map((item, i) => (
             <Button
               key={i}
-              classNames={`multibtn answer-btn  btn ${
+              classNames={`multibtn answer-btn  regular-btn ${
                 selectedButtons.includes(i) ? 'selected' : ''
               }`}
               onClick={() => updateAnswer(i)}>

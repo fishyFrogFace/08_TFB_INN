@@ -25,7 +25,7 @@ const ResultPage: React.FC<PropsFromRedux> = props => {
           {({ blob, url, loading, error }) =>
             loading ? (
               <Button
-                classNames='download btn white bluegrey-background'
+                classNames='regular-btn download white bluegrey-background'
                 onClick={() => {
                   return;
                 }}>
@@ -33,7 +33,7 @@ const ResultPage: React.FC<PropsFromRedux> = props => {
               </Button>
             ) : (
               <Button
-                classNames='download btn white teal-background'
+                classNames='regular-btn download white teal-background'
                 onClick={() => {
                   return;
                 }}>

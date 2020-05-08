@@ -20,7 +20,7 @@ const CompletedSubject: React.FC<Props> = props => {
 
       <div className='nextButtonContainer'>
         <Button
-          classNames='next-button btn'
+          classNames='next-button regular-btn'
           onClick={() => props.nextSubject()}>
           Tilbake til temaoversikt
         </Button>
