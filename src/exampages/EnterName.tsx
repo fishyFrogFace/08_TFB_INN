@@ -85,7 +85,7 @@ const EnterName: React.FC<Props> = props => {
       </div>
       <div className='nextButtonContainer'>
         <Button
-          classNames='btn next-button'
+          classNames='regular-btn next-button'
           onClick={() => {
             props.setUsername(input);
           }}>

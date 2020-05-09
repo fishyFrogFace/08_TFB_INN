@@ -12,14 +12,14 @@ const FlowButtons: React.FC<Props> = props => {
     <div id='flow-buttons'>
       {props.update !== undefined ? (
         <Button
-          classNames={'btn  skip bluegrey-background white'}
+          classNames={'regular-btn skip bluegrey-background white'}
           onClick={props.skip!}>
           Jeg får ikke dette til
         </Button>
       ) : (
         ''
       )}
-      <Button classNames='btn next-button' onClick={props.update}>
+      <Button classNames='regular-btn next-button' onClick={props.update}>
         Neste
       </Button>
     </div>

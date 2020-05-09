@@ -1,4 +1,8 @@
 .btn {
+  cursor: pointer;
+}
+
+.regular-btn {
   padding: 2.6vh 8vw;
   margin: 1vmin;
   text-align: center;
@@ -9,7 +13,7 @@
 }
 
 .btn:hover {
-  filter: brightness(95%);
+  filter: brightness(80%);
 }
 
 .btn:active {
@@ -41,7 +45,6 @@
 
 .nav-btn {
   background-color: transparent;
-
   color: 0;
   margin: 0;
   border: 0;
@@ -88,10 +91,6 @@
   font-size: 2.7vh;
   font-weight: normal;
   color: white;
-}
-
-.subject-btn:hover {
-  filter: brightness(1.05);
 }
 
 .subject-btn:disabled {

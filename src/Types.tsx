@@ -71,14 +71,19 @@ export interface ExamState {
   username: string;
 }
 
-export interface Position {
+export interface Coordinates {
   x: number;
   y: number;
 }
 
+export interface Position {
+  min: Coordinates;
+  max: Coordinates;
+}
+
 export interface ImageInformation {
-  min: Position;
-  max: Position;
+  smallScreen: Position[];
+  largeScreen: Position[];
   image: string;
   imageWithIndicator: string;
 }
@@ -93,7 +98,7 @@ export interface QuestionContent {
   resultTitle?: string;
   maxPoints?: number;
   text?: string;
-  imageInformationList?: ImageInformation[];
+  imageInformation?: ImageInformation;
   correctAlternativeList?: string[];
   correctAlternative?: string;
   answerValues?: string[];

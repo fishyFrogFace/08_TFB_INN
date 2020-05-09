@@ -37,7 +37,7 @@ const WhatUnits: React.FC<PropsFromRedux> = props => {
           {units.map((item, i) => (
             <div className='image-with-description ' key={i}>
               <Button
-                classNames={`unit-btn btn multibtn ${
+                classNames={`unit-btn regular-btn multibtn ${
                   selectedButtons.includes(i) ? 'selected' : ''
                 }`}
                 onClick={() => updateAnswer(i)}>
@@ -52,7 +52,7 @@ const WhatUnits: React.FC<PropsFromRedux> = props => {
       </div>
       <div>
         <Button
-          classNames='next-button btn'
+          classNames='next-button regular-btn'
           onClick={() =>
             props.setUnits(selectedButtons.map(i => units[i].description))
           }>

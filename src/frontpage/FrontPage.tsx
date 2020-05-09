@@ -35,7 +35,7 @@ const FrontPage: React.FC<PropsFromRedux> = props => {
         </div>
 
         <Button
-          classNames='btn h2 startbutton white teal-background'
+          classNames='regular-btn h2 startbutton white teal-background'
           onClick={() => props.updateAppPage(Page.Examination)}>
           Kom i gang!
         </Button>

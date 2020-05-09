@@ -48,7 +48,7 @@ const Overview: React.FC<Props> = props => {
         })}
       </div>
       <Button
-        classNames='next-button btn'
+        classNames='next-button regular-btn'
         onClick={() => props.updateExamPage(ExamPage.Results)}>
         Se resultater
       </Button>

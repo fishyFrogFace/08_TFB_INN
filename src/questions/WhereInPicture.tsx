@@ -9,17 +9,21 @@ interface Props {
   maxPoints: number;
   text: string;
   resultTitle: string;
-  imageInformationList: ImageInformation[];
+  imageInformation: ImageInformation;
   updateResult: (result: QuestionResult) => void;
   skipQuestion: () => void;
 }
 
 const WhereInPicture: React.FC<Props> = props => {
-  const [points, setPoints] = useState(props.maxPoints);
-  const [mode, setMode] = useState('incorrect');
+  const [points, setPoints] = useState<number>(props.maxPoints);
+  const [mode, setMode] = useState<string>('incorrect');
 
   const checkInput = (x, y) => {
-    const correct = props.imageInformationList.filter(imageInfo => {
+    const positionList =
+      window.innerWidth > 500
+        ? props.imageInformation.largeScreen
+        : props.imageInformation.smallScreen;
+    const correct = positionList.filter(imageInfo => {
       const xInArea = x >= imageInfo.min.x && x <= imageInfo.max.x;
       const yInArea = y >= imageInfo.min.y && y <= imageInfo.max.y;
       return xInArea && yInArea;
@@ -28,6 +32,7 @@ const WhereInPicture: React.FC<Props> = props => {
     if (correct.length > 0) {
       setMode('correct');
     } else {
+      setMode('incorrect');
       const newPoints = points > 0 ? points - 1 : 0;
       setPoints(newPoints);
     }
@@ -57,7 +62,9 @@ const WhereInPicture: React.FC<Props> = props => {
       </div>
       <div className='inputContainer whiteBackground'>
         <img
-          className={`where-in-picture-img ${mode}-image `}
+          className={`where-in-picture-img ${
+            mode === 'incorrect' ? 'incorrect-image' : 'hidden-image'
+          }`}
           onClick={e => {
             const xPos =
               e.pageX -
@@ -68,11 +75,14 @@ const WhereInPicture: React.FC<Props> = props => {
             console.log(xPos, yPos);
             checkInput(xPos, yPos);
           }}
-          src={
-            mode === 'incorrect'
-              ? props.imageInformationList[0].image
-              : props.imageInformationList[0].imageWithIndicator
-          }
+          src={props.imageInformation.image}
+          alt={props.text}
+        />
+        <img
+          className={`where-in-picture-img ${
+            mode === 'incorrect' ? 'hidden-image' : ''
+          }`}
+          src={props.imageInformation.imageWithIndicator}
           alt={props.text}
         />
       </div>
@@ -80,7 +90,7 @@ const WhereInPicture: React.FC<Props> = props => {
         <FlowButtons
           skip={failQuestion}
           update={() => {
-            if (mode !== 'incorrect') returnResult();
+            if (mode === 'correct') returnResult();
           }}
         />
       </div>
