@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Question.css';
-import { QuestionResult, ImageInformation, Position } from '../Types';
+import { QuestionResult, ImageInformation } from '../Types';
 import FlowButtons from 'components/FlowButtons';
 import { makePointResult, failPointResult } from 'helpers/makeResult';
 

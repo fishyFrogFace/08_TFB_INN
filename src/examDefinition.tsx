@@ -33,8 +33,8 @@ export const standardExamDefinition = {
               ],
               smallScreen: [
                 {
-                  min: { x: 148, y: 199 },
-                  max: { x: 190, y: 245 }
+                  min: { x: 105, y: 132 },
+                  max: { x: 135, y: 176 }
                 }
               ]
             },
@@ -58,12 +58,12 @@ export const standardExamDefinition = {
               ],
               smallScreen: [
                 {
-                  min: { x: 0, y: 49 },
-                  max: { x: 300, y: 110 }
+                  min: { x: 0, y: 35 },
+                  max: { x: 203, y: 80 }
                 }
               ]
             },
-            resultTitle: 'Kan klikke på SMS',
+            resultTitle: 'Kan finne og åpne SMS-melding',
             maxPoints: 6
           }
         },
@@ -83,8 +83,8 @@ export const standardExamDefinition = {
               ],
               smallScreen: [
                 {
-                  min: { x: 0, y: 465 },
-                  max: { x: 220, y: 498 }
+                  min: { x: 0, y: 323 },
+                  max: { x: 154, y: 349 }
                 }
               ]
             },
@@ -108,8 +108,8 @@ export const standardExamDefinition = {
               ],
               smallScreen: [
                 {
-                  min: { x: 256, y: 468 },
-                  max: { x: 288, y: 497 }
+                  min: { x: 178, y: 326 },
+                  max: { x: 202, y: 350 }
                 }
               ]
             },
@@ -133,8 +133,8 @@ export const standardExamDefinition = {
               ],
               smallScreen: [
                 {
-                  min: { x: 226, y: 433 },
-                  max: { x: 277, y: 485 }
+                  min: { x: 154, y: 300 },
+                  max: { x: 198, y: 344 }
                 }
               ]
             },
@@ -158,8 +158,8 @@ export const standardExamDefinition = {
               ],
               smallScreen: [
                 {
-                  min: { x: 101, y: 126 },
-                  max: { x: 144, y: 175 }
+                  min: { x: 69, y: 82 },
+                  max: { x: 103, y: 126 }
                 }
               ]
             },
@@ -183,8 +183,8 @@ export const standardExamDefinition = {
               ],
               smallScreen: [
                 {
-                  min: { x: 18, y: 376 },
-                  max: { x: 224, y: 416 }
+                  min: { x: 11, y: 264 },
+                  max: { x: 170, y: 292 }
                 }
               ]
             },
@@ -208,8 +208,8 @@ export const standardExamDefinition = {
               ],
               smallScreen: [
                 {
-                  min: { x: 105, y: 244 },
-                  max: { x: 181, y: 300 }
+                  min: { x: 75, y: 170 },
+                  max: { x: 128, y: 213 }
                 }
               ]
             },
@@ -233,8 +233,8 @@ export const standardExamDefinition = {
               ],
               smallScreen: [
                 {
-                  min: { x: 0, y: 245 },
-                  max: { x: 91, y: 298 }
+                  min: { x: 0, y: 171 },
+                  max: { x: 62, y: 208 }
                 }
               ]
             },
@@ -258,8 +258,8 @@ export const standardExamDefinition = {
               ],
               smallScreen: [
                 {
-                  min: { x: 230, y: 417 },
-                  max: { x: 275, y: 459 }
+                  min: { x: 154, y: 290 },
+                  max: { x: 193, y: 325 }
                 }
               ]
             },
@@ -643,8 +643,8 @@ export const standardExamDefinition = {
               ],
               smallScreen: [
                 {
-                  min: { x: 221, y: 406 },
-                  max: { x: 274, y: 452 }
+                  min: { x: 153, y: 281 },
+                  max: { x: 191, y: 322 }
                 }
               ]
             },
@@ -668,8 +668,8 @@ export const standardExamDefinition = {
               ],
               smallScreen: [
                 {
-                  min: { x: 0, y: 190 },
-                  max: { x: 477, y: 243 }
+                  min: { x: 0, y: 134 },
+                  max: { x: 334, y: 170 }
                 }
               ]
             },
@@ -693,8 +693,8 @@ export const standardExamDefinition = {
               ],
               smallScreen: [
                 {
-                  min: { x: 0, y: 72 },
-                  max: { x: 476, y: 132 }
+                  min: { x: 0, y: 58 },
+                  max: { x: 299, y: 88 }
                 }
               ]
             },
@@ -718,8 +718,8 @@ export const standardExamDefinition = {
               ],
               smallScreen: [
                 {
-                  min: { x: 0, y: 249 },
-                  max: { x: 475, y: 498 }
+                  min: { x: 0, y: 174 },
+                  max: { x: 332, y: 350 }
                 }
               ]
             },
@@ -743,8 +743,8 @@ export const standardExamDefinition = {
               ],
               smallScreen: [
                 {
-                  min: { x: 294, y: 11 },
-                  max: { x: 356, y: 65 }
+                  min: { x: 208, y: 5 },
+                  max: { x: 245, y: 45 }
                 }
               ]
             },
@@ -768,8 +768,8 @@ export const standardExamDefinition = {
               ],
               smallScreen: [
                 {
-                  min: { x: 352, y: 5 },
-                  max: { x: 410, y: 60 }
+                  min: { x: 246, y: 8 },
+                  max: { x: 288, y: 45 }
                 }
               ]
             },
@@ -793,8 +793,8 @@ export const standardExamDefinition = {
               ],
               smallScreen: [
                 {
-                  min: { x: 0, y: 200 },
-                  max: { x: 279, y: 266 }
+                  min: { x: 0, y: 141 },
+                  max: { x: 195, y: 187 }
                 }
               ]
             },
@@ -822,12 +822,12 @@ export const standardExamDefinition = {
               ],
               smallScreen: [
                 {
-                  min: { x: 219, y: 91 },
-                  max: { x: 252, y: 121 }
+                  min: { x: 153, y: 65 },
+                  max: { x: 177, y: 87 }
                 },
                 {
-                  min: { x: 15, y: 465 },
-                  max: { x: 142, y: 492 }
+                  min: { x: 7, y: 321 },
+                  max: { x: 101, y: 346 }
                 }
               ]
             },
@@ -865,12 +865,12 @@ export const standardExamDefinition = {
               ],
               smallScreen: [
                 {
-                  min: { x: 219, y: 91 },
-                  max: { x: 252, y: 121 }
+                  min: { x: 153, y: 65 },
+                  max: { x: 177, y: 87 }
                 },
                 {
-                  min: { x: 15, y: 465 },
-                  max: { x: 142, y: 492 }
+                  min: { x: 7, y: 321 },
+                  max: { x: 101, y: 346 }
                 }
               ]
             },
