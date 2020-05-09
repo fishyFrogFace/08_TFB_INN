@@ -840,49 +840,6 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.CompletedSubject
         }
       ]
-    },
-    {
-      name: 'Test subject',
-      subjectColor: 'indigo-background',
-      questions: [
-        {
-          name: 'Reply to email',
-          templateID: QuestionTemplate.WhereInPicture,
-          questionContent: {
-            text: 'Hvor klikker du for å svare på e-posten?',
-            imageInformation: {
-              image: require('./images/gmail-reply.png'),
-              imageWithIndicator: require('./images/gmail-reply-correct.png'),
-              largeScreen: [
-                {
-                  min: { x: 219, y: 91 },
-                  max: { x: 252, y: 121 }
-                },
-                {
-                  min: { x: 15, y: 465 },
-                  max: { x: 142, y: 492 }
-                }
-              ],
-              smallScreen: [
-                {
-                  min: { x: 153, y: 65 },
-                  max: { x: 177, y: 87 }
-                },
-                {
-                  min: { x: 7, y: 321 },
-                  max: { x: 101, y: 346 }
-                }
-              ]
-            },
-            resultTitle: 'Kan svare på e-post',
-            maxPoints: 6
-          }
-        },
-        {
-          name: 'Completed subject',
-          templateID: QuestionTemplate.CompletedSubject
-        }
-      ]
     }
   ]
 };
