@@ -11,7 +11,7 @@ import Button from '../components/Button';
 const ResultPage: React.FC<PropsFromRedux> = props => {
   return (
     <div className='content'>
-      <div className='choiceContent whiteBackground'>
+      <div className='choice-content white-background'>
         <p className='choice-title'>Resultat for {props.username}</p>
         <PDFDownloadLink
           document={

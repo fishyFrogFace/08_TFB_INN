@@ -20,11 +20,11 @@ context('Exit modal testing', () => {
 
     cy.get('.choice-title').should('be.visible');
 
-    cy.get('.choicebtn').first().should('contain', 'Til oversikt');
+    cy.get('.choice-btn').first().should('contain', 'Til oversikt');
   });
 
   it('close button closes exit screen', () => {
-    cy.get('.choicebtn').eq(1).click();
+    cy.get('.choice-btn').eq(1).click();
 
     cy.get('.choice-title').should('not.be.visible');
 
@@ -40,7 +40,7 @@ context('Exit modal testing', () => {
   });
 
   it('exit button renders overview', () => {
-    cy.get('.choicebtn').first().click();
+    cy.get('.choice-btn').first().click();
 
     cy.get('.choice-title').should('not.be.visible');
 
@@ -50,7 +50,7 @@ context('Exit modal testing', () => {
   it('exit button renders front page', () => {
     cy.get('.exit').first().click();
 
-    cy.get('.choicebtn').first().should('contain', 'Avslutt').click();
+    cy.get('.choice-btn').first().should('contain', 'Avslutt').click();
 
     cy.get('.choice-title').should('not.be.visible');
 
@@ -66,7 +66,7 @@ context('Exit modal testing', () => {
   it('prevents user from not setting an username', () => {
     cy.get('.exit').first().click();
 
-    cy.get('.choicebtn').first().click();
+    cy.get('.choice-btn').first().click();
 
     cy.get('.frontpage-header').first().should('contain', title);
   });
@@ -78,7 +78,7 @@ context('Exit modal testing', () => {
 
     cy.get('.exit').first().click();
 
-    cy.get('.choicebtn').first().click();
+    cy.get('.choice-btn').first().click();
 
     cy.get('.frontpage-header').first().should('contain', title);
   });

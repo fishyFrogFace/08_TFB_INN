@@ -3,7 +3,7 @@
   font-size: 3vh;
 }
 
-.subjectContainer {
+.subject-container {
   position: relative;
   top: -5vh;
   width: 100%;
@@ -19,7 +19,7 @@
   border-radius: 3vh;
 }
 
-.pause_exit-container {
+.pause-exit-container {
   background-color: #e2e2e2;
   position: absolute;
   top: 0;
@@ -36,7 +36,7 @@
   justify-content: flex-start;
 }
 
-.choiceContent {
+.choice-content {
   width: 80%;
   max-width: 390px;
   min-height: 35vh;
@@ -74,7 +74,7 @@
   margin-bottom: 4vh;
 }
 
-.choice-buttoncontainer {
+.choice-button-container {
   margin: 2vh;
   padding-bottom: 2vh;
   display: flex;
@@ -82,7 +82,7 @@
   width: 100%;
 }
 
-.choicebtn {
+.choice-btn {
   padding: 16px 13px;
   margin: 8px;
   font-size: 2.6vh;
@@ -92,10 +92,10 @@
   filter: none;
 }
 
-.choicebtn:hover {
+.choice-btn:hover {
   filter: brightness(95%);
 }
-.choicebtn:active {
+.choice-btn:active {
   box-shadow: none;
 }
 
@@ -119,25 +119,6 @@
   background: #d8db29;
 }
 
-.completedContainer {
-  position: relative;
-  background-color: #80d5e0;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
-  width: 80vw;
-  height: 30vh;
-  padding: 16px;
-  margin: 8vh auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.completedContainer p {
-  transform: translate(0, -50%);
-  font-size: 4vh;
-}
-
 /* -- What units-question -- */
 .image-with-description {
   padding: 0;
@@ -152,7 +133,7 @@
   align-items: center;
 }
 
-.unitName {
+.unit-name {
   margin-top: 0;
   font-size: 1em;
 }

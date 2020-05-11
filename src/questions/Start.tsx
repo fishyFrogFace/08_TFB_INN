@@ -15,24 +15,22 @@ const Start: React.FC<Props> = props => {
   return (
     <div className='content'>
       <h1 className={`h1 ${props.subjectColor}`}>Trykk på knappen</h1>
-      <div className='textinputContainer transparent'>
-        <div className='nextButtonContainer'>
-          <Button
-            classNames='start'
-            onClick={() =>
-              props.updateResult({
-                common: {
-                  resultTitle: props.resultTitle,
-                  questionTitle: 'Klikk startknappen',
-                  answerValues: ['Klikket på knappen']
-                },
-                mastered: true,
-                type: 'mastery'
-              })
-            }>
-            Start
-          </Button>
-        </div>
+      <div className='transparent'>
+        <Button
+          classNames='start'
+          onClick={() =>
+            props.updateResult({
+              common: {
+                resultTitle: props.resultTitle,
+                questionTitle: 'Klikk startknappen',
+                answerValues: ['Klikket på knappen']
+              },
+              mastered: true,
+              type: 'mastery'
+            })
+          }>
+          Start
+        </Button>
       </div>
     </div>
   );
