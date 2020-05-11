@@ -34,15 +34,15 @@
 }
 
 .bottom-bar-dot {
-  height: 20px;
-  width: 20px;
-  border: 5px solid black;
-  border-radius: 10px;
+  height: 4vmin;
+  width: 4vmin;
+  border: 0.5vmin solid black;
+  border-radius: 2vmin;
 }
 
 .bottom-bar-line {
-  border: 1px solid black;
-  width: 10px;
+  border: 0.3vmin solid black;
+  width: 2vmin;
   height: 0;
 }
 
