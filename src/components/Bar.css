@@ -18,6 +18,7 @@
 
 .bottom-bar {
   justify-content: center;
+  align-items: center;
 }
 
 .button-container {
@@ -30,4 +31,21 @@
 .subject-name-container {
   margin-left: 3vmin;
   opacity: 50%;
+}
+
+.bottom-bar-dot {
+  height: 20px;
+  width: 20px;
+  background-color: black;
+  border-radius: 10px;
+}
+
+.bottom-bar-line {
+  border: 1px solid black;
+  width: 10px;
+  height: 0;
+}
+
+.bottom-bar-line:last-of-type {
+  display: none;
 }

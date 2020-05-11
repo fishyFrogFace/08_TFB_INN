@@ -3,15 +3,20 @@ import './Bar.css';
 import { SubjectResult } from 'Types';
 
 interface Props {
+  amountOfQuestions: number;
   subjectResult: SubjectResult;
 }
 
 const BottomBar: React.FC<Props> = props => {
+  console.log(props.subjectResult);
   return (
     <div className='bottom-bar'>
-      <div className='subject-name-container'>
-        <p className='subject-name h2 black navbar-subject'>Placeholder</p>
-      </div>
+      {Array.from(Array(props.amountOfQuestions).keys()).map(i => {
+        return [
+          <div key={i} className='bottom-bar-dot'></div>,
+          <div key={i} className='bottom-bar-line'></div>
+        ];
+      })}
     </div>
   );
 };
