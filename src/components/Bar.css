@@ -2,14 +2,22 @@
   box-sizing: border-box;
 }
 
-.navbar {
+.navbar,
+.bottom-bar {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
   align-content: center;
   height: 10vh;
   background-color: #e2e2e2;
   color: #d2d7df;
+}
+
+.navbar {
+  justify-content: flex-start;
+}
+
+.bottom-bar {
+  justify-content: center;
 }
 
 .button-container {

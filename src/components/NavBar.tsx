@@ -1,5 +1,5 @@
 import React from 'react';
-import './NavBar.css';
+import './Bar.css';
 import Button from './Button';
 import exit from './exit-black.svg';
 import { connect } from 'react-redux';
