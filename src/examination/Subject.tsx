@@ -21,7 +21,7 @@ import Login from 'questions/Login';
 import ChooseOne from 'questions/ChooseOne';
 import ChooseOneMastery from 'questions/ChooseOneMastery';
 import BottomBar from 'components/BottomBar';
-import { amountOfValidQuestions } from 'helpers/commonFunctions';
+import { validQuestions } from 'helpers/commonFunctions';
 
 interface Props extends PropsFromRedux {
   subject: SubjectDefinition;
@@ -187,7 +187,8 @@ const Subject: React.FC<Props> = props => {
         {chooseQuestion(props.subject.questions[props.currentQuestion])}
       </div>
       <BottomBar
-        amountOfQuestions={amountOfValidQuestions(props.subject.questions)}
+        currentQuestion={props.currentQuestion}
+        questions={validQuestions(props.subject.questions)}
         subjectResult={props.currentSubjectResult}
       />
     </div>

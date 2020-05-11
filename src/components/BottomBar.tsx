@@ -1,19 +1,21 @@
 import React from 'react';
 import './Bar.css';
-import { SubjectResult } from 'Types';
+import { SubjectResult, QuestionDefinition } from 'Types';
 
 interface Props {
-  amountOfQuestions: number;
+  questions: QuestionDefinition[];
+  currentQuestion: number;
   subjectResult: SubjectResult;
 }
 
 const BottomBar: React.FC<Props> = props => {
-  console.log(props.subjectResult);
   return (
     <div className='bottom-bar'>
-      {Array.from(Array(props.amountOfQuestions).keys()).map(i => {
+      {props.questions.map((question, i) => {
+        const dotColor =
+          i === props.currentQuestion ? 'teal-background' : 'white-background';
         return [
-          <div key={i} className='bottom-bar-dot'></div>,
+          <div key={i} className={`bottom-bar-dot ${dotColor}`}></div>,
           <div key={i} className='bottom-bar-line'></div>
         ];
       })}
