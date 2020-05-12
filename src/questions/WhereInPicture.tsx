@@ -57,10 +57,10 @@ const WhereInPicture: React.FC<Props> = props => {
 
   return (
     <div className='content'>
-      <div className={`questiontextContainer ${props.subjectColor}`}>
+      <div className={`question-text-container ${props.subjectColor}`}>
         <p className={`h2 white normal-font`}>{props.text}</p>
       </div>
-      <div className='inputContainer whiteBackground'>
+      <div className='input-container white-background'>
         <img
           className={`where-in-picture-img ${
             mode === 'incorrect' ? 'incorrect-image' : 'hidden-image'
@@ -86,14 +86,12 @@ const WhereInPicture: React.FC<Props> = props => {
           alt={props.text}
         />
       </div>
-      <div className='nextButtonContainer'>
-        <FlowButtons
-          skip={failQuestion}
-          update={() => {
-            if (mode === 'correct') returnResult();
-          }}
-        />
-      </div>
+      <FlowButtons
+        skip={failQuestion}
+        update={() => {
+          if (mode === 'correct') returnResult();
+        }}
+      />
     </div>
   );
 };

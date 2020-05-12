@@ -22,6 +22,7 @@ import {
 import Overview from 'exampages/Overview';
 import Choice from 'exampages/Choice';
 import WhatUnits from 'exampages/WhatUnits';
+import { validQuestions } from 'helpers/commonFunctions';
 
 interface Props extends PropsFromRedux {
   examState: ExamState;
@@ -104,9 +105,7 @@ const Examination: React.FC<Props> = props => {
               title: subject.name,
               subjectColor: subject.subjectColor,
               completed: props.currentQuestionList[i],
-              total: subject.questions.filter(
-                q => q.templateID !== QuestionTemplate.CompletedSubject
-              ).length
+              total: validQuestions(subject.questions).length
             }))}
             startExam={() => changeExamPage(ExamPage.Subject)}
           />

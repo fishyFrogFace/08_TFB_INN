@@ -15,7 +15,7 @@ interface Props {
 
 const CompletedSubject: React.FC<Props> = props => {
   return (
-    <div className='pause_exit-container'>
+    <div className='pause-exit-container'>
       <div className='exit-btn-container'>
         <Button
           classNames='choice-nav-exit-btn'
@@ -23,19 +23,19 @@ const CompletedSubject: React.FC<Props> = props => {
           <img className='nav-img' src={exit} alt='Exit' />
         </Button>
       </div>
-      <div className='choiceContent whiteBackground'>
+      <div className='choice-content white-background'>
         <p className='choice-title light-font'>{props.title}</p>
         <div className='choice-details-container'>
           <p>{props.body}</p>
         </div>
-        <div className='choice-buttoncontainer'>
+        <div className='choice-button-container'>
           <Button
-            classNames={`${props.btnClass} choicebtn`}
+            classNames={`${props.btnClass} choice-btn`}
             onClick={() => props.confirmAction()}>
             {props.btnText}
           </Button>
           <Button
-            classNames=' grey-background choicebtn'
+            classNames=' grey-background choice-btn'
             onClick={() => props.closeChoice()}>
             Lukk vinduet
           </Button>

@@ -20,6 +20,8 @@ import BigText from 'questions/BigText';
 import Login from 'questions/Login';
 import ChooseOne from 'questions/ChooseOne';
 import ChooseOneMastery from 'questions/ChooseOneMastery';
+import BottomBar from 'components/BottomBar';
+import { validQuestions } from 'helpers/commonFunctions';
 
 interface Props extends PropsFromRedux {
   subject: SubjectDefinition;
@@ -180,8 +182,16 @@ const Subject: React.FC<Props> = props => {
   };
 
   return (
-    <div className='question-container'>
-      {chooseQuestion(props.subject.questions[props.currentQuestion])}
+    <div>
+      <div className='question-container'>
+        {chooseQuestion(props.subject.questions[props.currentQuestion])}
+      </div>
+      <BottomBar
+        currentQuestion={props.currentQuestion}
+        questions={validQuestions(props.subject.questions).map(
+          question => question.name
+        )}
+      />
     </div>
   );
 };

@@ -1,8 +1,8 @@
-.textinputAndBtn {
+.text-input-form {
   margin-top: 10vh;
 }
 
-.questiontextContainer {
+.question-text-container {
   margin-top: 16px;
   width: 90%;
   min-height: 12vh;
@@ -15,7 +15,7 @@
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
 }
 
-.inputContainer {
+.input-container {
   position: relative;
   top: -5vh;
   width: 100%;
@@ -40,23 +40,19 @@
   justify-content: center;
 }
 
-.imageContainer {
+.image-container {
   max-width: 100%;
   max-height: 100%;
 }
 
-Button .imageContainer,
-Button .illustrationImg {
+Button .image-container,
+Button .illustration-image {
   max-height: 20vh;
 }
 
-.illustrationImg {
+.illustration-image {
   max-height: 20vh;
   max-width: 100%;
-}
-
-.nextButtonContainer {
-  z-index: 3;
 }
 
 .big-text {

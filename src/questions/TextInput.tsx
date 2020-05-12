@@ -36,10 +36,10 @@ const TextInput: React.FC<Props> = props => {
 
   return (
     <div className='content'>
-      <div className={`questiontextContainer ${props.subjectColor}`}>
+      <div className={`question-text-container ${props.subjectColor}`}>
         <h1 className='h2 white normal-font'>{props.text}</h1>
       </div>
-      <div className='inputContainer whiteBackground'>
+      <div className='input-container white-background'>
         <form
           className='text-and-btn'
           onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
@@ -54,9 +54,7 @@ const TextInput: React.FC<Props> = props => {
           />
         </form>
       </div>
-      <div className='nextButtonContainer '>
-        <FlowButtons skip={failQuestion} update={returnResult} />
-      </div>
+      <FlowButtons skip={failQuestion} update={returnResult} />
     </div>
   );
 };

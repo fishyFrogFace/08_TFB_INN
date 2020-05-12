@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
-import '../App.css';
-import './Pages.css';
 import Button from '../components/Button';
 import { setUsername } from 'redux/actions';
 import { connectDispatch } from 'redux/util';
-//import avatar from './big-pink.png';
-
-interface Props extends PropsFromRedux {
-  //avatar: string;
-}
 
 const adjectives = [
   'helpful',
@@ -46,23 +39,18 @@ const randomName = (list1: any[], list2: any[]) => {
   return `${adjective}-${animal}`;
 };
 
-const EnterName: React.FC<Props> = props => {
+const EnterName: React.FC<PropsFromRedux> = props => {
   // set a randomly generated name that will be kept if user doesn't type anything
   const [input, setInput] = useState(randomName(adjectives, animals));
 
   return (
     <div className='content'>
-      {/*
-      <div className='imageContainer'>
-        <!--<img src={avatar} alt='Avatar' />-->
-      </div>
-      */}
-      <div className='questiontextContainer teal-background'>
+      <div className='question-text-container teal-background'>
         <h1 className='h2 white normal-font'>Mitt navn er...</h1>
       </div>
-      <div className='inputContainer whiteBackground'>
+      <div className='input-container white-background'>
         <form
-          className='textinputAndBtn'
+          className='text-input-form'
           onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
             e.preventDefault()
           }>
@@ -83,15 +71,13 @@ const EnterName: React.FC<Props> = props => {
         </form>
         <p className='username'>{input}</p>
       </div>
-      <div className='nextButtonContainer'>
-        <Button
-          classNames='regular-btn next-button'
-          onClick={() => {
-            props.setUsername(input);
-          }}>
-          Neste
-        </Button>
-      </div>
+      <Button
+        classNames='regular-btn next-button'
+        onClick={() => {
+          props.setUsername(input);
+        }}>
+        Neste
+      </Button>
     </div>
   );
 };

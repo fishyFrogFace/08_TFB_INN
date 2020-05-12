@@ -1,5 +1,5 @@
 import React from 'react';
-import './NavBar.css';
+import './Bar.css';
 import Button from './Button';
 import exit from './exit-black.svg';
 import { connect } from 'react-redux';
@@ -12,7 +12,7 @@ interface Props extends PropsFromRedux {
 
 const NavBar: React.FC<Props> = props => {
   return (
-    <div className='navBar'>
+    <div className='navbar'>
       <div className='button-container'>
         <Button classNames='nav-btn exit' onClick={props.showChoice}>
           <img className='nav-img' src={exit} alt='Exit' />

@@ -60,12 +60,12 @@ const TextInput: React.FC<Props> = props => {
 
   return (
     <div className='content'>
-      <div className={`questiontextContainer ${props.subjectColor}`}>
+      <div className={`question-text-container ${props.subjectColor}`}>
         <h1 className='h2 white normal-font'>
           Logg inn med informasjonen under
         </h1>
       </div>
-      <div className='inputContainer whiteBackground'>
+      <div className='input-container white-background'>
         <div>
           <p className='black question-details'>
             Brukernavn: "{props.userInformation.username}" <br></br>

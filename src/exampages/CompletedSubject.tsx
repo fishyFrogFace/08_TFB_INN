@@ -1,5 +1,4 @@
 import React from 'react';
-import '../App.css';
 import './Pages.css';
 import Button from '../components/Button';
 
@@ -12,19 +11,16 @@ interface Props {
 const CompletedSubject: React.FC<Props> = props => {
   return (
     <div className='content'>
-      <div className={`choiceContent white ${props.subjectColor}`}>
+      <div className={`choice-content white ${props.subjectColor}`}>
         <p className={`choice-title  light-font`}>
           Du har fullført {props.subject}
         </p>
       </div>
-
-      <div className='nextButtonContainer'>
-        <Button
-          classNames='next-button regular-btn'
-          onClick={() => props.nextSubject()}>
-          Tilbake til temaoversikt
-        </Button>
-      </div>
+      <Button
+        classNames='next-button regular-btn'
+        onClick={() => props.nextSubject()}>
+        Tilbake til temaoversikt
+      </Button>
     </div>
   );
 };

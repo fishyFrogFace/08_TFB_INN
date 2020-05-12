@@ -42,17 +42,17 @@ const ChooseOne: React.FC<Props> = props => {
 
   return (
     <div className='content'>
-      <div className={`questiontextContainer ${props.subjectColor}`}>
+      <div className={`question-text-container ${props.subjectColor}`}>
         <p className='h2 white normal-font'>{props.text}</p>
       </div>
 
-      <div className='inputContainer whiteBackground'>
+      <div className='input-container white-background'>
         {props.illustration === undefined ? (
           ''
         ) : (
-          <div className='imageContainer'>
+          <div className='image-container'>
             <img
-              className='illustrationImg'
+              className='illustration-image'
               src={props.illustration}
               alt={'Illustration'}
             />
@@ -63,14 +63,14 @@ const ChooseOne: React.FC<Props> = props => {
           {props.answerValues.map((item, i) => (
             <Button
               key={i}
-              classNames={`multibtn answer-btn regular-btn ${
+              classNames={`multi-btn answer-btn regular-btn ${
                 selectedButton === i ? 'selected' : ''
               }`}
               onClick={() => setSelectedButton(i)}>
               {props.isImage ? (
-                <div className='imageContainer'>
+                <div className='image-container'>
                   <img
-                    className='illustrationImg'
+                    className='illustration-image'
                     src={item}
                     alt={`Button ${i}`}
                   />
@@ -82,14 +82,12 @@ const ChooseOne: React.FC<Props> = props => {
           ))}
         </div>
       </div>
-      <div className='nextButtonContainer'>
-        <FlowButtons
-          skip={failQuestion}
-          update={() => {
-            if (selectedButton !== undefined) returnResult(selectedButton);
-          }}
-        />
-      </div>
+      <FlowButtons
+        skip={failQuestion}
+        update={() => {
+          if (selectedButton !== undefined) returnResult(selectedButton);
+        }}
+      />
     </div>
   );
 };

@@ -20,12 +20,12 @@
   box-shadow: none;
 }
 
-.multibtn:hover {
+.multi-btn:hover {
   filter: none;
   background-color: #acdae0;
 }
 
-.multibtn.selected {
+.multi-btn.selected {
   box-shadow: none;
   background-color: #73d0dc;
 }
@@ -80,11 +80,11 @@
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
-.subject-btn .subjectTitleContainer {
+.subject-btn .subject-title-container {
   width: 75%;
 }
 
-.subjectTitleContainer p {
+.subject-title-container p {
   position: relative;
   top: -8px;
   text-align: left;

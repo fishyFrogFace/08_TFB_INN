@@ -68,17 +68,17 @@ const MultipleButtons: React.FC<Props> = props => {
 
   return (
     <div className='content'>
-      <div className={`questiontextContainer ${props.subjectColor}`}>
+      <div className={`question-text-container ${props.subjectColor}`}>
         <p className='h2 white normal-font'>{props.text} (flere valg mulig)</p>
       </div>
 
-      <div className='whiteBackground inputContainer'>
+      <div className='white-background input-container'>
         {props.illustration === undefined ? (
           ''
         ) : (
-          <div className='imageContainer'>
+          <div className='image-container'>
             <img
-              className='illustrationImg'
+              className='illustration-image'
               id='questionimg'
               src={props.illustration}
               alt={'Illustration'}
@@ -89,14 +89,14 @@ const MultipleButtons: React.FC<Props> = props => {
           {props.answerValues.map((item, i) => (
             <Button
               key={i}
-              classNames={`multibtn answer-btn  regular-btn ${
+              classNames={`multi-btn answer-btn  regular-btn ${
                 selectedButtons.includes(i) ? 'selected' : ''
               }`}
               onClick={() => updateAnswer(i)}>
               {props.isImage ? (
-                <div className='imageContainer'>
+                <div className='image-container'>
                   <img
-                    className='illustrationImg'
+                    className='illustration-image'
                     src={item}
                     alt={`Button ${i}`}
                   />
