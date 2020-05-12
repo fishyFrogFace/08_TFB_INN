@@ -36,12 +36,12 @@
 .bottom-bar-dot {
   height: 4vmin;
   width: 4vmin;
-  border: 0.5vmin solid black;
+  border: 0.5vmin solid #212121;
   border-radius: 2vmin;
 }
 
 .bottom-bar-line {
-  border: 0.3vmin solid black;
+  border: 0.4vmin solid #212121;
   width: 2vmin;
   height: 0;
 }

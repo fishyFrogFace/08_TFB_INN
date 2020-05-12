@@ -188,8 +188,9 @@ const Subject: React.FC<Props> = props => {
       </div>
       <BottomBar
         currentQuestion={props.currentQuestion}
-        questions={validQuestions(props.subject.questions)}
-        subjectResult={props.currentSubjectResult}
+        questions={validQuestions(props.subject.questions).map(
+          question => question.name
+        )}
       />
     </div>
   );
