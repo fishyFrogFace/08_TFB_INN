@@ -840,6 +840,27 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.CompletedSubject
         }
       ]
+    },
+    {
+      name: 'Test subject',
+      subjectColor: 'purple-background',
+      questions: [
+        {
+          name: 'Has e-mail',
+          templateID: QuestionTemplate.ChooseOne,
+          questionContent: {
+            text: 'Har du en e-postkonto?',
+            resultTitle: 'Har e-postkonto',
+            illustration: require('./images/email.svg'),
+            answerValues: ['Ja', 'Nei', 'Vet ikke'],
+            isImage: false
+          }
+        },
+        {
+          name: 'Completed subject',
+          templateID: QuestionTemplate.CompletedSubject
+        }
+      ]
     }
   ]
 };
