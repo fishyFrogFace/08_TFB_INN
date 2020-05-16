@@ -1,24 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import FrontPage from 'frontpage/FrontPage';
 import Examination from 'examination/Examination';
-import { Page } from './Types';
+import { Page, ExamDefinition } from './Types';
 import { standardExamDefinition } from './examDefinition';
 import { connect } from 'react-redux';
 import { RootState } from 'redux/reducers';
 import { updateAppPage } from 'redux/actions';
 
 const App: React.FC<PropsFromRedux> = props => {
+  const [exam, setExam] = useState<ExamDefinition>(standardExamDefinition);
+
+  useEffect(() => {
+    fetch('https://api.example.com/items')
+      .then(res => res.json())
+      .then(
+        result => {
+          setExam(result.items);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }, []);
+
   switch (props.currentPage) {
     /* fetch available examinations from local storage (or backend API) and pass
        them to FrontPage */
     case Page.FrontPage:
-      return <FrontPage />;
+      return (
+        <div>
+          <FrontPage />
+        </div>
+      );
 
     /* fetch questions and question props from local storage (or backend API)
        and pass them to Examination */
     case Page.Examination:
-      return <Examination examDefinition={standardExamDefinition} />;
+      return <Examination examDefinition={exam} />;
   }
 };
 

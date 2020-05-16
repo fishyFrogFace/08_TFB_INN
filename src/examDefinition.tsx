@@ -1,7 +1,7 @@
-import { QuestionTemplate } from 'Types';
+import { QuestionTemplate, ExamDefinition } from 'Types';
 import { checkPasswordSafety } from 'helpers/PasswordChecker';
 
-export const standardExamDefinition = {
+export const standardExamDefinition: ExamDefinition = {
   subjects: [
     {
       name: 'Å ringe og sende SMS',
@@ -23,8 +23,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Finn og trykk på SMS-appen',
             imageInformation: {
-              image: require('./images/find-app.jpeg'),
-              imageWithIndicator: require('./images/find-messages-correct.png'),
+              image: require('images/find-app.jpeg'),
+              imageWithIndicator: require('images/find-messages-correct.png'),
               largeScreen: [
                 {
                   min: { x: 148, y: 199 },
@@ -48,8 +48,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor klikker du for å åpne meldingen fra Sara?',
             imageInformation: {
-              image: require('./images/sms-inbox.jpg'),
-              imageWithIndicator: require('./images/open-message-correct.png'),
+              image: require('images/sms-inbox.jpg'),
+              imageWithIndicator: require('images/open-message-correct.png'),
               largeScreen: [
                 {
                   min: { x: 0, y: 49 },
@@ -73,8 +73,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor klikker du for å skrive et svar til Sara?',
             imageInformation: {
-              image: require('./images/sms.png'),
-              imageWithIndicator: require('./images/sms-respond-correct.png'),
+              image: require('images/sms.png'),
+              imageWithIndicator: require('images/sms-respond-correct.png'),
               largeScreen: [
                 {
                   min: { x: 0, y: 465 },
@@ -98,8 +98,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor klikker du for å sende meldingen til Sara?',
             imageInformation: {
-              image: require('./images/sms.png'),
-              imageWithIndicator: require('./images/sms-send-correct.png'),
+              image: require('images/sms.png'),
+              imageWithIndicator: require('images/sms-send-correct.png'),
               largeScreen: [
                 {
                   min: { x: 256, y: 468 },
@@ -123,8 +123,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor klikker du for å opprette en ny melding?',
             imageInformation: {
-              image: require('./images/sms-inbox.jpg'),
-              imageWithIndicator: require('./images/new-message-correct.png'),
+              image: require('images/sms-inbox.jpg'),
+              imageWithIndicator: require('images/new-message-correct.png'),
               largeScreen: [
                 {
                   min: { x: 226, y: 433 },
@@ -148,8 +148,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Åpne kontaktliste',
             imageInformation: {
-              image: require('./images/find-app.jpeg'),
-              imageWithIndicator: require('./images/find-contacts-correct.png'),
+              image: require('images/find-app.jpeg'),
+              imageWithIndicator: require('images/find-contacts-correct.png'),
               largeScreen: [
                 {
                   min: { x: 101, y: 126 },
@@ -173,8 +173,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor trykker du for å se Janis sitt telefonnummer?',
             imageInformation: {
-              image: require('./images/contact-list.png'),
-              imageWithIndicator: require('./images/contact-list-correct.png'),
+              image: require('images/contact-list.png'),
+              imageWithIndicator: require('images/contact-list-correct.png'),
               largeScreen: [
                 {
                   min: { x: 18, y: 376 },
@@ -198,8 +198,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor trykker du for å ringe Janis?',
             imageInformation: {
-              image: require('./images/profile.jpeg'),
-              imageWithIndicator: require('./images/profile-call-correct.png'),
+              image: require('images/profile.jpeg'),
+              imageWithIndicator: require('images/profile-call-correct.png'),
               largeScreen: [
                 {
                   min: { x: 105, y: 244 },
@@ -223,8 +223,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor trykker du for å sende melding til Janis?',
             imageInformation: {
-              image: require('./images/profile.jpeg'),
-              imageWithIndicator: require('./images/profile-sms-correct.png'),
+              image: require('images/profile.jpeg'),
+              imageWithIndicator: require('images/profile-sms-correct.png'),
               largeScreen: [
                 {
                   min: { x: 0, y: 245 },
@@ -248,8 +248,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor trykker du for å legge til en person i kontaktlisten?',
             imageInformation: {
-              image: require('./images/contact-list.png'),
-              imageWithIndicator: require('./images/new-contact-correct.png'),
+              image: require('images/contact-list.png'),
+              imageWithIndicator: require('images/new-contact-correct.png'),
               largeScreen: [
                 {
                   min: { x: 230, y: 417 },
@@ -283,7 +283,7 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.ChooseOne,
           questionContent: {
             text: 'Får du til å skru opp og ned lyden på mobilen din?',
-            illustration: require('./images/sound.svg'),
+            illustration: require('images/sound.svg'),
             resultTitle: 'Kan endre volum',
             answerValues: ['Ja', 'Nei'],
             isImage: false
@@ -294,7 +294,7 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.ChooseOne,
           questionContent: {
             text: 'Får du til å skru opp og ned lysstyrken på mobilen din?',
-            illustration: require('./images/brightness.svg'),
+            illustration: require('images/brightness.svg'),
             resultTitle: 'Kan endre lysstyrke',
             answerValues: ['Ja', 'Nei'],
             isImage: false
@@ -305,7 +305,7 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.ChooseOne,
           questionContent: {
             text: 'Får du til å slå på flymodus på mobilen din?',
-            illustration: require('./images/plane.svg'),
+            illustration: require('images/plane.svg'),
             resultTitle: 'Kan skru på flymodus',
             answerValues: ['Ja', 'Nei'],
             isImage: false
@@ -335,7 +335,7 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.ChooseOne,
           questionContent: {
             text: 'Får du til å sette mobilen din på lydløs?',
-            illustration: require('./images/soundless.svg'),
+            illustration: require('images/soundless.svg'),
             resultTitle: 'Kan skru på lydløs modus',
             answerValues: ['Ja', 'Nei'],
             isImage: false
@@ -346,7 +346,7 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.ChooseOneMastery,
           questionContent: {
             text: 'Hva betyr symbolet nedenfor?',
-            illustration: require('./images/settings.svg'),
+            illustration: require('images/settings.svg'),
             resultTitle: 'Kjenner igjen ikon for innstillinger',
             answerValues: ['Bluetooth', 'Passord', 'Innstillinger', 'Bilder'],
             isImage: false,
@@ -358,7 +358,7 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.ChooseOneMastery,
           questionContent: {
             text: 'Hva betyr symbolet nedenfor?',
-            illustration: require('./images/wifi.svg'),
+            illustration: require('images/wifi.svg'),
             resultTitle: 'Kjenner igjen WiFi-ikon',
             answerValues: ['Bluetooth', 'Mobilnett', 'Innstillinger', 'WiFi'],
             isImage: false,
@@ -370,7 +370,7 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.ChooseOne,
           questionContent: {
             text: 'Får du til å skru av og på WiFi?',
-            illustration: require('./images/wifi.svg'),
+            illustration: require('images/wifi.svg'),
             resultTitle: 'Kan skru av og på WiFi',
             answerValues: ['Ja', 'Nei'],
             isImage: false
@@ -381,7 +381,7 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.ChooseOne,
           questionContent: {
             text: 'Får du til å koble seg på et nytt WiFi-nettverk?',
-            illustration: require('./images/wifi.svg'),
+            illustration: require('images/wifi.svg'),
             resultTitle: 'Kan koble på trådløst nettverk',
             answerValues: ['Ja', 'Nei'],
             isImage: false
@@ -411,7 +411,7 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.ChooseOneMastery,
           questionContent: {
             text: 'Hva betyr symbolet nedenfor?',
-            illustration: require('./images/bluetooth.svg'),
+            illustration: require('images/bluetooth.svg'),
             resultTitle: 'Kjenner igjen bluetooth-ikon',
             answerValues: ['Bluetooth', 'Mobilnett', 'Innstillinger', 'WiFi'],
             isImage: false,
@@ -439,7 +439,8 @@ export const standardExamDefinition = {
         },
         {
           name: 'Completed subject',
-          templateID: QuestionTemplate.CompletedSubject
+          templateID: QuestionTemplate.CompletedSubject,
+          questionContent: {}
         }
       ]
     },
@@ -527,7 +528,7 @@ export const standardExamDefinition = {
           templateID: QuestionTemplate.ChooseOne,
           questionContent: {
             text: 'Har du BankID (kodebrikke)?',
-            illustration: require('./images/bankid-chip.svg'),
+            illustration: require('images/bankid-chip.svg'),
             resultTitle: 'Har BankID',
             answerValues: ['Ja', 'Nei', 'Vet ikke'],
             isImage: false
@@ -559,7 +560,7 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hva er sant om BankID?',
             resultTitle: 'Forstår hva BankID er og hvordan den fungerer',
-            illustration: require('./images/bankid-logo.svg'),
+            illustration: require('images/bankid-logo.svg'),
             isImage: false,
             answerValues: [
               'BankID kan deles av flere personer',
@@ -575,7 +576,8 @@ export const standardExamDefinition = {
         },
         {
           name: 'Completed subject',
-          templateID: QuestionTemplate.CompletedSubject
+          templateID: QuestionTemplate.CompletedSubject,
+          questionContent: {}
         }
       ]
     },
@@ -589,7 +591,7 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Har du en e-postkonto?',
             resultTitle: 'Har e-postkonto',
-            illustration: require('./images/email.svg'),
+            illustration: require('images/email.svg'),
             answerValues: ['Ja', 'Nei', 'Vet ikke'],
             isImage: false
           }
@@ -601,14 +603,14 @@ export const standardExamDefinition = {
             text: 'Hvilket av bildene nedenfor er en e-postinnboks?',
             resultTitle: 'Kan kjenne igjen en e-postinnboks',
             answerValues: [
-              require('./images/whatsapp.svg'),
-              require('./images/inbox.png'),
+              require('images/whatsapp.svg'),
+              require('images/inbox.png'),
 
-              require('./images/youtube.svg'),
-              require('./images/website.svg')
+              require('images/youtube.svg'),
+              require('images/website.svg')
             ],
             isImage: true,
-            correctAlternative: require('./images/inbox.png')
+            correctAlternative: require('images/inbox.png')
           }
         },
         {
@@ -633,8 +635,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor klikker du for å opprette en ny e-post?',
             imageInformation: {
-              image: require('./images/gmail-overview.png'),
-              imageWithIndicator: require('./images/gmail-new-mail-correct.png'),
+              image: require('images/gmail-overview.png'),
+              imageWithIndicator: require('images/gmail-new-mail-correct.png'),
               largeScreen: [
                 {
                   min: { x: 221, y: 406 },
@@ -658,8 +660,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor skriver du emnet til e-posten?',
             imageInformation: {
-              image: require('./images/gmail-edit.png'),
-              imageWithIndicator: require('./images/gmail-subject-correct.png'),
+              image: require('images/gmail-edit.png'),
+              imageWithIndicator: require('images/gmail-subject-correct.png'),
               largeScreen: [
                 {
                   min: { x: 0, y: 190 },
@@ -683,8 +685,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor skriver du inn mottakerne av e-posten?',
             imageInformation: {
-              image: require('./images/gmail-edit.png'),
-              imageWithIndicator: require('./images/gmail-recipient-correct.png'),
+              image: require('images/gmail-edit.png'),
+              imageWithIndicator: require('images/gmail-recipient-correct.png'),
               largeScreen: [
                 {
                   min: { x: 0, y: 72 },
@@ -708,8 +710,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor klikker du for å skrive innholdet i e-posten?',
             imageInformation: {
-              image: require('./images/gmail-edit.png'),
-              imageWithIndicator: require('./images/gmail-body-correct.png'),
+              image: require('images/gmail-edit.png'),
+              imageWithIndicator: require('images/gmail-body-correct.png'),
               largeScreen: [
                 {
                   min: { x: 0, y: 249 },
@@ -733,8 +735,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor klikker du for å legge til et vedlegg?',
             imageInformation: {
-              image: require('./images/gmail-edit.png'),
-              imageWithIndicator: require('./images/gmail-attachment-correct.png'),
+              image: require('images/gmail-edit.png'),
+              imageWithIndicator: require('images/gmail-attachment-correct.png'),
               largeScreen: [
                 {
                   min: { x: 294, y: 11 },
@@ -758,8 +760,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor klikker du for å sende e-posten?',
             imageInformation: {
-              image: require('./images/gmail-send.png'),
-              imageWithIndicator: require('./images/gmail-send-correct.png'),
+              image: require('images/gmail-send.png'),
+              imageWithIndicator: require('images/gmail-send-correct.png'),
               largeScreen: [
                 {
                   min: { x: 352, y: 5 },
@@ -783,8 +785,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor klikker du for å åpne den øverste e-posten?',
             imageInformation: {
-              image: require('./images/gmail-overview.png'),
-              imageWithIndicator: require('./images/gmail-first-email-correct.png'),
+              image: require('images/gmail-overview.png'),
+              imageWithIndicator: require('images/gmail-first-email-correct.png'),
               largeScreen: [
                 {
                   min: { x: 0, y: 200 },
@@ -808,8 +810,8 @@ export const standardExamDefinition = {
           questionContent: {
             text: 'Hvor klikker du for å svare på e-posten?',
             imageInformation: {
-              image: require('./images/gmail-reply.png'),
-              imageWithIndicator: require('./images/gmail-reply-correct.png'),
+              image: require('images/gmail-reply.png'),
+              imageWithIndicator: require('images/gmail-reply-correct.png'),
               largeScreen: [
                 {
                   min: { x: 219, y: 91 },
@@ -837,7 +839,8 @@ export const standardExamDefinition = {
         },
         {
           name: 'Completed subject',
-          templateID: QuestionTemplate.CompletedSubject
+          templateID: QuestionTemplate.CompletedSubject,
+          questionContent: {}
         }
       ]
     }
