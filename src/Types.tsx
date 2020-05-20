@@ -94,7 +94,6 @@ export interface UserInformation {
 }
 
 export interface QuestionContent {
-  avatar?: string;
   resultTitle?: string;
   maxPoints?: number;
   text?: string;
